@@ -6,7 +6,15 @@ export default function ModeSelection() {
     const division = location.state?.division || "Umum";
 
     const handleSelectMode = (mode) => {
-        navigate('/camera', { state: { division, mode } });
+        console.log("1. Tombol ditekan! Memilih mode:", mode);
+        console.log("2. Bersiap pindah ke /camera dengan divisi:", division);
+
+        try {
+            navigate('/camera', { state: { division, mode } });
+            console.log("3. Navigasi berhasil dieksekusi!");
+        } catch (error) {
+            console.error("Gagal melakukan navigasi:", error);
+        }
     };
 
     return (
@@ -16,18 +24,29 @@ export default function ModeSelection() {
                 <p className="text-gray-500 mb-6">Pilih format live reportna</p>
 
                 <div className="flex gap-4">
-                    <button onClick={() => handleSelectMode('photo')}
-                        className="flex-1 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-all">Foto</button>
+                    <button
+                        onClick={() => handleSelectMode('photo')}
+                        className="flex-1 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-all"
+                    >
+                        Foto
+                    </button>
 
-                    <button onClick={() => handleSelectMode("Vidio")}
-                        className="flex-1 py-4 bg-green-600 hover:bg-green-700 text-white rounded-xl font-bold transtion-all">
-                        Vidio
+
+                    <button
+                        onClick={() => handleSelectMode('video')}
+                        className="flex-1 py-4 bg-green-600 hover:bg-green-700 text-white rounded-xl font-bold transition-all"
+                    >
+                        Video
                     </button>
                 </div>
 
-                <button onClick={() => navigate(-1)}
-                    className="mt-6 text-sm text-gray-400 hover:text-gray-600">Kembali</button>
+                <button
+                    onClick={() => navigate("/")}
+                    className="mt-6 text-sm text-gray-400 hover:text-gray-600"
+                >
+                    Kembali
+                </button>
             </div>
         </div>
-    )
+    );
 }
