@@ -1,0 +1,24 @@
+# Folder Dependencies
+node_modules/
+
+# File Konfigurasi Rahasia (Sangat Penting!)
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# OS & Editor
+.DS_Store
+.vscode/
+.idea/
+
+# Production Build (jika nanti menggunakan TypeScript atau bundling)
+dist/
+build/
+/generated/prisma
+
+/generated/prisma

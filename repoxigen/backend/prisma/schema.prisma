@@ -1,0 +1,164 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+// --- ENUM (Pilihan Tetap) ---
+enum Role {
+  super_admin
+  admin_divisi
+  admin_hum_in
+  user
+}
+
+enum KategoriDivisi {
+  topman
+  peminatan
+  pendukung
+}
+
+enum StatusKeanggotaan {  
+  pasif
+  aktif
+  bph
+}
+
+// --- MODEL DATABASE ---
+
+model Divisi {
+
+  id_divisi   Int            @id @default(autoincrement())
+  nama_divisi String
+  kode        String         @unique @db.Char(3) 
+  kategori    KategoriDivisi
+
+  peminat     Users[]  @relation("DivisiPeminatan")
+  pengurus    Users[]  @relation("JabatanStruktural")
+
+  agendas     Agenda[]
+  
+  createdAt   DateTime       @default(now())
+
+  @@map("divisi")
+}
+
+model Akun {
+  id_akun          String    @id @default(uuid()) // UUID otomatis
+  email            String    @unique
+  password         String
+  role             Role      @default(user)
+  is_approved      Boolean   @default(false)
+  
+  // Relasi
+  userProfile      Users?
+
+  agendaCreated    Agenda[]
+  InternalMeet     InternalMeet[]
+
+  createdAt        DateTime  @default(now())
+  
+  @@map("akun")
+}
+
+model Users {
+  nim                String            @id @db.VarChar(20)
+  id_akun            String            @unique
+  nama_lengkap       String
+  jurusan            String
+  angkatan           Int               
+  alasan             String?           @db.Text
+
+  status_keanggotaan StatusKeanggotaan @default(pasif)
+  
+
+  divisi_peminatan_id Int?
+  peminatan               Divisi?       @relation("DivisiPeminatan", fields: [divisi_peminatan_id], references: [id_divisi])
+
+  jabatan_struktural_id   Int?
+  jabatan                 Divisi?        @relation("JabatanStruktural", fields: [jabatan_struktural_id], references:[id_divisi])
+  
+  akun                Akun             @relation(fields: [id_akun], references: [id_akun], onDelete: Cascade)
+
+  absensi            Absensi[]
+  absensiInternals   AbsensiInternal[]
+  
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+
+  @@map("users")
+}
+
+model Agenda {
+  id_agenda     Int      @id @default(autoincrement())
+  judul         String
+  deskripsi     String?  @db.Text
+  id_divisi     Int
+  kategori      String   @default("pelatihan") 
+  tanggal       DateTime
+  lokasi        String?
+  
+  token_absen   String   @db.VarChar(10)
+  is_absen_open Boolean  @default(false)
+  konten_materi String?  @db.LongText 
+  
+  created_by    String
+  
+  divisi        Divisi   @relation(fields: [id_divisi], references: [id_divisi])
+  creator       Akun     @relation(fields: [created_by], references: [id_akun])
+  absensi       Absensi[]
+
+  @@map("agenda")
+}
+
+model Absensi {
+  id_absensi  Int      @id @default(autoincrement())
+  id_agenda   Int
+  nim         String
+  waktu_input DateTime @default(now())
+  status      String   @default("hadir") 
+
+  agenda      Agenda   @relation(fields: [id_agenda], references: [id_agenda], onDelete: Cascade)
+  user        Users    @relation(fields: [nim], references: [nim], onDelete: Cascade)
+
+  @@unique([id_agenda, nim]) // Satu user cuma bisa absen 1x per agenda
+  @@map("absensi")
+}
+
+model InternalMeet {
+  id_meet     Int       @id @default(autoincrement())
+  judul       String    
+  tanggal     DateTime
+  lokasi      String? 
+  token_absen String    @db.VarChar(10)
+  is_open     Boolean   @default(true)
+
+  notulensi   String?    @db.LongText
+  file_notulensi String? 
+
+  created_by  String 
+  creator     Akun      @relation (fields: [created_by], references:[id_akun])
+
+  absensi     AbsensiInternal[]
+
+  createAt     DateTime   @default(now())
+  updateAt     DateTime   @updatedAt
+
+  @@map("intenal_meet") 
+}
+
+model AbsensiInternal{
+  id_absensi  Int   @id @default(autoincrement())
+  id_meet     Int 
+  nim         String 
+  waktu_input DateTime @default(now())
+
+  meet        InternalMeet  @relation(fields:[id_meet], references:[id_meet], onDelete: Cascade)
+  user        Users         @relation(fields:[nim], references:[nim], onDelete: Cascade)
+
+  @@unique([id_meet,nim])
+  @@map("absensi_internal")
+}

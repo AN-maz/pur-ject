@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@theme {
+  --color-oxigen-light: #0051d2;
+  --color-oxigen-dark: #001a57;
+}

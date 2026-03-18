@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "name": "PDH OXIGEN Official",
+    "price": 165000,
+    "category": "Apparel",
+    "image": "https://images.unsplash.com/photo-1603252109303-27514432f839?auto=format&fit=crop&q=80&w=500",
+    "status": "Pre-Order",
+    "rarity": "Legendary",
+    "stats": { "Style": "+100", "Charisma": "+50" },
+    "desc": "Seragam kebanggaan anggota. Bahan Drill premium, bordir komputer presisi. Wajib punya untuk event resmi!"
+  },
+  {
+    "id": 2,
+    "name": "Jaket Angkatan Oxi-25",
+    "price": 180000,
+    "category": "Apparel",
+    "image": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=500",
+    "status": "Pre-Order",
+    "rarity": "Epic",
+    "stats": { "Defense": "+20", "Comfort": "+80" },
+    "desc": "Jaket angkatan dengan desain tactical. Tahan angin dan air (waterproof ringan)."
+  },
+  {
+    "id": 3,
+    "name": "Sate FullStack",
+    "price": 15000,
+    "category": "Food",
+    "image": "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&q=80&w=500",
+    "status": "Ready Stock",
+    "rarity": "Common",
+    "stats": { "Stamina": "+10", "Spicy": "MAX" },
+    "desc": "Cemilan coding terbaik. Pedasnya bikin melek pas lagi debugging error tengah malam."
+  },
+  {
+    "id": 4,
+    "name": "Es Kopi Vanilla Css",
+    "price": 12000,
+    "category": "Food",
+    "image": "https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&q=80&w=500",
+    "status": "Open PO",
+    "rarity": "Rare",
+    "stats": { "Mana": "+50", "Sleep": "-100" },
+    "desc": "Booster energi instan. Dibuat dari biji kopi pilihan dan gula aren asli."
+  },
+  {
+    "id": 5,
+    "name": "Ganci Akrilik Logo",
+    "price": 10000,
+    "category": "Accessories",
+    "image": "https://images.unsplash.com/photo-1616406432452-07bc59365145?auto=format&fit=crop&q=80&w=500",
+    "status": "Ready Stock",
+    "rarity": "Uncommon",
+    "stats": { "Luck": "+5", "Weight": "1g" },
+    "desc": "Gantungan kunci logo OXIGEN. Cocok digantung di tas laptop atau kunci motor."
+  },
+  {
+    "id": 6,
+    "name": "Sticker Pack Dev",
+    "price": 25000,
+    "category": "Accessories",
+    "image": "https://images.unsplash.com/photo-1572375992501-59d9096dd363?auto=format&fit=crop&q=80&w=500",
+    "status": "Ready Stock",
+    "rarity": "Rare",
+    "stats": { "Swag": "+30", "Adhesion": "99%" },
+    "desc": "Kumpulan stiker bahasa pemrograman dan meme IT. Laptopmu jadi makin ganteng."
+  },
+    {
+    "id": 7,
+    "name": "Sticker Pack.Ahmad",
+    "price": 25000,
+    "category": "Accessories",
+    "image": "https://images.unsplash.com/photo-1572375992501-59d9096dd363?auto=format&fit=crop&q=80&w=500",
+    "status": "Ready Stock",
+    "rarity": "Rare",
+    "stats": { "Swag": "+30", "Adhesion": "99%" },
+    "desc": "Kumpulan stiker bahasa pemrograman dan meme IT. Laptopmu jadi makin ganteng."
+  }
+  
+]

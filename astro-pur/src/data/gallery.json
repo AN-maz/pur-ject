@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "tag": "[ Mubes 12/03/2026 ]",
+    "image": "/images/poto1.jpeg",
+    "description": "Suasana pembukaan musyawarah besar."
+  },
+  {
+    "id": 2,
+    "tag": "[ Sidang Pleno 1 ]",
+    "image": "/images/poto2.jpeg",
+    "description": "Suasana mulai nya sidag pleno 1"
+  },
+  {
+    "id": 11,
+    "tag": "[ Periode 2026-2027 ]",
+    "image": "/images/poto1.jpeg",
+    "description": "Suasana pembukaan musyawarah besar."
+  },
+  {
+    "id": 31,
+    "tag": "[ Pengkajian Redaksi ]",
+    "image": "/images/poto3.jpeg",
+    "description": "Suasana Presidium 1."
+  },
+  {
+    "id": 4,
+    "tag": "[ Sidang Pleno 2 ]",
+    "image": "/images/poto4.jpeg",
+    "description": "Pembacaan AD/ART."
+  },
+  {
+    "id": 41,
+    "tag": "[ Suasana Sidang ]",
+    "image": "/images/poto4.jpeg",
+    "description": "Gabungan dengan OXIGEN dan BEM."
+  },
+  {
+    "id": 5,
+    "tag": "[ Pengesahan Redaksi ]",
+    "image": "/images/poto5.jpeg",
+    "description": "Suasana Pengesahan."
+  },
+  {
+    "id": 6,
+    "tag": "[ Pembacaan Redaksi ]",
+    "image": "/images/poto6.jpeg",
+    "description": "Suasana Pembacaan."
+  },
+  {
+    "id": 7,
+    "tag": "[ Poto Bersama ]",
+    "image": "/images/poto7.jpeg",
+    "description": "Telah Ditetapkannya AD/ART periode 2026-2027."
+  },
+  {
+    "id": 8,
+    "tag": "[ Bukber 2026 ]",
+    "image": "/images/poto8.jpg",
+    "description": "Bounding pengurus baru"
+  },
+  {
+    "id": 9,
+    "tag": "[ Bounding pengurus baru ]",
+    "image": "/images/poto9.jpg",
+    "description": "Acara kebersamaan di malam hari."
+  }
+]

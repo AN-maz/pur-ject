@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "Agenda Rutin",
+    "desc": "Pelatihan perakitan mikrokontroler ESP32 untuk pemula bersama divisi Hardware.",
+    "date": "2023-10-15",
+    "category": "Game",
+    "image": "/gallery/poto1.jpeg"
+  },
+  {
+    "id": 2,
+    "title": "Top Nominasi Project 24",
+    "desc": "Kompetisi pembuatan game 48 jam non-stop dengan tema 'Cyberpunk Nusantara'.",
+    "date": "2023-11-20",
+    "category": "Supergame Galaxy",
+    "image": "/gallery/poto2.JPG"
+  },
+  {
+    "id": 3,
+    "title": "Supergame Galaxy x EXPO 2025",
+    "desc": "Bedah tuntas teknologi Frontend terbaru menggunakan React dan Tailwind CSS.",
+    "date": "2023-12-05",
+    "category": "Supergame Galaxy",
+    "image": "/gallery/poto3.JPG"
+  },
+  {
+    "id": 4,
+    "title": "Kunjungan Industri",
+    "desc": "Visitasi ke kantor Google Indonesia untuk mempelajari budaya kerja teknologi.",
+    "date": "2024-01-10",
+    "category": "Event",
+    "image": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 5,
+    "title": "Rapat Kerja Tahunan",
+    "desc": "Penyusunan program kerja pengurus UKM OXIGEN periode 2024/2025.",
+    "date": "2024-02-01",
+    "category": "Organization",
+    "image": "https://images.unsplash.com/photo-1531498860502-7c67cf02f657?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 6,
+    "title": "Networking Night",
+    "desc": "Malam keakraban antar anggota dan alumni untuk mempererat silaturahmi.",
+    "date": "2024-03-15",
+    "category": "Event",
+    "image": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80&w=800"
+  },
+    {
+    "id": 7,
+    "title": "Kunjungan Industri",
+    "desc": "Visitasi ke kantor Google Indonesia untuk mempelajari budaya kerja teknologi.",
+    "date": "2024-01-10",
+    "category": "Event",
+    "image": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 8,
+    "title": "Rapat Kerja Tahunan",
+    "desc": "Penyusunan program kerja pengurus UKM OXIGEN periode 2024/2025.",
+    "date": "2024-02-01",
+    "category": "Organization",
+    "image": "https://images.unsplash.com/photo-1531498860502-7c67cf02f657?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 9,
+    "title": "Networking Night",
+    "desc": "Malam keakraban antar anggota dan alumni untuk mempererat silaturahmi.",
+    "date": "2024-03-15",
+    "category": "Event",
+    "image": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80&w=800"
+  }
+]

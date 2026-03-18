@@ -1,0 +1,15 @@
+:root {
+  --primary-color: #0047ff;
+  --secondary-color: #001a4d;
+
+  --light-gray: #f4f4f4;
+
+  --success-color: #27ae60;
+  --warning-color: #f39c12;
+  --white: #ffffff;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  /* Spacing & Sizing standar */
+  --nav-height: 70px;
+  --container-width: 1200px;
+}

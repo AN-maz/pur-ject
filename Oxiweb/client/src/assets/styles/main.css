@@ -1,0 +1,24 @@
+/* BASE */
+@import "./base/reset.css";
+@import "./base/variables.css";
+
+/* COMPONENTS */
+@import './components/navbar.css';
+@import './components/buttons.css';
+
+/* Home */
+.hero {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--white);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}

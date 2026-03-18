@@ -1,0 +1,100 @@
+/* src/index.css */
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@theme {
+  /* Warna Utama OXIGEN */
+  --color-oxigen-light: #0051D2;
+  --color-oxigen-dark: #001A57;
+
+  /* Divisi Software */
+  --color-software-bright: #39FF5A;
+  --color-software-tosca: #20C997;
+  --color-software-teal: #008080;
+
+  /* Divisi Hardware */
+  --color-hardware-cyan: #00B4D8;
+  --color-hardware-royal: #0056D2;
+
+  /* Divisi Game */
+  --color-game-red: #FF414D;
+  --color-game-pink: #D12E67;
+  --color-game-purple: #6B2D8C;
+}
+
+/* Animasi di Home ya.. */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 5s ease-in-out infinite;
+}
+
+/* Tech Grid Background */
+.tech-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Floating Glow Orb */
+@keyframes orbFloat {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(30px, -40px);
+  }
+}
+
+@keyframes orbPulse {
+  0%, 100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.orb-tech {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  animation:
+    orbFloat 14s ease-in-out infinite,
+    orbPulse 7s ease-in-out infinite;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
