@@ -3,7 +3,6 @@ import React from 'react';
 export default function RegisterForm() {
   
   const handleRegisterClick = () => {
-    // Nanti ganti string di bawah ini dengan link form pendaftaran yang sebenarnya
     const registrationLink = "https://bit.ly/RegistrasiEventRuangBelajar"; 
 
     window.open(registrationLink, '_blank', 'noopener,noreferrer');

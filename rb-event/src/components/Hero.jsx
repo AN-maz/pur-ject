@@ -2,34 +2,48 @@ import React from 'react';
 
 export default function Hero() {
   return (
-    // min-h-screen memastikan section ini mengambil layar penuh
-    // pt-20 digunakan agar konten tidak tertutup Navbar yang fixed
-    <section className="min-h-screen w-full flex flex-col justify-center items-center px-4 pt-20 relative">
-      <div className="max-w-4xl mx-auto text-center z-10">
+    <section className="min-h-screen w-full flex flex-col justify-center items-center px-5 pt-24 md:pt-20 relative bg-transparent">
+      <div className="max-w-5xl mx-auto text-center z-10 w-full">
         
         {/* Label Badge */}
-        <span className="inline-block py-1 px-4 rounded-full bg-green-50 text-brand-green font-semibold text-sm mb-6 border border-green-200 shadow-sm">
-          Tech Talkshow & Workshop 2026
+        <span className="inline-block py-1.5 px-4 rounded-full bg-green-50 text-brand-green font-semibold text-xs md:text-sm mb-4 md:mb-6 border border-green-200 shadow-sm">
+          Talkshow & Workshop 2026
         </span>
         
-        {/* Headline */}
-        <h1 className="text-4xl md:text-6xl font-extrabold text-gray-800 mb-6 leading-tight">
-          Eksplorasi Teknologi <br className="hidden md:block" />
-          <span className="text-brand-green">Software & Hardware</span>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-800 mb-4 md:mb-6 leading-tight">
+          Transformasi Coding Era AI : <br className="hidden md:block" />
+          <span className="text-brand-green">Berkenalan dengan Vibe Coding</span>
         </h1>
         
         {/* Sub-headline */}
-        <p className="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-          Temukan inovasi terbaru dan tingkatkan keahlian teknismu secara langsung melalui sesi *hands-on* bersama para praktisi berpengalaman di industrinya.
+        <p className="text-base md:text-lg text-gray-600 mb-8 max-w-3xl mx-auto px-2">
+          Pelajari bagaimana industri beradaptasi dengan AI dan bangun project pertamamu menggunakan pendekatan "Vibe Coding" bersama praktisi ahli.
         </p>
         
-        {/* Call to Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="bg-brand-green text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-green-700 transition shadow-lg shadow-green-200/50 hover:-translate-y-1">
-            Amankan Kursi Sekarang
-          </button>
-          <button className="bg-white text-gray-700 px-8 py-3 rounded-full font-bold text-lg border-2 border-gray-200 hover:border-brand-green hover:text-brand-green transition">
-            Lihat Latar Belakang
+
+        <div className="flex flex-col md:flex-row justify-center items-center gap-3 md:gap-6 mb-8 md:mb-10 w-full max-w-2xl mx-auto">
+          {/* Card Tanggal */}
+          <div className="flex items-center gap-4 bg-white/90 backdrop-blur-sm px-5 py-4 rounded-2xl border border-gray-200 shadow-sm w-full md:w-auto text-left">
+            <span className="text-2xl shrink-0">📅</span>
+            <div>
+              <p className="text-[11px] md:text-xs text-gray-500 font-semibold uppercase tracking-wider">Tanggal & Waktu</p>
+              <p className="text-sm md:text-base font-bold text-gray-800">Sabtu, 18 April 2026 • 09:00 - Selesai</p>
+            </div>
+          </div>
+          {/* Card Lokasi */}
+          <div className="flex items-center gap-4 bg-white/90 backdrop-blur-sm px-5 py-4 rounded-2xl border border-gray-200 shadow-sm w-full md:w-auto text-left">
+            <span className="text-2xl shrink-0">📍</span>
+            <div>
+              <p className="text-[11px] md:text-xs text-gray-500 font-semibold uppercase tracking-wider">Lokasi Acara</p>
+              <p className="text-sm md:text-base font-bold text-gray-800">Coming Soon</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Tombol Daftar: Melebar penuh (w-full) di layar HP agar mudah di-klik */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto">
+          <button className="bg-brand-green text-white px-8 py-3.5 rounded-full font-bold text-base md:text-lg hover:bg-green-700 transition shadow-lg shadow-green-200/50 hover:-translate-y-1 w-full sm:w-auto">
+            Daftar Sekarang
           </button>
         </div>
 

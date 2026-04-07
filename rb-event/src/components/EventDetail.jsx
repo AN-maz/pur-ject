@@ -18,10 +18,9 @@ export default function EventDetail() {
             {/* Pembicara 1 */}
             <div className="flex items-center gap-4">
               <div className="w-16 h-16 bg-gray-200 rounded-full flex-shrink-0 border-2 border-brand-green">
-                {/* <img src={foto1} alt="Pembicara 1" className="w-full h-full rounded-full object-cover"/> */}
               </div>
               <div>
-                <h4 className="font-bold text-lg text-gray-800">Nama Pembicara 1</h4>
+                <h4 className="font-bold text-lg text-gray-800">Kang Rezi</h4>
                 <p className="text-gray-500 text-sm">Jabatan / Instansi</p>
               </div>
             </div>
@@ -30,7 +29,7 @@ export default function EventDetail() {
             <div className="flex items-center gap-4">
               <div className="w-16 h-16 bg-gray-200 rounded-full flex-shrink-0 border-2 border-brand-green"></div>
               <div>
-                <h4 className="font-bold text-lg text-gray-800">Nama Pembicara 2</h4>
+                <h4 className="font-bold text-lg text-gray-800">Kang Putra</h4>
                 <p className="text-gray-500 text-sm">Jabatan / Instansi</p>
               </div>
             </div>
@@ -50,7 +49,7 @@ export default function EventDetail() {
             <div className="flex items-center gap-4">
               <div className="w-16 h-16 bg-gray-200 rounded-full flex-shrink-0 border-2 border-brand-green"></div>
               <div>
-                <h4 className="font-bold text-lg text-gray-800">Nama Instruktur</h4>
+                <h4 className="font-bold text-lg text-gray-800">Kang Yuda</h4>
                 <p className="text-gray-500 text-sm">Jabatan / Instansi</p>
               </div>
             </div>
