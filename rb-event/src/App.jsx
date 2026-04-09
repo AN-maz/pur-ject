@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './components/Navbar'; 
+import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import EventDetail from './components/EventDetail';
 import AboutEvent from './components/AboutEvent';
 import Rundown from './components/Rundown';
 import FAQ from './components/FAQ';
+import SessionInfo from './components/SessionInfo';
 
 function App() {
   const [isVisible, setIsVisible] = useState(false);
@@ -43,6 +44,9 @@ function App() {
         <div id="latar-belakang">
           <AboutEvent />
         </div>
+        <div id="materi">
+          <SessionInfo />
+        </div>
         <div id="pemateri">
           <EventDetail />
         </div>
@@ -61,7 +65,7 @@ function App() {
           }`}
         aria-label="Kembali ke atas"
       >
-  
+
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18" />
         </svg>

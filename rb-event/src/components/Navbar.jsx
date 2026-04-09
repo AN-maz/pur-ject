@@ -20,15 +20,13 @@ export default function Navbar() {
     <nav className="bg-white/90 backdrop-blur-md shadow-sm fixed w-full top-0 z-50 transition-all">
       <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
 
-        {/* LOGO & JUDUL: Diperbaiki ukurannya untuk mobile */}
         <div 
           className="flex items-center gap-2 md:gap-3 cursor-pointer shrink-0" 
           onClick={() => scrollToSection('beranda')}
         >
-          {/* Gambar logo dikecilkan di mobile (w-8 h-8) */}
           <img src={logoImage} alt="Logo Ruang Belajar" className="w-8 h-8 md:w-12 md:h-12" />
           <div>
-            {/* Teks judul dikecilkan di mobile (text-lg) agar hamburger tidak terdesak */}
+
             <h1 className="text-lg md:text-2xl font-bold text-brand-green leading-none">Ruang Belajar</h1>
           </div>
         </div>
@@ -46,7 +44,6 @@ export default function Navbar() {
           </li>
         </ul>
 
-        {/* TOMBOL HAMBURGER: Diberi padding ekstra agar mudah di-tap */}
         <button
           className="md:hidden text-gray-600 focus:outline-none p-1 ml-auto"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
