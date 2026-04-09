@@ -1,35 +1,33 @@
 import React from 'react';
 
 export default function EventDetail() {
-  // Data pemateri (kita pisahkan di array agar kodenya lebih rapi)
-  // Untuk src, karena fotonya ada di folder public/pemateri/, panggil dengan awalan '/'
+
   const speakers = [
     {
       id: 1,
-      name: "Nama Pembicara 1",
-      role: "AI Engineer di Tech Company",
+      name: "Putra Satria Pratama",
+      role: "Frontend Developer, PT Topindo Solusi Komunika",
       session: "Talkshow",
       icon: "🎙️",
-      image: "/pemateri.webp", // Ganti dengan nama file aslinya nanti
+      image: "/putra.png", 
       bgColor: "bg-gradient-to-t from-green-100 to-white"
     },
     {
       id: 2,
-      name: "Nama Pembicara 2",
-      role: "Senior Software Developer",
+      name: "Rezi Ferdiansyah",
+      role: "Frontend Developer, PT Monarch Inti Teknologi",
       session: "Talkshow",
       icon: "🎙️",
-      image: "/pemateri.webp", // Ganti dengan nama file aslinya nanti
+      image: "/Rezi.png", 
       bgColor: "bg-gradient-to-t from-green-100 to-white"
     },
     {
       id: 3,
-      name: "Nama Instruktur",
-      role: "Fullstack Vibe Coder",
+      name: "Muhammad Yuda Aditya",
+      role: "Software Engineer lead at Talentycia",
       session: "Workshop",
       icon: "💻",
-      image: "/pemateri.webp", // Ganti dengan nama file aslinya nanti
-      // Workshop diberi warna beda sedikit agar menonjol
+      image: "/Yuda.png", 
       bgColor: "bg-gradient-to-t from-brand-green/20 to-white" 
     }
   ];

@@ -6,6 +6,7 @@ import AboutEvent from './components/AboutEvent';
 import Rundown from './components/Rundown';
 import FAQ from './components/FAQ';
 import SessionInfo from './components/SessionInfo';
+import Footer from './components/Footer';
 
 function App() {
   const [isVisible, setIsVisible] = useState(false);
@@ -58,6 +59,7 @@ function App() {
         </div>
       </main>
 
+      <Footer />
 
       <button
         onClick={scrollToTop}

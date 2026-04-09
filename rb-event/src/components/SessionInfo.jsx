@@ -17,7 +17,6 @@ export default function SessionInfo() {
           </p>
         </div>
 
-        {/* Grid Layout: 1 Kolom HP, 2 Kolom Desktop */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 max-w-5xl mx-auto">
           
           {/* Card Talkshow */}
@@ -41,7 +40,7 @@ export default function SessionInfo() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <span className="text-brand-green text-lg shrink-0">✓</span>
-                <p className="text-sm md:text-base text-gray-700 font-medium">Pergeseran Paradigma: Dari "Ngetik Kode" ke "Ngarahin AI".</p>
+                <p className="text-sm md:text-base text-gray-700 font-medium">Pergeseran Paradigma: Dari "Ngetik Kode" ke "Ngetik Prompt".</p>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-brand-green text-lg shrink-0">✓</span>
@@ -75,15 +74,15 @@ export default function SessionInfo() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <span className="text-green-400 text-lg shrink-0">⚡</span>
-                <p className="text-sm md:text-base text-gray-300 font-medium">Prompt Engineering: Cara "ngobrol" yang benar dengan AI.</p>
+                <p className="text-sm md:text-base text-gray-300 font-medium">Pengenalan vibecoding.</p>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-green-400 text-lg shrink-0">⚡</span>
-                <p className="text-sm md:text-base text-gray-300 font-medium">Live Coding Project: Build aplikasi web utuh bersama-sama.</p>
+                <p className="text-sm md:text-base text-gray-300 font-medium">cara planning.</p>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-green-400 text-lg shrink-0">⚡</span>
-                <p className="text-sm md:text-base text-gray-300 font-medium">Debugging & Deployment: Memperbaiki error AI dan hosting web.</p>
+                <p className="text-sm md:text-base text-gray-300 font-medium">building project.</p>
               </li>
             </ul>
           </div>
