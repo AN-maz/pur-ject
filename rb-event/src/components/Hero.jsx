@@ -49,10 +49,16 @@ export default function Hero() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto">
-            <button className="bg-brand-green text-white px-8 py-3.5 rounded-full font-bold text-base md:text-lg hover:bg-green-700 transition shadow-lg shadow-green-200/50 hover:-translate-y-1 w-full sm:w-auto">
+            <a
+              href="https://tally.so/r/xXykWd"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-brand-green text-white px-8 py-3.5 rounded-full font-bold text-base md:text-lg hover:bg-green-700 transition shadow-lg shadow-green-200/50 hover:-translate-y-1 w-full sm:w-auto text-center"
+            >
               Daftar Sekarang
-            </button>
+            </a>
           </div>
+          
         </div>
 
       </div>

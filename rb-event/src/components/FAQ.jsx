@@ -2,21 +2,41 @@ import React, { useState } from 'react';
 
 export default function FAQ() {
   const allFaqs = [
-    { question: "Apakah acara ini berbayar?", answer: "Acara ini gratis untuk anggota internal dan berbayar untuk umum." },
-    { question: "Apakah pemula boleh ikut workshop ini?", answer: "Sangat boleh! Kita akan menggunakan AI, jadi yang ditekankan adalah logika dan prompt, bukan menghafal sintaks." },
-    { question: "Apa saja spesifikasi laptop yang dibutuhkan?", answer: "Spesifikasi standar cukup (RAM minimal 4GB). Yang penting memiliki browser modern (Chrome/Edge) dan koneksi internet stabil." },
-    { question: "Apakah harus menginstal software tertentu?", answer: "Kita akan banyak menggunakan tools berbasis web. Namun disarankan sudah menginstal VS Code dan Node.js." },
-    { question: "Apakah mendapat sertifikat?", answer: "Ya, seluruh peserta yang mengikuti acara dari awal hingga akhir akan mendapatkan e-certificate." },
-    { question: "Siapa kontak panitia yang bisa dihubungi?", answer: "Hubungi panitia via WhatsApp: 0812-XXXX-XXXX." },
-    { question: "Apakah ada recording/rekaman acara?", answer: "Rekaman hanya akan dibagikan kepada peserta yang sudah terdaftar secara resmi." },
-    { question: "Boleh bawa makanan sendiri?", answer: "Boleh membawa air minum dalam *tumbler* tertutup. Makanan berat disarankan dimakan saat jam istirahat di luar ruangan." },
+    {
+      question: "Apakah acara ini berbayar?",
+      answer: "Acara ini gratis ya."
+    },
+    {
+      question: "Apakah pemula boleh ikut workshop ini?",
+      answer: "Sangat boleh! Kita akan menggunakan AI, jadi yang ditekankan adalah logika dan prompt, bukan menghafal sintaks."
+    },
+    {
+      question: "Apa saja spesifikasi laptop yang dibutuhkan?",
+      answer: "Spesifikasi standar cukup (RAM minimal 4GB). Yang penting memiliki browser modern (Chrome/Edge) dan koneksi internet stabil."
+    },
+    {
+      question: "Apakah harus menginstal software tertentu?",
+      answer: "nanti hari H akan diarahkan untuk menginstall dan menggunakan toolsnya"
+    },
+    {
+      question: "Di lokasi acara nanti disediakan koneksi WiFi gratis nggak? Atau aku harus sedia kuota/tethering sendiri dari HP?",
+      answer: "Tenang, nanti akan disediakan WiFi."
+    },
+    {
+      question: "Mengingat kita bakal pakai laptop pas workshop, apakah di ruangan banyak colokan listrik atau aku perlu bawa kabel roll (terminal) sendiri?",
+      answer: "Nanti akan disediakan beberapa terminal colokan."
+    },
+    {
+      question: "Kalau tiba-tiba berhalangan hadir di hari H padahal sudah daftar, apakah ada konsekuensinya? Haruskah konfirmasi ke panitia?",
+      answer: "Perlu konfirmasi maksimal H-2 ya..."
+    }
   ];
 
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 4; 
+  const itemsPerPage = 4;
   const totalPages = Math.ceil(allFaqs.length / itemsPerPage);
-  
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentFaqs = allFaqs.slice(indexOfFirstItem, indexOfLastItem);
@@ -48,19 +68,19 @@ export default function FAQ() {
         {/* Kontrol Pagination */}
         {totalPages > 1 && (
           <div className="flex justify-center items-center gap-4 mt-10">
-            <button 
+            <button
               onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
               className="px-4 py-2 rounded-lg font-medium bg-white border border-gray-200 text-gray-600 disabled:opacity-50 hover:bg-gray-50 transition"
             >
               Sebelumnya
             </button>
-            
+
             <span className="text-sm font-semibold text-gray-600">
               Halaman {currentPage} dari {totalPages}
             </span>
 
-            <button 
+            <button
               onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
               disabled={currentPage === totalPages}
               className="px-4 py-2 rounded-lg font-medium bg-white border border-gray-200 text-gray-600 disabled:opacity-50 hover:bg-gray-50 transition"
@@ -69,7 +89,7 @@ export default function FAQ() {
             </button>
           </div>
         )}
-        
+
       </div>
     </section>
   );

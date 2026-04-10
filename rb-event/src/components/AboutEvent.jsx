@@ -12,15 +12,15 @@ export default function AboutEvent() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <span className="text-brand-green text-xl">🤖</span>
-                <p className="text-gray-600 text-sm md:text-base">AI mengubah cara kerja developer, dari *hard-coding* manual beralih ke kolaborasi cerdas bersama AI.</p>
+                <p className="text-gray-600 text-sm md:text-base">AI mengubah cara kerja developer, dari <strong>hard-coding</strong> manual beralih ke kolaborasi cerdas bersama AI.</p>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-brand-green text-xl">💡</span>
-                <p className="text-gray-600 text-sm md:text-base">Kebutuhan industri saat ini tidak hanya mencari *coder*, tapi *problem solver* yang bisa memanfaatkan AI (*Vibe Coding*).</p>
+                <p className="text-gray-600 text-sm md:text-base">Kebutuhan industri saat ini tidak hanya mencari <strong>coder</strong>, tapi <strong>problem solver</strong> yang bisa memanfaatkan AI (<strong>Vibe Coding</strong>).</p>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-brand-green text-xl">🚀</span>
-                <p className="text-gray-600 text-sm md:text-base">Membangun aplikasi modern kini jauh lebih cepat berkat bantuan *tools* generatif.</p>
+                <p className="text-gray-600 text-sm md:text-base">Membangun aplikasi modern kini jauh lebih cepat berkat bantuan <strong>tools</strong> generatif.</p>
               </li>
             </ul>
           </div>
@@ -33,13 +33,13 @@ export default function AboutEvent() {
           </h2>
           <div className="space-y-4 text-gray-600 leading-relaxed text-sm md:text-base">
             <p>
-              Dunia *software development* sedang mengalami pergeseran masif. Menulis ratusan baris kode secara manual perlahan mulai digantikan oleh *Vibe Coding*—kemampuan untuk mendikte dan mengarahkan AI menggunakan bahasa natural untuk membangun aplikasi utuh.
+              Dunia <strong>software development</strong> sedang mengalami pergeseran masif. Menulis ratusan baris kode secara manual perlahan mulai digantikan oleh <strong>Vibe Coding</strong>—kemampuan untuk mendikte dan mengarahkan AI menggunakan bahasa natural untuk membangun aplikasi utuh.
             </p>
             <p>
-              Melalui <strong>sesi Talkshow</strong>, kita akan berdiskusi langsung dengan praktisi industri tentang *mindset* dan *skill* apa saja yang benar-benar dicari oleh perusahaan di era gempuran AI ini.
+              Melalui <strong>sesi Talkshow</strong>, kita akan berdiskusi langsung dengan praktisi industri tentang <strong>mindset</strong> dan <strong>skill</strong> apa saja yang benar-benar dicari oleh perusahaan di era gempuran AI ini.
             </p>
             <p>
-              Selanjutnya, pada <strong>sesi Workshop</strong>, kita akan langsung praktek. Kamu akan dipandu membuat sebuah *project coding* dari nol dengan memanfaatkan *tools* AI masa kini, merasakan langsung serunya alur kerja *Vibe Coding*.
+              Selanjutnya, pada <strong>sesi Workshop</strong>, kita akan langsung praktek. Kamu akan dipandu membuat sebuah <strong>project coding</strong> dari nol dengan memanfaatkan <strong>tools</strong> AI masa kini, merasakan langsung serunya alur kerja <strong>Vibe Coding</strong>.
             </p>
           </div>
         </div>
