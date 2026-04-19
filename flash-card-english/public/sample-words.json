@@ -1,0 +1,287 @@
+[
+  {
+    "id": "u1",
+    "word": "Go",
+    "frequency": 1,
+    "type": "Verb",
+    "meaning": "Pergi",
+    "forms": {
+      "v1": "Go",
+      "v2": "Went",
+      "v3": "Gone",
+      "v_ing": "Going"
+    },
+    "status": "new"
+  },
+  {
+    "id": "u2",
+    "word": "Diligent",
+    "frequency": 150,
+    "type": "Adjective",
+    "meaning": "Rajin",
+    "forms": null,
+    "status": "new"
+  },
+  {
+    "id": "u3",
+    "word": "Run",
+    "frequency": 5,
+    "type": "Verb",
+    "meaning": "Berlari",
+    "forms": {
+      "v1": "Run",
+      "v2": "Ran",
+      "v3": "Run",
+      "v_ing": "Running"
+    },
+    "status": "new"
+  },
+  {
+    "id": "u4",
+    "word": "Beautiful",
+    "frequency": 45,
+    "type": "Adjective",
+    "meaning": "Indah",
+    "forms": null,
+    "status": "new"
+  },
+  {
+    "id": "u5",
+    "word": "Eat",
+    "frequency": 8,
+    "type": "Verb",
+    "meaning": "Makan",
+    "forms": {
+      "v1": "Eat",
+      "v2": "Ate",
+      "v3": "Eaten",
+      "v_ing": "Eating"
+    },
+    "status": "new"
+  },
+  {
+    "id": "u6",
+    "word": "Quickly",
+    "frequency": 55,
+    "type": "Adverb",
+    "meaning": "Dengan cepat",
+    "forms": null,
+    "status": "new"
+  },
+  {
+    "id": "u7",
+    "word": "Write",
+    "frequency": 12,
+    "type": "Verb",
+    "meaning": "Menulis",
+    "forms": {
+      "v1": "Write",
+      "v2": "Wrote",
+      "v3": "Written",
+      "v_ing": "Writing"
+    },
+    "status": "new"
+  },
+  {
+    "id": "u8",
+    "word": "Happiness",
+    "frequency": 120,
+    "type": "Noun",
+    "meaning": "Kebahagiaan",
+    "forms": null,
+    "status": "new"
+  },
+  {
+    "id": "u9",
+    "word": "Think",
+    "frequency": 3,
+    "type": "Verb",
+    "meaning": "Berpikir",
+    "forms": {
+      "v1": "Think",
+      "v2": "Thought",
+      "v3": "Thought",
+      "v_ing": "Thinking"
+    },
+    "status": "new"
+  },
+  {
+    "id": "u10",
+    "word": "Ephemeral",
+    "frequency": 500,
+    "type": "Adjective",
+    "meaning": "Berumur pendek",
+    "forms": null,
+    "status": "new"
+  },
+  {
+    "id": "u11",
+    "word": "Speak",
+    "frequency": 10,
+    "type": "Verb",
+    "meaning": "Berbicara",
+    "forms": {
+      "v1": "Speak",
+      "v2": "Spoke",
+      "v3": "Spoken",
+      "v_ing": "Speaking"
+    },
+    "status": "new"
+  },
+  {
+    "id": "u12",
+    "word": "Knowledge",
+    "frequency": 80,
+    "type": "Noun",
+    "meaning": "Pengetahuan",
+    "forms": null,
+    "status": "new"
+  },
+  {
+    "id": "u13",
+    "word": "Give",
+    "frequency": 6,
+    "type": "Verb",
+    "meaning": "Memberi",
+    "forms": {
+      "v1": "Give",
+      "v2": "Gave",
+      "v3": "Given",
+      "v_ing": "Giving"
+    },
+    "status": "new"
+  },
+  {
+    "id": "u14",
+    "word": "Ubiquitous",
+    "frequency": 600,
+    "type": "Adjective",
+    "meaning": "Ada di mana-mana",
+    "forms": null,
+    "status": "new"
+  },
+  {
+    "id": "u15",
+    "word": "Take",
+    "frequency": 4,
+    "type": "Verb",
+    "meaning": "Mengambil",
+    "forms": {
+      "v1": "Take",
+      "v2": "Took",
+      "v3": "Taken",
+      "v_ing": "Taking"
+    },
+    "status": "new"
+  },
+  {
+    "id": "u16",
+    "word": "Mellifluous",
+    "frequency": 800,
+    "type": "Adjective",
+    "meaning": "Merdu",
+    "forms": null,
+    "status": "new"
+  },
+  {
+    "id": "u17",
+    "word": "Come",
+    "frequency": 2,
+    "type": "Verb",
+    "meaning": "Datang",
+    "forms": {
+      "v1": "Come",
+      "v2": "Came",
+      "v3": "Come",
+      "v_ing": "Coming"
+    },
+    "status": "new"
+  },
+  {
+    "id": "u18",
+    "word": "Slowly",
+    "frequency": 60,
+    "type": "Adverb",
+    "meaning": "Dengan lambat",
+    "forms": null,
+    "status": "new"
+  },
+  {
+    "id": "u19",
+    "word": "See",
+    "frequency": 7,
+    "type": "Verb",
+    "meaning": "Melihat",
+    "forms": {
+      "v1": "See",
+      "v2": "Saw",
+      "v3": "Seen",
+      "v_ing": "Seeing"
+    },
+    "status": "new"
+  },
+  {
+    "id": "u20",
+    "word": "Sagacious",
+    "frequency": 700,
+    "type": "Adjective",
+    "meaning": "Bijaksana",
+    "forms": null,
+    "status": "new"
+  },
+  {
+    "id": "u21",
+    "word": "Make",
+    "frequency": 9,
+    "type": "Verb",
+    "meaning": "Membuat",
+    "forms": {
+      "v1": "Make",
+      "v2": "Made",
+      "v3": "Made",
+      "v_ing": "Making"
+    },
+    "status": "new"
+  },
+  {
+    "id": "u22",
+    "word": "Freedom",
+    "frequency": 100,
+    "type": "Noun",
+    "meaning": "Kebebasan",
+    "forms": null,
+    "status": "new"
+  },
+  {
+    "id": "u23",
+    "word": "Break",
+    "frequency": 15,
+    "type": "Verb",
+    "meaning": "Memecahkan",
+    "forms": {
+      "v1": "Break",
+      "v2": "Broke",
+      "v3": "Broken",
+      "v_ing": "Breaking"
+    },
+    "status": "new"
+  },
+  {
+    "id": "u24",
+    "word": "Laconic",
+    "frequency": 900,
+    "type": "Adjective",
+    "meaning": "Singkat dan padat",
+    "forms": null,
+    "status": "new"
+  },
+  {
+    "id": "u25",
+    "word": "Carefully",
+    "frequency": 70,
+    "type": "Adverb",
+    "meaning": "Dengan hati-hati",
+    "forms": null,
+    "status": "new"
+  }
+]

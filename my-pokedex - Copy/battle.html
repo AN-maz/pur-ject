@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Battle Arena - PokéApp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./src/styles/style.css" />
+</head>
+
+<body>
+    <!-- Navbar injected here -->
+    <div id="navbar-root"></div>
+
+    <main class="container">
+        <header class="battle-header">
+            <h1>Battle Arena</h1>
+            <p>Choose your champions!</p>
+        </header>
+
+        <div class="battle-arena">
+            <!-- Fighter 1 -->
+            <div class="fighter-corner" id="fighter1-corner">
+                <div class="fighter-selection">
+                    <input type="text" class="fighter-search" id="search-1" placeholder="Select Fighter 1..."
+                        autocomplete="off">
+                    <div class="suggestions" id="suggestions-1"></div>
+                </div>
+                <div class="fighter-display" id="display-1">
+                    <div class="placeholder-fighter">?</div>
+                </div>
+            </div>
+
+            <!-- VS -->
+            <div class="vs-badge">VS</div>
+
+            <!-- Fighter 2 -->
+            <div class="fighter-corner" id="fighter2-corner">
+                <div class="fighter-selection">
+                    <input type="text" class="fighter-search" id="search-2" placeholder="Select Fighter 2..."
+                        autocomplete="off">
+                    <div class="suggestions" id="suggestions-2"></div>
+                </div>
+                <div class="fighter-display" id="display-2">
+                    <div class="placeholder-fighter">?</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="battle-controls">
+            <button id="battle-btn" disabled>Start Battle!</button>
+        </div>
+
+        <div id="battle-log" class="battle-log" style="display: none;">
+            <!-- Log results here -->
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <p>Created by <span class="watermark">purwa_ndrian</span></p>
+    </footer>
+
+    <script type="module" src="./src/pages/battle/index.js"></script>
+</body>
+
+</html>

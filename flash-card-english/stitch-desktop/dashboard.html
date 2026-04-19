@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#ffdad2",
+                      "on-primary-fixed-variant": "#33437f",
+                      "tertiary": "#000000",
+                      "primary-fixed": "#dde1ff",
+                      "on-primary-fixed": "#001452",
+                      "background": "#f8f9fa",
+                      "surface-container": "#edeeef",
+                      "surface-tint": "#4c5b99",
+                      "secondary-fixed": "#ffdad7",
+                      "on-surface": "#191c1d",
+                      "surface-container-high": "#e7e8e9",
+                      "error-container": "#ffdad6",
+                      "primary": "#000000",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-container": "#3c0700",
+                      "on-error": "#ffffff",
+                      "on-primary-container": "#7180c1",
+                      "on-background": "#191c1d",
+                      "on-secondary-container": "#fffbff",
+                      "on-error-container": "#93000a",
+                      "on-secondary": "#ffffff",
+                      "inverse-surface": "#2e3132",
+                      "surface-container-highest": "#e1e3e4",
+                      "secondary-container": "#e22431",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed": "#3c0700",
+                      "surface-container-low": "#f3f4f5",
+                      "on-primary": "#ffffff",
+                      "inverse-on-surface": "#f0f1f2",
+                      "on-secondary-fixed": "#410004",
+                      "secondary": "#bb001e",
+                      "tertiary-fixed-dim": "#ffb4a2",
+                      "on-surface-variant": "#454650",
+                      "surface-variant": "#e1e3e4",
+                      "primary-fixed-dim": "#b7c4ff",
+                      "surface-bright": "#f8f9fa",
+                      "inverse-primary": "#b7c4ff",
+                      "surface-dim": "#d9dadb",
+                      "outline": "#767681",
+                      "on-tertiary-container": "#c26d57",
+                      "on-tertiary-fixed-variant": "#763221",
+                      "primary-container": "#001452",
+                      "on-secondary-fixed-variant": "#930015",
+                      "surface": "#f8f9fa",
+                      "secondary-fixed-dim": "#ffb3ae",
+                      "outline-variant": "#c6c5d1",
+                      "error": "#ba1a1a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Manrope"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface antialiased flex min-h-screen overflow-hidden">
+<!-- Sidebar Navigation (Desktop Version) -->
+<aside class="hidden md:flex flex-col w-72 bg-primary-container text-on-primary border-r-0 shadow-xl z-30">
+<div class="px-8 h-16 flex items-center mb-8 mt-4">
+<span class="font-headline font-extrabold text-2xl tracking-tight text-white">The Atelier</span>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<!-- Dashboard Active -->
+<a class="flex items-center gap-4 px-4 py-3 bg-on-primary-fixed-variant text-white rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label font-bold">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-primary-container hover:bg-white/10 rounded-xl transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">auto_stories</span>
+<span class="font-label">Library</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-primary-container hover:bg-white/10 rounded-xl transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">bar_chart</span>
+<span class="font-label">Analytics</span>
+</a>
+<div class="pt-8 pb-4 px-4">
+<span class="text-[10px] uppercase tracking-widest text-on-primary-container opacity-50 font-bold">Study Modules</span>
+</div>
+<a class="flex items-center gap-4 px-4 py-3 text-on-primary-container hover:bg-white/10 rounded-xl transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">school</span>
+<span class="font-label">Exam Prep</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-primary-container hover:bg-white/10 rounded-xl transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">psychology</span>
+<span class="font-label">Cognitive Drills</span>
+</a>
+</nav>
+<div class="p-6 mt-auto">
+<div class="bg-on-primary-fixed-variant/40 rounded-2xl p-4 border border-white/5">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-full bg-secondary overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional portrait of a scholar in a library setting with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBoZx_XfsqDKtmfKODNSPZEvyq4KjwHSsaAKoY-z7AKrM0Qmmk7au8FRDN4jJcCnqUn93GkmrdSWR6uJ-AJAmgU9R2_-XdUHqHPr20UYZ0EEFaieYwjuPYeoWFohRJjyKLkqH3HeZSZzfOiBItEWBRWRoX6xIKMyo0ARWNjCZM3GVgJaMf9BSCQkTLi2KhDWTEMoK-G2s-vP6qxvXQ7FVzO4iRUxxR104nFaSTQxYh7x7b4Virrc2ZIKtojLDQqQoYkkSqrfKdeQw"/>
+</div>
+<div>
+<p class="text-white font-bold text-sm">Julian Voss</p>
+<p class="text-on-primary-container text-xs">Ph.D Candidate</p>
+</div>
+</div>
+<button class="w-full py-2 bg-secondary text-white text-xs font-bold rounded-full uppercase tracking-wider hover:opacity-90 transition-opacity">Upgrade Plan</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 bg-background h-screen overflow-y-auto">
+<!-- Header -->
+<header class="h-16 flex items-center justify-between px-8 bg-surface-container-lowest sticky top-0 z-20">
+<div class="flex items-center gap-4">
+<h1 class="font-headline font-extrabold text-xl text-primary-container">Academic Dashboard</h1>
+<span class="bg-surface-container-high px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter text-on-surface-variant">Lvl 42 Scholastic</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary-container">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-secondary rounded-full"></span>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant/30"></div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="font-headline font-extrabold text-lg">14 Day Streak</span>
+</div>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<div class="p-8 space-y-8">
+<!-- Top Bento Grid Section -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Mastery Chart Widget -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-[2rem] p-8 shadow-sm flex flex-col gap-6 relative overflow-hidden">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline font-bold text-2xl text-primary-container mb-1">Vocabulary Mastery</h3>
+<p class="text-sm text-on-surface-variant max-w-xs">Performance trajectory across semantic domains for the current semester.</p>
+</div>
+<div class="flex gap-2">
+<span class="px-4 py-2 bg-surface-container-low rounded-full text-xs font-bold text-primary-container cursor-pointer hover:bg-surface-container-high">Weekly</span>
+<span class="px-4 py-2 bg-primary-container text-white rounded-full text-xs font-bold cursor-pointer">Monthly</span>
+</div>
+</div>
+<div class="flex-1 flex items-end gap-3 h-48 mt-4">
+<div class="flex-1 bg-surface-container-high rounded-t-xl relative group transition-all duration-300 hover:bg-on-primary-container/20 h-[40%]"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-xl relative group transition-all duration-300 hover:bg-on-primary-container/20 h-[65%]"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-xl relative group transition-all duration-300 hover:bg-on-primary-container/20 h-[55%]"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-xl relative group transition-all duration-300 hover:bg-on-primary-container/20 h-[85%]"></div>
+<div class="flex-1 bg-secondary rounded-t-xl relative group transition-all duration-300 hover:bg-secondary/80 h-[92%]">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-primary-container text-white text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">892 Words Mastered</div>
+</div>
+<div class="flex-1 bg-surface-container-high rounded-t-xl relative group transition-all duration-300 hover:bg-on-primary-container/20 h-[70%]"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-xl relative group transition-all duration-300 hover:bg-on-primary-container/20 h-[60%]"></div>
+</div>
+<div class="flex justify-between border-t border-outline-variant/15 pt-4 text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">
+<span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+</div>
+</div>
+<!-- Word Streaks / Pulse Widget -->
+<div class="col-span-12 lg:col-span-4 bg-primary-container rounded-[2rem] p-8 text-white flex flex-col items-center justify-center text-center space-y-6 relative group cursor-pointer overflow-hidden">
+<div class="absolute top-0 right-0 p-8 opacity-20 group-hover:rotate-12 transition-transform duration-500">
+<span class="material-symbols-outlined text-9xl">auto_awesome</span>
+</div>
+<div class="relative w-44 h-44 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle class="text-white/10" cx="88" cy="88" fill="transparent" r="70" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-secondary" cx="88" cy="88" fill="transparent" r="70" stroke="currentColor" stroke-dasharray="440" stroke-dashoffset="110" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline font-extrabold text-5xl">75</span>
+<span class="text-[10px] font-bold uppercase tracking-widest opacity-70">Daily Goal %</span>
+</div>
+</div>
+<div>
+<h4 class="font-headline font-bold text-xl mb-1">Cognitive Momentum</h4>
+<p class="text-xs text-on-primary-container leading-relaxed">You are in the top 5% of active scholars today. Keep up the rhythm.</p>
+</div>
+<button class="w-full py-4 bg-white text-primary-container font-bold rounded-full text-xs uppercase tracking-widest hover:bg-secondary hover:text-white transition-colors duration-300">
+                        Continue Session
+                    </button>
+</div>
+</div>
+<!-- Vocabulary Table Section -->
+<div class="bg-surface-container-lowest rounded-[2rem] shadow-sm overflow-hidden flex flex-col">
+<div class="px-8 py-6 flex justify-between items-center border-b border-outline-variant/10">
+<h3 class="font-headline font-bold text-xl text-primary-container">Active Lexicon</h3>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full text-xs focus:ring-1 focus:ring-primary-container w-64" placeholder="Filter vocabulary..." type="text"/>
+</div>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">tune</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-8 py-4 font-label font-bold text-[10px] uppercase tracking-widest text-on-surface-variant">Term</th>
+<th class="px-8 py-4 font-label font-bold text-[10px] uppercase tracking-widest text-on-surface-variant">Classification</th>
+<th class="px-8 py-4 font-label font-bold text-[10px] uppercase tracking-widest text-on-surface-variant">Definition</th>
+<th class="px-8 py-4 font-label font-bold text-[10px] uppercase tracking-widest text-on-surface-variant">Retention</th>
+<th class="px-8 py-4 font-label font-bold text-[10px] uppercase tracking-widest text-on-surface-variant">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Table Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-5">
+<span class="font-headline font-bold text-primary-container text-lg">Ephemeral</span>
+</td>
+<td class="px-8 py-5">
+<span class="px-2.5 py-1 bg-surface-container-high rounded text-[10px] font-bold text-on-surface-variant">ADJECTIVE</span>
+</td>
+<td class="px-8 py-5">
+<p class="text-sm text-on-surface max-w-xs truncate">Lasting for a very short time; transitory.</p>
+</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-16 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[85%]"></div>
+</div>
+<span class="text-[10px] font-bold text-secondary">85%</span>
+</div>
+</td>
+<td class="px-8 py-5">
+<button class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity hover:text-primary-container">more_vert</button>
+</td>
+</tr>
+<!-- Table Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-5">
+<span class="font-headline font-bold text-primary-container text-lg">Sagacious</span>
+</td>
+<td class="px-8 py-5">
+<span class="px-2.5 py-1 bg-surface-container-high rounded text-[10px] font-bold text-on-surface-variant">ADJECTIVE</span>
+</td>
+<td class="px-8 py-5">
+<p class="text-sm text-on-surface max-w-xs truncate">Having or showing keen mental discernment.</p>
+</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-16 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-on-primary-container w-[42%]"></div>
+</div>
+<span class="text-[10px] font-bold text-on-surface-variant">42%</span>
+</div>
+</td>
+<td class="px-8 py-5">
+<button class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity hover:text-primary-container">more_vert</button>
+</td>
+</tr>
+<!-- Table Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-5">
+<span class="font-headline font-bold text-primary-container text-lg">Laconic</span>
+</td>
+<td class="px-8 py-5">
+<span class="px-2.5 py-1 bg-surface-container-high rounded text-[10px] font-bold text-on-surface-variant">ADJECTIVE</span>
+</td>
+<td class="px-8 py-5">
+<p class="text-sm text-on-surface max-w-xs truncate">Using very few words; brief and to the point.</p>
+</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-16 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[95%]"></div>
+</div>
+<span class="text-[10px] font-bold text-secondary">95%</span>
+</div>
+</td>
+<td class="px-8 py-5">
+<button class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity hover:text-primary-container">more_vert</button>
+</td>
+</tr>
+<!-- Table Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-5">
+<span class="font-headline font-bold text-primary-container text-lg">Mellifluous</span>
+</td>
+<td class="px-8 py-5">
+<span class="px-2.5 py-1 bg-surface-container-high rounded text-[10px] font-bold text-on-surface-variant">ADJECTIVE</span>
+</td>
+<td class="px-8 py-5">
+<p class="text-sm text-on-surface max-w-xs truncate">Sweet or musical; pleasant to hear.</p>
+</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-16 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-on-primary-container w-[15%]"></div>
+</div>
+<span class="text-[10px] font-bold text-on-surface-variant">15%</span>
+</div>
+</td>
+<td class="px-8 py-5">
+<button class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity hover:text-primary-container">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-8 py-4 bg-surface-container-low/30 flex justify-between items-center text-xs font-bold text-on-surface-variant uppercase tracking-widest">
+<span>Showing 4 of 248 entries</span>
+<div class="flex gap-4">
+<button class="hover:text-primary-container disabled:opacity-30" disabled="">Previous</button>
+<button class="hover:text-primary-container">Next</button>
+</div>
+</div>
+</div>
+<!-- Footer Meta -->
+<div class="flex justify-between items-center opacity-30 px-4 pb-8">
+<span class="text-[10px] font-bold uppercase tracking-widest">The Atelier Framework v4.2.0</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Oxford Scholastic Association (EC)</span>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (FAB) - Contextual -->
+<button class="fixed bottom-10 right-10 w-16 h-16 bg-gradient-to-br from-primary-container to-on-primary-fixed-variant text-white rounded-full shadow-2xl flex items-center justify-center group hover:scale-110 transition-transform active:scale-95 z-50">
+<span class="material-symbols-outlined text-3xl group-hover:rotate-90 transition-transform duration-300">add</span>
+<span class="absolute right-20 bg-primary-container text-white px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg uppercase tracking-widest">New Study Deck</span>
+</button>
+</body></html>

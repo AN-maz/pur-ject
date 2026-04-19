@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Pokédex</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./src/styles/style.css" />
+</head>
+
+<body>
+  <!-- Navbar injected here -->
+  <div id="navbar-root"></div>
+
+  <header>
+    <div class="container">
+      <h1>Pokédex</h1>
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search Pokémon..." />
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="pokedex-grid">
+      <!-- Javascript will inject pokemon here -->
+    </div>
+    <div id="loading" style="text-align: center; padding: 20px; display: none;">
+      kela..ngantosan pokemonna
+    </div>
+    <div id="pagination" class="pagination-container">
+      <!-- Pagination controls injected by JS -->
+    </div>
+  </main>
+
+  <!-- Modal Container -->
+  <div id="pokemon-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <footer class="app-footer">
+    <p>Created by <span class="watermark">purwa_ndrian</span></p>
+  </footer>
+
+  <script type="module" src="./src/pages/home/index.js"></script>
+</body>
+
+</html>

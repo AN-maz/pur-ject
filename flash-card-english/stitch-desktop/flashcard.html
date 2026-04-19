@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#ffdad2",
+                    "on-primary-fixed-variant": "#33437f",
+                    "tertiary": "#000000",
+                    "primary-fixed": "#dde1ff",
+                    "on-primary-fixed": "#001452",
+                    "background": "#f8f9fa",
+                    "surface-container": "#edeeef",
+                    "surface-tint": "#4c5b99",
+                    "secondary-fixed": "#ffdad7",
+                    "on-surface": "#191c1d",
+                    "surface-container-high": "#e7e8e9",
+                    "error-container": "#ffdad6",
+                    "primary": "#000000",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#3c0700",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#7180c1",
+                    "on-background": "#191c1d",
+                    "on-secondary-container": "#fffbff",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#2e3132",
+                    "surface-container-highest": "#e1e3e4",
+                    "secondary-container": "#e22431",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed": "#3c0700",
+                    "surface-container-low": "#f3f4f5",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-secondary-fixed": "#410004",
+                    "secondary": "#bb001e",
+                    "tertiary-fixed-dim": "#ffb4a2",
+                    "on-surface-variant": "#454650",
+                    "surface-variant": "#e1e3e4",
+                    "primary-fixed-dim": "#b7c4ff",
+                    "surface-bright": "#f8f9fa",
+                    "inverse-primary": "#b7c4ff",
+                    "surface-dim": "#d9dadb",
+                    "outline": "#767681",
+                    "on-tertiary-container": "#c26d57",
+                    "on-tertiary-fixed-variant": "#763221",
+                    "primary-container": "#001452",
+                    "on-secondary-fixed-variant": "#930015",
+                    "surface": "#f8f9fa",
+                    "secondary-fixed-dim": "#ffb4a2",
+                    "outline-variant": "#c6c5d1",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-[#f8f9fa] dark:bg-[#001452] flex justify-between items-center w-full px-6 h-16 sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#001452] dark:text-[#f8f9fa] p-2 hover:bg-slate-200/50 dark:hover:bg-white/10 transition-colors rounded-full" data-icon="menu">menu</button>
+<h1 class="text-xl font-extrabold text-[#001452] dark:text-[#ffffff] font-['Manrope'] tracking-tight">The Atelier</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[#001452] dark:text-slate-300 hover:bg-slate-200/50 dark:hover:bg-white/10 transition-colors px-3 py-2 rounded-lg font-medium text-sm" href="#">Dashboard</a>
+<a class="text-[#bb001e] font-bold px-3 py-2 rounded-lg font-medium text-sm" href="#">Library</a>
+<a class="text-[#001452] dark:text-slate-300 hover:bg-slate-200/50 dark:hover:bg-white/10 transition-colors px-3 py-2 rounded-lg font-medium text-sm" href="#">Analytics</a>
+</nav>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" data-alt="Close-up portrait of a professional student in a library setting with soft natural window light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK07iEb6x6Pmz1xttaU6Pbk7j-JbiqT2Bp0y7uURjJPN_ldo6TUFQItSF6KFyFN0ztZBM-RRGnHa4h_x_P04O8tSy6E9ZDElNJZSMQwY4A1yizaG2TM1hSpMb1p-ZWaaaDdBFdaIX-3FQOJSVLc_gZkEZVI_fxEIx62P5G3Un7Mxp8xwUbgip7IpZL1M_s3uH1WsI_sLQC3BJZviTNPb0GV9BU7hKTkC2H8ptF_RNnBnoUXr6UoDD4hZ4vIWvsmIXH4QAE8O2kbVI"/>
+</div>
+</div>
+</header>
+<div class="bg-[#e1e3e4] dark:bg-[#33437f] h-[1px] opacity-15 w-full"></div>
+<main class="flex-grow container mx-auto px-6 py-8 flex flex-col items-center max-w-6xl">
+<!-- Progress & Session Info -->
+<div class="w-full flex justify-between items-end mb-12">
+<div class="space-y-1">
+<span class="font-headline font-bold text-on-primary-container text-sm tracking-widest uppercase">Current Session</span>
+<h2 class="font-headline font-extrabold text-4xl text-on-primary-fixed">Irregular Verbs</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right">
+<p class="text-xs font-label font-semibold text-outline tracking-wider uppercase">Mastery</p>
+<p class="text-2xl font-headline font-bold text-on-surface">14/25</p>
+</div>
+<!-- Mini Doughnut Chart -->
+<div class="relative w-16 h-16">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<circle class="stroke-surface-container-high" cx="18" cy="18" fill="none" r="16" stroke-width="4"></circle>
+<circle class="stroke-secondary" cx="18" cy="18" fill="none" r="16" stroke-dasharray="60, 100" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="text-[10px] font-bold">56%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Flashcard Container -->
+<div class="relative w-full max-w-4xl aspect-[16/9] perspective-1000">
+<!-- Central Flashcard (Front Facing Side Shown) -->
+<div class="w-full h-full bg-surface-container-lowest rounded-[2rem] shadow-[0_20px_40px_rgba(0,20,82,0.06)] flex flex-col items-center justify-center relative overflow-hidden group">
+<!-- Background Accent Texture -->
+<div class="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-9xl" data-icon="auto_stories">auto_stories</span>
+</div>
+<!-- Word Content -->
+<div class="text-center z-10 space-y-6">
+<span class="font-label text-secondary font-bold tracking-[0.2em] uppercase text-xs px-4 py-1.5 bg-secondary-fixed rounded-full">German • Level B2</span>
+<h3 class="font-headline font-extrabold text-7xl text-on-primary-fixed tracking-tight">Verstehen</h3>
+<p class="font-body text-outline text-xl italic">"To understand / To comprehend"</p>
+</div>
+<!-- Verb Forms Table (Appears on flip logic) -->
+<div class="w-full mt-12 px-20 grid grid-cols-3 gap-8">
+<div class="bg-surface-container-low p-6 rounded-xl text-center">
+<p class="text-[10px] font-label font-bold text-outline tracking-widest uppercase mb-2">Präsens</p>
+<p class="font-headline font-bold text-xl text-on-surface">versteht</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl text-center">
+<p class="text-[10px] font-label font-bold text-outline tracking-widest uppercase mb-2">Präteritum</p>
+<p class="font-headline font-bold text-xl text-on-surface">verstand</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl text-center">
+<p class="text-[10px] font-label font-bold text-outline tracking-widest uppercase mb-2">Perfekt</p>
+<p class="font-headline font-bold text-xl text-on-surface">verstanden</p>
+</div>
+</div>
+<!-- Flip Indicator Overlay -->
+<div class="absolute bottom-8 flex items-center gap-2 text-outline-variant group-hover:text-outline transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-sm" data-icon="sync">sync</span>
+<span class="text-xs font-label font-bold tracking-widest uppercase">Click to flip card</span>
+<div class="ml-2 px-2 py-0.5 bg-surface-container border border-outline-variant/20 rounded text-[9px] font-bold">SPACE</div>
+</div>
+</div>
+</div>
+<!-- Action HUD -->
+<div class="mt-12 flex items-center gap-8">
+<!-- Skip/Back Button -->
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-outline group-hover:bg-surface-container-highest group-hover:text-on-surface transition-all">
+<span class="material-symbols-outlined" data-icon="keyboard_arrow_left">keyboard_arrow_left</span>
+</div>
+<span class="text-[10px] font-label font-bold text-outline uppercase tracking-tighter">Previous</span>
+</button>
+<!-- Learning Assessment Controls -->
+<div class="flex items-center gap-4 bg-surface-container-low p-3 rounded-full">
+<button class="px-8 py-5 rounded-full bg-surface-container-lowest text-error font-headline font-bold text-sm flex items-center gap-3 hover:bg-error-container transition-all">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+                    AGAIN
+                    <span class="px-1.5 py-0.5 bg-surface-container-high rounded text-[9px] text-outline ml-2">1</span>
+</button>
+<button class="px-8 py-5 rounded-full bg-surface-container-lowest text-on-surface-variant font-headline font-bold text-sm flex items-center gap-3 hover:bg-surface-container-high transition-all">
+                    HARD
+                    <span class="px-1.5 py-0.5 bg-surface-container-high rounded text-[9px] text-outline ml-2">2</span>
+</button>
+<button class="px-8 py-5 rounded-full bg-surface-container-lowest text-on-primary-container font-headline font-bold text-sm flex items-center gap-3 hover:bg-primary-fixed transition-all">
+                    GOOD
+                    <span class="px-1.5 py-0.5 bg-surface-container-high rounded text-[9px] text-outline ml-2">3</span>
+</button>
+<!-- Main "Weighted" CTA -->
+<button class="px-10 py-5 rounded-full bg-gradient-to-br from-primary-container to-on-primary-fixed-variant text-white font-headline font-bold text-sm flex items-center gap-3 shadow-lg shadow-primary-container/20 hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="check_circle" data-weight="fill">check_circle</span>
+                    EASY
+                    <span class="px-1.5 py-0.5 bg-white/20 rounded text-[9px] text-white/80 ml-2">ENTER</span>
+</button>
+</div>
+<!-- Hint/Audio -->
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-14 h-14 rounded-full bg-secondary-fixed text-secondary flex items-center justify-center group-hover:scale-110 transition-all">
+<span class="material-symbols-outlined" data-icon="volume_up">volume_up</span>
+</div>
+<span class="text-[10px] font-label font-bold text-outline uppercase tracking-tighter">Audio</span>
+</button>
+</div>
+<!-- Sidebar / Keyboard Shortcuts Guide -->
+<aside class="fixed right-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4">
+<div class="glass-panel p-6 rounded-2xl w-56 border border-white/40 shadow-sm">
+<h4 class="font-headline font-bold text-xs text-outline tracking-widest uppercase mb-4">Shortcuts</h4>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-xs font-medium text-on-surface-variant">Flip Card</span>
+<kbd class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-bold border-b-2 border-outline/20">Space</kbd>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs font-medium text-on-surface-variant">Mark Easy</span>
+<kbd class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-bold border-b-2 border-outline/20">Enter</kbd>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs font-medium text-on-surface-variant">Rates 1-3</span>
+<kbd class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-bold border-b-2 border-outline/20">1, 2, 3</kbd>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs font-medium text-on-surface-variant">Pronounce</span>
+<kbd class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-bold border-b-2 border-outline/20">A</kbd>
+</div>
+</div>
+</div>
+<!-- Contextual Note -->
+<div class="bg-primary-container text-white p-6 rounded-2xl w-56 shadow-xl">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-sm" data-icon="lightbulb">lightbulb</span>
+<span class="font-headline font-bold text-[10px] tracking-widest uppercase">Pro Tip</span>
+</div>
+<p class="text-xs leading-relaxed text-primary-fixed">Verstehen also means "to get along" with someone when paired with "mit".</p>
+</div>
+</aside>
+</main>
+<!-- BottomNavBar (Visible on Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center py-3 px-2 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 z-50 rounded-t-2xl shadow-[0_-10px_30px_rgba(0,20,82,0.04)]">
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1.5 font-['Inter'] text-xs font-medium" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+            Dashboard
+        </a>
+<a class="flex flex-col items-center justify-center bg-[#001452] dark:bg-[#bb001e] text-white rounded-xl px-4 py-1.5 font-['Inter'] text-xs font-medium" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="auto_stories">auto_stories</span>
+            Library
+        </a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1.5 font-['Inter'] text-xs font-medium" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="bar_chart">bar_chart</span>
+            Analytics
+        </a>
+</nav>
+</body></html>

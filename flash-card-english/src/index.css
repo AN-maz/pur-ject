@@ -1,0 +1,208 @@
+@import "tailwindcss";
+
+
+
+/* ===== Scholar Navy Design Tokens (from Stitch MCP) ===== */
+@theme {
+  --color-primary: #000000;
+  --color-primary-container: #001452;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #7180c1;
+  --color-on-primary-fixed: #001452;
+  --color-on-primary-fixed-variant: #33437f;
+  --color-primary-fixed: #dde1ff;
+  --color-primary-fixed-dim: #b7c4ff;
+  --color-inverse-primary: #b7c4ff;
+
+  --color-secondary: #bb001e;
+  --color-secondary-container: #e22431;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #fffbff;
+  --color-on-secondary-fixed: #410004;
+  --color-on-secondary-fixed-variant: #930015;
+  --color-secondary-fixed: #ffdad7;
+  --color-secondary-fixed-dim: #ffb3ae;
+
+  --color-tertiary: #000000;
+  --color-tertiary-container: #3c0700;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #c26d57;
+  --color-on-tertiary-fixed: #3c0700;
+  --color-on-tertiary-fixed-variant: #763221;
+  --color-tertiary-fixed: #ffdad2;
+  --color-tertiary-fixed-dim: #ffb4a2;
+
+  --color-surface: #f8f9fa;
+  --color-surface-bright: #f8f9fa;
+  --color-surface-dim: #d9dadb;
+  --color-surface-tint: #4c5b99;
+  --color-surface-variant: #e1e3e4;
+  --color-surface-container: #edeeef;
+  --color-surface-container-low: #f3f4f5;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-high: #e7e8e9;
+  --color-surface-container-highest: #e1e3e4;
+  --color-on-surface: #191c1d;
+  --color-on-surface-variant: #454650;
+
+  --color-background: #f8f9fa;
+  --color-on-background: #191c1d;
+
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+
+  --color-outline: #767681;
+  --color-outline-variant: #c6c5d1;
+
+  --color-inverse-surface: #2e3132;
+  --color-inverse-on-surface: #f0f1f2;
+
+  --font-headline: 'Manrope', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-label: 'Inter', sans-serif;
+}
+
+:root {
+  --font-family-headline: 'Manrope', sans-serif;
+  --font-family-body: 'Inter', sans-serif;
+  --font-family-label: 'Inter', sans-serif;
+}
+
+/* ===== Base Styles ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family-body);
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  min-height: 100dvh;
+}
+
+/* ===== Custom Utility Classes ===== */
+
+/* Fix grid overflow - prevent children from exceeding their allocated column space */
+* {
+  min-width: 0;
+}
+
+/* Bento grid layout - explicit column positioning to prevent overlap */
+.bento-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+.bento-col-8 {
+  grid-column: 1 / -1;
+}
+
+.bento-col-4 {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+  .bento-col-8 {
+    grid-column: 1 / 9;
+  }
+  .bento-col-4 {
+    grid-column: 9 / 13;
+  }
+}
+
+
+/* Glassmorphism Panel */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Ambient Shadow (Navy-tinted, per design system) */
+.ambient-shadow {
+  box-shadow: 0 20px 40px rgba(0, 20, 82, 0.06);
+}
+
+.ambient-shadow-strong {
+  box-shadow: 0 20px 40px rgba(0, 20, 82, 0.15);
+}
+
+/* Ghost Border */
+.ghost-border {
+  border: 1px solid rgba(198, 197, 209, 0.15);
+}
+
+/* Gradient Button (Signature "Weighted" CTA) */
+.btn-gradient {
+  background: linear-gradient(135deg, #001452 0%, #33437f 100%);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-gradient:hover {
+  opacity: 0.92;
+}
+
+.btn-gradient:active {
+  transform: scale(0.97);
+}
+
+/* Material Symbols config */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.material-symbols-outlined.filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* 3D Card Flip */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface-container-low);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-outline-variant);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-outline);
+}

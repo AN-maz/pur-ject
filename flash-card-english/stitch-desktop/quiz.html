@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Atelier | Quiz Mode</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffdad2",
+                        "on-primary-fixed-variant": "#33437f",
+                        "tertiary": "#000000",
+                        "primary-fixed": "#dde1ff",
+                        "on-primary-fixed": "#001452",
+                        "background": "#f8f9fa",
+                        "surface-container": "#edeeef",
+                        "surface-tint": "#4c5b99",
+                        "secondary-fixed": "#ffdad7",
+                        "on-surface": "#191c1d",
+                        "surface-container-high": "#e7e8e9",
+                        "error-container": "#ffdad6",
+                        "primary": "#000000",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#3c0700",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#7180c1",
+                        "on-background": "#191c1d",
+                        "on-secondary-container": "#fffbff",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "surface-container-highest": "#e1e3e4",
+                        "secondary-container": "#e22431",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#3c0700",
+                        "surface-container-low": "#f3f4f5",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-secondary-fixed": "#410004",
+                        "secondary": "#bb001e",
+                        "tertiary-fixed-dim": "#ffb4a2",
+                        "on-surface-variant": "#454650",
+                        "surface-variant": "#e1e3e4",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "surface-bright": "#f8f9fa",
+                        "inverse-primary": "#b7c4ff",
+                        "surface-dim": "#d9dadb",
+                        "outline": "#767681",
+                        "on-tertiary-container": "#c26d57",
+                        "on-tertiary-fixed-variant": "#763221",
+                        "primary-container": "#001452",
+                        "on-secondary-fixed-variant": "#930015",
+                        "surface": "#f8f9fa",
+                        "secondary-fixed-dim": "#ffb3ae",
+                        "outline-variant": "#c6c5d1",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-secondary-fixed selection:text-secondary h-screen overflow-hidden">
+<!-- TopAppBar -->
+<header class="bg-[#f8f9fa] dark:bg-[#001452] flex justify-between items-center w-full px-6 h-16 sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#001452] dark:text-[#f8f9fa] hover:bg-slate-200/50 dark:hover:bg-white/10 p-2 rounded-full transition-colors active:scale-95 duration-200">menu</button>
+<span class="text-xl font-extrabold text-[#001452] dark:text-[#ffffff] font-['Manrope'] tracking-tight">The Atelier</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[#bb001e] font-bold font-['Inter'] text-sm tracking-wide" href="#">Dashboard</a>
+<a class="text-[#001452] dark:text-slate-300 hover:bg-slate-200/50 dark:hover:bg-white/10 px-3 py-1 rounded transition-colors font-['Inter'] text-sm" href="#">Library</a>
+<a class="text-[#001452] dark:text-slate-300 hover:bg-slate-200/50 dark:hover:bg-white/10 px-3 py-1 rounded transition-colors font-['Inter'] text-sm" href="#">Analytics</a>
+</nav>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border-2 border-surface-container">
+<img alt="User Avatar" data-alt="minimalist avatar of a professional student with glasses on a clean circular background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ6fdfIbOn5abWW_4rn2TCSen8BwoJgbcht5RUwKewPPpvtkP2G5jVicCz77qi-4UyEUSrPFWxs1rpGtOMfCWBPSU2YxVxEHpwF5ounA7hcjfmpBQcbGN5UGnrtYSKz5lrgedYL7S8ayDtFfYIblVEhKhmujInz1nNfPfz2IioqN-avn9XIIMMOR53sahy7NLp959SozqhJx6Cmsu0uFKNtQvL5lBCNUR5UlhtkXHYkfW-RKKqAZwnNXkANLYNJ-4G91opc_pe_Vc"/>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 bg-[#e1e3e4] dark:bg-[#33437f] h-[1px] w-full opacity-15"></div>
+</header>
+<main class="max-w-[1440px] mx-auto grid grid-cols-12 h-[calc(100vh-64px)] p-8 gap-8">
+<!-- Left Sidebar: Session Stats -->
+<aside class="col-span-3 flex flex-col gap-6">
+<!-- Progress Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 flex flex-col items-center justify-center gap-4 border-none shadow-[0_20px_40px_rgba(0,20,82,0.04)]">
+<div class="relative flex items-center justify-center w-32 h-32">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-high" cx="64" cy="64" fill="transparent" r="54" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-on-primary-container" cx="64" cy="64" fill="transparent" r="54" stroke="currentColor" stroke-dasharray="339.29" stroke-dashoffset="101.78" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="text-3xl font-extrabold font-headline leading-none">70%</span>
+<span class="text-[10px] font-bold text-outline uppercase tracking-widest mt-1">Daily Goal</span>
+</div>
+</div>
+<div class="w-full text-center">
+<h3 class="font-headline font-bold text-lg text-primary-container">Academic Pulse</h3>
+<p class="text-xs text-on-surface-variant font-medium mt-1">14 of 20 words mastered</p>
+</div>
+</div>
+<!-- Session Stats -->
+<div class="bg-surface-container-low rounded-xl p-6 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-secondary-fixed p-2 rounded-lg text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<div>
+<p class="text-xs font-bold text-outline uppercase tracking-wider">Current Streak</p>
+<p class="text-xl font-extrabold font-headline text-primary-container">12 Days</p>
+</div>
+</div>
+</div>
+<div class="h-px bg-outline-variant opacity-15"></div>
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Time Elapsed</span>
+<span class="font-mono font-semibold text-primary-container">08:42</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Accuracy Rate</span>
+<span class="font-mono font-semibold text-primary-container">92%</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Session EXP</span>
+<span class="font-mono font-semibold text-secondary">+450</span>
+</div>
+</div>
+</div>
+<!-- Keyboard Guide -->
+<div class="mt-auto bg-surface-container-highest/50 rounded-xl p-4 border border-outline-variant/10">
+<p class="text-[10px] font-bold text-outline-variant uppercase tracking-[0.2em] mb-3">Keyboard Shortcuts</p>
+<div class="grid grid-cols-2 gap-3">
+<div class="flex items-center gap-2">
+<kbd class="bg-white border-b-2 border-slate-300 px-2 py-0.5 rounded text-[10px] font-bold text-primary-container">ENTER</kbd>
+<span class="text-[10px] font-medium text-on-surface-variant">Confirm</span>
+</div>
+<div class="flex items-center gap-2">
+<kbd class="bg-white border-b-2 border-slate-300 px-2 py-0.5 rounded text-[10px] font-bold text-primary-container">SPACE</kbd>
+<span class="text-[10px] font-medium text-on-surface-variant">Skip</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Quiz Interface -->
+<section class="col-span-9 flex flex-col items-center justify-center relative">
+<!-- HUD / Progress -->
+<div class="absolute top-0 w-full flex items-center justify-between px-4">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold font-headline text-primary-container">QUIZ MODE</span>
+<span class="h-1 w-1 rounded-full bg-outline-variant"></span>
+<span class="text-xs font-bold text-secondary">SESSION ACTIVE</span>
+</div>
+<div class="flex items-center gap-4 w-1/2">
+<div class="flex-1 h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[65%] rounded-full"></div>
+</div>
+<span class="text-xs font-bold font-mono text-primary-container">13/20</span>
+</div>
+</div>
+<!-- Main Question Card -->
+<div class="w-full max-w-3xl flex flex-col gap-12 items-center">
+<!-- Target Word Display -->
+<div class="text-center">
+<span class="text-[10px] font-bold text-outline-variant uppercase tracking-[0.4em] mb-4 block">Definition Mastery</span>
+<h1 class="text-7xl font-extrabold font-headline tracking-tighter text-primary-container mb-4">Ephemeral</h1>
+<div class="flex items-center justify-center gap-2 text-on-primary-container">
+<span class="material-symbols-outlined text-xl">volume_up</span>
+<span class="font-mono text-sm tracking-wider">/əˈfem(ə)rəl/</span>
+</div>
+</div>
+<!-- Answer Options (Bento Style Layout) -->
+<div class="grid grid-cols-2 gap-4 w-full">
+<!-- Option A -->
+<button class="group relative bg-surface-container-lowest hover:bg-primary-container hover:text-white transition-all duration-300 p-8 rounded-2xl text-left border border-outline-variant/5 shadow-[0_10px_20px_rgba(0,20,82,0.02)] active:scale-[0.98]">
+<div class="absolute top-4 left-4 w-6 h-6 rounded bg-surface-container-low group-hover:bg-white/20 flex items-center justify-center">
+<span class="text-[10px] font-bold group-hover:text-white text-primary-container">A</span>
+</div>
+<p class="font-body text-lg font-medium leading-relaxed mt-4">Lasting for a very short time; transient or fleeting.</p>
+</button>
+<!-- Option B -->
+<button class="group relative bg-surface-container-lowest hover:bg-primary-container hover:text-white transition-all duration-300 p-8 rounded-2xl text-left border border-outline-variant/5 shadow-[0_10px_20px_rgba(0,20,82,0.02)] active:scale-[0.98]">
+<div class="absolute top-4 left-4 w-6 h-6 rounded bg-surface-container-low group-hover:bg-white/20 flex items-center justify-center">
+<span class="text-[10px] font-bold group-hover:text-white text-primary-container">B</span>
+</div>
+<p class="font-body text-lg font-medium leading-relaxed mt-4">Having an intense, bright, or glowing appearance.</p>
+</button>
+<!-- Option C -->
+<button class="group relative bg-surface-container-lowest hover:bg-primary-container hover:text-white transition-all duration-300 p-8 rounded-2xl text-left border border-outline-variant/5 shadow-[0_10px_20px_rgba(0,20,82,0.02)] active:scale-[0.98]">
+<div class="absolute top-4 left-4 w-6 h-6 rounded bg-surface-container-low group-hover:bg-white/20 flex items-center justify-center">
+<span class="text-[10px] font-bold group-hover:text-white text-primary-container">C</span>
+</div>
+<p class="font-body text-lg font-medium leading-relaxed mt-4">Difficult to understand; obscure or mysterious.</p>
+</button>
+<!-- Option D -->
+<button class="group relative bg-surface-container-lowest hover:bg-primary-container hover:text-white transition-all duration-300 p-8 rounded-2xl text-left border border-outline-variant/5 shadow-[0_10px_20px_rgba(0,20,82,0.02)] active:scale-[0.98]">
+<div class="absolute top-4 left-4 w-6 h-6 rounded bg-surface-container-low group-hover:bg-white/20 flex items-center justify-center">
+<span class="text-[10px] font-bold group-hover:text-white text-primary-container">D</span>
+</div>
+<p class="font-body text-lg font-medium leading-relaxed mt-4">Relating to or characterized by a spiritual nature.</p>
+</button>
+</div>
+<!-- Action Footer -->
+<div class="flex items-center gap-6 w-full">
+<button class="flex-1 bg-surface-container-low text-on-surface-variant font-headline font-bold py-4 rounded-full hover:bg-surface-container-high transition-colors tracking-widest text-sm">
+                        SKIP THIS WORD
+                    </button>
+<button class="flex-[2] bg-gradient-to-r from-primary-container to-on-primary-fixed-variant text-white font-headline font-bold py-4 rounded-full hover:opacity-90 transition-opacity shadow-lg tracking-widest text-sm flex items-center justify-center gap-2">
+                        CONFIRM SELECTION
+                        <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Context Hint Image (Editorial Style) -->
+<div class="absolute bottom-4 right-4 flex items-center gap-4 bg-white/40 backdrop-blur-md p-3 rounded-2xl border border-white/20">
+<div class="w-16 h-16 rounded-lg overflow-hidden grayscale">
+<img alt="Visual Hint" class="w-full h-full object-cover" data-alt="macro shot of a dandelion with seeds blowing away in a soft breeze at sunset low depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiefoupAX_hOYrWifZAZbgl9IeiOF76XUTFw-AYCDfWqSCTBRxtXIU51YUKWf5gjLx8ZyduPAH3eFffKVixNc9XLyWPue9QIBt7rjtxhc_fDSVf-upspQj0sJvLLyKrJ3z_7wVqeHgjh87gUHKIjXeWF1T-OnfzC-wT7B-bvSpgfQmXn34jqV_Xuq-9VYqh7oVkOjP7VIjzKJ1LaDRIegRC9W94TLC9LMOGhuTdHRnMgU2ilVAtra7GT_vAW0cs1BSMu4pSFdVA5A"/>
+</div>
+<div class="pr-2">
+<p class="text-[10px] font-bold text-primary-container uppercase tracking-widest">Context Hint</p>
+<p class="text-xs text-on-surface italic font-medium">"The beauty of a sunset is..."</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Success Modal Overlay (Hidden by Default) -->
+<div class="fixed inset-0 bg-primary-container/20 backdrop-blur-sm z-[100] flex items-center justify-center hidden">
+<div class="bg-surface-container-lowest rounded-[2rem] p-12 max-w-md w-full text-center shadow-[0_40px_80px_rgba(0,20,82,0.1)]">
+<div class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6 text-white">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h2 class="text-3xl font-extrabold font-headline text-primary-container mb-2">Perfect Mastery!</h2>
+<p class="text-on-surface-variant mb-8">You've successfully mastered <b>Ephemeral</b>. It has been moved to your 'Learned' library.</p>
+<button class="w-full bg-primary-container text-white font-headline font-bold py-4 rounded-full tracking-widest">NEXT WORD</button>
+</div>
+</div>
+</body></html>

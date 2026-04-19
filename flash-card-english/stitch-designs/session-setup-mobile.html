@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Session Configuration - The Atelier</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#b7c4ff",
+                        "surface-tint": "#4c5b99",
+                        "tertiary-container": "#3c0700",
+                        "on-primary-container": "#7180c1",
+                        "on-secondary-container": "#fffbff",
+                        "secondary-fixed": "#ffdad7",
+                        "on-tertiary-container": "#c26d57",
+                        "on-tertiary-fixed": "#3c0700",
+                        "on-tertiary-fixed-variant": "#763221",
+                        "tertiary-fixed": "#ffdad2",
+                        "surface-container-high": "#e7e8e9",
+                        "on-secondary-fixed-variant": "#930015",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "inverse-surface": "#2e3132",
+                        "outline-variant": "#c6c5d1",
+                        "surface-dim": "#d9dadb",
+                        "primary": "#000000",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#dde1ff",
+                        "on-primary-fixed-variant": "#33437f",
+                        "primary-container": "#001452",
+                        "surface-container-low": "#f3f4f5",
+                        "secondary-container": "#e22431",
+                        "secondary": "#bb001e",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-surface-variant": "#454650",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#001452",
+                        "surface-container": "#edeeef",
+                        "background": "#f8f9fa",
+                        "surface-bright": "#f8f9fa",
+                        "inverse-on-surface": "#f0f1f2",
+                        "outline": "#767681",
+                        "tertiary": "#000000",
+                        "secondary-fixed-dim": "#ffb3ae",
+                        "on-background": "#191c1d",
+                        "tertiary-fixed-dim": "#ffb4a2",
+                        "on-surface": "#191c1d",
+                        "error-container": "#ffdad6",
+                        "surface": "#f8f9fa",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#410004",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e1e3e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-[#f8f9fa] dark:bg-[#001452] flex justify-between items-center px-6 h-16">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#001452] dark:text-[#f8f9fa] hover:bg-slate-200/50 dark:hover:bg-white/10 transition-colors p-2 rounded-full">menu</button>
+<h1 class="text-xl font-extrabold text-[#001452] dark:text-[#ffffff] font-headline tracking-tight">The Atelier</h1>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden border-2 border-white shadow-sm">
+<img alt="User avatar" data-alt="minimalist professional avatar of a person with glasses in a scholarly style with clean lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGIPSNvyxV73nW6Ba5hjCXrf4IF2wS2rjeW0S24DGIqBRxzedHO8jp_0Tv7wteZT5bGbYts7Jks7i-mrX4pK4udJFBUHDs7groQgNPPPVG99VwG61ly-2UMzCemO-KBFGlHRDWAwJoW1eOjRJWCbSjXwpnoPWHKwGfPTyM4W1FpTq8d3u9pcjZklRogW62p5iVUlzg_3qk9VDDHN4YV2ZuFD93USgPk1_CZVdWi2vdpH2wcvA2NCUan2tPnDrmYvWW-OQU2Waj2SA"/>
+</div>
+</div>
+<!-- Separation Line -->
+<div class="absolute bottom-0 left-0 w-full h-[1px] bg-[#e1e3e4] dark:bg-[#33437f] opacity-15"></div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-4xl mx-auto">
+<!-- Editorial Header Section -->
+<div class="mb-12">
+<p class="font-headline text-secondary font-bold tracking-widest text-xs mb-2 uppercase">CONFIGURATION</p>
+<h2 class="font-headline text-4xl md:text-5xl font-extrabold text-primary-container tracking-tighter leading-none mb-4">
+                Set Your Pace
+            </h2>
+<p class="text-on-surface-variant max-w-md font-body leading-relaxed">
+                Tailor your study session. Select the intensity and methodology that fits your academic goals for today.
+            </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Left Column: Word Count Selection (Bento Style) -->
+<section class="md:col-span-7 flex flex-col gap-4">
+<div class="bg-surface-container-lowest p-8 rounded-2xl relative overflow-hidden group">
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-primary-container opacity-5 rounded-full blur-3xl"></div>
+<h3 class="font-headline text-xl font-bold mb-6 text-primary-container">Intensity</h3>
+<div class="grid grid-cols-2 gap-4">
+<!-- Option 10 -->
+<button class="group/btn relative flex flex-col items-start p-6 rounded-xl bg-surface transition-all hover:bg-primary-container hover:text-white">
+<span class="text-xs font-bold opacity-50 mb-1">QUICK</span>
+<span class="font-headline text-3xl font-extrabold">10</span>
+<span class="text-xs mt-1">Words</span>
+<div class="absolute top-4 right-4 opacity-0 group-hover/btn:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">bolt</span>
+</div>
+</button>
+<!-- Option 20 -->
+<button class="group/btn relative flex flex-col items-start p-6 rounded-xl bg-primary-container text-white ring-4 ring-primary-container/10 transition-all shadow-xl">
+<span class="text-xs font-bold opacity-70 mb-1">BALANCED</span>
+<span class="font-headline text-3xl font-extrabold">20</span>
+<span class="text-xs mt-1">Words</span>
+<div class="absolute top-4 right-4 opacity-100">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</button>
+<!-- Option 30 -->
+<button class="group/btn relative flex flex-col items-start p-6 rounded-xl bg-surface transition-all hover:bg-primary-container hover:text-white">
+<span class="text-xs font-bold opacity-50 mb-1">DEEP</span>
+<span class="font-headline text-3xl font-extrabold">30</span>
+<span class="text-xs mt-1">Words</span>
+<div class="absolute top-4 right-4 opacity-0 group-hover/btn:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">school</span>
+</div>
+</button>
+<!-- Option 50 -->
+<button class="group/btn relative flex flex-col items-start p-6 rounded-xl bg-surface transition-all hover:bg-primary-container hover:text-white">
+<span class="text-xs font-bold opacity-50 mb-1">MASTERY</span>
+<span class="font-headline text-3xl font-extrabold">50</span>
+<span class="text-xs mt-1">Words</span>
+<div class="absolute top-4 right-4 opacity-0 group-hover/btn:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">military_tech</span>
+</div>
+</button>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-2xl flex items-center gap-6">
+<div class="w-16 h-16 rounded-full bg-white flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-3xl">query_stats</span>
+</div>
+<div>
+<p class="text-sm font-bold text-primary-container">Predicted Duration</p>
+<p class="text-2xl font-headline font-bold text-on-surface">12 Minutes</p>
+</div>
+</div>
+</section>
+<!-- Right Column: Mode Selection -->
+<section class="md:col-span-5 flex flex-col gap-4">
+<div class="bg-white p-8 rounded-2xl shadow-[0_20px_40px_rgba(0,20,82,0.04)] h-full">
+<h3 class="font-headline text-xl font-bold mb-6 text-primary-container">Methodology</h3>
+<div class="space-y-4">
+<!-- Mode Flashcard -->
+<div class="p-4 rounded-xl border border-outline-variant/15 flex items-center gap-4 cursor-pointer hover:bg-surface-container-low transition-colors">
+<div class="w-12 h-12 bg-secondary/10 text-secondary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">style</span>
+</div>
+<div class="flex-1">
+<p class="font-bold text-sm">Flashcard</p>
+<p class="text-xs text-on-surface-variant">Active recall with term and definition.</p>
+</div>
+<div class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-transparent"></div>
+</div>
+</div>
+<!-- Mode Multiple Choice -->
+<div class="p-4 rounded-xl border-2 border-primary-container flex items-center gap-4 cursor-pointer bg-primary-container/5 transition-colors">
+<div class="w-12 h-12 bg-primary-container text-white rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined">quiz</span>
+</div>
+<div class="flex-1">
+<p class="font-bold text-sm">Multiple Choice</p>
+<p class="text-xs text-on-surface-variant">Identify the correct term among options.</p>
+</div>
+<div class="w-5 h-5 rounded-full border-2 border-primary-container flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-primary-container"></div>
+</div>
+</div>
+</div>
+<!-- Decorative Card Detail -->
+<div class="mt-8 pt-8 border-t border-outline-variant/15">
+<div class="flex items-center justify-between mb-4">
+<span class="text-xs font-bold text-on-surface-variant">STUDY FOCUS</span>
+<span class="text-xs font-bold text-secondary">85% NEW</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="w-[85%] h-full bg-secondary"></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Action Section -->
+<div class="mt-12 flex flex-col md:flex-row items-center justify-between gap-8 bg-primary-container rounded-2xl p-8 relative overflow-hidden">
+<!-- Background Decoration -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<img class="w-full h-full object-cover grayscale" data-alt="macro abstract texture of thick paper fibers and ink with soft dramatic side lighting for scholarly mood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1Pkt5AIHGzaIRJ9HzhqVGGEOoyktmnrojH-hA0IRnVbD_A5_0U0pdQNTLPEWdiJ0kB_BxQzele7AMaFI2qpBvFPyEYwvOM-oR6YW-twWl-XsPRAGgA5kut40Zo0MCNwKAby7BO3o4W29QPv47S6dFmKp9UglYbiyrGMdloUGbeC37O-CQQ3J8OdlrW7W37Fi5l5C2ZAf-j7Q-XDPWcWkDzy6GI2kA4iMaBEPHbUkfW616kLwh_vRk8-M6_F_Mji3VxgwzkmpnPsY"/>
+</div>
+<div class="relative z-10 text-center md:text-left">
+<h4 class="text-white font-headline text-2xl font-bold">Ready to begin?</h4>
+<p class="text-white/70 text-sm">Your settings are saved for this session.</p>
+</div>
+<button class="relative z-10 bg-gradient-to-r from-primary-container to-on-primary-fixed-variant text-white px-10 py-4 rounded-full font-headline font-extrabold text-sm uppercase tracking-widest shadow-2xl hover:scale-105 transition-transform border border-white/20 flex items-center gap-2">
+                Begin Session
+                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center py-3 px-2 bg-white dark:bg-[#001452] border-t-0 rounded-t-2xl z-50 shadow-[0_-10px_30px_rgba(0,20,82,0.04)]">
+<div class="flex flex-col items-center justify-center bg-[#001452] dark:bg-[#bb001e] text-white rounded-xl px-4 py-1.5 font-['Inter'] text-xs font-medium">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1.5 font-['Inter'] text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">auto_stories</span>
+<span>Library</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1.5 font-['Inter'] text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">bar_chart</span>
+<span>Analytics</span>
+</div>
+</nav>
+</body></html>
