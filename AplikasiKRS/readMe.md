@@ -50,3 +50,7 @@
     
 *   **menu-change-password.jpg**: Fitur penggantian kata sandi.
 ![alt text](desain-krs/menu-change-password.jpg)
+
+### 5\. Desain Database
+*   **Desain database**: Meliputi File master dan transaction
+![alt text](desain-krs/desain-database.png)
