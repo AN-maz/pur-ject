@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Tema Warna Divisi Software */
+    --color-software-bright: #39FF5A;
+    --color-software-tosca: #20C997;
+    --color-software-teal: #008080;
+  }
+}
+
+/* Opsional: Styling scrollbar agar lebih rapi saat membaca materi */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-software-tosca);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-software-teal);
+}
