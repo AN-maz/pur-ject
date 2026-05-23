@@ -1,20 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// Import ikon asli dari react-icons
 import { FaYoutube, FaGithub, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 
 const LandingPage = () => {
   const [mentors, setMentors] = useState([]);
   const [mounted, setMounted] = useState(false);
 
-  // Fetch data JSON dan trigger animasi
   useEffect(() => {
     fetch('/data/mentors.json')
       .then(res => res.json())
       .then(data => setMentors(data))
       .catch(err => console.error("Gagal memuat data mentor:", err));
 
-    // Trigger agar animasi bar berjalan otomatis (untuk mobile & desktop)
     const timer = setTimeout(() => setMounted(true), 100);
     return () => clearTimeout(timer);
   }, []);
@@ -45,7 +42,7 @@ const LandingPage = () => {
         </h1>
 
         <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl relative z-10">
-          Media pembelajaran interaktif khusus untuk anggota Divisi Software Universitas Teknologi Bandung. Selesaikan tantangan dan jadilah Full-Stack Developer handal!
+          Media pembelajaran interaktif khusus untuk anggota Divisi Software Universitas Teknologi Bandung. Pelatihan untuk membantu kalian di acara OXIGEN GALAXY!
         </p>
 
         <Link
@@ -59,8 +56,12 @@ const LandingPage = () => {
       {/* --- SECTION TIM SOFTWARE --- */}
       <section className="py-24 bg-[#020b1f] relative border-t border-gray-800">
         <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
-          <p className="text-gray-400 font-medium mb-12 tracking-wide">Web, Mobile & AI Dev</p>
-
+          <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
+            Di Balik Layar <span className="text-[var(--color-software-tosca)]">Divisi Software</span>
+          </h2>
+          <p className="text-gray-400 font-medium mb-12 max-w-2xl mx-auto leading-relaxed">
+            Kenalan dengan tim pengurus periode 2025-2026 yang menyusun kurikulum pembelajaran ini. Mau farming aura dulu YGY
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {mentors.map((mentor) => (
               <div
@@ -68,16 +69,13 @@ const LandingPage = () => {
                 className="bg-[#051330] rounded-2xl overflow-hidden relative group transform md:hover:-translate-y-3 transition-all duration-500 border border-gray-800 hover:border-[var(--color-software-tosca)] flex flex-col shadow-lg"
               >
 
-                {/* Efek Garis Neon di Bawah Card (Hanya Desktop) */}
                 <div className="hidden md:block absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[var(--color-software-teal)] to-[var(--color-software-bright)] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
 
-                {/* Area Foto (Tinggi di-adjust agar di HP kelihatan full badan/wajah) */}
                 <div className="relative h-80 md:h-64 overflow-hidden bg-[#1a2b4c]">
                   <div className="absolute top-4 left-4 bg-black/70 backdrop-blur-sm px-3 py-1 rounded text-xs font-bold text-gray-200 z-10 border border-gray-700">
                     {mentor.tag}
                   </div>
 
-                  {/* Foto Asli (Zoom pelan hanya di desktop) */}
                   <img
                     src={mentor.image}
                     alt={mentor.name}
@@ -86,14 +84,12 @@ const LandingPage = () => {
                   <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#051330] to-transparent"></div>
                 </div>
 
-                {/* Area Informasi & Stats */}
                 <div className="p-6 text-left flex-grow flex flex-col justify-between">
                   <div className="mb-6">
                     <h3 className="text-2xl font-bold text-white mb-1 md:group-hover:text-[var(--color-software-bright)] transition-colors">{mentor.name}</h3>
                     <p className="text-gray-500 text-xs font-bold tracking-widest uppercase">{mentor.subtitle}</p>
                   </div>
 
-                  {/* Looping Stats Bar (Otomatis jalan saat load, tidak butuh hover untuk mobile) */}
                   <div className="space-y-3">
                     {mentor.stats.map((stat, idx) => (
                       <div key={idx} className="flex items-center justify-between text-xs">
@@ -119,7 +115,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* --- FOOTER (Tema Gelap Custom) --- */}
+
       <footer className="bg-[#0a0a0a] text-white pt-16 pb-8 px-6 md:px-12 relative overflow-hidden border-t border-gray-800">
         <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--color-software-teal)] rounded-full mix-blend-screen filter blur-[150px] opacity-10 pointer-events-none"></div>
 
@@ -127,13 +123,12 @@ const LandingPage = () => {
 
           <div>
             <div className="flex items-center gap-3 mb-6">
-              {/* Pastikan kamu punya logo-white.png atau logo transparan */}
+
               <img src="/oxigen.webp" alt="OXIGEN Logo" className="h-14 w-auto white brightness-200" />
             </div>
             <p className="text-sm text-gray-400 leading-relaxed pr-4 mb-6">
               OXIGEN Universitas Teknologi Bandung is one of the student activity units at the Bandung High School of Technology that focuses on the scope of science and technology.
             </p>
-            {/* Ikon Sosial Media Menggunakan React Icons */}
             <div className="flex gap-4">
               <a
                 href="https://www.youtube.com/@oxigenutb08"

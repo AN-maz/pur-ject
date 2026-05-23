@@ -5,7 +5,6 @@ import useProgressStore from '../store/useProgressStore';
 const SilabusPage = () => {
   const [silabus, setSilabus] = useState([]);
   
-  // Tetap panggil state untuk mengecek materi mana yang sudah "Selesai"
   const completedModules = useProgressStore((state) => state.completedModules);
 
   useEffect(() => {
@@ -18,8 +17,7 @@ const SilabusPage = () => {
   return (
     <div className="min-h-screen bg-[#0a0a0a] p-8 text-white font-sans flex flex-col">
       <div className="max-w-3xl mx-auto w-full flex-grow">
-        
-        {/* Tombol Kembali ke Landing Page */}
+
         <Link to="/" className="inline-flex items-center text-gray-400 hover:text-white font-bold mb-8 transition-colors text-sm">
           ← Kembali ke Beranda
         </Link>
@@ -28,16 +26,12 @@ const SilabusPage = () => {
         <h1 className="text-4xl font-black mb-2 text-center text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-software-bright)] to-[var(--color-software-teal)]">
           Peta Perjalanan Belajar
         </h1>
-        {/* Teks deskripsi diubah karena sekarang sudah bebas akses */}
         <p className="text-center mb-12 text-gray-400">
           Pilih dan pelajari materi sesuai dengan kebutuhan eksplorasimu!
         </p>
 
-        {/* Daftar Materi (Semua Terbuka) */}
         <div className="space-y-6">
           {silabus.map((materi) => {
-            // Kita HAPUS logika "isUnlocked" dan isian gemboknya.
-            // Cukup cek apakah materi ini sudah pernah diselesaikan.
             const isCompleted = completedModules.includes(materi.id);
 
             return (
@@ -47,13 +41,11 @@ const SilabusPage = () => {
               >
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                   
-                  {/* Info Materi */}
                   <div>
                     <h2 className="text-2xl font-bold text-white group-hover:text-[var(--color-software-bright)] transition-colors">
                       {materi.title}
                     </h2>
                     
-                    {/* Indikator Selesai */}
                     {isCompleted && (
                       <span className="inline-block mt-3 px-3 py-1 bg-[#1a2b4c] text-[var(--color-software-tosca)] text-xs rounded border border-[var(--color-software-teal)] font-bold tracking-wider uppercase">
                         ✓ Telah Diselesaikan
@@ -61,7 +53,6 @@ const SilabusPage = () => {
                     )}
                   </div>
                   
-                  {/* Tombol Aksi (Selalu Terbuka) */}
                   <Link 
                     to={`/materi/${materi.id}`}
                     className={`px-8 py-3 font-bold rounded-lg transition-colors w-full sm:w-auto text-center ${

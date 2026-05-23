@@ -69,7 +69,6 @@ const MateriPage = () => {
   }
 
   const isLastPage = currentIndex === sections.length - 1;
-  // Kalkulasi persentase progres belajar di modul ini
   const progressPercentage = Math.round(((currentIndex + 1) / sections.length) * 100);
 
   return (
@@ -92,7 +91,6 @@ const MateriPage = () => {
           </button>
         </div>
 
-        {/* Pembungkus Konten Markdown (Lebar dibatasi agar nyaman dibaca) */}
         <div className="max-w-4xl mx-auto w-full px-6 py-8 md:px-12 md:py-16 flex-grow flex flex-col">
           <div className="flex-grow">
             {/* Tag judul modul kecil di atas materi */}
@@ -103,7 +101,6 @@ const MateriPage = () => {
             <MarkdownViewer content={sections[currentIndex]?.content || ""} />
           </div>
 
-          {/* --- NAVIGASI BAWAH (PAGINATION) --- */}
           <div className="mt-16 pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4">
             <button 
               onClick={() => {
@@ -138,7 +135,6 @@ const MateriPage = () => {
         </div>
       </div>
 
-      {/* --- KANAN: SIDEBAR DAFTAR ISI (Gaya LMS Rapet) --- */}
       <div className={`
         fixed inset-y-0 right-0 z-50 w-80 bg-[#121212] border-l border-gray-800 flex flex-col transform transition-transform duration-300 ease-in-out
         ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full'} 
@@ -159,7 +155,6 @@ const MateriPage = () => {
           </button>
         </div>
 
-        {/* Area Progres Belajar */}
         <div className="p-5 border-b border-gray-800">
           <div className="flex justify-between text-xs font-bold text-gray-400 mb-2">
             <span>PROGRES MATERI</span>
@@ -173,7 +168,6 @@ const MateriPage = () => {
           </div>
         </div>
 
-        {/* List Daftar Isi (Rapat, Edge-to-Edge) */}
         <div className="flex-1 overflow-y-auto py-2 custom-scrollbar">
           <ul className="flex flex-col">
             {sections.map((sec, idx) => {
@@ -186,7 +180,6 @@ const MateriPage = () => {
                     onClick={() => {
                       setCurrentIndex(idx);
                       if (window.innerWidth < 768) setIsSidebarOpen(false);
-                      // Reset scroll konten kiri ke atas
                       document.querySelector('.flex-1.overflow-y-auto').scrollTo({ top: 0, behavior: 'smooth' });
                     }}
                     className={`w-full text-left px-5 py-4 text-sm transition-colors flex justify-between items-center ${
@@ -199,7 +192,6 @@ const MateriPage = () => {
                       {sec.title}
                     </span>
                     
-                    {/* Ikon Checkmark untuk materi yang sudah dilewati */}
                     {isPassed && (
                       <span className="text-[var(--color-software-teal)] font-bold">✓</span>
                     )}
@@ -212,7 +204,6 @@ const MateriPage = () => {
         
       </div>
       
-      {/* Overlay Gelap untuk Mobile saat Sidebar Terbuka */}
       {isSidebarOpen && (
         <div 
           onClick={() => setIsSidebarOpen(false)}
