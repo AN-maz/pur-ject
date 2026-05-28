@@ -12,7 +12,6 @@ const MateriPage = () => {
   const [currentIndex, setCurrentIndex] = useState(0); 
   const [loading, setLoading] = useState(true);
   
-  // State untuk drawer daftar isi di Mobile
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const markAsCompleted = useProgressStore((state) => state.markAsCompleted);
@@ -35,7 +34,6 @@ const MateriPage = () => {
         return res.text();
       })
       .then(text => {
-        // Potong hanya berdasarkan Heading 1 (# )
         const rawSections = text.split(/(?=^#\s)/m).filter(s => s.trim() !== '');
         
         const parsedSections = rawSections.map((sec) => {
@@ -57,7 +55,7 @@ const MateriPage = () => {
 
   const handleSelesai = () => {
     markAsCompleted(parseInt(id));
-    navigate('/materi');
+    navigate('/materi', {state: {lastModuleId:parseInt(id)}});
   };
 
   if (loading) {
@@ -72,15 +70,13 @@ const MateriPage = () => {
   const progressPercentage = Math.round(((currentIndex + 1) / sections.length) * 100);
 
   return (
-    // FULL SCREEN LAYOUT (h-screen)
     <div className="h-screen w-full flex bg-[#0a0a0a] text-gray-200 overflow-hidden font-sans relative">
       
-      {/* --- KIRI: AREA KONTEN UTAMA --- */}
       <div className="flex-1 flex flex-col h-full overflow-y-auto custom-scrollbar relative">
         
         {/* Header Mobile (Hanya muncul di HP) */}
         <div className="md:hidden sticky top-0 z-40 bg-[#121212] border-b border-gray-800 p-4 flex justify-between items-center shadow-md">
-          <Link to="/materi" className="text-[var(--color-software-tosca)] font-bold text-sm">
+          <Link to="/materi" state={{ lastModuleId: parseInt(id) }} className="text-[var(--color-software-tosca)] font-bold text-sm">
             ← Kembali
           </Link>
           <button 
@@ -93,7 +89,6 @@ const MateriPage = () => {
 
         <div className="max-w-4xl mx-auto w-full px-6 py-8 md:px-12 md:py-16 flex-grow flex flex-col">
           <div className="flex-grow">
-            {/* Tag judul modul kecil di atas materi */}
             <div className="text-[var(--color-software-teal)] font-bold text-sm tracking-wider uppercase mb-2">
               {materiTitle}
             </div>
@@ -105,7 +100,7 @@ const MateriPage = () => {
             <button 
               onClick={() => {
                 setCurrentIndex(prev => Math.max(0, prev - 1));
-                window.scrollTo({ top: 0, behavior: 'smooth' }); 
+                document.querySelector('.flex-1.overflow-y-auto').scrollTo({ top: 0, behavior: 'smooth' }); 
               }}
               disabled={currentIndex === 0}
               className="px-6 py-3 bg-[#1a1a1a] text-white rounded-lg font-bold disabled:opacity-30 disabled:cursor-not-allowed hover:bg-gray-800 border border-gray-700 w-full sm:w-auto transition-colors"
@@ -124,7 +119,7 @@ const MateriPage = () => {
               <button 
                 onClick={() => {
                   setCurrentIndex(prev => Math.min(sections.length - 1, prev + 1));
-                  window.scrollTo({ top: 0, behavior: 'smooth' }); 
+                  document.querySelector('.flex-1.overflow-y-auto').scrollTo({ top: 0, behavior: 'smooth' }); 
                 }}
                 className="px-8 py-3 bg-[var(--color-software-tosca)] text-black font-bold rounded-lg hover:bg-[#1db88a] shadow-[0_0_15px_rgba(32,201,151,0.2)] w-full sm:w-auto transition-colors"
               >
@@ -141,9 +136,8 @@ const MateriPage = () => {
         md:relative md:translate-x-0 flex-shrink-0
       `}>
         
-        {/* Tombol Close & Back (Header Sidebar) */}
         <div className="p-4 border-b border-gray-800 flex justify-between items-center bg-[#0a0a0a]">
-          <Link to="/materi" className="text-gray-400 hover:text-white flex items-center gap-2 text-sm font-medium transition-colors">
+          <Link to="/materi" state={{ lastModuleId: parseInt(id) }} className="text-gray-400 hover:text-white flex items-center gap-2 text-sm font-medium transition-colors">
             <span className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center text-xs">←</span>
             Peta Belajar
           </Link>
@@ -204,6 +198,7 @@ const MateriPage = () => {
         
       </div>
       
+
       {isSidebarOpen && (
         <div 
           onClick={() => setIsSidebarOpen(false)}
