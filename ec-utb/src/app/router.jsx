@@ -6,6 +6,8 @@ import About from "@/routes/About"
 import News from "@/routes/News"
 import NewsDetail from "@/routes/NewsDetail"
 import StructureDetail from "@/routes/StructureDetail"
+import VolunteerEvent from "@/routes/VolunteerEvent"
+import OprecBph from "@/routes/OprecBph"
 
 export const router = createBrowserRouter([
     {
@@ -31,6 +33,14 @@ export const router = createBrowserRouter([
             {
                 path: "news/:slug",
                 element: <NewsDetail />,
+            },
+            {
+                path: "volunteer",
+                element: <VolunteerEvent />,
+            },
+            {
+                path: "oprec-bph",
+                element: <OprecBph />,
             },
         ],
     },

@@ -1,0 +1,61 @@
+{
+  "title": "Volunteer Event: English Camp 2026",
+  "subtitle": "Jadilah bagian dari kepanitiaan acara terbesar English Club UTB tahun ini!",
+  "description": "English Camp adalah acara tahunan English Club UTB yang melibatkan lebih dari 200 mahasiswa. Kami mencari volunteer berdedikasi untuk membantu mensukseskan acara ini. Ini adalah kesempatan emas untuk belajar manajemen event, memperluas relasi, dan mempraktekkan bahasa Inggris secara langsung.",
+  "date": "2026-07-15",
+  "location": "Kampus Universitas Teknologi Bandung",
+  "registrationLink": "https://forms.gle/example-volunteer",
+  "registrationDeadline": "2026-06-30",
+  "benefits": [
+    "E-Certificate Kepanitiaan Resmi",
+    "Relasi & Networking Baru",
+    "Pengalaman Event Management",
+    "Konsumsi & Merchandise Eksklusif"
+  ],
+  "divisions": [
+    {
+      "name": "Divisi Acara",
+      "icon": "calendar",
+      "tupoksi": [
+        "Menyusun rundown acara secara detail",
+        "Menghubungi dan memastikan kehadiran pembicara",
+        "Menjadi time keeper dan mengatur alur kegiatan pada hari H",
+        "Menyiapkan ice breaking games"
+      ],
+      "description": "Bertanggung jawab penuh atas jalannya acara dari awal hingga akhir, memastikan semua sesuai dengan konsep dan waktu yang ditentukan."
+    },
+    {
+      "name": "Divisi Publikasi & Dokumentasi",
+      "icon": "camera",
+      "tupoksi": [
+        "Mengambil foto dan video selama persiapan dan hari H",
+        "Membuat desain poster dan konten media sosial",
+        "Mengelola publikasi event di berbagai channel",
+        "Membuat after-movie acara"
+      ],
+      "description": "Menjadi mata dan telinga acara, memastikan setiap momen berharga terekam dan disebarkan ke publik dengan visual yang menarik."
+    },
+    {
+      "name": "Divisi Logistik & Perlengkapan",
+      "icon": "package",
+      "tupoksi": [
+        "Mengatur peminjaman ruangan dan alat",
+        "Menyiapkan kebutuhan teknis (sound system, proyektor, dll)",
+        "Mengatur layout ruangan acara",
+        "Memastikan keamanan dan kebersihan barang inventaris"
+      ],
+      "description": "Tulang punggung acara yang memastikan semua perlengkapan fisik dan kebutuhan operasional tersedia pada waktunya."
+    },
+    {
+      "name": "Divisi Humas & Sponsorship",
+      "icon": "megaphone",
+      "tupoksi": [
+        "Mencari dan mengajukan proposal ke sponsor potensial",
+        "Menjalin kerjasama dengan media partner",
+        "Menjadi penghubung utama antara pihak eksternal dan panitia",
+        "Mengurus perizinan acara"
+      ],
+      "description": "Wajah dari acara ini yang bertugas menjalin hubungan baik dengan pihak-pihak luar untuk mendukung kesuksesan event."
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "title": "Open Recruitment BPH 2026/2027",
+  "subtitle": "Bergabunglah sebagai pengurus inti English Club UTB",
+  "description": "English Club UTB membuka kesempatan bagi kamu yang berjiwa pemimpin dan ingin berkontribusi lebih dalam mengembangkan UKM bahasa Inggris ini. Menjadi Badan Pengurus Harian (BPH) bukan hanya sekadar gelar, tapi tentang belajar berorganisasi, memimpin tim, dan membuat dampak nyata bagi anggota lainnya.",
+  "registrationLink": "https://forms.gle/example-oprec",
+  "registrationDeadline": "2026-08-15",
+  "benefits": [
+    "Pengalaman leadership dan manajerial tingkat universitas",
+    "Sertifikat Kepengurusan BPH",
+    "Prioritas mengikuti program dan workshop EC-UTB",
+    "Memperluas networking dengan UKM dan eksternal kampus"
+  ],
+  "divisions": [
+    {
+      "name": "Top Management (Presiden, Wapres, Sekjen, Bendahara)",
+      "icon": "crown",
+      "tupoksi": [
+        "Menentukan arah gerak dan visi-misi organisasi",
+        "Mengambil keputusan strategis tingkat UKM",
+        "Mengawasi kinerja seluruh divisi",
+        "Mengelola administrasi dan keuangan organisasi"
+      ],
+      "suitsYouIf": [
+        "Kamu memiliki visi yang kuat dan jiwa kepemimpinan",
+        "Kamu terbiasa berpikir strategis dan problem-solving",
+        "Kamu rapi, teliti, dan bertanggung jawab tinggi (khusus Sekjen & Bendahara)"
+      ]
+    },
+    {
+      "name": "Divisi Pendidikan",
+      "icon": "book",
+      "tupoksi": [
+        "Menyusun kurikulum pembelajaran bahasa Inggris",
+        "Menjadi tutor atau mentor kelas mingguan",
+        "Mengevaluasi perkembangan kemampuan bahasa anggota",
+        "Menyelenggarakan program seperti TOEFL Prep dan Debate Practice"
+      ],
+      "suitsYouIf": [
+        "Kamu memiliki passion dalam mengajar dan berbagi ilmu",
+        "Kamu fasih berbahasa Inggris (grammar, speaking, dll)",
+        "Kamu sabar dan komunikatif dalam menyampaikan materi"
+      ]
+    },
+    {
+      "name": "Divisi Human Resources (SDM)",
+      "icon": "users",
+      "tupoksi": [
+        "Mengelola rekrutmen anggota dan pengurus baru",
+        "Merancang program bonding dan team building",
+        "Memantau keaktifan dan kesejahteraan anggota",
+        "Melakukan evaluasi kinerja kepengurusan secara berkala"
+      ],
+      "suitsYouIf": [
+        "Kamu mudah bergaul dan peka terhadap lingkungan sekitar",
+        "Kamu tertarik dengan pengembangan sumber daya manusia",
+        "Kamu pendengar yang baik dan bisa menengahi masalah"
+      ]
+    },
+    {
+      "name": "Divisi Public Relations",
+      "icon": "megaphone",
+      "tupoksi": [
+        "Mengelola akun media sosial (Instagram, TikTok, dll)",
+        "Membangun kerjasama dengan UKM lain dan organisasi eksternal",
+        "Menjadi narahubung utama untuk pihak luar",
+        "Meningkatkan branding EC-UTB di lingkungan kampus dan luar kampus"
+      ],
+      "suitsYouIf": [
+        "Kamu up-to-date dengan tren media sosial",
+        "Kamu percaya diri dan luwes dalam berkomunikasi",
+        "Kamu suka membuat konten kreatif (copywriting, video pendek)"
+      ]
+    }
+  ]
+}
