@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ec-blue: #001452;
+  --color-ec-red: #D81B2B;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+/* animation */
+
+.reveal-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal-up.active {
+  opacity: 1;
+  transform: translateY(0);
+}

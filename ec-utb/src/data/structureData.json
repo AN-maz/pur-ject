@@ -1,0 +1,209 @@
+{
+  "pembina": [
+    {
+      "name": "Mr. Adrian",
+      "role": "Expert in Linguistics",
+      "photo": "/images/pembina/pembina1.png",
+      "quote": "Consistency is the key to mastering any language. Don't be afraid to make mistakes, for they are the stepping stones to fluency."
+    },
+    {
+      "name": "Mr. Fathurrahman",
+      "role": "Advisor & Motivator",
+      "photo": "/images/pembina/pembina1.png",
+      "quote": "Organization is the best place to build character. Together at EC UTB, let's create a future where we can compete globally."
+    }
+  ],
+  "divisions": [
+    {
+      "id": 1,
+      "slug": "top-management",
+      "name": "Top Management",
+      "description": "The core decision makers and strategists.",
+      "detailDescription": "The core decision makers and strategic leaders of the organization.",
+      "icon": "crown",
+      "groupPhoto": "/images/pengurus/TopMan/FullTopMan.png",
+      "programKerja": [
+        "Annual Work Meeting",
+        "Mid-Year Evaluation",
+        "Strategic Planning"
+      ],
+      "members": [
+        {
+          "name": "Dhenia Putri Nuraini",
+          "role": "President",
+          "major": "Informatics Engineering",
+          "photo": "/images/pengurus/TopMan/Dhenia-Putri-Nuraini.JPG"
+        },
+        {
+          "name": "Muhammad Arfana Firjatullah",
+          "role": "Vice President",
+          "major": "Informatics Engineering",
+          "photo": "/images/pengurus/TopMan/Muhammad-Arfana-Firjatullah.JPG"
+        },
+        {
+          "name": "Anisa Febrianti",
+          "role": "Treasurer",
+          "major": "Informatics Engineering",
+          "photo": "/images/pengurus/TopMan/Anisa Febrianti.JPG"
+        },
+        {
+          "name": "Nabilah",
+          "role": "Secretary",
+          "major": "Informatics Engineering",
+          "photo": "/images/pengurus/TopMan/Nabilah - Secretary 4.JPG"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "pendidikan",
+      "name": "Education Division",
+      "description": "Focusing on English language skill development.",
+      "detailDescription": "Responsible for developing and delivering English language learning programs for all members.",
+      "icon": "book",
+      "groupPhoto": "/images/pengurus/pendidikan/fullPendidikan.png",
+      "programKerja": [
+        "Weekly English Class",
+        "TOEFL Preparation",
+        "Vocabulary Challenge",
+        "Movie Night Listening"
+      ],
+      "members": [
+        {
+          "name": "Asad M. H.",
+          "role": "Head of Division",
+          "major": "Informatics Engineering",
+          "photo": "/images/pengurus/pendidikan/Asad M. H. - Pendidikan 2.JPG"
+        },
+        {
+          "name": "Ega Silfhia",
+          "role": "Staff",
+          "major": "Informatics Engineering",
+          "photo": "/images/pengurus/pendidikan/Ega Silfhia - Pendidikan - 2.jpg"
+        },
+        {
+          "name": "Adinda Fitriani Sabila",
+          "role": "Staff",
+          "major": "Informatics Engineering",
+          "photo": "/images/pengurus/pendidikan/Adinda Fitriani Sabila.JPG"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "humas",
+      "name": "Public Relations",
+      "description": "Managing external communications and partnerships.",
+      "detailDescription": "Handling external communications, partnerships, and building relationships with other organizations.",
+      "icon": "megaphone",
+      "groupPhoto": "/images/pengurus/humas/fullHumas.png",
+      "programKerja": [
+        "Partnership Management",
+        "Social Media Campaign",
+        "Event Promotion",
+        "External Relations"
+      ],
+      "members": [
+        {
+          "name": "Andrian Maulana",
+          "role": "Head of Division",
+          "major": "Informatics Engineering",
+          "photo": "/images/pengurus/humas/andrian-maulana.png"
+        },
+        {
+          "name": "Daffa Saputra",
+          "role": "Staff",
+          "major": "Informatics Engineering",
+          "photo": "/images/pengurus/humas/daffa-saputra.png"
+        },
+        {
+          "name": "M. Sultan",
+          "role": "Staff",
+          "major": "Informatics Engineering",
+          "photo": "/images/pengurus/humas/M.Sultan.png"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "kewirausahaan",
+      "name": "Finance Division",
+      "description": "Managing financial resources and budgeting.",
+      "detailDescription": "Responsible for managing financial resources, budgeting, and entrepreneurial activities of the organization.",
+      "icon": "wallet",
+      "groupPhoto": "/images/pengurus/kewirus/adrian.png",
+      "programKerja": [
+        "Budget Planning",
+        "Fundraising Events",
+        "Financial Reporting",
+        "Entrepreneurship Workshop"
+      ],
+      "members": [
+        {
+          "name": "Adrian",
+          "role": "Head of Division",
+          "major": "Informatics Engineering",
+          "photo": "/images/pengurus/kewirus/adrian.png"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "pubdok",
+      "name": "Publication & Documentation",
+      "description": "Handling documentation and content creation.",
+      "detailDescription": "Managing publications, documentation, content creation, and media coverage for all organizational activities.",
+      "icon": "camera",
+      "groupPhoto": "/images/pengurus/pubdok/fullPubdok.png",
+      "programKerja": [
+        "Content Creation",
+        "Event Documentation",
+        "Social Media Management",
+        "Design & Branding"
+      ],
+      "members": [
+        {
+          "name": "Muhammad Arga",
+          "role": "Head of Division",
+          "major": "Informatics Engineering",
+          "photo": "/images/pengurus/pubdok/muhammad-arga.png"
+        },
+        {
+          "name": "M. Belga Ghifari",
+          "role": "Staff",
+          "major": "Informatics Engineering",
+          "photo": "/images/pengurus/pubdok/M. BELGA GHIFARI.png"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "sdm",
+      "name": "Human Resources",
+      "description": "Managing recruitment and member development.",
+      "detailDescription": "Responsible for recruitment, member development, training, and ensuring the well-being of all organization members.",
+      "icon": "users",
+      "groupPhoto": "/images/pengurus/SDM/FullSDM.png",
+      "programKerja": [
+        "Open Recruitment",
+        "Member Training",
+        "Team Building",
+        "Performance Evaluation"
+      ],
+      "members": [
+        {
+          "name": "Adrian Fathurrahman",
+          "role": "Head of Division",
+          "major": "Informatics Engineering",
+          "photo": "/images/pengurus/SDM/Adrian Fathurrahman_4.JPG"
+        },
+        {
+          "name": "M. Fachri Athallah",
+          "role": "Staff",
+          "major": "Informatics Engineering",
+          "photo": "/images/pengurus/SDM/M. Fachri Athallah .png"
+        }
+      ]
+    }
+  ]
+}
