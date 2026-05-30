@@ -1,7 +1,7 @@
 {
-  "title": "Volunteer Event: English Camp 2026",
+  "title": "Volunteer Event: Kaderisasi 2026",
   "subtitle": "Jadilah bagian dari kepanitiaan acara terbesar English Club UTB tahun ini!",
-  "description": "English Camp adalah acara tahunan English Club UTB yang melibatkan lebih dari 200 mahasiswa. Kami mencari volunteer berdedikasi untuk membantu mensukseskan acara ini. Ini adalah kesempatan emas untuk belajar manajemen event, memperluas relasi, dan mempraktekkan bahasa Inggris secara langsung.",
+  "description": "Kaderisasi adalah acara tahunan English Club UTB yang melibatkan lebih dari 200 mahasiswa. Kami mencari volunteer berdedikasi untuk membantu mensukseskan acara ini. Ini adalah kesempatan emas untuk belajar manajemen event, memperluas relasi, dan mempraktekkan bahasa Inggris secara langsung.",
   "date": "2026-07-15",
   "location": "Kampus Universitas Teknologi Bandung",
   "registrationLink": "https://forms.gle/example-volunteer",
@@ -36,7 +36,7 @@
       "description": "Menjadi mata dan telinga acara, memastikan setiap momen berharga terekam dan disebarkan ke publik dengan visual yang menarik."
     },
     {
-      "name": "Divisi Logistik & Perlengkapan",
+      "name": "Divisi Logistik",
       "icon": "package",
       "tupoksi": [
         "Mengatur peminjaman ruangan dan alat",
@@ -47,7 +47,7 @@
       "description": "Tulang punggung acara yang memastikan semua perlengkapan fisik dan kebutuhan operasional tersedia pada waktunya."
     },
     {
-      "name": "Divisi Humas & Sponsorship",
+      "name": "Divisi Humas",
       "icon": "megaphone",
       "tupoksi": [
         "Mencari dan mengajukan proposal ke sponsor potensial",

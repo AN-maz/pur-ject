@@ -55,7 +55,7 @@ export default function OprecBph() {
           <div className="reveal-up pt-4" style={{ transitionDelay: "300ms" }}>
             <a
               href="#register"
-              className="inline-block rounded-lg bg-ec-red px-8 py-3.5 font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-red-700 hover:shadow-red-500/30"
+              className="inline-block rounded-lg bg-ec-red px-8 py-3.5 font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-red-700 hover:shadow-red-500/30 mb-12"
             >
               Apply Now
             </a>
@@ -65,7 +65,7 @@ export default function OprecBph() {
 
       <section className="bg-gray-50 py-16 md:py-24">
         <div className="mx-auto max-w-4xl px-6 md:px-12">
-          
+
           {/* Intro */}
           <div className="reveal-up mb-16 text-center md:px-10">
             <p className="text-lg leading-relaxed text-gray-600 md:text-xl">
@@ -79,7 +79,7 @@ export default function OprecBph() {
               <h2 className="text-2xl font-bold text-ec-blue md:text-3xl">Benefits of Joining BPH</h2>
               <p className="mt-2 text-gray-500">Kembangkan potensimu bersama kami.</p>
             </div>
-            
+
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {oprecData.benefits.map((benefit, index) => (
                 <div key={index} className="flex items-center gap-4 rounded-xl bg-white p-5 shadow-sm transition-all hover:shadow-md">
@@ -118,10 +118,10 @@ export default function OprecBph() {
                       </div>
                       <ChevronDown className={`h-5 w-5 text-gray-400 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
                     </button>
-                    
+
                     <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}>
                       <div className="border-t border-gray-100 bg-gray-50/50 p-6">
-                        
+
                         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                           {/* Tupoksi */}
                           <div>
@@ -166,7 +166,7 @@ export default function OprecBph() {
             </div>
             <div className="p-8 text-center md:p-10">
               <p className="mb-8 text-lg text-gray-600">
-                Jangan lewatkan kesempatan ini. Batas akhir pendaftaran:<br/>
+                Jangan lewatkan kesempatan ini. Batas akhir pendaftaran:<br />
                 <span className="mt-2 block text-xl font-bold text-ec-red">
                   {new Date(oprecData.registrationDeadline).toLocaleDateString("id-ID", {
                     day: "numeric",
@@ -175,7 +175,7 @@ export default function OprecBph() {
                   })}
                 </span>
               </p>
-              
+
               <a
                 href={oprecData.registrationLink}
                 target="_blank"

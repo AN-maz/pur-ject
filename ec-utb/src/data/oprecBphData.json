@@ -12,21 +12,6 @@
   ],
   "divisions": [
     {
-      "name": "Top Management (Presiden, Wapres, Sekjen, Bendahara)",
-      "icon": "crown",
-      "tupoksi": [
-        "Menentukan arah gerak dan visi-misi organisasi",
-        "Mengambil keputusan strategis tingkat UKM",
-        "Mengawasi kinerja seluruh divisi",
-        "Mengelola administrasi dan keuangan organisasi"
-      ],
-      "suitsYouIf": [
-        "Kamu memiliki visi yang kuat dan jiwa kepemimpinan",
-        "Kamu terbiasa berpikir strategis dan problem-solving",
-        "Kamu rapi, teliti, dan bertanggung jawab tinggi (khusus Sekjen & Bendahara)"
-      ]
-    },
-    {
       "name": "Divisi Pendidikan",
       "icon": "book",
       "tupoksi": [
@@ -54,6 +39,21 @@
         "Kamu mudah bergaul dan peka terhadap lingkungan sekitar",
         "Kamu tertarik dengan pengembangan sumber daya manusia",
         "Kamu pendengar yang baik dan bisa menengahi masalah"
+      ]
+    },
+    {
+      "name": "Divisi Kewirausahaan",
+      "icon": "megaphone",
+      "tupoksi": [
+        "Mengelola akun media sosial (Instagram, TikTok, dll)",
+        "Membangun kerjasama dengan UKM lain dan organisasi eksternal",
+        "Menjadi narahubung utama untuk pihak luar",
+        "Meningkatkan branding EC-UTB di lingkungan kampus dan luar kampus"
+      ],
+      "suitsYouIf": [
+        "Kamu up-to-date dengan tren media sosial",
+        "Kamu percaya diri dan luwes dalam berkomunikasi",
+        "Kamu suka membuat konten kreatif (copywriting, video pendek)"
       ]
     },
     {

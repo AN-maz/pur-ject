@@ -55,7 +55,7 @@ export default function VolunteerEvent() {
           <div className="reveal-up pt-4" style={{ transitionDelay: "300ms" }}>
             <a
               href="#register"
-              className="inline-block rounded-lg bg-ec-red px-8 py-3.5 font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-red-700 hover:shadow-red-500/30"
+              className="inline-block rounded-lg bg-ec-red px-8 py-3.5 font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-red-700 hover:shadow-red-500/30 mb-12"
             >
               Daftar Sekarang
             </a>
@@ -65,14 +65,14 @@ export default function VolunteerEvent() {
 
       <section className="bg-gray-50 py-16 md:py-24">
         <div className="mx-auto max-w-4xl px-6 md:px-12">
-          
+
           {/* Event Details */}
           <div className="reveal-up mb-16 rounded-2xl bg-white p-8 shadow-md">
             <h2 className="mb-4 text-2xl font-bold text-ec-blue">Tentang Acara</h2>
             <p className="mb-6 leading-relaxed text-gray-600">
               {volunteerData.description}
             </p>
-            
+
             <div className="grid grid-cols-1 gap-6 border-t border-gray-100 pt-6 sm:grid-cols-2">
               <div className="flex items-start gap-3">
                 <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-ec-blue">
@@ -110,7 +110,7 @@ export default function VolunteerEvent() {
               <h2 className="text-2xl font-bold text-ec-blue md:text-3xl">Benefits</h2>
               <p className="mt-2 text-gray-500">Apa yang akan kamu dapatkan?</p>
             </div>
-            
+
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {volunteerData.benefits.map((benefit, index) => (
                 <div key={index} className="flex items-center gap-4 rounded-xl border border-gray-100 bg-white p-5 shadow-sm transition-all hover:shadow-md">
@@ -147,11 +147,11 @@ export default function VolunteerEvent() {
                       </div>
                       <ChevronDown className={`h-5 w-5 text-gray-400 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
                     </button>
-                    
+
                     <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}>
                       <div className="border-t border-gray-100 bg-gray-50/50 p-6">
                         <p className="mb-5 text-gray-600">{div.description}</p>
-                        
+
                         <h4 className="mb-3 font-semibold text-ec-blue">Tugas Pokok & Fungsi (Tupoksi):</h4>
                         <ul className="space-y-2">
                           {div.tupoksi.map((task, i) => (
@@ -181,7 +181,7 @@ export default function VolunteerEvent() {
                 })}
               </span>
             </p>
-            
+
             <a
               href={volunteerData.registrationLink}
               target="_blank"
