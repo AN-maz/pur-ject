@@ -20,20 +20,36 @@ export default function BottomNavBar() {
     <nav className="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center py-3 px-2 bg-white z-50 rounded-t-2xl"
       style={{ boxShadow: '0 -10px 30px rgba(0, 20, 82, 0.04)' }}
     >
-      {navItems.map((item) => (
-        <Link
-          key={item.path}
-          to={item.path}
-          className={`flex flex-col items-center justify-center px-4 py-1.5 transition-all ${
-            isActive(item.path)
-              ? 'bg-primary-container text-white rounded-xl scale-95'
-              : 'text-on-surface-variant hover:bg-surface-container-low'
-          }`}
-        >
-          <span className="material-symbols-outlined">{item.icon}</span>
-          <span className="font-[var(--font-family-label)] text-xs font-medium">{item.label}</span>
-        </Link>
-      ))}
+      {navItems.map((item) => {
+        const active = isActive(item.path);
+        // Analytics route doesn't exist — render as disabled button
+        if (item.path === '/analytics') {
+          return (
+            <button
+              key={item.path}
+              className="flex flex-col items-center justify-center px-4 py-1.5 text-on-surface-variant opacity-50 cursor-not-allowed"
+              disabled
+            >
+              <span className="material-symbols-outlined">{item.icon}</span>
+              <span className="font-[var(--font-family-label)] text-xs font-medium">{item.label}</span>
+            </button>
+          );
+        }
+        return (
+          <Link
+            key={item.path}
+            to={item.path}
+            className={`flex flex-col items-center justify-center px-4 py-1.5 transition-all ${
+              active
+                ? 'bg-primary-container text-white rounded-xl scale-95'
+                : 'text-on-surface-variant hover:bg-surface-container-low'
+            }`}
+          >
+            <span className="material-symbols-outlined">{item.icon}</span>
+            <span className="font-[var(--font-family-label)] text-xs font-medium">{item.label}</span>
+          </Link>
+        );
+      })}
     </nav>
   );
 }

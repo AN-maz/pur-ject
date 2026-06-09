@@ -1,0 +1,53 @@
+/* public/css/main.css */
+
+/* Mendefinisikan Variabel Tema Global */
+:root {
+    --primary-color: #0A2240;   /* Navy */
+    --secondary-color: #A9D9EC; /* Light Blue */
+    --accent-color: #D4A342;    /* Gold */
+    --bg-color: #f4f7f6;
+    --text-color: #333;
+}
+
+/* Reset CSS & Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Komponen Global: Navbar */
+.navbar {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h2 {
+    color: var(--secondary-color);
+}
+
+/* Komponen Global: Tombol Utama */
+.btn-accent {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: filter 0.2s;
+}
+
+.btn-accent:hover {
+    filter: brightness(1.1);
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "question": "Apa arti dari bug?",
+    "options": [
+      "Server",
+      "Error program",
+      "Internet",
+      "Database"
+    ],
+    "answer": "Error program"
+  },
+  {
+    "question": "Apa arti dari deploy?",
+    "options": [
+      "Menghapus aplikasi",
+      "Meluncurkan aplikasi",
+      "Memperbaiki bug",
+      "Mengedit database"
+    ],
+    "answer": "Meluncurkan aplikasi"
+  },
+  {
+    "question": "Apa arti dari commit?",
+    "options": [
+      "Menyimpan perubahan kode",
+      "Menghapus file",
+      "Mengirim email",
+      "Menjalankan server"
+    ],
+    "answer": "Menyimpan perubahan kode"
+  }
+]

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluasi Makanan - MBG</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h2>Aplikasi MBG</h2>
+        <span>Area Sekolah</span>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="dashboard-card">
+            <h3>Konfirmasi Terima & Evaluasi Makanan</h3>
+            <p>Silakan berikan penilaian dan unggah foto bukti kedatangan makanan.</p>
+            <br>
+            
+            <form action="/submit-evaluasi" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="pesanan_id" value="1">
+                
+                <div style="margin-bottom: 1rem;">
+                    <label>Rating Rasa (1-5):</label><br>
+                    <input type="number" name="rating_rasa" min="1" max="5" required style="width: 100%; padding: 8px;">
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <label>Rating Porsi (1-5):</label><br>
+                    <input type="number" name="rating_porsi" min="1" max="5" required style="width: 100%; padding: 8px;">
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <label>Catatan/Feedback:</label><br>
+                    <textarea name="catatan_feedback" rows="3" style="width: 100%; padding: 8px;"></textarea>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <label>Unggah Foto Bukti (Wajib):</label><br>
+                    <input type="file" name="foto_bukti" accept="image/*" required style="padding: 8px;">
+                </div>
+                
+                <button type="submit" class="btn-accent">Kirim Evaluasi & Selesaikan Pesanan</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

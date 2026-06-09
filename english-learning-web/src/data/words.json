@@ -1,0 +1,17 @@
+[
+  {
+    "word": "Deploy",
+    "meaning": "Meluncurkan aplikasi",
+    "example": "I deployed my React app yesterday."
+  },
+  {
+    "word": "Bug",
+    "meaning": "Kesalahan pada program",
+    "example": "I found a bug in my code."
+  },
+  {
+    "word": "Commit",
+    "meaning": "Menyimpan perubahan kode",
+    "example": "Don't forget to commit your code."
+  }
+]

@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 export default function ActiveLexiconTable({ words }) {
   if (!words || words.length === 0) return null;
@@ -30,24 +30,26 @@ export default function ActiveLexiconTable({ words }) {
           </thead>
           <tbody className="divide-y divide-outline-variant/10">
             {words.map((word) => {
-              const retention = word.mastered ? 100 : Math.floor(Math.random() * 80) + 10; // Placeholder retention logic
+              const isMastered = word.status === 'mastered';
+              // Deterministic retention based on frequency (avoid Math.random re-render flicker)
+              const retention = isMastered ? 100 : Math.min(90, Math.max(10, 100 - (word.frequency || 50)));
               return (
                 <tr key={word.id} className="hover:bg-surface-container-low transition-colors group">
                   <td className="px-8 py-5">
-                    <span className="font-headline font-bold text-primary-container text-lg capitalize">{word.term}</span>
+                    <span className="font-headline font-bold text-primary-container text-lg capitalize">{word.word}</span>
                   </td>
                   <td className="px-8 py-5">
                     <span className="px-2.5 py-1 bg-surface-container-high rounded text-[10px] font-bold text-on-surface-variant uppercase">{word.type || 'term'}</span>
                   </td>
                   <td className="px-8 py-5">
-                    <p className="text-sm text-on-surface max-w-xs truncate">{word.definition}</p>
+                    <p className="text-sm text-on-surface max-w-xs truncate">{word.meaning}</p>
                   </td>
                   <td className="px-8 py-5">
                     <div className="flex items-center gap-3">
                       <div className="w-16 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
-                        <div className={`h-full ${word.mastered ? 'bg-on-primary-container' : 'bg-secondary'}`} style={{ width: `${retention}%` }}></div>
+                        <div className={`h-full ${isMastered ? 'bg-on-primary-container' : 'bg-secondary'}`} style={{ width: `${retention}%` }}></div>
                       </div>
-                      <span className={`text-[10px] font-bold ${word.mastered ? 'text-on-surface-variant' : 'text-secondary'}`}>{retention}%</span>
+                      <span className={`text-[10px] font-bold ${isMastered ? 'text-on-surface-variant' : 'text-secondary'}`}>{retention}%</span>
                     </div>
                   </td>
                   <td className="px-8 py-5">

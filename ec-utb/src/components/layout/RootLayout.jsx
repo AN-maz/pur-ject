@@ -9,11 +9,8 @@ export default function RootLayout() {
   const location = useLocation()
   const prevPathRef = useRef(location.pathname)
 
-  // Run reveal-on-scroll observer
   useRevealOnScroll()
 
-  // Scroll-to-top on route change
-  // Exception: returning from /news/:slug to /news → restore scroll position
   useEffect(() => {
     const prevPath = prevPathRef.current
     const currPath = location.pathname
@@ -22,7 +19,6 @@ export default function RootLayout() {
       currPath === "/news" && prevPath.startsWith("/news/") && prevPath !== "/news"
 
     if (isReturningToNewsList) {
-      // Restore saved scroll position from sessionStorage
       const savedScroll = sessionStorage.getItem("news-list-scroll")
       if (savedScroll) {
         setTimeout(() => {
@@ -30,16 +26,13 @@ export default function RootLayout() {
         }, 50)
       }
     } else {
-      // Scroll to top for all other navigation
       window.scrollTo(0, 0)
     }
 
     prevPathRef.current = currPath
   }, [location.pathname])
 
-  // Re-trigger reveal animations on route change
   useEffect(() => {
-    // Small delay to ensure DOM is ready after route change
     const timer = setTimeout(() => {
       const elements = document.querySelectorAll(".reveal-up:not(.active)")
       const observer = new IntersectionObserver(

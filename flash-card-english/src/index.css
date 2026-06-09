@@ -116,9 +116,11 @@ body {
   .bento-grid {
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
+
   .bento-col-8 {
     grid-column: 1 / 9;
   }
+
   .bento-col-4 {
     grid-column: 9 / 13;
   }

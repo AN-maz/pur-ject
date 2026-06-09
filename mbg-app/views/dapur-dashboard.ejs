@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Dapur - MBG</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <h2>Dashboard Dapur MBG</h2>
+        <span>Area Produksi</span>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="dashboard-card" style="border-top-color: var(--accent-color);">
+            <h3>Target Masak Hari Ini</h3>
+            <% if (rekapPorsi) { %>
+                <p>Menu: <strong>
+                        <%= rekapPorsi.nama_menu %>
+                    </strong></p>
+                <h1 style="font-size: 3rem; color: var(--primary-color);">
+                    <%= rekapPorsi.total_porsi_dibutuhkan %> Porsi
+                </h1>
+                <% } else { %>
+                    <p>Belum ada data pesanan masuk hari ini.</p>
+                    <% } %>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Daftar Pengiriman ke Sekolah</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sekolah</th>
+                        <th>Jumlah Porsi</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% daftarPesanan.forEach(pesanan=> { %>
+                        <tr>
+                            <td>
+                                <%= pesanan.nama_sekolah %>
+                            </td>
+                            <td>
+                                <%= pesanan.jumlah_siswa_hadir %>
+                            </td>
+                            <td><strong>
+                                    <%= pesanan.status %>
+                                </strong></td>
+                            <td>
+                                <% if (pesanan.status==='Pending' ) { %>
+                                    <form action="/dapur/update-status" method="POST" style="margin: 0;">
+                                        <input type="hidden" name="pesanan_id" value="<%= pesanan.pesanan_id %>">
+                                        <button type="submit" class="btn-accent"
+                                            style="padding: 5px 10px; font-size: 0.8rem;">Kirim Sekarang</button>
+                                    </form>
+                                    <% } else { %>
+                                        <span style="color: green;">Sudah Berangkat</span>
+                                        <% } %>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

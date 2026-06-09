@@ -11,35 +11,7 @@ export function useStats() {
     streak: 0
   });
 
-  const loadStats = useCallback(async () => {
-    const total = await db.words.count();
-    const mastered = await db.words.where('status').equals('mastered').count();
-    const learning = total - mastered;
-    const percentage = total > 0 ? Math.round((mastered / total) * 100) : 0;
-
-    // Today's stats
-    const today = new Date().toISOString().split('T')[0];
-    const todayRecord = await db.dailyStats.get(today);
-    const todayLearned = todayRecord?.wordsLearned || 0;
-
-    // Streak calculation
-    const streak = await calculateStreak();
-
-    setStats({
-      totalWords: total,
-      masteredWords: mastered,
-      learningWords: learning,
-      masteryPercentage: percentage,
-      todayLearned,
-      streak
-    });
-  }, []);
-
-  useEffect(() => {
-    loadStats();
-  }, [loadStats]);
-
-  const calculateStreak = async () => {
+  const calculateStreak = useCallback(async () => {
     const allStats = await db.dailyStats.toArray();
     if (allStats.length === 0) return 0;
 
@@ -71,7 +43,36 @@ export function useStats() {
     }
 
     return streak;
-  };
+  }, []);
+
+  const loadStats = useCallback(async () => {
+    const total = await db.words.count();
+    const mastered = await db.words.where('status').equals('mastered').count();
+    const learning = total - mastered;
+    const percentage = total > 0 ? Math.round((mastered / total) * 100) : 0;
+
+    // Today's stats
+    const today = new Date().toISOString().split('T')[0];
+    const todayRecord = await db.dailyStats.get(today);
+    const todayLearned = todayRecord?.wordsLearned || 0;
+
+    // Streak calculation
+    const streak = await calculateStreak();
+
+    setStats({
+      totalWords: total,
+      masteredWords: mastered,
+      learningWords: learning,
+      masteryPercentage: percentage,
+      todayLearned,
+      streak
+    });
+  }, [calculateStreak]);
+
+  useEffect(() => {
+    loadStats();
+  }, [loadStats]);
+
 
   const recordWordLearned = useCallback(async (count = 1) => {
     const today = new Date().toISOString().split('T')[0];

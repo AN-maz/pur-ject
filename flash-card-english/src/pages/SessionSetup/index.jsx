@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useWords } from '../../hooks/useWords';
-import DoughnutChart from '../../components/dashboard/DoughnutChart';
 
 export default function SessionSetup() {
   const [wordCount, setWordCount] = useState(20);
@@ -21,14 +20,14 @@ export default function SessionSetup() {
   const isQuiz = mode === 'quiz';
 
   return (
-    <div className="space-y-8">
+    <div className="min-w-0">
       {/* Page Header */}
-      <div className="mb-12">
+      <div className="mb-8 md:mb-12">
         <p className="text-secondary font-headline font-bold text-sm tracking-widest uppercase mb-2">Curriculum Setup</p>
-        <h2 className="text-4xl md:text-5xl font-headline font-extrabold text-on-primary-fixed leading-tight">Define Your Learning Flow</h2>
+        <h2 className="text-3xl md:text-5xl font-headline font-extrabold text-on-primary-fixed leading-tight">Define Your Learning Flow</h2>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start min-w-0">
         {/* Left Column: Selection Cards */}
         <div className="lg:col-span-8 space-y-12">
           
@@ -136,7 +135,7 @@ export default function SessionSetup() {
         </div>
 
         {/* Right Column: Sticky Preview Panel */}
-        <div className="lg:col-span-4 sticky top-24">
+        <div className="lg:col-span-4 lg:sticky lg:top-4 min-w-0">
           <div className="bg-primary-container text-white rounded-2xl overflow-hidden shadow-2xl shadow-primary-container/30">
             <div className="p-8">
               <h3 className="text-2xl font-[var(--font-family-headline)] font-extrabold mb-8 flex items-center gap-3">

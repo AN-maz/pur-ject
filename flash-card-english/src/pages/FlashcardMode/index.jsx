@@ -48,7 +48,8 @@ export default function FlashcardMode() {
         state: sessionStats
       });
     }
-  }, [isSessionComplete, navigate, sessionStats]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSessionComplete, navigate]);
 
   const handleCorrect = async () => {
     setIsFlipped(false);

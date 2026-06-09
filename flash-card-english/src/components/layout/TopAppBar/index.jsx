@@ -39,7 +39,7 @@ export default function TopAppBar({ title, showBack = false }) {
       </div>
 
       {/* Desktop left side: Title + Level badge */}
-      <div className="hidden md:flex items-center gap-4">
+      <div className="hidden md:flex items-center gap-4 min-w-0 overflow-hidden">
         <h1 className="font-headline font-extrabold text-xl text-primary-container">
           {pageTitle}
         </h1>
@@ -49,7 +49,7 @@ export default function TopAppBar({ title, showBack = false }) {
       </div>
 
       {/* Right side controls */}
-      <div className="flex items-center gap-4 md:gap-6">
+      <div className="flex items-center gap-4 md:gap-6 flex-shrink-0">
         {/* Desktop-only notifications */}
         <div className="hidden md:block relative group">
           <span className="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary-container">notifications</span>
@@ -64,9 +64,9 @@ export default function TopAppBar({ title, showBack = false }) {
         </div>
 
         {/* Global Streak indicator */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-2 flex-shrink-0">
           <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>local_fire_department</span>
-          <span className="font-headline font-extrabold text-lg">{stats.streak} Day Streak</span>
+          <span className="font-headline font-extrabold text-base lg:text-lg whitespace-nowrap">{stats.streak} Day Streak</span>
         </div>
       </div>
     </header>

@@ -12,13 +12,13 @@ export default function AppLayout() {
       {/* Desktop Sidebar - Full-height fixed-width, matching Stitch */}
       {!isSession && <DesktopSidebar />}
       
-      {/* Main Content Area */}
-      <main className="flex-1 flex flex-col min-w-0 bg-background h-screen overflow-y-auto">
+      {/* Main Content Area — flex-1 + min-w-0 prevents sidebar+main overflow */}
+      <main className="flex-1 flex flex-col min-w-0 bg-background h-screen overflow-y-auto overflow-x-hidden">
         {/* Header - sticky inside main, matching Stitch */}
         <TopAppBar />
         
-        {/* Dashboard Canvas - scrollable, min-w-0 to prevent flex overflow */}
-        <div className="p-4 md:p-8 space-y-8 min-w-0">
+        {/* Dashboard Canvas - scrollable content */}
+        <div className="flex-1 p-4 md:p-8 space-y-8 min-w-0 overflow-x-hidden">
           <div className="pb-24 md:pb-8 min-w-0">
             <Outlet />
           </div>

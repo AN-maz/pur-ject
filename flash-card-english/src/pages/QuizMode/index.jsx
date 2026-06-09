@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useSession } from '../../hooks/useSession';
 import { generateDistractors } from '../../utils/smartDistractors';
-import DoughnutChart from '../../components/dashboard/DoughnutChart';
 
 export default function QuizMode() {
   const [searchParams] = useSearchParams();
@@ -44,7 +43,8 @@ export default function QuizMode() {
     if (isSessionComplete) {
       navigate('/session/complete', { state: sessionStats });
     }
-  }, [isSessionComplete, navigate, sessionStats]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSessionComplete, navigate]);
 
   const handleConfirm = useCallback(async () => {
     if (selectedOption === null) return;

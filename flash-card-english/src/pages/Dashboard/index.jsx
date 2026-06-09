@@ -45,7 +45,7 @@ export default function Dashboard() {
               <span className="px-4 py-2 bg-primary-container text-white rounded-full text-xs font-bold cursor-pointer">Monthly</span>
             </div>
           </div>
-          
+
           <div className="flex-1 flex items-end gap-3 h-48 mt-4">
             <div className="flex-1 bg-surface-container-high rounded-t-xl relative group transition-all duration-300 hover:bg-on-primary-container/20 h-[40%]"></div>
             <div className="flex-1 bg-surface-container-high rounded-t-xl relative group transition-all duration-300 hover:bg-on-primary-container/20 h-[65%]"></div>
@@ -59,7 +59,7 @@ export default function Dashboard() {
             <div className="flex-1 bg-surface-container-high rounded-t-xl relative group transition-all duration-300 hover:bg-on-primary-container/20 h-[70%]"></div>
             <div className="flex-1 bg-surface-container-high rounded-t-xl relative group transition-all duration-300 hover:bg-on-primary-container/20 h-[60%]"></div>
           </div>
-          
+
           <div className="flex justify-between border-t border-outline-variant/15 pt-4 text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">
             <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
           </div>
@@ -73,15 +73,15 @@ export default function Dashboard() {
           <div className="relative w-32 h-32 lg:w-44 lg:h-44 flex items-center justify-center">
             <svg className="w-full h-full -rotate-90" viewBox="0 0 176 176">
               <circle className="text-white/10" cx="88" cy="88" fill="transparent" r="70" stroke="currentColor" strokeWidth="12"></circle>
-              <circle 
-                className="text-secondary transition-all duration-1000" 
-                cx="88" cy="88" 
-                fill="transparent" 
-                r="70" 
-                stroke="currentColor" 
-                strokeDasharray="440" 
-                strokeDashoffset={440 - (440 * Math.min(1, stats.todayLearned / 60))} 
-                strokeLinecap="round" 
+              <circle
+                className="text-secondary transition-all duration-1000"
+                cx="88" cy="88"
+                fill="transparent"
+                r="70"
+                stroke="currentColor"
+                strokeDasharray="440"
+                strokeDashoffset={440 - (440 * Math.min(1, stats.todayLearned / 60))}
+                strokeLinecap="round"
                 strokeWidth="12"
               ></circle>
             </svg>
@@ -144,7 +144,7 @@ export default function Dashboard() {
 
       {/* Floating Action Button - matching Stitch */}
       {words.length > 0 && (
-        <button 
+        <button
           onClick={() => setShowImport(true)}
           className="fixed bottom-24 right-6 md:bottom-10 md:right-10 w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-primary-container to-on-primary-fixed-variant text-white rounded-full shadow-2xl flex items-center justify-center group hover:scale-110 transition-transform active:scale-95 z-50">
           <span className="material-symbols-outlined text-2xl md:text-3xl group-hover:rotate-90 transition-transform duration-300">add</span>

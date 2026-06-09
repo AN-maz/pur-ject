@@ -1,0 +1,436 @@
+[
+  {
+    "id": 1,
+    "tag": "[ Presentasi Konsep SOFTWARE ]",
+    "image": "/images/1.jpg",
+    "description": "Konsep Language App by Teh Azlia.",
+    "category": "STAGE 1"
+  },
+  {
+    "id": 111,
+    "tag": "[ Presentasi Konsep SOFTWARE ]",
+    "image": "/images/1_1.webp",
+    "description": "Konsepnya yang belum berkonsep tapi akan terkonsep by Kang Khansa.",
+    "category": "STAGE 1"
+  },
+  {
+    "id": 112,
+    "tag": "[ Presentasi Konsep SOFTWARE ]",
+    "image": "/images/1_2.webp",
+    "description": "terkonsep aplikasi muslim pro biar makin pro menjadi muslim by Kang Futhin.",
+    "category": "STAGE 1"
+  },
+  {
+    "id": 113,
+    "tag": "[ Presentasi Konsep SOFTWARE ]",
+    "image": "/images/1_3.webp",
+    "description": "Konsepnya by King Rahman yg cuma king yg tau.",
+    "category": "STAGE 1"
+  },
+  {
+    "id": 114,
+    "tag": "[ Presentasi Konsep SOFTWARE ]",
+    "image": "/images/1_4.webp",
+    "description": "Konsepnya ingin menggempar negeri by Kang Raditya.",
+    "category": "STAGE 1"
+  },
+  {
+    "id": 115,
+    "tag": "[ Presentasi Konsep SOFTWARE ]",
+    "image": "/images/1_5.webp",
+    "description": "Terkonsep aplikasi 134. apa tu? yg ga ada 2 nya by Kang Naufal.",
+    "category": "STAGE 1"
+  },
+  {
+    "id": 116,
+    "tag": "[ Malam berirama ]",
+    "image": "/images/1_6.webp",
+    "description": "Malam yang penuh irama dari kita semua",
+    "category": "STAGE 1"
+  },
+  {
+    "id": 2,
+    "tag": "[ Presentasi Konsep SOFTWARE ]",
+    "image": "/images/2.jpg",
+    "description": "Mengembangan aplikasi untuk komunitas yg tanpa batas by Kang Hafiz",
+    "category": "STAGE 1"
+  },
+  {
+    "id": 3,
+    "tag": "[ Kaang 24 - 25 ]",
+    "image": "/images/3.jpg",
+    "description": "Bersama Kang Ahmad dan Kang Ridwan",
+    "category": "STAGE 1"
+  },
+  {
+    "id": 4,
+    "tag": "[ Berbestie ]",
+    "image": "/images/4.jpg",
+    "description": "Sakinahnya atmin Humas dan atmin pididi.",
+    "category": "STAGE 2"
+  },
+  {
+    "id": 5,
+    "tag": "[ Pria Sigma ]",
+    "image": "/images/5.jpg",
+    "description": "Diam mereka adalah jawaban.",
+    "category": "STAGE 2"
+  },
+  {
+    "id": 6,
+    "tag": "[ Hangout bentar ]",
+    "image": "/images/6.webp",
+    "description": "Santai DLU ga sie di Day 1",
+    "category": "STAGE 2"
+  },
+  {
+    "id": 7,
+    "tag": "[ Presentasi Konsep HARDWARE ]",
+    "image": "/images/7.webp",
+    "description": "Mau bikin robot mungkin?",
+    "category": "BOSS STAGE"
+  },
+  {
+    "id": 8,
+    "tag": "[ Presentasi Konsep GAME ]",
+    "image": "/images/8.webp",
+    "description": "Lagi mode kompe siap bantai divisi lain",
+    "category": "BOSS STAGE"
+  },
+  {
+    "id": 10,
+    "tag": "[ Curi pandang ]",
+    "image": "/images/10.webp",
+    "description": "Momen langka yang berhasil ter-capture kamera. Epic moment!",
+    "category": "BONUS LEVEL"
+  },
+  {
+    "id": 11,
+    "tag": "[ No 2? ]",
+    "image": "/images/11.webp",
+    "description": "Dapur MBG tutup biarkan mereka memasak",
+    "category": "BONUS LEVEL"
+  },
+  {
+    "id": 12,
+    "tag": "[ Dapat Kawan baru ]",
+    "image": "/images/12.webp",
+    "description": "ga perlu banyak gaya karena kami gayanya itu sendiri",
+    "category": "BONUS LEVEL"
+  },
+  {
+    "id": 13,
+    "tag": "[ Ladies 25 dan 24 ]",
+    "image": "/images/13.webp",
+    "description": "satu titik dua koma, parasnya cantik tuk mereka semua",
+    "category": "STAGE 1"
+  },
+  {
+    "id": 14,
+    "tag": "[ Ladies 25 dan 24 ]",
+    "image": "/images/14.webp",
+    "description": "buah mangga buah kedondong, lagi sibuk ga? mau kenalan dong..",
+    "category": "ACHIEVEMENT"
+  },
+  {
+    "id": 15,
+    "tag": "[ Ladies 25 dan 24 (part 3) ]",
+    "image": "/images/15.webp",
+    "description": "Main gitar petik senar, kulihat ada yg bersinar",
+    "category": "ACHIEVEMENT"
+  },
+  {
+    "id": 16,
+    "tag": "[ Sekre Anomali ]",
+    "image": "/images/16.webp",
+    "description": "Kerjanya serius, kelakukan misterius.",
+    "category": "STAGE 1"
+  },
+  {
+    "id": 18,
+    "tag": "[ Hangout Malam ]",
+    "image": "/images/18.webp",
+    "description": "Memantau kamera",
+    "category": "STAGE 2"
+  },
+  {
+    "id": 19,
+    "tag": "[ Mode Malam ]",
+    "image": "/images/19.webp",
+    "description": "ASlinya cape seharian Kerja da itu.",
+    "category": "BOSS STAGE"
+  },
+  {
+    "id": 20,
+    "tag": "[ Diskusi GAMES ]",
+    "image": "/images/20.webp",
+    "description": "Merencanakan untuk KOMPE",
+    "category": "BONUS LEVEL"
+  },
+  {
+    "id": 21,
+    "tag": "[ GAMES Malam ]",
+    "image": "/images/21.webp",
+    "description": "yang penting jawab bukan jawab yang penting",
+    "category": "BONUS LEVEL"
+  },
+  {
+    "id": 22,
+    "tag": "[ GAMES Malam ]",
+    "image": "/images/22.webp",
+    "description": "Dalam menang kita kalah dalam kalah kita menang",
+    "category": "STAGE 2"
+  },
+  {
+    "id": 23,
+    "tag": "[ GAMES Malam ]",
+    "image": "/images/23.webp",
+    "description": "Baleg mwal? mwal baleg",
+    "category": "STAGE 2"
+  },
+  {
+    "id": 24,
+    "tag": "[ GAMES Malam ]",
+    "image": "/images/24.webp",
+    "description": "Menunjuk jawaban yang bukan kamu jawabannya",
+    "category": "STAGE 2"
+  },
+  {
+    "id": 25,
+    "tag": "[ GAMES Malam ]",
+    "image": "/images/25.webp",
+    "description": "Semangat Atmin yang membara",
+    "category": "ACHIEVEMENT"
+  },
+  {
+    "id": 26,
+    "tag": "[ GAMES Malam ]",
+    "image": "/images/26.webp",
+    "description": "Memantau PIC dan MC yg tidak kompetitif.",
+    "category": "STAGE 1"
+  },
+  {
+    "id": 27,
+    "tag": "[ Selebrasi ]",
+    "image": "/images/27.webp",
+    "description": "Menang kalah itu realita, foto bersama kebutuhan kita",
+    "category": "STAGE 2"
+  },
+  {
+    "id": 28,
+    "tag": "[ GAMES Malam ]",
+    "image": "/images/28.webp",
+    "description": "Persiapan membantai team lain",
+    "category": "STAGE 2"
+  },
+  {
+    "id": 29,
+    "tag": "[ Ladies Team ]",
+    "image": "/images/29.webp",
+    "description": "HEII! Ladies first untuk menang.",
+    "category": "ACHIEVEMENT"
+  },
+  {
+    "id": 30,
+    "tag": "[ Senam Pagi ]",
+    "image": "/images/30.webp",
+    "description": "Atmin yang memandu, aku yang malu :).",
+    "category": "BOSS STAGE"
+  },
+  {
+    "id": 31,
+    "tag": "[ Formasi bersama Atmin ]",
+    "image": "/images/31.webp",
+    "description": "Memantau yang bukan non atmin.",
+    "category": "BOSS STAGE"
+  },
+  {
+    "id": 32,
+    "tag": "[ Di Sidak Pudidi ]",
+    "image": "/images/32.webp",
+    "description": "atmin pudidi mau masuk.",
+    "category": "STAGE 1"
+  },
+  {
+    "id": 33,
+    "tag": "[FARminGG AURA ]",
+    "image": "/images/33.webp",
+    "description": "Beraura tidak perlu bersuara.",
+    "category": "STAGE 2"
+  },
+  {
+    "id": 34,
+    "tag": "[ Rising Sun ]",
+    "image": "/images/34.webp",
+    "description": "Di pagi yang cerah dengan mereka yang ... (ga tau dah developernya bingung mau kasih caption apa).",
+    "category": "STAGE 1"
+  },
+  {
+    "id": 35,
+    "tag": "[ JUARA ]",
+    "image": "/images/35.webp",
+    "description": "yang menang selebrasi yang kalah klarifikasi",
+    "category": "ACHIEVEMENT"
+  },
+  {
+    "id": 36,
+    "tag": "[ Juara ]",
+    "image": "/images/36.webp",
+    "description": "yang menang foto boleh lebih 1x.",
+    "category": "ACHIEVEMENT"
+  },
+  {
+    "id": 37,
+    "tag": "[ Juara ]",
+    "image": "/images/37.webp",
+    "description": "yang kalah jangan sedih karena liat kami juara juga hadiah kalian",
+    "category": "ACHIEVEMENT"
+  },
+  {
+    "id": 38,
+    "tag": "[ Juara ]",
+    "image": "/images/38.webp",
+    "description": "main layangan tarik benang, izin... kami yg menang.",
+    "category": "ACHIEVEMENT"
+  },
+  {
+    "id": 39,
+    "tag": "[ Juara ]",
+    "image": "/images/39.webp",
+    "description": "Ini mah panitianya mau hadiah (minus 5 dari Developer).",
+    "category": "ACHIEVEMENT"
+  },
+  {
+    "id": 40,
+    "tag": "[ Juara ]",
+    "image": "/images/40.webp",
+    "description": "Mengendong KETUM dan KETUPLAK.",
+    "category": "ACHIEVEMENT"
+  },
+  {
+    "id": 41,
+    "tag": "[ Juara ]",
+    "image": "/images/41.webp",
+    "description": "Team SOLID SOLID SOLID.",
+    "category": "ACHIEVEMENT"
+  },
+  {
+    "id": 42,
+    "tag": "[ Pilkaang 25 ]",
+    "image": "/images/42.webp",
+    "description": "Tebak isi hati mereka.",
+    "category": "BOSS STAGE"
+  },
+  {
+    "id": 43,
+    "tag": "[ Voting kaang 25 ]",
+    "image": "/images/43.webp",
+    "description": "Sedang menentukan yang lagi ditentukan.",
+    "category": "BOSS STAGE"
+  },
+  {
+    "id": 44,
+    "tag": "[ Hasil kaang 25 ]",
+    "image": "/images/44.webp",
+    "description": "saling support satu sama lain, ga saling sikut semua saling ikut.",
+    "category": "ACHIEVEMENT"
+  },
+  {
+    "id": 45,
+    "tag": "[ Seremonial kaang 25 ]",
+    "image": "/images/45.webp",
+    "description": "SELAMAT kang Ridwan jadi kaang 25.",
+    "category": "BOSS STAGE"
+  },
+  {
+    "id": 46,
+    "tag": "[ Dilebur di bendera OXIGEN ]",
+    "image": "/images/46.webp",
+    "description": "Kebanggaan yang terbakar dalam bendera OXIGEN.",
+    "category": "ACHIEVEMENT"
+  },
+  {
+    "id": 47,
+    "tag": "[ Forever Memory ]",
+    "image": "/images/47.webp",
+    "description": "Momen 2 hari 1 malam.",
+    "category": "BONUS LEVEL"
+  },
+  {
+    "id": 48,
+    "tag": "[ Pembentukan konsep Divisi GAME ]",
+    "image": "/images/48.webp",
+    "description": "Bab baru dimulai dengan semangat penuh harapan.",
+    "category": "STAGE 1"
+  },
+  {
+    "id": 49,
+    "tag": "[ Lirik kamera ]",
+    "image": "/images/49.webp",
+    "description": "atmin pididi kayanya lagi terpesona.",
+    "category": "STAGE 1"
+  },
+  {
+    "id": 50,
+    "tag": "[ Brainstorming HARDWARE ]",
+    "image": "/images/50.webp",
+    "description": "ditutorin teh Salsa :).",
+    "category": "STAGE 1"
+  },
+  {
+    "id": 51,
+    "tag": "[ Diparani Atmin Software ]",
+    "image": "/images/51.webp",
+    "description": "bingung sama atmin software keknya mereka.",
+    "category": "STAGE 1"
+  },
+  {
+    "id": 52,
+    "tag": "[ Tim dibalik layar ]",
+    "image": "/images/52.webp",
+    "description": "terkadang perlu ada banyak untuk bisa melengkapi cahaya.",
+    "category": "STAGE 1"
+  },
+  {
+    "id": 53,
+    "tag": "[ OXIGEN x RuangBelajar ]",
+    "image": "/images/53.webp",
+    "description": "Kolaborasi dengan komunitas RuangBelajar di supergame1 x makrab dengan tema JOSJIS.",
+    "category": "STAGE 1"
+  },
+  {
+    "id": 54,
+    "tag": "[ Santai DLU kawan ]",
+    "image": "/images/54.jpg",
+    "description": "Mau farming Auraa.",
+    "category": "STAGE 2"
+  },
+  {
+    "id": 55,
+    "tag": "[ Kawan santai DLU ]",
+    "image": "/images/55.jpg",
+    "description": "Memantau team lain.",
+    "category": "STAGE 2"
+  },
+  {
+    "id": 56,
+    "tag": "[ King Futhin ]",
+    "image": "/images/56.jpg",
+    "description": "biarkan aku tersenyum karena senyum adalah ibadah.",
+    "category": "STAGE 2"
+  },
+  {
+    "id": 57,
+    "tag": "[ Sinar di malam hari ]",
+    "image": "/images/57.jpg",
+    "description": "Kami (sinar) yang menyinari malam.",
+    "category": "STAGE 2"
+  },
+  {
+    "id": 58,
+    "tag": "[ Si atmin Software  ]",
+    "image": "/images/58.jpg",
+    "description": "Hati hati Kang Purwa antek-antek software guys",
+    "category": "STAGE 1"
+  }
+]

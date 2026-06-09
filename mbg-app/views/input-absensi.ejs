@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Absensi - MBG</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h2>Aplikasi MBG</h2>
+        <span>Kembali ke <a href="/" style="color: var(--accent-color);">Dashboard</a></span>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="dashboard-card">
+            <h3>Input Kehadiran Siswa Hari Ini</h3>
+            <p>Masukkan jumlah siswa yang hadir agar porsi makanan disesuaikan.</p>
+            <br>
+            
+            <form action="/submit-absensi" method="POST">
+                <input type="hidden" name="sekolah_id" value="1">
+                <input type="hidden" name="menu_id" value="1">
+                
+                <div style="margin-bottom: 1rem;">
+                    <label for="jumlah_hadir" style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Jumlah Siswa Hadir:</label>
+                    <input type="number" id="jumlah_hadir" name="jumlah_hadir" min="1" required 
+                           style="padding: 8px; width: 100%; max-width: 300px; border: 1px solid #ccc; border-radius: 4px;">
+                </div>
+                
+                <button type="submit" class="btn-accent">Kirim Data Pesanan</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

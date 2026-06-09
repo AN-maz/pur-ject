@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { useWords } from './useWords';
 import { useStats } from './useStats';
 import { buildQueue, insertAtRandomPosition } from '../utils/sessionQueue';
@@ -72,20 +72,20 @@ export function useSession({ wordCount = 20, mode = 'flashcard' }) {
     setIncorrectCount(prev => prev + 1);
   }, [queue]);
 
-  const elapsedTime = () => {
+  const getElapsedTime = useCallback(() => {
     return Math.round((Date.now() - startTimeRef.current) / 1000);
-  };
+  }, []);
 
-  const sessionStats = {
+  const sessionStats = useMemo(() => ({
     totalWords,
     completedCount,
     incorrectCount,
     accuracy: completedCount + incorrectCount > 0
       ? Math.round((completedCount / (completedCount + incorrectCount)) * 100)
       : 0,
-    duration: elapsedTime(),
+    get duration() { return Math.round((Date.now() - startTimeRef.current) / 1000); },
     mode,
-  };
+  }), [totalWords, completedCount, incorrectCount, mode]);
 
   return {
     currentWord,
