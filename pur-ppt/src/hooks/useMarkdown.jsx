@@ -13,7 +13,6 @@ export function useMarkdown(filePath) {
         return res.text();
       })
       .then((text) => {
-        // Regex untuk memisah string berdasarkan '---' yang berdiri sendiri di satu baris
         const splitSlides = text.split(/\n---\s*\n/);
         setSlides(splitSlides.map(slide => slide.trim()));
         setLoading(false);

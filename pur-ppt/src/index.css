@@ -2,13 +2,24 @@
 
 @theme {
   /* Tema Warna Divisi Software */
-  --color-software-bright: #39FF5A;
-  --color-software-tosca: #20C997;
+  --color-software-bright: #39ff5a;
+  --color-software-tosca: #20c997;
   --color-software-teal: #008080;
 }
 
 @layer base {
   body {
     @apply bg-neutral-950 text-white antialiased;
+  }
+}
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background-color: transparent;
   }
 }
