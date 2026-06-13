@@ -1,0 +1,191 @@
+{
+    "profile": {
+        "name": "Andrian Maulana Dzikwan",
+        "subtitles": {
+            "id": "Mahasiswa Teknik Informatika & Full-stack Web Developer",
+            "en": "Informatics Engineering Student & Full-stack Web Developer"
+        },
+        "bio": {
+            "id": "Saya adalah seorang mahasiswa Teknik Informatika yang berfokus pada pengembangan web full-stack dan aplikasi mobile. Aktif dalam organisasi teknologi dan suka membangun solusi digital yang efisien.",
+            "en": "I am an Informatics Engineering student focusing on full-stack web development and mobile applications. Active in technology organizations and passionate about building efficient digital solutions."
+        }
+    },
+    "skills": [
+        "React",
+        "Node.js",
+        "MySQL",
+        "Tailwind CSS",
+        "Kotlin",
+        "Android Studio"
+    ],
+    "projects": [
+        {
+            "id": 1,
+            "title": "Learning Management System (LMS)",
+            "status": "ongoing",
+            "tech": [
+                "React",
+                "Node.js",
+                "MySQL",
+                "Tailwind CSS"
+            ],
+            "github": "https://github.com/username/lms-project",
+            "images": [
+                "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600",
+                "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=600"
+            ],
+            "description": {
+                "id": "Sistem manajemen pembelajaran berbasis web dengan RESTful API native SQL untuk pelatihan divisi software.",
+                "en": "Web-based learning management system using native SQL RESTful APIs for software training."
+            }
+        },
+        {
+            "id": 2,
+            "title": "MB-GO (Makan Bergizi Gratis)",
+            "status": "completed",
+            "tech": [
+                "Kotlin",
+                "Android Studio",
+                "Retrofit"
+            ],
+            "github": "https://github.com/username/mb-go",
+            "images": [
+                "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600",
+                "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600"
+            ],
+            "description": {
+                "id": "Aplikasi Android integrasi pelacakan pengiriman makanan dan pengelolaan ID dapur.",
+                "en": "Android application integrating food delivery tracking and kitchen ID management."
+            }
+        },
+        {
+            "id": 3,
+            "title": "Learning Management System (LMasdS)",
+            "status": "ongoing",
+            "tech": [
+                "React",
+                "Node.js",
+                "MySQL",
+                "Tailwind CSS"
+            ],
+            "github": "https://github.com/username/lms-project",
+            "images": [
+                "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600",
+                "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=600"
+            ],
+            "description": {
+                "id": "Sistem manajemen pembelajaran berbasis web dengan RESTful API native SQL untuk pelatihan divisi software.",
+                "en": "Web-based learning management system using native SQL RESTful APIs for software training."
+            }
+        },
+        {
+            "id": 4,
+            "title": "Learning Management System (LMSSS)",
+            "status": "ongoing",
+            "tech": [
+                "React",
+                "Node.js",
+                "MySQL",
+                "Tailwind CSS"
+            ],
+            "github": "https://github.com/username/lms-project",
+            "images": [
+                "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600",
+                "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=600"
+            ],
+            "description": {
+                "id": "Sistem manajemen pembelajaran berbasis web dengan RESTful API native SQL untuk pelatihan divisi software.",
+                "en": "Web-based learning management system using native SQL RESTful APIs for software training."
+            }
+        },
+        {
+            "id": 5,
+            "title": "Learning Management System (LMSSS)",
+            "status": "ongoing",
+            "tech": [
+                "React",
+                "Node.js",
+                "MySQL",
+                "Tailwind CSS"
+            ],
+            "github": "https://github.com/username/lms-project",
+            "images": [
+                "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600",
+                "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=600"
+            ],
+            "description": {
+                "id": "Sistem manajemen pembelajaran berbasis web dengan RESTful API native SQL untuk pelatihan divisi software.",
+                "en": "Web-based learning management system using native SQL RESTful APIs for software training."
+            }
+        }
+    ],
+    "experiences": {
+        "organization": [
+            {
+                "id": 1,
+                "role": "Kepala Divisi Software",
+                "roleEn": "Head of Software Division",
+                "company": "UKM Oxigen UTB",
+                "period": "2025 - Present",
+                "descId": "Memimpin divisi software, menyusun roadmap pembelajaran web & mobile development, serta mengoordinasikan pelatihan internal dan mentor bagi anggota baru.",
+                "descEn": "Leading the software division, designing web & mobile development learning roadmaps, and coordinating internal training and mentoring for new members."
+            },
+            {
+                "id": 2,
+                "role": "Staff Bag. Koordinator Program & Belajar",
+                "roleEn": "Program & Learning Coordinator Staff",
+                "company": "Komunitas ruangBelajar",
+                "period": "2025 - Present",
+                "descId": "Merancang program edukasi komunitas, termasuk mengoordinasikan workshop teknologi terbaru seperti pengenalan tren kecerdasan buatan (AI).",
+                "descEn": "Designing community educational programs, including coordinating workshops on the latest technology trends such as artificial intelligence (AI)."
+            },
+            {
+                "id": 3,
+                "role": "Staff HUMAS",
+                "roleEn": "Public Relations Staff",
+                "company": "UKM English Club (EC) UTB",
+                "period": "2024 - 2025",
+                "descId": "Mengelola komunikasi eksternal organisasi, menjembatani hubungan antar lembaga kampus, dan mendukung penyebaran informasi kegiatan klub.",
+                "descEn": "Managing external organizational communication, bridging relationships between campus institutions, and supporting the dissemination of club activities information."
+            }
+        ],
+        "committee": [
+            {
+                "id": 1,
+                "role": "Ketua Pelaksana",
+                "roleEn": "Event Chairman",
+                "company": "Talkshow & Workshop: Transformasi Coding Era AI",
+                "period": "2026",
+                "descId": "Memimpin kepanitiaan dalam menyelenggarakan talkshow teknologi yang berfokus pada tren Vibe Coding bersama komunitas ruangBelajar.",
+                "descEn": "Leading the committee in organizing a technology talkshow focusing on the Vibe Coding trend with the ruangBelajar community."
+            },
+            {
+                "id": 2,
+                "role": "Kepala Divisi Acara",
+                "roleEn": "Head of Event Division",
+                "company": "Supergame x Makrab Oxigen",
+                "period": "2026",
+                "descId": "Menyusun rangkaian acara, memandu jalannya malam keakraban, dan mengoordinasikan teknis kompetisi game internal.",
+                "descEn": "Arranging the event schedule, guiding the networking night, and coordinating the technical aspects of the internal game competition."
+            },
+            {
+                "id": 3,
+                "role": "Komite Pelaksana Divisi Keamanan",
+                "roleEn": "Security Division Committee",
+                "company": "KPU UTB",
+                "period": "2025",
+                "descId": "Menjaga kondusivitas, keamanan, dan ketertiban selama jalannya rangkaian pemilihan umum raya mahasiswa kampus.",
+                "descEn": "Maintaining safety, security, and order throughout the campus student general election series."
+            },
+            {
+                "id": 4,
+                "role": "Koor. Divisi Acara",
+                "roleEn": "Event Division Coordinator",
+                "company": "Workshop TOEFL Preparation",
+                "period": "2025",
+                "descId": "Bertanggung jawab atas penyusunan susunan acara (rundown), koordinasi pembicara, dan memastikan kelancaran teknis pelatihan TOEFL oleh UKM EC UTB.",
+                "descEn": "Responsible for timeline drafting (rundown), speaker coordination, and ensuring technical smoothness of TOEFL training by UKM EC UTB."
+            }
+        ]
+    }
+}
