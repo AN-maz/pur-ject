@@ -43,7 +43,7 @@ const Footer = () => {
           {/* Sisi Kanan: Tautan Ikon Sosmed */}
           <div className="flex items-center gap-4 order-2 md:order-3 text-slate-500 dark:text-slate-400">
             <a 
-              href="https://github.com/username" 
+              href="https://github.com/AN-maz" 
               target="_blank" 
               rel="noreferrer"
               className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors p-1"
@@ -52,7 +52,7 @@ const Footer = () => {
               <FiGithub size={18} />
             </a>
             <a 
-              href="https://linkedin.com/in/username" 
+              href="https://www.linkedin.com/in/andrian-maulana-dzikwan-977798357" 
               target="_blank" 
               rel="noreferrer"
               className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors p-1"
@@ -61,7 +61,7 @@ const Footer = () => {
               <FiLinkedin size={18} />
             </a>
             <a 
-              href="mailto:emailkamu@gmail.com" 
+              href="mailto:andrianian398@gmail.com" 
               className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors p-1"
               aria-label="Email"
             >

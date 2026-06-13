@@ -8,24 +8,20 @@ const Contact = () => {
   const currentLang = i18n.language;
   const [contactRef, isContactVisible] = useScrollReveal(0.15);
 
-  // States untuk Validasi Email
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
   const [isEmailValid, setIsEmailValid] = useState(false);
 
-  // Fungsi validasi email menggunakan Regex standar
   const handleEmailChange = (e) => {
     const value = e.target.value;
     setEmail(value);
 
-    // Jika input kosong
     if (!value) {
       setEmailError('');
       setIsEmailValid(false);
       return;
     }
 
-    // Pola regex aturan email standar
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(value)) {
       setEmailError(currentLang === 'id' ? 'Format email tidak valid' : 'Invalid email format');
@@ -65,7 +61,7 @@ const Contact = () => {
           {/* Saluran Langsung */}
           <div className="space-y-3 pt-4 max-w-md mx-auto lg:mx-0">
             <a
-              href="mailto:andrianmaulana@example.com"
+              href="mailto:andrianian398@gmail.com"
               className="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-md transition-all group"
             >
               <div className="p-3 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 rounded-xl group-hover:scale-105 transition-transform">
@@ -74,13 +70,13 @@ const Contact = () => {
               <div className="text-left">
                 <p className="text-xs font-medium text-slate-400 uppercase tracking-wider">Email</p>
                 <p className="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  andrianmaulana@example.com
+                  andrianian398@gmail.com
                 </p>
               </div>
             </a>
 
             <a
-              href="https://linkedin.com/in/username"
+              href="https://www.linkedin.com/in/andrian-maulana-dzikwan-977798357"
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-md transition-all group"
