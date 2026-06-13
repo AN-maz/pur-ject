@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import { FiMail, FiLinkedin, FiAlertCircle, FiCheckCircle, FiSend } from 'react-icons/fi';
 
 const Contact = () => {
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language;
+  const [contactRef, isContactVisible] = useScrollReveal(0.15);
 
   // States untuk Validasi Email
   const [email, setEmail] = useState('');
@@ -35,11 +37,16 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="border-t pt-20 dark:border-slate-800 mb-28">
-      {/* Grid Layout Baru */}
+    <section id="contact"
+      ref={contactRef}
+      className={`border-t pt-20 dark:border-slate-800 mb-28 transform transition-all duration-1000 ease-out ${
+        isContactVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+      }`}
+    >
+      {/* Grid Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        
-        {/* KOLOM KIRI: INFO & CTA (4 Kolom) */}
+
+        {/* KOLOM KIRI: INFO & CTA (5 Kolom) */}
         <div className="lg:col-span-5 space-y-6 text-center lg:text-left">
           <div className="space-y-2">
             <span className="text-xs font-bold tracking-widest text-blue-600 dark:text-blue-400 uppercase">
@@ -49,16 +56,16 @@ const Contact = () => {
               {currentLang === 'id' ? 'Mari Bekerja Sama!' : "Let's Connect!"}
             </h2>
             <p className="text-base text-slate-500 dark:text-slate-400 max-w-md leading-relaxed mx-auto lg:mx-0">
-              {currentLang === 'id' 
-                ? 'Punya ide proyek, diskusi teknologi, atau tawaran kolaborasi? Silakan kirimkan pesan atau hubungi saluran langsung saya.' 
+              {currentLang === 'id'
+                ? 'Punya ide proyek, diskusi teknologi, atau tawaran kolaborasi? Silakan kirimkan pesan atau hubungi saluran langsung saya.'
                 : 'Have a project idea, tech discussion, or collaboration offers? Feel free to drop a message or reach out through my direct channels.'}
             </p>
           </div>
 
-          {/* Saluran Langsung Bergaya Minimalis Card */}
+          {/* Saluran Langsung */}
           <div className="space-y-3 pt-4 max-w-md mx-auto lg:mx-0">
             <a
-              href="mailto:emailkamu@gmail.com"
+              href="mailto:andrianmaulana@example.com"
               className="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-md transition-all group"
             >
               <div className="p-3 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 rounded-xl group-hover:scale-105 transition-transform">
@@ -66,7 +73,9 @@ const Contact = () => {
               </div>
               <div className="text-left">
                 <p className="text-xs font-medium text-slate-400 uppercase tracking-wider">Email</p>
-                <p className="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:hover:text-blue-400 transition-colors">emailkamu@gmail.com</p>
+                <p className="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  andrianmaulana@example.com
+                </p>
               </div>
             </a>
 
@@ -81,16 +90,18 @@ const Contact = () => {
               </div>
               <div className="text-left">
                 <p className="text-xs font-medium text-slate-400 uppercase tracking-wider">LinkedIn</p>
-                <p className="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Andrian Maulana Dzikwan</p>
+                <p className="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  Andrian Maulana Dzikwan
+                </p>
               </div>
             </a>
           </div>
         </div>
 
-        {/* KOLOM KANAN: FORMULIR DESAIN BARU (7 Kolom) */}
+        {/* KOLOM KANAN: FORMULIR (7 Kolom) */}
         <div className="lg:col-span-7 bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl shadow-slate-100/50 dark:shadow-none">
           <form action="" method="POST" className="space-y-5">
-            
+
             {/* Input Nama */}
             <div>
               <label className="block text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-2">
@@ -100,18 +111,17 @@ const Contact = () => {
                 type="text"
                 name="name"
                 required
-                className="w-full px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 focus:bg-white dark:focus:bg-slate-900 transition-all text-sm font-medium"
+                className="w-full px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:bg-white dark:focus:bg-slate-900 transition-all text-sm font-medium"
                 placeholder="Andrian Maulana"
               />
             </div>
 
-            {/* Input Email + Real-time Validation Wrapper */}
+            {/* Input Email */}
             <div>
               <div className="flex justify-between items-center mb-2">
                 <label className="block text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
                   Email
                 </label>
-                {/* Status Validasi Indikator Teks */}
                 {emailError && (
                   <span className="text-xs text-rose-500 flex items-center gap-1 font-medium animate-fade-in">
                     <FiAlertCircle size={12} /> {emailError}
@@ -123,7 +133,7 @@ const Contact = () => {
                   </span>
                 )}
               </div>
-              
+
               <div className="relative">
                 <input
                   type="email"
@@ -131,11 +141,11 @@ const Contact = () => {
                   value={email}
                   onChange={handleEmailChange}
                   required
-                  className={`w-full px-4 py-3.5 rounded-xl border bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:bg-white dark:focus:bg-slate-900 transition-all text-sm font-medium ${
-                    emailError 
-                      ? 'border-rose-400 focus:border-rose-500' 
-                      : isEmailValid 
-                        ? 'border-emerald-400 focus:border-emerald-500' 
+                  className={`w-full px-4 py-3.5 rounded-xl border bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:bg-white dark:focus:bg-slate-900 transition-all text-sm font-medium ${
+                    emailError
+                      ? 'border-rose-400 focus:border-rose-500'
+                      : isEmailValid
+                        ? 'border-emerald-400 focus:border-emerald-500'
                         : 'border-slate-200 dark:border-slate-800 focus:border-blue-500'
                   }`}
                   placeholder="andrian@example.com"
@@ -152,12 +162,12 @@ const Contact = () => {
                 name="message"
                 rows="4"
                 required
-                className="w-full px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 focus:bg-white dark:focus:bg-slate-900 transition-all text-sm font-medium resize-none"
+                className="w-full px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:bg-white dark:focus:bg-slate-900 transition-all text-sm font-medium resize-none"
                 placeholder={currentLang === 'id' ? 'Halo, tertarik untuk mendiskusikan proyek baru...' : 'Hi, interested in discussing a new project...'}
               ></textarea>
             </div>
 
-            {/* Tombol Kirim Premium */}
+            {/* Tombol Kirim */}
             <button
               type="submit"
               disabled={emailError !== ''}

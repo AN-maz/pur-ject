@@ -1,11 +1,13 @@
 import { useTranslation } from 'react-i18next';
+import { useFadeIn } from '../hooks/useFadeIn';
 
 const Hero = () => {
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language;
+  const animationClass = useFadeIn(0);
 
   return (
-    <section className="relative min-h-[75vh] md:min-h-[80vh] flex flex-col justify-end items-center overflow-hidden pt-12 md:pt-16 pb-0">
+    <section className={`relative min-h-[75vh] md:min-h-[80vh] flex flex-col justify-end items-center overflow-hidden pt-12 md:pt-16 pb-0 ${animationClass}`}>
 
       {/* WRAPPER UTAMA */}
       <div className="relative w-full max-w-5xl flex flex-col justify-end items-center flex-grow">

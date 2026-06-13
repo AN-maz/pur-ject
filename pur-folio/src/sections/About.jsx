@@ -1,20 +1,20 @@
 import { useTranslation } from 'react-i18next';
-
-// SOLUSI JITU: Menggunakan Font Awesome untuk ikon Java demi kestabilan build Vite
+import { useFadeIn } from '../hooks/useFadeIn';
 import { FaJava } from 'react-icons/fa';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 // Sisa ikon teknologi lainnya dari Simple Icons (Sudah divalidasi aman)
-import { 
-  SiJavascript, 
-  SiKotlin, 
-  SiReact, 
-  SiTailwindcss, 
-  SiExpress, 
-  SiMongodb, 
-  SiAstro, 
-  SiMysql, 
-  SiFirebase, 
-  SiBootstrap 
+import {
+  SiJavascript,
+  SiKotlin,
+  SiReact,
+  SiTailwindcss,
+  SiExpress,
+  SiMongodb,
+  SiAstro,
+  SiMysql,
+  SiFirebase,
+  SiBootstrap
 } from 'react-icons/si';
 
 import { FiUser, FiCode, FiAward } from 'react-icons/fi';
@@ -22,6 +22,7 @@ import { FiUser, FiCode, FiAward } from 'react-icons/fi';
 const About = () => {
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language;
+  const [aboutRef, isAboutVisible] = useScrollReveal(0.1);
 
   // Data Tech Stack yang sudah disesuaikan secara presisi
   const techStacks = [
@@ -39,7 +40,10 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="border-t pt-20 dark:border-slate-800 mb-28">
+    <section id="about"
+      ref={aboutRef}
+      className={`border-t pt-20 dark:border-slate-800 mb-28 transform transition-all duration-1000 ease-out ${isAboutVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
+        }`}>
       {/* Header Seksi */}
       <div className="mb-14">
         <div className="flex items-center gap-3 mb-2">
@@ -55,7 +59,7 @@ const About = () => {
 
       {/* Grid Utama Layout Split */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        
+
         {/* KOLOM KIRI: NARASI PROFESIONAL (7 Kolom) */}
         <div className="lg:col-span-7 space-y-6 text-slate-600 dark:text-slate-400 text-base md:text-lg leading-relaxed text-justify px-2">
           {currentLang === 'id' ? (
@@ -87,19 +91,21 @@ const About = () => {
 
         {/* KOLOM KANAN: TECH STACK VISUAL BADGES (5 Kolom) */}
         <div className="lg:col-span-5 space-y-6">
-          
+
           {/* Card Tech Stack */}
           <div className="p-7 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-xl shadow-slate-100/40 dark:shadow-none hover:border-blue-500 transition-colors">
             <h3 className="text-sm font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-6 flex items-center gap-2.5">
               <FiCode className="text-blue-500" />
               {currentLang === 'id' ? 'Keahlian Teknologi' : 'Technical Skills'}
             </h3>
-            
+
             <div className="flex flex-wrap gap-2.5">
               {techStacks.map((tech, index) => (
-                <div 
+                <div
                   key={index}
-                  className="flex items-center gap-2.5 px-4 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:border-blue-500 dark:hover:border-blue-400 hover:-translate-y-1 hover:shadow-md transition-all duration-200 select-none cursor-default group"
+                  style={{ transitionDelay: isAboutVisible ? `${index * 80}ms` : '0ms' }}
+                  className={`flex items-center gap-2.5 px-4 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:border-blue-500 dark:hover:border-blue-400 hover:-translate-y-1 hover:shadow-md select-none cursor-default group transform transition-all duration-500 ${isAboutVisible ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 translate-y-4'
+                    }`}
                 >
                   <span className="text-xl group-hover:scale-110 transition-transform">
                     {tech.icon}
@@ -111,7 +117,9 @@ const About = () => {
           </div>
 
           {/* Fokus Tambahan Card */}
-          <div className="p-6 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl text-white shadow-lg shadow-blue-500/20">
+          <div style={{ transitionDelay: isAboutVisible ? '900ms' : '0ms' }}
+            className={`p-6 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl text-white shadow-lg shadow-blue-500/20 transform transition-all duration-700 ${isAboutVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+              }`}>
             <div className="flex justify-between items-start gap-4">
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-widest opacity-80 flex items-center gap-1.5 mb-1.5">
