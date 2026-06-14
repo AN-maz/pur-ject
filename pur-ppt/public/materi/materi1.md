@@ -21,7 +21,7 @@
 
 | FRONTEND | BACKEND |
 | :--- | :--- |
-| Berjalan di browser (komputer user) <br> Bahasa utama: HTML, CSS, JavaScript | Berjalan di server <br> Bahasa utama: Node.js, Python, PHP, dll |
+| Berjalan di browser (komputer user). Bahasa utama: HTML, CSS, JavaScript | Berjalan di server. Bahasa utama: javaScript, Python, PHP, dll |
 | Mengurus tampilan & interaksi user | Mengurus logic bisnis & database |
 | Bisa dilihat langsung oleh user | Tidak terlihat oleh user |
 
@@ -326,7 +326,7 @@ async function getSemuaProduk() {
 | Perintah | Fungsi |
 | :--- | :--- |
 | `npm create vite@latest inventory-frontend -- --template vanilla` | Buat project Vite baru dengan template JavaScript murni |
-| `cd inventory-frontend && npm install` | Masuk folder & install dependensi Vite |
+| `cd inventory-frontend ` | Masuk folder |
 | `npm install -D tailwindcss @tailwindcss/vite` | Install Tailwind CSS & plugin Vite-nya |
 | `npm run dev` | Jalankan dev server → buka `http://localhost:5173` |
 
@@ -347,72 +347,35 @@ export default defineConfig({
 
 ---
 
-## Langkah 2: Struktur HTML
+## Langkah 2: Stuktur folder
 
-```html
-<body class="bg-gray-100 min-h-screen p-6">
-  <div id="app" class="max-w-4xl mx-auto">
+```text
 
-    <h1 class="text-2xl font-bold text-gray-800 mb-6">📦 Inventory Produk</h1>
+inventory-frontend/
+├── public/                 # Aset statis asli (favicon, robot.txt, dll)
+├── src/
+│   ├── api/                # Semua urusan komunikasi dengan backend
+│   │   └── productApi.js
+│   ├── components/         # Komponen UI yang reusable (Form, Tabel, Notifikasi)
+│   │   ├── productForm.js
+│   │   ├── productTable.js
+│   │   └── notification.js
+│   ├── utils/              # Fungsi pembantu (formatter harga, tanggal, dll)
+│   │   └── formatter.js
+│   ├── config/             # Konfigurasi global (Environment Variables, Base URL)
+│   │   └── constants.js
+│   ├── style.css           # Styling global (Tailwind / CSS biasa)
+│   └── main.js             # Entry point utama (Inisialisasi aplikasi)
+├── index.html              # File HTML utama (Letakkan di root untuk Vite)
+├── vite.config.js          # Konfigurasi Vite
+└── package.json
 
-    <!-- Form Tambah / Edit Produk -->
-    <div class="bg-white rounded-lg shadow p-6 mb-6">
-      <input type="text" id="input-name" placeholder="Nama Produk" />
-      <input type="number" id="input-price" placeholder="Harga" />
-      <input type="number" id="input-category" placeholder="ID Kategori" />
-      <button id="btn-submit">Simpan</button>
-      <button id="btn-cancel" class="hidden">Batal</button>
-    </div>
-
-    <!-- Notifikasi -->
-    <div id="notifikasi" class="hidden"></div>
-
-    <!-- Tabel Produk -->
-    <table class="w-full text-sm text-left">
-      <thead>...</thead>
-      <tbody id="tabel-body">
-        <!-- Data diisi oleh JavaScript -->
-      </tbody>
-    </table>
-
-  </div>
-  <script type="module" src="/src/main.js"></script>
-</body>
 ```
 
 ---
 
-## Langkah 3: Fungsi Fetch di main.js
-
-```javascript
-const BASE_URL = 'http://localhost:3000/api/products';
-
-// GET semua produk
-async function getSemuaProduk() {
-  const response = await fetch(BASE_URL);
-  if (!response.ok) throw new Error('Gagal mengambil data produk');
-  const data = await response.json();
-  return data.data;
-}
-
-// POST produk baru
-async function tambahProduk(produk) {
-  const response = await fetch(BASE_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(produk),
-  });
-  if (!response.ok) throw new Error('Gagal menambah produk');
-  return await response.json();
-}
-
-// PUT update produk
-async function updateProduk(id, produk) { ... }
-
-// DELETE hapus produk
-async function hapusProduk(id) { ... }
-```
-
+## Langkah 3: kode program 
+isi kodingannya: `https://github.com/AN-maz/documentation-progress/tree/main/vite/inventory-frontend`
 ---
 
 ## Langkah 4: Mengatasi CORS
@@ -444,7 +407,7 @@ app.use('/api/products', productRoutes);
 
 | Terminal | Perintah | URL |
 | :--- | :--- | :--- |
-| **Terminal 1 — Backend** | `npm run dev` (di folder `latihan`) | `http://localhost:3000` |
+| **Terminal 1 — Backend** | `npm run dev` (di folder `backend`) | `http://localhost:3000` |
 | **Terminal 2 — Frontend** | `npm run dev` (di folder `inventory-frontend`) | `http://localhost:5173` |
 
 | Fitur | Cara Test |
@@ -475,3 +438,7 @@ app.use('/api/products', productRoutes);
 | **Project** | UI Inventory lengkap terhubung ke REST API |
 
 > 💡 **Konsep terpenting:** Frontend dan backend adalah dua program terpisah yang berkomunikasi lewat HTTP. Frontend tidak perlu tahu bagaimana backend menyimpan data — yang penting backend mengembalikan JSON yang sesuai.
+
+---
+# Cukup Sekian
+> 🤙TERIMA KASIH

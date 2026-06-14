@@ -10,112 +10,139 @@
             "en": "I am an Informatics Engineering student focusing on full-stack web development and mobile applications. Active in technology organizations and passionate about building efficient digital solutions."
         }
     },
-    "skills": [
-        "React",
-        "Node.js",
-        "MySQL",
-        "Tailwind CSS",
-        "Kotlin",
-        "Android Studio"
-    ],
     "projects": [
         {
             "id": 1,
-            "title": "Learning Management System (LMS)",
-            "status": "ongoing",
+            "title": "Cafe Operational System (CLI Edition)",
+            "status": "completed",
             "tech": [
-                "React",
-                "Node.js",
-                "MySQL",
-                "Tailwind CSS"
+                "Java",
+                "Arrays"
             ],
-            "github": "https://github.com/username/lms-project",
+            "github": "https://github.com/username/cafe-cli",
             "images": [
-                "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600",
-                "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=600"
+                "/datacaffeCLI/1.png",
+                "/datacaffeCLI/2.png"
             ],
             "description": {
-                "id": "Sistem manajemen pembelajaran berbasis web dengan RESTful API native SQL untuk pelatihan divisi software.",
-                "en": "Web-based learning management system using native SQL RESTful APIs for software training."
+                "id": "Sistem operasional kafe berbasis Command Line Interface (CLI) yang mengadaptasi studi kasus riil dari salah satu kafe di Kota Bandung untuk manajemen pesanan terstruktur.",
+                "en": "A Command Line Interface (CLI) based cafe operational system built from a real-world cafe case study in Bandung to handle structured order management."
             }
         },
         {
             "id": 2,
-            "title": "MB-GO (Makan Bergizi Gratis)",
+            "title": "Cafe Operational System (GUI Edition)",
             "status": "completed",
             "tech": [
-                "Kotlin",
-                "Android Studio",
-                "Retrofit"
+                "Java GUI",
+                "MySQL"
             ],
-            "github": "https://github.com/username/mb-go",
+            "github": "https://github.com/username/cafe-gui",
             "images": [
-                "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600",
-                "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600"
+                "/datacaffeGUI/1.png",
+                "/datacaffeGUI/2.png",
+                "/datacaffeGUI/3.png"
             ],
             "description": {
-                "id": "Aplikasi Android integrasi pelacakan pengiriman makanan dan pengelolaan ID dapur.",
-                "en": "Android application integrating food delivery tracking and kitchen ID management."
+                "id": "Pengembangan lanjutan aplikasi kasir kafe berbasis Graphical User Interface (GUI) dengan integrasi basis data permanen untuk kebutuhan operasional acara Supergame internal UKM OXIGEN.",
+                "en": "An advanced GUI-based cafe cashier application integrated with a persistent database for UKM OXIGEN's internal Supergame event operational needs."
             }
         },
         {
             "id": 3,
-            "title": "Learning Management System (LMasdS)",
-            "status": "ongoing",
+            "title": "Firefighting Report Management Information System",
+            "status": "completed",
             "tech": [
-                "React",
-                "Node.js",
-                "MySQL",
-                "Tailwind CSS"
+                "Java GUI",
+                "MySQL"
             ],
-            "github": "https://github.com/username/lms-project",
+            "github": "https://github.com/username/firefighter-info-system",
             "images": [
-                "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600",
-                "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=600"
+                "/damkar/1.png",
+                "/damkar/2.png"
             ],
             "description": {
-                "id": "Sistem manajemen pembelajaran berbasis web dengan RESTful API native SQL untuk pelatihan divisi software.",
-                "en": "Web-based learning management system using native SQL RESTful APIs for software training."
+                "id": "Sistem informasi manajemen pemadam kebakaran terintegrasi. Bertindak sebagai Ketua Kelompok yang memimpin perancangan skema arsitektur basis data MySQL dan visualisasi workflow aplikasi.",
+                "en": "An integrated fire department management information system. Served as Team Leader, orchestrating the MySQL database schema design and application workflow mapping."
             }
         },
         {
             "id": 4,
-            "title": "Learning Management System (LMSSS)",
-            "status": "ongoing",
+            "title": "OxiChat",
+            "status": "completed",
             "tech": [
-                "React",
-                "Node.js",
-                "MySQL",
-                "Tailwind CSS"
+                "Express.js",
+                "Firebase",
+                "EJS",
+                "Bootstrap"
             ],
-            "github": "https://github.com/username/lms-project",
+            "github": "https://github.com/username/oxichat",
             "images": [
-                "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600",
-                "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=600"
+                "/oxichat/1.png",
+                "/oxichat/2.png"
             ],
             "description": {
-                "id": "Sistem manajemen pembelajaran berbasis web dengan RESTful API native SQL untuk pelatihan divisi software.",
-                "en": "Web-based learning management system using native SQL RESTful APIs for software training."
+                "id": "Aplikasi pesan instan kelompok berbasis web. Memimpin tim backend untuk bermigrasi dari MongoDB ke Firebase Realtime Database demi mendukung sinkronisasi obrolan secara instan.",
+                "en": "A team-developed instant messaging web application. Led the backend engineering to migrate from MongoDB to Firebase Realtime Database to achieve seamless chat synchronization."
             }
         },
         {
             "id": 5,
-            "title": "Learning Management System (LMSSS)",
-            "status": "ongoing",
+            "title": "UKM English Club Management Web & LMS",
+            "status": "completed",
             "tech": [
-                "React",
-                "Node.js",
-                "MySQL",
-                "Tailwind CSS"
+                "PHP Native",
+                "Tailwind CSS",
+                "MySQL"
             ],
-            "github": "https://github.com/username/lms-project",
+            "github": "https://github.com/username/ukm-ec-management",
             "images": [
-                "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600",
-                "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=600"
+                "/lmsEC/1.png",
+                "/lmsEC/2.png",
+                "/lmsEC/3.png"
             ],
             "description": {
-                "id": "Sistem manajemen pembelajaran berbasis web dengan RESTful API native SQL untuk pelatihan divisi software.",
-                "en": "Web-based learning management system using native SQL RESTful APIs for software training."
+                "id": "Platform manajemen terpadu UKM EC yang mengintegrasikan landing page informasi, modul LMS materi berkas markdown, enkripsi token presensi Divisi Pendidikan, serta dashboard ekspor laporan pengurus.",
+                "en": "An integrated UKM EC management platform combining an informational landing page, Markdown-powered LMS, token-secured attendance tracking, and administrative data export functionality."
+            }
+        },
+        {
+            "id": 6,
+            "title": "LMS Software Division Portal",
+            "status": "ongoing",
+            "tech": [
+                "React.js",
+                "Tailwind CSS",
+                "React-Markdown"
+            ],
+            "github": "https://github.com/username/lms-oxigen-software",
+            "images": [
+                "/lmsSFT/1.png",
+                "/lmsSFT/2.png",
+                "/lmsSFT/3.png"
+            ],
+            "description": {
+                "id": "Aplikasi web edukasi statis inovatif yang dirancang secara mandiri untuk memfasilitasi kebutuhan modul belajar dan kurikulum pemrograman bagi anggota baru di divisi software UKM OXIGEN.",
+                "en": "An innovative static learning management portal independently designed to host programming syllabi and modular documentation for newly recruited members of the UKM OXIGEN software division."
+            }
+        },
+        {
+            "id": 7,
+            "title": "Techy Slides Presentation Web App",
+            "status": "ongoing",
+            "tech": [
+                "React.js",
+                "Tailwind CSS",
+                "React-Markdown"
+            ],
+            "github": "https://github.com/username/techy-slides-local",
+            "images": [
+                "/ppt/1.png",
+                "/ppt/2.png"
+            ],
+            "description": {
+                "id": "Alat produktivitas personal berbasis lokal (localhost) untuk memotong waktu menyusun slide mengajar dengan memisahkan penulisan materi berformat Markdown dari kompilasi visual template.",
+                "en": "A localized personal productivity tool crafted to accelerate teaching preparations by programmatically rendering presentation layouts directly from custom Markdown files."
             }
         }
     ],
