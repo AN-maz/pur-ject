@@ -19,7 +19,7 @@
                 "Java",
                 "Arrays"
             ],
-            "github": "https://github.com/username/cafe-cli",
+            "github": "https://github.com/AN-maz/pur-ject/tree/main/dataCaffee(CLI)",
             "images": [
                 "/datacaffeCLI/1.png",
                 "/datacaffeCLI/2.png"
@@ -37,7 +37,7 @@
                 "Java GUI",
                 "MySQL"
             ],
-            "github": "https://github.com/username/cafe-gui",
+            "github": "https://github.com/AN-maz/pur-ject/tree/main/DatacaffeGUI",
             "images": [
                 "/datacaffeGUI/1.png",
                 "/datacaffeGUI/2.png",
@@ -64,26 +64,6 @@
             "description": {
                 "id": "Sistem informasi manajemen pemadam kebakaran terintegrasi. Bertindak sebagai Ketua Kelompok yang memimpin perancangan skema arsitektur basis data MySQL dan visualisasi workflow aplikasi.",
                 "en": "An integrated fire department management information system. Served as Team Leader, orchestrating the MySQL database schema design and application workflow mapping."
-            }
-        },
-        {
-            "id": 4,
-            "title": "OxiChat",
-            "status": "completed",
-            "tech": [
-                "Express.js",
-                "Firebase",
-                "EJS",
-                "Bootstrap"
-            ],
-            "github": "https://github.com/username/oxichat",
-            "images": [
-                "/oxichat/1.png",
-                "/oxichat/2.png"
-            ],
-            "description": {
-                "id": "Aplikasi pesan instan kelompok berbasis web. Memimpin tim backend untuk bermigrasi dari MongoDB ke Firebase Realtime Database demi mendukung sinkronisasi obrolan secara instan.",
-                "en": "A team-developed instant messaging web application. Led the backend engineering to migrate from MongoDB to Firebase Realtime Database to achieve seamless chat synchronization."
             }
         },
         {
@@ -115,7 +95,7 @@
                 "Tailwind CSS",
                 "React-Markdown"
             ],
-            "github": "https://github.com/username/lms-oxigen-software",
+            "github": "https://github.com/AN-maz/lms-divisi-software",
             "images": [
                 "/lmsSFT/1.png",
                 "/lmsSFT/2.png",
@@ -135,7 +115,7 @@
                 "Tailwind CSS",
                 "React-Markdown"
             ],
-            "github": "https://github.com/username/techy-slides-local",
+            "github": "https://github.com/AN-maz/pur-ject/tree/main/pur-ppt",
             "images": [
                 "/ppt/1.png",
                 "/ppt/2.png"
