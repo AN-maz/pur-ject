@@ -33,7 +33,7 @@ export default function Footer() {
             {/* Brand */}
             <div>
               <div className="footer-brand-logo">
-                Web<span>Ku</span>
+                Wep<span>ur</span>
               </div>
               <p className="footer-brand-tagline">
                 Website profesional untuk UMKM Indonesia.
@@ -62,13 +62,13 @@ export default function Footer() {
                 >
                   WhatsApp: +62 8xx-xxxx-xxxx
                 </a>
-                <a href="mailto:hello@webku.id">Email: hello@webku.id</a>
+                <a href="mailto:hello@wepur.id">Email: hello@webpur.id</a>
                 <a
                   href="https://instagram.com/webkustudio"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Instagram: @webkustudio
+                  Instagram: @wepurstudio
                 </a>
               </div>
             </div>
@@ -76,7 +76,7 @@ export default function Footer() {
 
           <div className="footer-divider"></div>
           <p className="footer-copyright">
-            © 2025 WebKu Studio. Semua hak dilindungi.
+            © 2025 wepur Studio. Semua hak dilindungi.
           </p>
         </div>
       </div>

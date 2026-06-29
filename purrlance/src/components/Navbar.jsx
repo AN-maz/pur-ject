@@ -21,7 +21,7 @@ export default function Navbar() {
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} id="navbar">
         <div className="navbar-inner">
           <a href="#" className="navbar-logo">
-            Web<span>Ku</span>
+            wep<span>ur</span>
           </a>
 
           <div className="navbar-links">

@@ -1,23 +1,23 @@
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const starterFeatures = [
-  'Landing page 1 halaman yang elegan',
-  'Katalog hingga 20 produk/menu',
-  'Tombol "Pesan via WhatsApp" di setiap produk',
-  'Desain disesuaikan dengan brand kamu',
-  'Hosting & domain .com tahun pertama gratis',
-  'Garansi revisi 2x',
-  'Proses selesai 5–7 hari kerja',
+  "Landing Page",
+  "Maks. 20 produk",
+  "WhatsApp Order",
+  "Domain .web.id (1 thn)",
+  "Mobile Responsive",
+  "Revisi minor 7 hari",
+  "Garansi bug 30 hari",
 ];
 
 const growthFeatures = [
-  'Semua fitur Starter',
-  'Katalog hingga 60 produk/menu',
-  'Halaman multi-section (Beranda, Menu, Tentang, Kontak)',
-  'Fitur pencarian produk',
-  'Optimasi Google (SEO dasar)',
-  'Hosting & domain .com tahun pertama gratis',
-  'Garansi revisi 3x',
+  "Website Multi Page",
+  "Maks. 60 produk",
+  "Search Produk",
+  "Domain .com (1 thn)",
+  "Google Maps + SEO Dasar",
+  "Revisi minor 14 hari",
+  "Garansi bug 30 hari",
 ];
 
 export default function Pricing() {
@@ -43,7 +43,7 @@ export default function Pricing() {
             <div className="pricing-badge">⭐ Paling Banyak Dipilih</div>
             <h3 className="pricing-name">Starter</h3>
             <div className="pricing-price">
-              Rp 1.500.000 <span>/ sekali bayar</span>
+              Rp 499.000<span>/ sekali bayar</span>
             </div>
             <div className="pricing-features">
               {starterFeatures.map((f, i) => (
@@ -71,7 +71,7 @@ export default function Pricing() {
           >
             <h3 className="pricing-name">Growth</h3>
             <div className="pricing-price">
-              Rp 2.800.000 <span>/ sekali bayar</span>
+              Rp 899.000 <span>/ sekali bayar</span>
             </div>
             <div className="pricing-features">
               {growthFeatures.map((f, i) => (
