@@ -8,6 +8,8 @@ import NewsDetail from "@/routes/NewsDetail"
 import StructureDetail from "@/routes/StructureDetail"
 import VolunteerEvent from "@/routes/VolunteerEvent"
 import OprecBph from "@/routes/OprecBph"
+import Register from "@/routes/Register"
+import Toefl from "@/routes/Toefl"
 
 export const router = createBrowserRouter([
     {
@@ -41,6 +43,14 @@ export const router = createBrowserRouter([
             {
                 path: "oprec-bph",
                 element: <OprecBph />,
+            },
+            {
+                path: "register",
+                element: <Register />,
+            },
+            {
+                path: "toefl",
+                element: <Toefl />,
             },
         ],
     },
