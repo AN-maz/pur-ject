@@ -83,11 +83,11 @@ export default function StructureDetail() {
             className="reveal-up mx-auto mb-10 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-lg md:mb-14 md:max-w-4xl"
             style={{ transitionDelay: "100ms" }}
           >
-            <img
+            {/* <img
               src={division.groupPhoto}
               alt={`${division.name} Group Photo`}
               className="max-h-[300px] w-full object-cover object-top sm:max-h-[400px] md:max-h-[500px] md:object-contain"
-            />
+            /> */}
           </div>
 
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">

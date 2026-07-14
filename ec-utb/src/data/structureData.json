@@ -47,10 +47,10 @@
           "photo": "/images/pengurus/TopMan/Anisa Febrianti.JPG"
         },
         {
-          "name": "Nabilah",
+          "name": "Andrian Maulana Dzikwan",
           "role": "Secretary",
           "major": "Informatics Engineering",
-          "photo": "/images/pengurus/TopMan/Nabilah - Secretary 4.JPG"
+          "photo": "/images/pengurus/TopMan/andrian-maulana.png"
         }
       ]
     },
@@ -63,10 +63,10 @@
       "icon": "book",
       "groupPhoto": "/images/pengurus/pendidikan/fullPendidikan.png",
       "programKerja": [
-        "Weekly English Class",
-        "TOEFL Preparation",
-        "Vocabulary Challenge",
-        "Movie Night Listening"
+        "Workshop TOEFL Preparation",
+        "English EXPO",
+        "Pertemuan Rutin",
+        "Let's Talk it Out"
       ],
       "members": [
         {
@@ -82,10 +82,16 @@
           "photo": "/images/pengurus/pendidikan/Ega Silfhia - Pendidikan - 2.jpg"
         },
         {
-          "name": "Adinda Fitriani Sabila",
+          "name": "Dwi Budi Fitri Adi",
           "role": "Staff",
           "major": "Informatics Engineering",
-          "photo": "/images/pengurus/pendidikan/Adinda Fitriani Sabila.JPG"
+          "photo": "/images/pengurus/man.png"
+        },
+        {
+          "name": "Hedi Abdul Majid",
+          "role": "Staff",
+          "major": "Informatics Engineering",
+          "photo": "/images/pengurus/man.png"
         }
       ]
     },
@@ -98,17 +104,16 @@
       "icon": "megaphone",
       "groupPhoto": "/images/pengurus/humas/fullHumas.png",
       "programKerja": [
-        "Partnership Management",
-        "Social Media Campaign",
-        "Event Promotion",
-        "External Relations"
+        "Studi Banding",
+        "Pengadaan Tempat dan barang",
+        "Kerjasama Pihak Eksternal/Internal"
       ],
       "members": [
         {
-          "name": "Andrian Maulana",
+          "name": "M. Sultan",
           "role": "Head of Division",
           "major": "Informatics Engineering",
-          "photo": "/images/pengurus/humas/andrian-maulana.png"
+          "photo": "/images/pengurus/humas/M.Sultan.png"
         },
         {
           "name": "Daffa Saputra",
@@ -117,26 +122,26 @@
           "photo": "/images/pengurus/humas/daffa-saputra.png"
         },
         {
-          "name": "M. Sultan",
+          "name": "Mutia Putri",
           "role": "Staff",
           "major": "Informatics Engineering",
-          "photo": "/images/pengurus/humas/M.Sultan.png"
+          "photo": "/images/pengurus/woman.png"
         }
+        
       ]
     },
     {
       "id": 4,
       "slug": "kewirausahaan",
-      "name": "Finance Division",
+      "name": "Entrepreneurship  Division",
       "description": "Managing financial resources and budgeting.",
       "detailDescription": "Responsible for managing financial resources, budgeting, and entrepreneurial activities of the organization.",
       "icon": "wallet",
       "groupPhoto": "/images/pengurus/kewirus/adrian.png",
       "programKerja": [
-        "Budget Planning",
-        "Fundraising Events",
-        "Financial Reporting",
-        "Entrepreneurship Workshop"
+        "Event Bazaar PENABARU",
+        "Penyediaan PDH",
+        "Danusan"
       ],
       "members": [
         {
@@ -144,6 +149,12 @@
           "role": "Head of Division",
           "major": "Informatics Engineering",
           "photo": "/images/pengurus/kewirus/adrian.png"
+        },
+        {
+          "name": "Herdi Julian",
+          "role": "Staff",
+          "major": "Informatics Engineering",
+          "photo": "/images/pengurus/man.png"
         }
       ]
     },
@@ -156,23 +167,21 @@
       "icon": "camera",
       "groupPhoto": "/images/pengurus/pubdok/fullPubdok.png",
       "programKerja": [
-        "Content Creation",
-        "Event Documentation",
-        "Social Media Management",
-        "Design & Branding"
+        "Digital Content Management",
+        "Pembuatan video interaksi untuk para audience"
       ],
       "members": [
         {
-          "name": "Muhammad Arga",
+          "name": "Yuyu Dhayu Al-Rochman",
           "role": "Head of Division",
           "major": "Informatics Engineering",
-          "photo": "/images/pengurus/pubdok/muhammad-arga.png"
+          "photo": "/images/pengurus/man.png"
         },
         {
-          "name": "M. Belga Ghifari",
+          "name": "Nabilah Zulfaa Afifah",
           "role": "Staff",
           "major": "Informatics Engineering",
-          "photo": "/images/pengurus/pubdok/M. BELGA GHIFARI.png"
+          "photo": "/images/pengurus/pubdok/Nabilah.JPG"
         }
       ]
     },
@@ -185,10 +194,11 @@
       "icon": "users",
       "groupPhoto": "/images/pengurus/SDM/FullSDM.png",
       "programKerja": [
-        "Open Recruitment",
-        "Member Training",
-        "Team Building",
-        "Performance Evaluation"
+        "Makrab",
+        "Kaderisasi",
+        "English Club Leadership Training",
+        "Penyambutan Anggota Baru",
+        "Monitoring Anggota (Anggota Aktif, Pasif, serta Calon Anggota)"
       ],
       "members": [
         {
