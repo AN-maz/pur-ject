@@ -92,23 +92,23 @@ export default function Footer() {
                 </div>
                 <div>
                   <p className="text-xs text-gray-400">Media Partner (Admin)</p>
-                  <p className="text-sm font-bold text-white">+62 812-XXXX-XXXX</p>
+                  <p className="text-sm font-bold text-white">+62 822-5870-7215</p>
                 </div>
               </div>
             </div>
 
             {/* Membership */}
-            <div className="space-y-4">
-              <h3 className="border-l-4 border-ec-red pl-3 text-lg font-bold">
+            {/* <div className="space-y-4"> */}
+              {/* <h3 className="border-l-4 border-ec-red pl-3 text-lg font-bold">
                 Membership
               </h3>
 
               <p className="text-sm text-gray-400">
                 Questions about recruitment & HR.
-              </p>
+              </p> */}
 
               {/* Contact Card */}
-              <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-sm">
+              {/* <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-sm">
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-500/20">
                   <svg className="h-5 w-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -118,8 +118,8 @@ export default function Footer() {
                   <p className="text-xs text-gray-400">HR Division (Person)</p>
                   <p className="text-sm font-bold text-white">+62 898-XXXX-XXXX</p>
                 </div>
-              </div>
-            </div>
+              </div> */}
+            {/* </div> */}
 
             {/* General Inquiry */}
             <div className="space-y-4">
@@ -140,7 +140,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <p className="text-xs text-gray-400">Email Address</p>
-                  <p className="text-sm font-bold text-white">humas@ec-utb.ac.id</p>
+                  <p className="text-sm font-bold text-white">englishclub@utb-univ.ac.id</p>
                 </div>
               </div>
             </div>
@@ -149,7 +149,7 @@ export default function Footer() {
           {/* Bottom Bar */}
           <div className="flex flex-col items-center justify-between border-t border-white/10 pt-8 text-sm text-gray-500 md:flex-row">
             <p>
-              © Copyright by 24552011027_Andrian Maulana Dzikwan_TIF RP 23 CNS B. All Rights Reserved.
+              © Copyright by Developer EC. All Rights Reserved.
             </p>
 
             <p className="mt-2 md:mt-0">

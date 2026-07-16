@@ -55,7 +55,7 @@ export default function Toefl() {
             WORKSHOP
           </div>
           <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 uppercase tracking-tight leading-tight">
-            English Club TOEFL Fest: <br />
+            English Club TOEFL Preparation: <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500">
               Let's Crack It Together
             </span>
@@ -79,6 +79,70 @@ export default function Toefl() {
             </a>
             <a href="#about" className="bg-white text-ec-blue text-lg px-8 py-4 font-bold border-2 border-ec-blue shadow-[6px_6px_0px_0px_rgba(0,20,82,1)] hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_rgba(0,20,82,1)] transition-all">
               Pelajari Lebih Lanjut
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-6 bg-gray-100 border-b-4 border-ec-blue">
+        <div className="max-w-5xl mx-auto text-center">
+          <div className="inline-block bg-yellow-400 text-ec-blue font-extrabold px-4 py-1 mb-4 border-2 border-ec-blue shadow-[4px_4px_0px_0px_rgba(0,20,82,1)]">
+            WHY TOEFL?
+          </div>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-ec-blue mb-4">
+            Sadar Nggak Sih, Skor TOEFL Itu Kunci Pembuka Banyak Peluang Emas?
+          </h2>
+          <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
+            Jangan biarkan impianmu tertunda hanya karena terbentur syarat skor bahasa Inggris.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+            <div className="bg-white border-2 border-ec-blue p-6 shadow-[6px_6px_0px_0px_rgba(0,20,82,1)] hover:-translate-y-1 transition-transform">
+              <div className="w-14 h-14 bg-ec-red text-white text-2xl flex items-center justify-center rounded-full mb-4 border-2 border-ec-blue mx-auto md:mx-0">
+                🎓
+              </div>
+              <h3 className="font-bold text-xl text-ec-blue mb-2 text-center md:text-left">Lolos Beasiswa Impian</h3>
+              <p className="text-sm font-semibold text-ec-red mb-2 text-center md:text-left">Tembus LPDP, IISMA, & Kampus Top</p>
+              <p className="text-gray-600 text-sm text-center md:text-left">
+                Mayoritas beasiswa bergengsi dalam dan luar negeri mewajibkan sertifikat TOEFL sebagai syarat mutlak. Skor yang tinggi akan membuat aplikasimu berada di tumpukan paling atas!
+              </p>
+            </div>
+
+            <div className="bg-white border-2 border-ec-blue p-6 shadow-[6px_6px_0px_0px_rgba(0,20,82,1)] hover:-translate-y-1 transition-transform">
+              <div className="w-14 h-14 bg-ec-red text-white text-2xl flex items-center justify-center rounded-full mb-4 border-2 border-ec-blue mx-auto md:mx-0">
+                💼
+              </div>
+              <h3 className="font-bold text-xl text-ec-blue mb-2 text-center md:text-left">Akselerasi Karir</h3>
+              <p className="text-sm font-semibold text-ec-red mb-2 text-center md:text-left">Langkah Mulus ke BUMN & CPNS</p>
+              <p className="text-gray-600 text-sm text-center md:text-left">
+                Ingin kerja di BUMN, Perusahaan Multinasional, atau daftar CPNS? Sertifikat TOEFL bukan lagi sekadar nilai tambah, tapi syarat wajib di tahap seleksi administrasi.
+              </p>
+            </div>
+
+            <div className="bg-white border-2 border-ec-blue p-6 shadow-[6px_6px_0px_0px_rgba(0,20,82,1)] hover:-translate-y-1 transition-transform">
+              <div className="w-14 h-14 bg-ec-red text-white text-2xl flex items-center justify-center rounded-full mb-4 border-2 border-ec-blue mx-auto md:mx-0">
+                ✅
+              </div>
+              <h3 className="font-bold text-xl text-ec-blue mb-2 text-center md:text-left">Syarat Kelulusan Kampus</h3>
+              <p className="text-sm font-semibold text-ec-red mb-2 text-center md:text-left">Wisuda Tepat Waktu, Tanpa Hambatan</p>
+              <p className="text-gray-600 text-sm text-center md:text-left">
+                Banyak mahasiswa tertunda sidangnya hanya karena belum memenuhi standar skor TOEFL kampus. Jangan sampai kamu jadi salah satunya! Persiapkan dari sekarang.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-12 bg-ec-blue text-white p-6 md:p-8 border-2 border-white shadow-[6px_6px_0px_0px_rgba(216,27,43,1)] max-w-4xl mx-auto">
+            <p className="text-lg md:text-xl font-bold">
+              "Mencapai skor TOEFL 500+ itu bukan cuma soal jago bahasa Inggris, tapi soal Tahu Strategi & Trik Menjawab Soalnya. Dan itulah alasan mengapa English Club TOEFL Preparation ini diadakan untukmu!"
+            </p>
+          </div>
+
+          <div className="mt-8">
+            <a
+              href="#register"
+              className="inline-block bg-ec-red text-white px-8 py-3 font-bold border-2 border-ec-blue shadow-[4px_4px_0px_0px_rgba(0,20,82,1)] hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_rgba(0,20,82,1)] transition-all"
+            >
+              Amankan Kursiku Sekarang
             </a>
           </div>
         </div>
@@ -202,6 +266,9 @@ export default function Toefl() {
               <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-ec-red text-white font-bold px-4 py-1 border-2 border-ec-blue">
                 REKOMENDASI
               </div>
+              <div className="absolute -top-5 right-4 bg-yellow-400 text-ec-blue text-xs font-extrabold px-2 py-1 border-2 border-ec-blue rotate-6">
+                SISA 10 KURSI!
+              </div>
               <h3 className="text-2xl font-bold mb-2">OFFLINE</h3>
               <p className="text-5xl font-extrabold text-ec-red mb-6">15K</p>
               <ul className="text-left space-y-3 font-semibold mb-8">
@@ -211,6 +278,7 @@ export default function Toefl() {
                 <li>✔️ E-Certificate</li>
                 <li>✔️ Free 2 SKKM</li>
               </ul>
+              <p className="text-ec-red font-bold text-sm animate-pulse">🔥 Kuota Offline Sangat Terbatas!</p>
             </div>
           </div>
         </div>
