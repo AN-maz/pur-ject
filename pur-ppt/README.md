@@ -89,3 +89,50 @@ const sapa = (nama) => {
 sapa("Anggota Baru");
 ``
 
+---
+
+# 3. Fitur Quiz Interaktif
+
+Setelah setiap topik materi, tersedia **Quiz Interaktif** untuk menguji pemahaman siswa.
+
+## Cara Kerja Quiz
+
+1. Quiz otomatis muncul sebagai modal saat navigasi mencapai slide quiz di antara materi topik.
+2. Setiap quiz berisi 1-2 pertanyaan pilihan ganda.
+3. **Cara menjawab:** Klik salah satu opsi (A/B/C/D).
+4. **Feedback instan:**
+   - ✅ Jawaban benar → opsi hijau + efek **confetti** 🎉
+   - ❌ Jawaban salah → opsi merah, tampilkan jawaban yang benar
+5. Setelah semua pertanyaan terjawab, muncul **ringkasan skor** dengan progress bar.
+6. Klik "Lanjut ke Materi →" untuk kembali ke slide presentasi.
+7. Skor kumulatif dari semua quiz ditampilkan di kontrol navigasi bawah (contoh: `✨ 3/4`).
+
+## Cara Menulis Quiz di Markdown
+
+Gunakan format berikut di dalam file `.md` yang dipisahkan oleh `---`:
+
+```markdown
+<!-- quiz -->
+## Quiz: Nama Topik
+
+Pertanyaan 1: Teks pertanyaan di sini?
+
+- [ ] Opsi A (salah)
+- [x] Opsi B (benar — gunakan [x])
+- [ ] Opsi C (salah)
+- [ ] Opsi D (salah)
+
+Pertanyaan 2: Teks pertanyaan kedua?
+
+- [x] Opsi A (benar)
+- [ ] Opsi B (salah)
+- [ ] Opsi C (salah)
+```
+
+**Aturan:**
+- Baris pertama harus `<!-- quiz -->` (komentar HTML).
+- Gunakan `##` untuk judul quiz.
+- Setiap pertanyaan diawali `Pertanyaan N:`.
+- Opsi jawaban menggunakan daftar `- [ ]` (salah) atau `- [x]` (benar).
+- Hanya satu `[x]` per pertanyaan.
+
