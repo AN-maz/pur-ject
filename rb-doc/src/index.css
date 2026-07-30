@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  /* Warna Utama Ruang Belajar */
+  --color-rb-dark: #0B1727;
+  --color-rb-teal: #00B4A7;
+  --color-rb-light: #5EEAD4;
+}
+
+/* Base styles opsional */
+body {
+  background-color: var(--color-rb-dark);
+  color: white;
+}
