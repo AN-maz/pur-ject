@@ -5,6 +5,11 @@
   --color-rb-dark: #0B1727;
   --color-rb-teal: #00B4A7;
   --color-rb-light: #5EEAD4;
+
+  /* Tema Warna Divisi Software */
+  --color-software-bright: #39FF5A;
+  --color-software-tosca: #20C997;
+  --color-software-teal: #008080;
 }
 
 /* Base styles opsional */
