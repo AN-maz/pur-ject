@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import { useGLTF, Center } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 
-// Komponen Pita Tanzaku
 function TanzakuTag({ wish, onSelect }) {
   const meshRef = useRef();
 
@@ -14,21 +13,20 @@ function TanzakuTag({ wish, onSelect }) {
   });
 
   return (
-    <group position={wish.position || [0, 1, 0]}>
+    <group position={wish.position || [0, 0, 0]}>
       <mesh
         ref={meshRef}
         onClick={(e) => {
-          e.stopPropagation(); // Cegah event tembus ke canvas
+          e.stopPropagation();
           onSelect(wish);
         }}
         onPointerOver={() => (document.body.style.cursor = 'pointer')}
         onPointerOut={() => (document.body.style.cursor = 'auto')}
       >
-        {/* Dimensi Kertas Harapan */}
-        <boxGeometry args={[0.2, 0.6, 0.015]} />
+        <boxGeometry args={[0.22, 0.65, 0.015]} />
         <meshStandardMaterial 
           color={wish.color || '#f43f5e'} 
-          roughness={0.4} 
+          roughness={0.35} 
           metalness={0.1}
         />
       </mesh>
@@ -40,13 +38,12 @@ export default function TreeModel({ wishes = [], onSelectWish }) {
   const { scene } = useGLTF('/models/bamboo.glb');
 
   return (
-    <group>
-      {/* Center membungkus model agar otomatis berada tepat di tengah koordinat (0,0,0) */}
-      <Center top>
-        <primitive object={scene} scale={0.6} />
+    // Posisi Y diturunkan ke -0.4 agar pas di area tengah-bawah yang nyaman dilihat
+    <group position={[0, -0.4, 0]}>
+      <Center>
+        <primitive object={scene} scale={0.7} />
       </Center>
 
-      {/* Render semua kartu harapan */}
       {wishes.map((item) => (
         <TanzakuTag key={item.id} wish={item} onSelect={onSelectWish} />
       ))}

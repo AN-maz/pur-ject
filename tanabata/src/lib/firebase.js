@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { limit } from "firebase/firestore";
 import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -15,7 +16,7 @@ export const db = getFirestore(app);
 
 // Helper untuk subscribe realtime wishes
 export const subscribeWishes = (callback) => {
-  const q = query(collection(db, "wishes"), orderBy("createdAt", "desc"));
+  const q = query(collection(db, "wishes"), orderBy("createdAt", "desc"), limit(80));
   return onSnapshot(q, (snapshot) => {
     const wishes = snapshot.docs.map((doc) => ({
       id: doc.id,
