@@ -35,8 +35,6 @@ export default function AuthView() {
         setError('');
         setLoading(true);
 
-        console.log('formData saat submit:', formData);
-
         try {
             if (authMode === 'login') {
                 const res = await login(formData.email, formData.password);
@@ -47,11 +45,10 @@ export default function AuthView() {
                 setError(res.error || 'Login gagal');
             } else {
                 const payload = {
-                    namaLengkap: formData.name,
+                    name: formData.name,
                     email: formData.email,
                     password: formData.password,
                 };
-                console.log('payload register:', payload);
                 const res = await authService.register(payload);
                 if (res.success) {
                     setAuthMode('login');

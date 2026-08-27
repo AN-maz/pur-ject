@@ -31,7 +31,12 @@ export const useAuthStore = create(
         set({ isLoading: true })
         try {
           const res = await authService.register(payload)
-          set({ isLoading: false })
+          if (res.success && res.token) {
+            apiClient.defaults.headers.common['Authorization'] = `Bearer ${res.token}`
+            set({ token: res.token, user: res.user, isLoading: false })
+          } else {
+            set({ isLoading: false })
+          }
           return res
         } catch (err) {
           set({ isLoading: false })

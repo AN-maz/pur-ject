@@ -1,23 +1,41 @@
 import { supabase } from '../config/supabase.js'
+import crypto from 'crypto'
+
+function hashPassword (password) {
+  const salt = crypto.randomBytes(16).toString('hex')
+  const hash = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha256').toString('hex')
+  return `${salt}:${hash}`
+}
 
 export async function register ({ name, email, password }) {
+
   const { data: authData, error: signUpError } = await supabase.auth.signUp({
-    email, password,
+    email, 
+    password,
     options: {
-      data: { full_name: name },
-      email_redirect_to: `${process.env.FRONTEND_URL || 'http://localhost:5173'}/login`
+      data: { name }, 
+      email_redirect_to: `${process.env.FRONTEND_URL || 'http://localhost:5173'}/auth`
     }
   })
 
   if (signUpError) throw signUpError
 
+  if (!authData.user) {
+    throw new Error('Gagal mendapatkan ID user dari Supabase Auth')
+  }
+
   const { data: profile, error: profileError } = await supabase
     .from('users')
-    .insert({
-      id: authData.user?.id,
-      name, email, role: 'user',
-      total_exp: 0, level: 1, total_points: 0
-    })
+    .upsert({
+      id: authData.user.id,
+      name,
+      email,
+      role: 'user',
+      password_hash: hashPassword(password),
+      total_exp: 0,
+      level: 1,
+      total_points: 0
+    }, { onConflict: 'id' })
     .select('id, name, email, role, total_exp, level, total_points, created_at')
     .single()
 

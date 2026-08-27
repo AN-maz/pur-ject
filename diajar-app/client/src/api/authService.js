@@ -1,50 +1,64 @@
 import apiClient from './apiClient'
 
+const extractError = (err) =>
+  err.response?.data?.message ||
+  err.response?.data?.error ||
+  err.message ||
+  'Terjadi kesalahan'
+
 export const authService = {
   async login(email, password) {
     try {
-      const res = await apiClient.post('/auth/login', { email, password })
-      const token = res.data.token || res.data.accessToken
-      const user = res.data.user || null
+      const res = await apiClient.post('/auth/login', {
+        email: (email || '').trim(),
+        password,
+      })
+      const token = res.data.data?.access_token || res.data.data?.token || null
+      const user = res.data.data?.user || null
       if (token) {
         localStorage.setItem('token', token)
       }
       return { success: true, token, user }
     } catch (err) {
-      const message =
-        err.response?.data?.message ||
-        err.response?.data?.error ||
-        err.message ||
-        'Login gagal'
-      return { success: false, error: message }
+      return { success: false, error: extractError(err) }
     }
   },
 
   async register(payload) {
     try {
-      const res = await apiClient.post('/auth/register', payload)
-      return { success: true, data: res.data }
+      const res = await apiClient.post('/auth/register', {
+        ...payload,
+        email: (payload.email || '').trim(),
+        name: (payload.name || '').trim(),
+      })
+      const token = res.data.data?.access_token || res.data.data?.token || null
+      const user = res.data.data?.user || null
+      if (token) {
+        localStorage.setItem('token', token)
+      }
+      return { success: true, token, user, message: res.data.message }
     } catch (err) {
-      const message =
-        err.response?.data?.message ||
-        err.response?.data?.error ||
-        err.message ||
-        'Registrasi gagal'
-      return { success: false, error: message }
+      if (err.response?.status === 409) {
+        return { success: false, error: 'Email sudah terdaftar' }
+      }
+      const supabaseMsg = err.response?.data?.message || err.response?.data?.error
+      if (supabaseMsg) {
+        const hint = supabaseMsg.includes('invalid')
+          ? ' — Pastikan email tidak meng mengandung karakter tersembunyi dan domain tidak diblokir di panel Supabase.'
+          : ''
+        return { success: false, error: supabaseMsg + hint }
+      }
+      return { success: false, error: extractError(err) }
     }
   },
 
   async getCurrentUser() {
     try {
       const res = await apiClient.get('/auth/me')
-      return { success: true, user: res.data.user || res.data }
+      const user = res.data.data?.user || res.data.data || null
+      return { success: true, user }
     } catch (err) {
-      const message =
-        err.response?.data?.message ||
-        err.response?.data?.error ||
-        err.message ||
-        'Gagal memuat profil'
-      return { success: false, error: message }
+      return { success: false, error: extractError(err) }
     }
   },
 
