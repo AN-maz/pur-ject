@@ -1,7 +1,18 @@
 import { supabase } from '../config/supabase.js'
 import { awardExp, EXP } from './gamification.service.js'
 
+const DEFAULT_COVER_URL = 'https://via.placeholder.com/800x400?text=No+Cover+Image'
 const MAX_LIMIT = 50
+
+
+function generateSlug(text) {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_-]+/g, '-')
+    .replace(/^-+|-+$/g, '') + '-' + Date.now()
+}
 
 export async function listMaterials ({ category_id, search, sort, page, limit }) {
   let query = supabase
@@ -109,13 +120,27 @@ export async function getMaterialDetail (slug, userId = null) {
   }
 }
 
-export async function createMaterial ({ author_id, category_id, title, cover_image_url, content }) {
+export async function createMaterial ({ author_id, category_id, title, cover_image_url, content, slug }) {
+
+  const finalCoverUrl = (cover_image_url && cover_image_url.trim() !== '') 
+    ? cover_image_url 
+    : DEFAULT_COVER_URL
+
+  const finalSlug = slug || generateSlug(title)
+
   const { data, error } = await supabase
     .from('materials')
     .insert({
-      author_id, category_id, title, cover_image_url, content,
-      status: 'pending', rejection_reason: null,
-      average_rating: 0, ratings_count: 0
+      author_id,
+      category_id,
+      title,
+      slug: finalSlug,
+      cover_image_url: finalCoverUrl,
+      content,
+      status: 'pending',
+      rejection_reason: null,
+      average_rating: 0,
+      ratings_count: 0
     })
     .select('id, status, created_at')
     .single()

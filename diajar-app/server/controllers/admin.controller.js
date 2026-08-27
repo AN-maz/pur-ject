@@ -7,6 +7,8 @@ export const getPendingMaterials = asyncHandler(async (req, res, next) => {
     const { materials, count } = await adminService.getPendingMaterials(req.query)
     return success(res, 'Daftar materi pending berhasil diambil', { materials, total: count })
   } catch (err) {
+    console.error('=== ERROR ADMIN SERVICE GET PENDING MATERIALS ===')
+    console.error(err)
     next(err)
   }
 })
@@ -51,6 +53,18 @@ export const deleteCategory = asyncHandler(async (req, res, next) => {
     return success(res, 'Kategori berhasil dihapus', {})
   } catch (err) {
     if (err.code === 'PGRST116') return errorRes(res, 'Kategori tidak ditemukan', 404)
+    next(err)
+  }
+})
+
+export const getMaterialDetailForAdmin = asyncHandler(async (req, res, next) => {
+  try {
+    const { id } = req.params
+    const material = await adminService.getMaterialById(id)
+    if (!material) return errorRes(res, 'Materi tidak ditemukan', 404)
+    return success(res, 'Detail materi berhasil diambil', material)
+  } catch (err) {
+    if (err.code === 'PGRST116') return errorRes(res, 'Materi tidak ditemukan', 404)
     next(err)
   }
 })

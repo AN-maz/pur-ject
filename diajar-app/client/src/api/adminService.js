@@ -7,20 +7,42 @@ const extractError = (err) =>
   'Terjadi kesalahan'
 
 export const adminService = {
+  // GET Daftar Materi Moderasi (Mendukung query filter yang aman)
   async getPendingMaterials(params = {}) {
     try {
-      const res = await apiClient.get('/admin/materials', { params })
+      // Bersihkan params agar hanya mengirim param yang diisi
+      const cleanParams = {}
+      if (params.page) cleanParams.page = params.page
+      if (params.limit) cleanParams.limit = params.limit
+      if (params.status && params.status !== 'all') cleanParams.status = params.status
+
+      const res = await apiClient.get('/admin/materials', { params: cleanParams })
       return { success: true, data: res.data.data }
     } catch (err) {
       return { success: false, error: extractError(err) }
     }
   },
 
-  async updateMaterialStatus(materialId, status, rejectionReason = null) {
+  // GET Detail Materi via Endpoint Admin (/admin/materials/:id)
+  async getMaterialById(materialId) {
+    try {
+      const res = await apiClient.get(`/admin/materials/${materialId}`)
+      return { success: true, data: res.data.data }
+    } catch (err) {
+      return { success: false, error: extractError(err) }
+    }
+  },
+
+  // UPDATE Status Materi (Approve / Reject)
+  async updateMaterialStatus(id, status, rejectionReason = null) {
     try {
       const payload = { status }
-      if (rejectionReason) payload.rejection_reason = rejectionReason
-      const res = await apiClient.patch(`/admin/materials/${materialId}/status`, payload)
+      // Hanya sertakan rejection_reason jika statusnya 'rejected'
+      if (status === 'rejected' && rejectionReason) {
+        payload.rejection_reason = rejectionReason
+      }
+
+      const res = await apiClient.patch(`/admin/materials/${id}/status`, payload)
       return { success: true, data: res.data.data, message: res.data.message }
     } catch (err) {
       return { success: false, error: extractError(err) }
@@ -62,4 +84,9 @@ export const adminService = {
       return { success: false, error: extractError(err) }
     }
   },
+
+  // Alias untuk getPendingMaterials jika ada komponen yang memanggil getAllMaterials
+  async getAllMaterials(params = {}) {
+    return this.getPendingMaterials(params)
+  }
 }

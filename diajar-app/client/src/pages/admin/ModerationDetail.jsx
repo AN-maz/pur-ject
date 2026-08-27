@@ -1,218 +1,213 @@
-import { useParams, useNavigate } from 'react-router-dom'
-import { usePendingMaterials } from '../../hooks/useAdmin'
-import { adminService } from '../../api/adminService'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import MaterialReader from '../../components/material/MaterialReader'
-import RatingStars from '../../components/material/RatingStars'
-import { Check, X, AlertCircle } from 'lucide-react'
 import { useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
+import { adminService } from '../../api/adminService'
+import { useUpdateMaterialStatus } from '../../hooks/useAdmin'
+import { ArrowLeft, CheckCircle2, XCircle, AlertTriangle } from 'lucide-react'
 
 export default function ModerationDetail() {
   const { id } = useParams()
   const navigate = useNavigate()
-  const queryClient = useQueryClient()
   const [rejectionReason, setRejectionReason] = useState('')
-  const [actionLoading, setActionLoading] = useState(false)
-  const [showRejectForm, setShowRejectForm] = useState(false)
+  const [showRejectModal, setShowRejectModal] = useState(false)
 
-  // Fetch all pending materials and find the one with matching ID
-  const { data: materialsRes, isLoading } = usePendingMaterials({
-    limit: 100,
-    status: 'pending',
-  })
-
-  const material = materialsRes?.success
-    ? materialsRes.data?.materials?.find((m) => m.id === id)
-    : null
-
-  const updateStatusMutation = useMutation({
-    mutationFn: ({ status, reason }) =>
-      adminService.updateMaterialStatus(id, status, reason),
-    onSuccess: (res) => {
-      if (res.success) {
-        alert(res.message || 'Status materi berhasil diperbarui!')
-        queryClient.invalidateQueries({ queryKey: ['admin-pending-materials'] })
-        queryClient.invalidateQueries({ queryKey: ['admin-stats'] })
-        navigate('/admin/moderation')
-      } else {
-        alert(res.error || 'Gagal memperbarui status')
+  // Fetch detail materi via adminService dengan proteksi Retry 404
+  const { data: material, isLoading, error } = useQuery({
+    queryKey: ['material-detail-admin', id],
+    queryFn: async () => {
+      const res = await adminService.getMaterialById(id)
+      if (!res.success) {
+        throw new Error(res.error || 'Gagal memuat detail materi')
       }
-      setActionLoading(false)
+      return res.data?.data || res.data
+    },
+    enabled: Boolean(id),
+    retry: (failureCount, err) => {
+      // Matikan retry berulang jika server merespons 404
+      if (err?.message?.includes('404') || err?.response?.status === 404) {
+        return false
+      }
+      return failureCount < 2
     },
   })
 
-  const handleApprove = async () => {
-    if (!window.confirm('Setujui materi ini? Author akan mendapatkan +200 EXP.')) return
-    setActionLoading(true)
-    updateStatusMutation.mutate({ status: 'approved', reason: null })
+  const updateStatusMutation = useUpdateMaterialStatus()
+
+const handleApprove = () => {
+    // Langsung eksekusi mutation tanpa confirm() native browser
+    updateStatusMutation.mutate(
+      { id, status: 'approved' },
+      {
+        onSuccess: () => {
+          alert('Materi berhasil disetujui!')
+          navigate('/admin/moderation')
+        },
+        onError: (err) => alert(`Gagal memproses: ${err.message}`),
+      }
+    )
   }
 
-  const handleReject = () => {
-    if (!rejectionReason.trim()) {
-      alert('Masukkan alasan penolakan!')
-      return
-    }
-    setActionLoading(true)
-    setShowRejectForm(false)
-    updateStatusMutation.mutate({ status: 'rejected', reason: rejectionReason })
+  const handleRejectSubmit = (e) => {
+    e.preventDefault()
+    if (!rejectionReason.trim()) return alert('Alasan penolakan wajib diisi!')
+
+    updateStatusMutation.mutate(
+      { id, status: 'rejected', rejection_reason: rejectionReason },
+      {
+        onSuccess: () => {
+          alert('Materi berhasil ditolak!')
+          setShowRejectModal(false)
+          navigate('/admin/moderation')
+        },
+        onError: (err) => alert(`Gagal memproses: ${err.message}`),
+      }
+    )
   }
 
   if (isLoading) {
     return (
-      <div className="text-center py-12">
+      <div className="p-8 text-center">
         <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-        <p className="mt-4 text-slate-500">Memuat materi...</p>
       </div>
     )
   }
 
-  if (!material) {
+  if (error || !material) {
     return (
-      <div className="text-center py-16">
-        <AlertCircle className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-        <h3 className="text-xl font-bold text-navy mb-2">Materi tidak ditemukan</h3>
-        <p className="text-slate-500">
-          Materi dengan ID ini tidak ditemukan di antrian moderasi.
-        </p>
+      <div className="p-8 text-center text-red-500 font-semibold">
+        Gagal memuat detail materi: {error?.message || 'Data tidak ditemukan'}
       </div>
     )
   }
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-extrabold text-navy">Review Materi</h1>
-        <button
-          onClick={() => navigate('/admin/moderation')}
-          className="text-sm text-slate-500 hover:text-navy transition"
-        >
-          ← Kembali ke Moderasi
-        </button>
+    <div className="max-w-4xl mx-auto space-y-6">
+      {/* Back Button */}
+      <button
+        onClick={() => navigate('/admin/moderation')}
+        className="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-navy transition"
+      >
+        <ArrowLeft className="w-4 h-4" /> Kembali ke Moderasi
+      </button>
+
+      {/* Header Info */}
+      <div className="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm space-y-4">
+        <div className="flex items-start justify-between">
+          <div>
+            <span
+              className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                material.status === 'pending'
+                  ? 'bg-amber-100 text-amber-700'
+                  : material.status === 'approved'
+                  ? 'bg-green-100 text-green-700'
+                  : 'bg-red-100 text-red-700'
+              }`}
+            >
+              Status: {material.status || 'pending'}
+            </span>
+            <h1 className="text-2xl font-bold text-navy mt-2">{material.title}</h1>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setShowRejectModal(true)}
+              disabled={updateStatusMutation.isPending}
+              className="flex items-center gap-2 px-4 py-2 bg-red-50 text-red-600 hover:bg-red-100 font-semibold rounded-xl text-sm transition"
+            >
+              <XCircle className="w-4 h-4" /> Tolak
+            </button>
+            <button
+              onClick={handleApprove}
+              disabled={updateStatusMutation.isPending}
+              className="flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white hover:bg-emerald-700 font-semibold rounded-xl text-sm transition shadow-sm"
+            >
+              <CheckCircle2 className="w-4 h-4" /> Setujui (Approve)
+            </button>
+          </div>
+        </div>
+
+        {/* Metadata */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-slate-100 text-sm">
+          <div>
+            <span className="text-slate-400 block text-xs">Author</span>
+            <span className="font-semibold text-slate-700">
+              {material.author?.name || material.author_name || '-'}
+            </span>
+          </div>
+          <div>
+            <span className="text-slate-400 block text-xs">Kategori</span>
+            <span className="font-semibold text-slate-700">
+              {material.category?.name || material.category_name || '-'}
+            </span>
+          </div>
+          <div>
+            <span className="text-slate-400 block text-xs">Tanggal Dibuat</span>
+            <span className="font-semibold text-slate-700">
+              {material.created_at
+                ? new Date(material.created_at).toLocaleDateString('id-ID')
+                : '-'}
+            </span>
+          </div>
+        </div>
       </div>
 
-      {/* Material Info */}
-      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
-        <div className="flex items-center gap-2 mb-4">
-          <span className="text-xs font-bold text-primary uppercase tracking-wider">
-            {material.category?.name || 'Uncategorized'}
-          </span>
-          <span
-            className={`px-2.5 py-0.5 rounded-full text-xs font-semibold ${
-              material.status === 'pending'
-                ? 'bg-amber-100 text-amber-700'
-                : 'bg-gray-100 text-gray-700'
-            }`}
-          >
-            {material.status === 'pending' ? 'Pending' : material.status}
-          </span>
-        </div>
-
-        <h2 className="text-2xl font-extrabold text-navy mb-2">
-          {material.title}
-        </h2>
-
-        <div className="flex items-center gap-6 text-sm text-slate-500 mb-4">
-          <span>oleh {material.author?.name || '-'} (Level {material.author?.level || 1})</span>
-          <div className="flex items-center gap-2">
-            <RatingStars rating={material.average_rating} />
-            <span>({material.ratings_count || 0} rating)</span>
-          </div>
-          <span>{new Date(material.created_at).toLocaleDateString('id-ID')}</span>
-        </div>
-
+      {/* Preview Content */}
+      <div className="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+        <h2 className="text-lg font-bold text-navy mb-4">Konten Materi</h2>
         {material.cover_image_url && (
           <img
             src={material.cover_image_url}
             alt={material.title}
-            className="w-full max-h-48 object-cover rounded-xl mb-4"
+            className="w-full h-64 object-cover rounded-xl mb-6"
           />
         )}
-      </div>
-
-      {/* Content Preview */}
-      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-8">
-        <h3 className="text-lg font-bold text-navy mb-4">Preview Konten</h3>
-        <div className="prose prose-slate max-w-none">
-          <MaterialReader content={material.content || ''} />
+        <div className="prose max-w-none text-slate-700 whitespace-pre-line">
+          {material.content}
         </div>
       </div>
 
-      {/* Rejection Reason (if previously rejected) */}
-      {material.rejection_reason && (
-        <div className="bg-red-50 border border-red-200 rounded-xl p-4">
-          <div className="flex items-start gap-2">
-            <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0" />
-            <div>
-              <span className="text-sm font-semibold text-red-700">
-                Alasan Penolakan Sebelumnya:
-              </span>
-              <p className="text-sm text-red-600 mt-1">{material.rejection_reason}</p>
+      {/* Rejection Modal */}
+      {showRejectModal && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <form
+            onSubmit={handleRejectSubmit}
+            className="bg-white rounded-2xl p-6 max-w-md w-full shadow-xl space-y-4"
+          >
+            <div className="flex items-center gap-2 text-red-600">
+              <AlertTriangle className="w-5 h-5" />
+              <h3 className="font-bold text-lg">Tolak Materi</h3>
             </div>
-          </div>
-        </div>
-      )}
-
-      {/* Actions */}
-      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
-        <h3 className="text-lg font-bold text-navy mb-4">Aksi Moderasi</h3>
-
-        {!showRejectForm ? (
-          <div className="flex gap-3">
-            <button
-              onClick={handleApprove}
-              disabled={actionLoading}
-              className="flex-1 flex items-center justify-center gap-2 px-5 py-3 bg-green-600 text-white rounded-xl font-bold hover:bg-green-700 transition disabled:opacity-50"
-            >
-              <Check className="w-5 h-5" />
-              {actionLoading ? 'Memproses...' : 'Setujui'}
-            </button>
-            <button
-              onClick={() => setShowRejectForm(true)}
-              disabled={actionLoading}
-              className="flex-1 flex items-center justify-center gap-2 px-5 py-3 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition disabled:opacity-50"
-            >
-              <X className="w-5 h-5" />
-              Tolak
-            </button>
-          </div>
-        ) : (
-          <div className="space-y-4">
-            <div>
-              <label className="block text-xs font-semibold text-slate-600 mb-1">
-                Alasan Penolakan
-              </label>
-              <textarea
-                value={rejectionReason}
-                onChange={(e) => setRejectionReason(e.target.value)}
-                placeholder="Masukkan alasan mengapa materi ini ditolak..."
-                rows={3}
-                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary text-sm resize-y"
-                required
-              />
-            </div>
-
-            <div className="flex gap-3">
+            <p className="text-sm text-slate-600">
+              Berikan alasan penolakan agar author dapat memperbaiki materinya:
+            </p>
+            <textarea
+              required
+              rows={4}
+              value={rejectionReason}
+              onChange={(e) => setRejectionReason(e.target.value)}
+              placeholder="Contoh: Format penulisan belum rapi..."
+              className="w-full p-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 text-sm"
+            />
+            <div className="flex items-center justify-end gap-3 pt-2">
               <button
-                onClick={handleReject}
-                disabled={actionLoading || !rejectionReason.trim()}
-                className="flex-1 flex items-center justify-center gap-2 px-5 py-3 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition disabled:opacity-50"
+                type="button"
+                onClick={() => setShowRejectModal(false)}
+                className="px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100 rounded-xl"
               >
-                <X className="w-5 h-5" />
-                {actionLoading ? 'Memproses...' : 'Konfirmasi Tolak'}
-              </button>
-              <button
-                onClick={() => setShowRejectForm(false)}
-                disabled={actionLoading}
-                className="flex-1 flex items-center justify-center gap-2 px-5 py-3 border border-slate-200 text-slate-700 rounded-xl font-bold hover:bg-slate-100 transition"
-              >
-                <X className="w-5 h-5" />
                 Batal
               </button>
+              <button
+                type="submit"
+                disabled={updateStatusMutation.isPending}
+                className="px-4 py-2 text-sm font-semibold bg-red-600 text-white hover:bg-red-700 rounded-xl transition"
+              >
+                {updateStatusMutation.isPending ? 'Memproses...' : 'Kirim Penolakan'}
+              </button>
             </div>
-          </div>
-        )}
-      </div>
+          </form>
+        </div>
+      )}
     </div>
   )
 }

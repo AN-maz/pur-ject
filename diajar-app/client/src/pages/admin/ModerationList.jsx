@@ -12,12 +12,29 @@ export default function ModerationList() {
     status: 'pending',
   })
 
-  const materials = res?.success ? res.data?.materials || [] : []
-  const total = res?.success ? res.data?.total || 0 : 0
-  const totalPages = Math.ceil(total / 20)
+  // Penanganan aman pembacaan payload backend
+  const rawData = res?.success ? res.data : null
+  const materials = Array.isArray(rawData)
+    ? rawData
+    : rawData?.materials || rawData?.data || []
 
-  const pendingCount = materials.filter((m) => m.status === 'pending').length
-  const rejectedCount = materials.filter((m) => m.status === 'rejected').length
+  // Ekstrak Total Data & Halaman
+  const total = rawData?.total || rawData?.pagination?.total_items || materials.length
+  const totalPages = Math.ceil(total / 20) || 1
+
+  // Filter dengan toleransi huruf kapital/kecil (case-insensitive)
+  const pendingCount = materials.filter(
+    (m) => m.status?.toLowerCase() === 'pending'
+  ).length
+
+  const rejectedCount = materials.filter(
+    (m) => m.status?.toLowerCase() === 'rejected'
+  ).length
+
+  // Saring materi berdasarkan kata kunci pencarian frontend
+  const filteredMaterials = materials.filter((m) =>
+    m.title?.toLowerCase().includes(searchTerm.toLowerCase())
+  )
 
   return (
     <div className="space-y-6">
@@ -32,7 +49,7 @@ export default function ModerationList() {
         </button>
       </div>
 
-      {/* Summary */}
+      {/* Summary Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-center">
           <AlertCircle className="w-6 h-6 text-amber-500 mx-auto mb-1" />
@@ -51,7 +68,7 @@ export default function ModerationList() {
         </div>
       </div>
 
-      {/* Search */}
+      {/* Search Bar */}
       <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
         <input
@@ -73,7 +90,7 @@ export default function ModerationList() {
           <div className="p-8 text-center text-red-500">
             Gagal memuat data: {error.message || error}
           </div>
-        ) : materials.length === 0 ? (
+        ) : filteredMaterials.length === 0 ? (
           <div className="p-12 text-center">
             <AlertCircle className="w-12 h-12 text-slate-300 mx-auto mb-4" />
             <p className="text-slate-500">
@@ -106,11 +123,10 @@ export default function ModerationList() {
                 </tr>
               </thead>
               <tbody>
-                {materials.map((material) => (
+                {filteredMaterials.map((material) => (
                   <tr
                     key={material.id}
                     className="border-b border-slate-100 hover:bg-slate-50 transition cursor-pointer"
-                    onClick={() => {}}
                   >
                     <td className="py-4 px-4">
                       <Link
@@ -122,52 +138,50 @@ export default function ModerationList() {
                       {material.rejection_reason && (
                         <div className="mt-1">
                           <span className="text-xs text-red-500 bg-red-50 px-2 py-0.5 rounded">
-                            Ditolak
+                            Ditolak: {material.rejection_reason}
                           </span>
                         </div>
                       )}
                     </td>
                     <td className="py-4 px-4 text-sm text-slate-600">
-                      {material.author?.name || '-'}
+                      {material.author?.name || material.author_name || '-'}
                     </td>
                     <td className="py-4 px-4 text-sm text-slate-600">
-                      {material.category?.name || '-'}
+                      {material.category?.name || material.category_name || '-'}
                     </td>
                     <td className="py-4 px-4 text-center text-sm text-slate-600">
                       {material.average_rating
-                        ? `${Number(material.average_rating).toFixed(1)} (${material.ratings_count})`
+                        ? `${Number(material.average_rating).toFixed(1)} (${material.ratings_count || 0})`
                         : '-'}
                     </td>
                     <td className="py-4 px-4 text-center">
                       <span
                         className={`px-2.5 py-0.5 rounded-full text-xs font-semibold ${
-                          material.status === 'pending'
+                          material.status?.toLowerCase() === 'pending'
                             ? 'bg-amber-100 text-amber-700'
-                            : material.status === 'approved'
+                            : material.status?.toLowerCase() === 'approved'
                             ? 'bg-green-100 text-green-700'
                             : 'bg-red-100 text-red-700'
                         }`}
                       >
-                        {material.status === 'pending'
-                          ? 'Pending'
-                          : material.status === 'approved'
-                          ? 'Approved'
-                          : 'Rejected'}
+                        {material.status}
                       </span>
                     </td>
                     <td className="py-4 px-4 text-right text-sm text-slate-400">
-                      {new Date(material.created_at).toLocaleDateString('id-ID', {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric',
-                      })}
+                      {material.created_at
+                        ? new Date(material.created_at).toLocaleDateString('id-ID', {
+                            year: 'numeric',
+                            month: 'short',
+                            day: 'numeric',
+                          })
+                        : '-'}
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
 
-            {/* Pagination */}
+            {/* Pagination controls */}
             {totalPages > 1 && (
               <div className="p-4 border-t border-slate-100 flex items-center justify-between">
                 <button

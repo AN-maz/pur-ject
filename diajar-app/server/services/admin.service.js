@@ -2,37 +2,39 @@ import { supabase } from '../config/supabase.js'
 import { awardExp, EXP } from './gamification.service.js'
 import { updateAverageRating } from './rating.service.js'
 
-export async function getPendingMaterials ({ page = 1, limit = 20 }) {
-  const from = (page - 1) * limit
-  const to = from + limit - 1
+export async function getPendingMaterials(queryParams = {}) {
+  const { page = 1, limit = 20, status = 'pending' } = queryParams
+  const pageNum = parseInt(page, 10)
+  const limitNum = parseInt(limit, 10)
+  const offset = (pageNum - 1) * limitNum
 
-  const { data, error } = await supabase
+  let query = supabase
     .from('materials')
-    .select(`
-      id, title, status, rejection_reason,
-      category:categories ( id, name ),
-      author:users ( id, name, level ),
-      average_rating, ratings_count, created_at
-    `, { count: 'exact' })
-    .eq('status', 'pending')
-    .order('created_at', { ascending: true })
-    .range(from, to)
+    .select(
+      `
+      *,
+      author:users(id, name, email),
+      category:categories(id, name)
+    `,
+      { count: 'exact' }
+    )
 
-  if (error) throw error
+  if (status) {
+    query = query.eq('status', status)
+  }
+
+  const { data, count, error } = await query
+    .range(offset, offset + limitNum - 1)
+    .order('created_at', { ascending: false })
+
+  if (error) {
+    console.error('Supabase Query Error:', error)
+    throw error
+  }
 
   return {
-    materials: (data || []).map((m) => ({
-      id: m.id,
-      title: m.title,
-      status: m.status,
-      category: m.category ? { id: m.category.id, name: m.category.name } : null,
-      author: m.author ? { id: m.author.id, name: m.author.name, level: m.author.level } : null,
-      average_rating: Number(m.average_rating) || 0,
-      ratings_count: m.ratings_count,
-      rejection_reason: m.rejection_reason,
-      created_at: m.created_at
-    })),
-    count
+    materials: data || [],
+    count: count || 0,
   }
 }
 
@@ -106,4 +108,18 @@ export async function deleteCategory (categoryId) {
 
   if (error) throw error
   return { message: 'Category deleted' }
+}
+export const getMaterialById = async (id) => {
+  const { data, error } = await supabase
+    .from('materials')
+    .select(`
+      *,
+      author:users(id, name, email),
+      category:categories(id, name)
+    `)
+    .eq('id', id)
+    .single()
+
+  if (error) throw error
+  return data
 }

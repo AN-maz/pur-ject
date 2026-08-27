@@ -73,6 +73,7 @@ export default function AppRoutes() {
           <AdminLayout><CategoryManagement /></AdminLayout>
         </AdminRoute>
       } />
+  
 
       {/* Fallback */}
       <Route path="*" element={<LandingPage />} />

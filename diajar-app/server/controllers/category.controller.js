@@ -5,7 +5,7 @@ import { success, created, error as errorRes } from '../utils/response.js'
 export const getAllCategories = asyncHandler(async (req, res, next) => {
   try {
     const categories = await categoryService.getAllCategories()
-    return success(res, 'Daftar kategori berhasil diambil', { categories })
+    return success(res, 'Daftar kategori berhasil diambil', categories)
   } catch (err) {
     next(err)
   }

@@ -14,10 +14,13 @@ export default async function auth (req, res, next) {
     return res.status(401).json({ success: false, message: 'Invalid or expired token' })
   }
 
+  // Ambil role dari tabel DB public.users
+  const userRole = await getUserRole(user.id)
+
   req.user = {
     id: user.id,
     email: user.email,
-    role: user.role || (await getUserRole(user.id))
+    role: userRole
   }
 
   next()
@@ -30,6 +33,6 @@ async function getUserRole (userId) {
     .eq('id', userId)
     .single()
 
-  if (error) return 'user'
+  if (error || !data) return 'user'
   return data.role || 'user'
 }

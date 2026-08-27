@@ -35,7 +35,9 @@ router.post('/materials/:id/comments', auth, validate(schemas.materialId, 'param
 
 router.get('/leaderboard', leaderboardController.getLeaderboard)
 
-router.get('/admin/materials',   auth, requireAdmin, validate(schemas.pagination, 'query'), adminController.getPendingMaterials)
+// --- ADMIN ROUTES ---
+router.get('/admin/materials', auth, requireAdmin, validate(schemas.pagination, 'query'), adminController.getPendingMaterials)
+router.get('/admin/materials/:id', auth, requireAdmin, validate(schemas.materialId, 'params'), adminController.getMaterialDetailForAdmin)
 router.patch('/admin/materials/:id/status', auth, requireAdmin, validate(schemas.materialId, 'params'), validate(schemas.updateMaterialStatus), adminController.updateMaterialStatus)
 
 router.post('/admin/categories',   auth, requireAdmin, validate(schemas.createCategory), adminController.createCategory)

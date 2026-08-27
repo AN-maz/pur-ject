@@ -1,7 +1,8 @@
+import { useEffect } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
 import { useAuthStore } from '../../store/auth'
 import { materialService } from '../../api/materialService'
 import { useQuery } from '@tanstack/react-query'
-import { Link } from 'react-router-dom'
 import { BookOpen, PenSquare, Trophy, BarChart3, Star } from 'lucide-react'
 
 const TIER_THRESHOLDS = [
@@ -15,11 +16,19 @@ const TIER_THRESHOLDS = [
 export default function DashboardOverview() {
   const user = useAuthStore((s) => s.user)
   const token = useAuthStore((s) => s.token)
+  const navigate = useNavigate()
+
+  // 🟢 REDIRECT OTOMATIS JIKA ROLE ADALAH ADMIN
+  useEffect(() => {
+    if (user?.role === 'admin') {
+      navigate('/admin/moderation', { replace: true })
+    }
+  }, [user, navigate])
 
   const { data: materialsRes, isLoading } = useQuery({
     queryKey: ['user-materials'],
     queryFn: () => materialService.getUserMaterials(),
-    enabled: !!token,
+    enabled: !!token && user?.role !== 'admin',
     staleTime: 2 * 60 * 1000,
   })
 

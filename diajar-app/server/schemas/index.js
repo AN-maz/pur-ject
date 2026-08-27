@@ -27,10 +27,10 @@ export const schemas = {
   createComment: z.object({
     comment_text: z.string().min(1, 'Komentar tidak boleh kosong').max(2000, 'Komentar maksimal 2000 karakter')
   }),
-
+  
   updateMaterialStatus: z.object({
     status: z.enum(['pending', 'approved', 'rejected']),
-    rejection_reason: z.string().max(1000).optional()
+    rejection_reason: z.string().max(1000).nullable().optional()
   }),
 
   createCategory: z.object({
@@ -69,10 +69,13 @@ export const schemas = {
   }),
 
   pagination: z.object({
-    category_id: z.coerce.number().optional(),
-    search: z.string().trim().max(100).optional(),
-    sort: z.enum(['latest', 'popular']).optional(),
-    page: z.coerce.number().int().min(1).default(1),
-    limit: z.coerce.number().int().min(1).max(50).default(10)
-  })
+      category_id: z.coerce.number().optional(),
+      search: z.string().trim().max(100).optional(),
+      sort: z.enum(['latest', 'popular']).optional(),
+      // 1. Tambahkan status agar query filter admin diizinkan oleh Zod
+      status: z.enum(['pending', 'approved', 'rejected', 'all']).optional(),
+      page: z.coerce.number().int().min(1).default(1),
+      // 2. Naikkan limit max ke 100 agar request limit=100 tidak di-reject 400
+      limit: z.coerce.number().int().min(1).max(100).default(10)
+    })
 }
