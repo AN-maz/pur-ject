@@ -1,91 +1,92 @@
-'use strict'
-const express = require('express')
-const httpErrors = require('http-errors')
-const pino = require('pino')
-const pinoHttp = require('pino-http')
+import express from 'express'
+import httpErrors from 'http-errors'
+import pino from 'pino'
+import pinoHttp from 'pino-http'
+import helmet from 'helmet'
+import cors from 'cors'
+import rateLimit from 'express-rate-limit'
+import dotenv from 'dotenv'
+import apiRouter from './routes/api.js'
 
-module.exports = function main (options, cb) {
-  // Set default options
-  const ready = cb || function () {}
-  const opts = Object.assign({
-    // Default options
-  }, options)
+dotenv.config()
 
-  const logger = pino()
+const logger = pino({ level: process.env.LOG_LEVEL || 'info' })
 
-  // Server state
-  let server
-  let serverStarted = false
-  let serverClosing = false
+let serverStarted = false
+let serverClosing = false
 
-  // Setup error handling
-  function unhandledError (err) {
-    // Log the errors
-    logger.error(err)
-
-    // Only clean up once
-    if (serverClosing) {
-      return
-    }
-    serverClosing = true
-
-    // If server has started, close it down
-    if (serverStarted) {
-      server.close(function () {
-        process.exit(1)
-      })
-    }
+function unhandledError (err) {
+  logger.error(err)
+  if (serverClosing) return
+  serverClosing = true
+  if (serverStarted) {
+    server.close(function () {
+      process.exit(1)
+    })
   }
-  process.on('uncaughtException', unhandledError)
-  process.on('unhandledRejection', unhandledError)
+}
+process.on('uncaughtException', unhandledError)
+process.on('unhandledRejection', unhandledError)
 
-  // Create the express app
+function createApp () {
   const app = express()
 
-
-  // Common middleware
-  // app.use(/* ... */)
+  app.use(helmet())
+  app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }))
+  app.use(express.json({ limit: '100kb' }))
+  app.use(express.urlencoded({ extended: true, limit: '100kb' }))
   app.use(pinoHttp({ logger }))
-      
-  // Register routes
-  // @NOTE: require here because this ensures that even syntax errors
-  // or other startup related errors are caught logged and debuggable.
-  // Alternativly, you could setup external log handling for startup
-  // errors and handle them outside the node process.  I find this is
-  // better because it works out of the box even in local development.
-  require('./routes')(app, opts)
 
-  // Common error handlers
+  app.use(rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+    standardHeaders: true,
+    legacyHeaders: false
+  }))
+
+  app.use('/api/v1', apiRouter)
+
   app.use(function fourOhFourHandler (req, res, next) {
-    next(httpErrors(404, `Route not found: ${req.url}`))
+    next(httpErrors(404, `Route not found: ${req.method} ${req.url}`))
   })
+
   app.use(function fiveHundredHandler (err, req, res, next) {
-    if (err.status >= 500) {
-      logger.error(err)
-    }
+    if (err.status >= 500) logger.error(err)
     res.status(err.status || 500).json({
-      messages: [{
-        code: err.code || 'InternalServerError',
-        message: err.message
-      }]
+      success: false,
+      message: err.message,
+      errors: err.errors || null
     })
   })
 
-  // Start server
-  server = app.listen(opts.port, opts.host, function (err) {
-    if (err) {
-      return ready(err, app, server)
-    }
-
-    // If some other error means we should close
-    if (serverClosing) {
-      return ready(new Error('Server was closed before it could start'))
-    }
-
-    serverStarted = true
-    const addr = server.address()
-    logger.info(`Started at ${opts.host || addr.host || 'localhost'}:${addr.port}`)
-    ready(err, app, server)
-  })
+  return app
 }
 
+let server
+
+export function start (opts, cb) {
+  const ready = cb || function () {}
+  const config = Object.assign({ port: process.env.PORT || 4000, host: process.env.HOST || 'localhost' }, opts)
+
+  server = createApp().listen(config.port, config.host, function (err) {
+    if (err) return ready(err)
+    if (serverClosing) return ready(new Error('Server was closed before it could start'))
+    serverStarted = true
+    const addr = server.address()
+    logger.info(`Started at ${config.host || addr.address || 'localhost'}:${addr.port}`)
+    ready()
+  })
+  return server
+}
+
+export function stop (cb) {
+  const done = cb || function () {}
+  serverClosing = true
+  if (server) server.close(() => done())
+  else done()
+}
+
+const isMain = process.argv[1] && process.argv[1].endsWith('index.js')
+if (isMain) {
+  start({ port: process.env.PORT, host: process.env.HOST })
+}
