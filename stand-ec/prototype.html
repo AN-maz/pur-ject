@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EC Stand Games - Vocab Rush & Mini Games</title>
+  
+  <!-- React & ReactDOM -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  
+  <!-- Babel for JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <!-- Tailwind CSS v3/v4 Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'ec-blue': '#001452',
+            'ec-red': '#D81B2B',
+            'ec-navy': '#000c33',
+            'ec-gold': '#FFD700',
+          },
+          fontFamily: {
+            outfit: ['Outfit', 'sans-serif'],
+            jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          animation: {
+            'pulse-fast': 'pulse 0.8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'shake': 'shake 0.4s ease-in-out',
+            'bounce-short': 'bounce 0.5s ease 2',
+          },
+          keyframes: {
+            shake: {
+              '0%, 100%': { transform: 'translateX(0)' },
+              '20%, 60%': { transform: 'translateX(-10px)' },
+              '40%, 80%': { transform: 'translateX(10px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #000c33;
+      color: #ffffff;
+      user-select: none;
+    }
+    h1, h2, h3, .font-heading {
+      font-family: 'Outfit', sans-serif;
+    }
+    .glass-card {
+      background: rgba(0, 20, 82, 0.7);
+      backdrop-filter: blur(12px);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+    .btn-action {
+      transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn-action:active {
+      transform: scale(0.96);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between bg-gradient-to-b from-ec-navy via-ec-blue to-black text-white overflow-x-hidden">
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+
+    // --- SOUND SYNTHESIZER ENGINE (Web Audio API) ---
+    const SoundEngine = {
+      ctx: null,
+      init() {
+        if (!this.ctx) {
+          this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+      },
+      playTone(freq, type, duration, gainVal = 0.1) {
+        try {
+          this.init();
+          if (this.ctx.state === 'suspended') this.ctx.resume();
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = type;
+          osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+          gain.gain.setValueAtTime(gainVal, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + duration);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + duration);
+        } catch (e) {}
+      },
+      correct() {
+        this.playTone(523.25, 'triangle', 0.1, 0.15); // C5
+        setTimeout(() => this.playTone(659.25, 'triangle', 0.1, 0.15), 80); // E5
+        setTimeout(() => this.playTone(783.99, 'triangle', 0.2, 0.2), 160); // G5
+      },
+      wrong() {
+        this.playTone(200, 'sawtooth', 0.15, 0.2);
+        setTimeout(() => this.playTone(150, 'sawtooth', 0.25, 0.25), 100);
+      },
+      tick() {
+        this.playTone(800, 'sine', 0.03, 0.05);
+      },
+      bombTick() {
+        this.playTone(1200, 'square', 0.04, 0.08);
+      },
+      explode() {
+        this.playTone(100, 'sawtooth', 0.5, 0.3);
+        setTimeout(() => this.playTone(60, 'square', 0.6, 0.4), 50);
+      },
+      fanfare() {
+        const notes = [523.25, 659.25, 783.99, 1046.50];
+        notes.forEach((n, idx) => {
+          setTimeout(() => this.playTone(n, 'triangle', 0.25, 0.2), idx * 100);
+        });
+      }
+    };
+
+    // --- DATA BANKS FOR MINI GAMES ---
+    const VOCAB_DATA = [
+      { word: "GORGEOUS", options: ["Sangat cantik", "Sangat marah", "Sangat lapar", "Sangat mahal"], correct: 0 },
+      { word: "EXHAUSTED", options: ["Sangat lelah", "Sangat senang", "Sangat bingung", "Sangat cepat"], correct: 0 },
+      { word: "ANXIOUS", options: ["Cemas/Gelisah", "Marah sekali", "Lucu", "Ramah"], correct: 0 },
+      { word: "IMPOSING", options: ["Megah/Mengesankan", "Biasa saja", "Kecil", "Ringan"], correct: 0 },
+      { word: "PECKISH", options: ["Agak lapar", "Sangat haus", "Tidur nyenyak", "Bosan"], correct: 0 },
+      { word: "DELIGHTED", options: ["Sangat gembira", "Kecewa berat", "Takut", "Malu"], correct: 0 },
+      { word: "STUBBORN", options: ["Keras kepala", "Penurut", "Pintar", "Penyabar"], correct: 0 },
+      { word: "AMBITIOUS", options: ["Berambisi besar", "Malas", "Pendiam", "Sombong"], correct: 0 },
+      { word: "BRILLIANT", options: ["Sangat cerdas", "Biasa saja", "Gelap", "Kasar"], correct: 0 },
+      { word: "GENEROUS", options: ["Dermawan/Pemurah", "Pelit", "Jahat", "Lembet"], correct: 0 },
+      { word: "METICULOUS", options: ["Sangat teliti", "Ceroboh", "Santai", "Cepat"], correct: 0 },
+      { word: "ECSTATIC", options: ["Sangat gembira", "Sedih", "Bosan", "Lapar"], correct: 0 }
+    ];
+
+    const SCRAMBLE_DATA = [
+      { word: "ENGLISH", hint: "Bahasa Internasional", difficulty: "Easy" },
+      { word: "APPLE", hint: "Buah apel", difficulty: "Easy" },
+      { word: "FRIEND", hint: "Teman / Sahabat", difficulty: "Medium" },
+      { word: "FUTURE", hint: "Masa depan", difficulty: "Medium" },
+      { word: "KNOWLEDGE", hint: "Pengetahuan", difficulty: "Hard" },
+      { word: "CHALLENGE", hint: "Tantangan", difficulty: "Hard" },
+      { word: "CAMPUS", hint: "Tempat kuliah", difficulty: "Easy" },
+      { word: "SPEAKER", hint: "Pembicara", difficulty: "Medium" },
+      { word: "VOCABULARY", hint: "Kosakata", difficulty: "Hard" }
+    ];
+
+    const GENZ_DATA = [
+      { phrase: "Bro is cooked 💀", question: "artinya apa?", options: ["Dia sedang memasak", "Dia dalam masalah besar", "Dia lapar berat", "Dia marah sekali"], correct: 1 },
+      { phrase: "That's lowkey fire 🔥", question: "maksudnya...", options: ["Kebakaran kecil", "Biasa saja", "Diam-diam keren banget", "Terlalu panas"], correct: 2 },
+      { phrase: "Bro has negative aura 📉", question: "menggambarkan orang yang...", options: ["Sangat karismatik", "Canggung / Bikin ilfeel", "Lagi mati lampu", "Pintar fisika"], correct: 1 },
+      { phrase: "I'm locked in 🔒", question: "berarti...", options: ["Terkunci di kamar", "Sangat fokus / serius", "Lupa password", "Lagi malas-malasan"], correct: 1 },
+      { phrase: "Let him cook 👨‍🍳", question: "digunakan saat...", options: ["Menyuruh masak mie", "Biarkan dia tunjukkan aksinya", "Melarang orang bicara", "Mengajak makan siang"], correct: 1 },
+      { phrase: "Main character energy ✨", question: "artinya...", options: ["Pemain sinetron", "Percaya diri & pusat perhatian", "Suka nonton film", "Orang yang pemalu"], correct: 1 }
+    ];
+
+    const IMPOSTOR_DATA = [
+      { options: ["🍎 APPLE", "🍌 BANANA", "🍊 ORANGE", "🥕 CARROT"], impostor: 3, reason: "CARROT adalah Sayuran, bukan Buah!" },
+      { options: ["HAPPY", "JOYFUL", "CHEERFUL", "MISERABLE"], impostor: 3, reason: "MISERABLE bermakna sedih, yang lain gembira!" },
+      { options: ["RUN", "WALK", "JUMP", "BEAUTIFUL"], impostor: 3, reason: "BEAUTIFUL adalah kata sifat, sisanya kata kerja!" },
+      { options: ["DOG", "CAT", "LION", "AIRPLANE"], impostor: 3, reason: "AIRPLANE bukan Hewan!" },
+      { options: ["SWIMMING", "SKIING", "SURFING", "READING"], impostor: 3, reason: "READING bukan Olahraga Air!" },
+      { options: ["COLD", "FREEZING", "CHILLY", "BOILING"], impostor: 3, reason: "BOILING bermakna panas mendidih!" }
+    ];
+
+    const GRAMMAR_DATA = [
+      { options: ["She don't like coffee.", "She doesn't like coffee."], correct: 1 },
+      { options: ["They is going to school.", "They are going to school."], correct: 1 },
+      { options: ["I have lived here since 2020.", "I have lived here for 2020."], correct: 0 },
+      { options: ["He go to campus yesterday.", "He went to campus yesterday."], correct: 1 },
+      { options: ["Which one is correct?", "Who one is correct?"], correct: 0 },
+      { options: ["There are many peoples.", "There are many people."], correct: 1 }
+    ];
+
+    // --- MAIN APP COMPONENT ---
+    function App() {
+      const [activeGame, setActiveGame] = useState('HOME');
+      const [soundEnabled, setSoundEnabled] = useState(true);
+
+      const triggerConfetti = () => {
+        try {
+          confetti({
+            particleCount: 80,
+            spread: 70,
+            origin: { y: 0.6 }
+          });
+        } catch(e){}
+      };
+
+      return (
+        <div className="min-h-screen flex flex-col justify-between max-w-4xl mx-auto px-4 py-6">
+          {/* HEADER */}
+          <header className="flex justify-between items-center pb-4 border-b border-white/10 mb-6">
+            <div 
+              onClick={() => setActiveGame('HOME')} 
+              className="cursor-pointer flex items-center gap-3 group"
+            >
+              <div className="w-11 h-11 bg-ec-red rounded-xl flex items-center justify-center font-black text-2xl shadow-lg shadow-ec-red/40 group-hover:scale-105 transition">
+                EC
+              </div>
+              <div>
+                <h1 className="text-xl font-black tracking-wider text-white flex items-center gap-2">
+                  ENGLISH CLUB <span className="text-xs bg-ec-red px-2 py-0.5 rounded-full font-semibold">STAND</span>
+                </h1>
+                <p className="text-xs text-blue-200/70">Interactive Campus English Games</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              {activeGame !== 'HOME' && (
+                <button 
+                  onClick={() => setActiveGame('HOME')}
+                  className="px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition"
+                >
+                  <i className="fa-solid fa-house"></i> Menu
+                </button>
+              )}
+            </div>
+          </header>
+
+          {/* GAME ROUTER */}
+          <main className="flex-1 flex flex-col justify-center">
+            {activeGame === 'HOME' && <HomeScreen onSelectGame={(game) => setActiveGame(game)} />}
+            {activeGame === 'VOCAB_RUSH' && <VocabRushGame onConfetti={triggerConfetti} onHome={() => setActiveGame('HOME')} />}
+            {activeGame === 'WORD_SCRAMBLE' && <WordScrambleGame onConfetti={triggerConfetti} onHome={() => setActiveGame('HOME')} />}
+            {activeGame === 'GEN_Z' && <GenZEnglishGame onConfetti={triggerConfetti} onHome={() => setActiveGame('HOME')} />}
+            {activeGame === 'IMPOSTOR' && <FindImpostorGame onConfetti={triggerConfetti} onHome={() => setActiveGame('HOME')} />}
+            {activeGame === 'GRAMMAR_BOMB' && <GrammarBombGame onConfetti={triggerConfetti} onHome={() => setActiveGame('HOME')} />}
+          </main>
+
+          {/* FOOTER */}
+          <footer className="mt-8 text-center text-xs text-blue-300/40 border-t border-white/5 pt-4">
+            English Club Stand Challenge &bull; Built with React & Tailwind CSS
+          </footer>
+        </div>
+      );
+    }
+
+    // --- 0. HOME SCREEN (5 SELECTION) ---
+    function HomeScreen({ onSelectGame }) {
+      const games = [
+        { id: 'VOCAB_RUSH', title: 'Vocab Rush ⚡', tag: 'Fast-Paced', desc: 'Survival vocab 30 detik! Kejar streak & poin tertinggi.', color: 'from-amber-500 to-red-600', icon: 'fa-bolt' },
+        { id: 'WORD_SCRAMBLE', title: 'Word Scramble 🧩', tag: 'Brain Teaser', desc: 'Susun huruf acak jadi kata Bahasa Inggris yang tepat.', color: 'from-blue-500 to-indigo-600', icon: 'fa-puzzle-piece' },
+        { id: 'GEN_Z', title: 'Gen Z English 💀', tag: 'Viral Slang', desc: 'Seberapa Gen Z bahasa Inggris lu? Cek Aura & Slang score!', color: 'from-fuchsia-600 to-purple-800', icon: 'fa-skull' },
+        { id: 'IMPOSTOR', title: 'Find Impostor 🕵️', tag: 'Focus Test', desc: 'Cari 1 kata asing yang tidak cocok dalam 5 detik!', color: 'from-emerald-500 to-teal-700', icon: 'fa-user-ninja' },
+        { id: 'GRAMMAR_BOMB', title: 'Grammar Bomb 💣', tag: 'High Pressure', desc: 'Jinakkan bom sebelum meledak! Pilih tata bahasa yang benar.', color: 'from-ec-red to-rose-800', icon: 'fa-bomb' }
+      ];
+
+      return (
+        <div className="space-y-6 animate-fadeIn">
+          <div className="text-center space-y-2">
+            <span className="bg-ec-red/20 text-ec-red border border-ec-red/30 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest inline-block">
+              🔥 Stand Challenge Active
+            </span>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight">CHOOSE YOUR CHALLENGE</h2>
+            <p className="text-blue-200/80 max-w-md mx-auto text-sm md:text-base">
+              Mainkan game favoritmu, kumpulkan skor, dan buktikan kemampuan Bahasa Inggris kamu!
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+            {games.map((g, idx) => (
+              <div 
+                key={g.id}
+                onClick={() => { SoundEngine.tick(); onSelectGame(g.id); }}
+                className={`group relative overflow-hidden rounded-2xl glass-card p-5 cursor-pointer hover:border-white/40 transition-all transform hover:-translate-y-1 hover:shadow-2xl flex flex-col justify-between border-l-4 ${idx === 0 ? 'md:col-span-2 bg-gradient-to-r from-ec-blue via-ec-blue to-ec-red/30' : ''}`}
+              >
+                <div>
+                  <div className="flex justify-between items-start mb-3">
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-white/10 text-white/90">
+                      {g.tag}
+                    </span>
+                    <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${g.color} flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition`}>
+                      <i className={`fa-solid ${g.icon} text-lg`}></i>
+                    </div>
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-bold mb-1 text-white group-hover:text-amber-300 transition">{g.title}</h3>
+                  <p className="text-xs md:text-sm text-blue-200/70">{g.desc}</p>
+                </div>
+
+                <div className="mt-4 flex items-center text-xs font-bold text-amber-400 group-hover:translate-x-1 transition">
+                  PLAY NOW <i className="fa-solid fa-arrow-right ml-2"></i>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    // --- 1. VOCAB RUSH GAME ---
+    function VocabRushGame({ onConfetti, onHome }) {
+      const [timeLeft, setTimeLeft] = useState(30);
+      const [score, setScore] = useState(0);
+      const [streak, setStreak] = useState(0);
+      const [bestStreak, setBestStreak] = useState(0);
+      const [correctCount, setCorrectCount] = useState(0);
+      const [wrongCount, setWrongCount] = useState(0);
+      const [currentIndex, setCurrentIndex] = useState(0);
+      const [gameState, setGameState] = useState('PLAYING'); // PLAYING, END
+      const [feedback, setFeedback] = useState(null); // 'CORRECT', 'WRONG'
+
+      useEffect(() => {
+        if (gameState !== 'PLAYING') return;
+        const timer = setInterval(() => {
+          setTimeLeft(prev => {
+            if (prev <= 1) {
+              clearInterval(timer);
+              endGame();
+              return 0;
+            }
+            return prev - 1;
+          });
+        }, 1000);
+        return () => clearInterval(timer);
+      }, [gameState]);
+
+      const endGame = () => {
+        setGameState('END');
+        SoundEngine.fanfare();
+        onConfetti();
+      };
+
+      const handleAnswer = (optionIdx) => {
+        const currentQ = VOCAB_DATA[currentIndex];
+        if (optionIdx === currentQ.correct) {
+          SoundEngine.correct();
+          const newStreak = streak + 1;
+          setStreak(newStreak);
+          if (newStreak > bestStreak) setBestStreak(newStreak);
+          setScore(prev => prev + 100 + (newStreak * 10));
+          setCorrectCount(prev => prev + 1);
+          setFeedback('CORRECT');
+        } else {
+          SoundEngine.wrong();
+          setStreak(0);
+          setTimeLeft(prev => Math.max(0, prev - 2)); // -2s penalty
+          setWrongCount(prev => prev + 1);
+          setFeedback('WRONG');
+        }
+
+        setTimeout(() => {
+          setFeedback(null);
+          setCurrentIndex((prev) => (prev + 1) % VOCAB_DATA.length);
+        }, 200);
+      };
+
+      const getRank = (sc) => {
+        if (sc < 400) return { title: "Beginner", icon: "🌱", color: "text-gray-300" };
+        if (sc < 800) return { title: "Learner", icon: "📚", color: "text-blue-400" };
+        if (sc < 1300) return { title: "Explorer", icon: "🧭", color: "text-emerald-400" };
+        if (sc < 1800) return { title: "Fluent", icon: "⚡", color: "text-amber-400" };
+        if (sc < 2500) return { title: "Vocab Master", icon: "🏆", color: "text-purple-400" };
+        return { title: "English God", icon: "👑", color: "text-yellow-300 animate-pulse" };
+      };
+
+      const currentQ = VOCAB_DATA[currentIndex];
+      const rank = getRank(score);
+
+      if (gameState === 'END') {
+        return (
+          <div className="glass-card rounded-3xl p-6 md:p-8 text-center space-y-6 max-w-md mx-auto animate-fadeIn border-2 border-amber-400/40">
+            <div>
+              <span className="text-4xl">{rank.icon}</span>
+              <h2 className="text-xs uppercase font-extrabold tracking-widest text-amber-400 mt-2">RESULT SCREEN</h2>
+              <h1 className={`text-3xl font-black ${rank.color}`}>{rank.title}</h1>
+              <p className="text-xs text-blue-200/80 italic mt-1">"Your English is cooking 🔥"</p>
+            </div>
+
+            <div className="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-3">
+              <div className="text-4xl font-black text-amber-300">{score.toLocaleString()} PTS</div>
+              <div className="grid grid-cols-3 gap-2 text-center text-xs border-t border-white/10 pt-3">
+                <div>
+                  <div className="text-emerald-400 font-bold text-lg">{correctCount}</div>
+                  <div className="text-white/60">Correct</div>
+                </div>
+                <div>
+                  <div className="text-ec-red font-bold text-lg">{wrongCount}</div>
+                  <div className="text-white/60">Wrong</div>
+                </div>
+                <div>
+                  <div className="text-amber-400 font-bold text-lg">🔥 {bestStreak}</div>
+                  <div className="text-white/60">Best Streak</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <button onClick={() => { setGameState('PLAYING'); setTimeLeft(30); setScore(0); setStreak(0); setCorrectCount(0); setWrongCount(0); }} className="flex-1 py-3 bg-ec-red hover:bg-red-700 font-bold rounded-xl transition btn-action">
+                Play Again 🔄
+              </button>
+              <button onClick={onHome} className="py-3 px-4 bg-white/10 hover:bg-white/20 font-bold rounded-xl transition">
+                Menu
+              </button>
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <div className="space-y-6 max-w-md mx-auto w-full">
+          {/* STATS BAR */}
+          <div className="flex justify-between items-center bg-white/5 border border-white/10 p-4 rounded-2xl">
+            <div className="text-center">
+              <div className="text-xs text-blue-200/60 font-semibold">TIME</div>
+              <div className={`text-2xl font-black ${timeLeft <= 5 ? 'text-ec-red animate-ping' : 'text-amber-400'}`}>
+                {timeLeft}s
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-xs text-blue-200/60 font-semibold">SCORE</div>
+              <div className="text-2xl font-black text-white">{score}</div>
+            </div>
+            <div className="text-center">
+              <div className="text-xs text-blue-200/60 font-semibold">STREAK</div>
+              <div className="text-2xl font-black text-amber-400 flex items-center justify-center gap-1">
+                🔥 {streak}
+              </div>
+            </div>
+          </div>
+
+          {/* QUESTION CARD */}
+          <div className={`glass-card rounded-3xl p-8 text-center space-y-6 relative overflow-hidden transition ${feedback === 'WRONG' ? 'animate-shake border-ec-red' : ''}`}>
+            {feedback === 'CORRECT' && (
+              <div className="absolute top-2 right-4 text-emerald-400 font-bold text-xs animate-bounce">+100 🔥</div>
+            )}
+            {feedback === 'WRONG' && (
+              <div className="absolute top-2 right-4 text-ec-red font-bold text-xs">-2s 💀</div>
+            )}
+
+            <div>
+              <span className="text-xs font-bold text-blue-300 uppercase tracking-widest">Select Synonym / Meaning</span>
+              <h2 className="text-3xl md:text-4xl font-black text-amber-300 tracking-wider mt-1">{currentQ.word}</h2>
+            </div>
+
+            <div className="grid grid-cols-1 gap-3">
+              {currentQ.options.map((opt, i) => (
+                <button
+                  key={i}
+                  onClick={() => handleAnswer(i)}
+                  className="w-full py-3.5 px-4 bg-white/10 hover:bg-amber-400 hover:text-ec-navy text-left font-bold rounded-xl transition-all border border-white/10 flex items-center justify-between group btn-action"
+                >
+                  <span><strong className="text-amber-400 group-hover:text-ec-navy mr-2">{String.fromCharCode(65 + i)}.</strong> {opt}</span>
+                  <i className="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition"></i>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // --- 2. WORD SCRAMBLE GAME ---
+    function WordScrambleGame({ onConfetti, onHome }) {
+      const [currentIdx, setCurrentIdx] = useState(0);
+      const [inputVal, setInputVal] = useState('');
+      const [score, setScore] = useState(0);
+      const [streak, setStreak] = useState(0);
+      const [timeLeft, setTimeLeft] = useState(12);
+      const [gameState, setGameState] = useState('PLAYING');
+
+      const currentQ = SCRAMBLE_DATA[currentIdx];
+
+      // Scramble word logic
+      const scrambleWord = (w) => {
+        let arr = w.split('');
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr.join('') === w ? scrambleWord(w) : arr.join(' ');
+      };
+
+      const [scrambled, setScrambled] = useState(() => scrambleWord(currentQ.word));
+
+      useEffect(() => {
+        setScrambled(scrambleWord(currentQ.word));
+        setInputVal('');
+        setTimeLeft(12);
+      }, [currentIdx]);
+
+      useEffect(() => {
+        if (gameState !== 'PLAYING') return;
+        const timer = setInterval(() => {
+          setTimeLeft(prev => {
+            if (prev <= 1) {
+              clearInterval(timer);
+              handleNext(false);
+              return 0;
+            }
+            return prev - 1;
+          });
+        }, 1000);
+        return () => clearInterval(timer);
+      }, [currentIdx, gameState]);
+
+      const handleCheck = (e) => {
+        e.preventDefault();
+        if (inputVal.trim().toUpperCase() === currentQ.word) {
+          SoundEngine.correct();
+          setScore(prev => prev + 200);
+          setStreak(prev => prev + 1);
+          handleNext(true);
+        } else {
+          SoundEngine.wrong();
+          setStreak(0);
+        }
+      };
+
+      const handleNext = (isCorrect) => {
+        if (currentIdx + 1 < SCRAMBLE_DATA.length) {
+          setCurrentIdx(prev => prev + 1);
+        } else {
+          setGameState('END');
+          SoundEngine.fanfare();
+          onConfetti();
+        }
+      };
+
+      if (gameState === 'END') {
+        return (
+          <div className="glass-card rounded-3xl p-8 text-center space-y-6 max-w-md mx-auto animate-fadeIn">
+            <h2 className="text-3xl font-black text-amber-300">PUZZLE MASTER! 🧩</h2>
+            <div className="text-5xl font-black text-white">{score} PTS</div>
+            <p className="text-sm text-blue-200/80">Kamu berhasil menyelesaikan kuis unscramble!</p>
+            <div className="flex gap-3">
+              <button onClick={() => { setCurrentIdx(0); setScore(0); setGameState('PLAYING'); }} className="flex-1 py-3 bg-ec-red font-bold rounded-xl btn-action">
+                Try Again 🔄
+              </button>
+              <button onClick={onHome} className="py-3 px-4 bg-white/10 font-bold rounded-xl">Menu</button>
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <div className="space-y-6 max-w-md mx-auto w-full">
+          <div className="flex justify-between items-center bg-white/5 border border-white/10 p-4 rounded-2xl">
+            <div>
+              <span className="text-xs text-blue-300 font-bold uppercase">Difficulty</span>
+              <div className="text-sm font-black text-amber-400">{currentQ.difficulty}</div>
+            </div>
+            <div className="text-center">
+              <span className="text-xs text-blue-300 font-bold uppercase">Timer</span>
+              <div className="text-2xl font-black text-ec-red">{timeLeft}s</div>
+            </div>
+            <div className="text-right">
+              <span className="text-xs text-blue-300 font-bold uppercase">Score</span>
+              <div className="text-xl font-black text-emerald-400">{score}</div>
+            </div>
+          </div>
+
+          <div className="glass-card rounded-3xl p-8 text-center space-y-6">
+            <div>
+              <span className="text-xs text-blue-300 uppercase font-bold tracking-widest">Unscramble this word!</span>
+              <div className="text-3xl md:text-4xl font-black tracking-widest text-amber-300 my-4 bg-black/30 py-3 rounded-xl border border-white/10">
+                {scrambled}
+              </div>
+              <p className="text-xs text-blue-200/60 italic">💡 Hint: {currentQ.hint}</p>
+            </div>
+
+            <form onSubmit={handleCheck} className="space-y-3">
+              <input
+                type="text"
+                value={inputVal}
+                onChange={(e) => setInputVal(e.target.value)}
+                placeholder="TYPE HERE..."
+                className="w-full text-center text-xl font-black tracking-wider py-3 bg-white/10 border-2 border-amber-400/50 rounded-xl focus:outline-none focus:border-amber-400 text-white placeholder-white/30 uppercase"
+                autoFocus
+              />
+              <button type="submit" className="w-full py-3.5 bg-amber-400 hover:bg-amber-300 text-ec-navy font-black rounded-xl transition btn-action">
+                SUBMIT ANSWER 🚀
+              </button>
+            </form>
+          </div>
+        </div>
+      );
+    }
+
+    // --- 3. GEN Z ENGLISH GAME ---
+    function GenZEnglishGame({ onConfetti, onHome }) {
+      const [currentIdx, setCurrentIdx] = useState(0);
+      const [score, setScore] = useState(0);
+      const [gameState, setGameState] = useState('PLAYING');
+
+      const currentQ = GENZ_DATA[currentIdx];
+
+      const handleAnswer = (optionIdx) => {
+        if (optionIdx === currentQ.correct) {
+          SoundEngine.correct();
+          setScore(prev => prev + 150);
+        } else {
+          SoundEngine.wrong();
+        }
+
+        if (currentIdx + 1 < GENZ_DATA.length) {
+          setCurrentIdx(prev => prev + 1);
+        } else {
+          setGameState('END');
+          SoundEngine.fanfare();
+          onConfetti();
+        }
+      };
+
+      if (gameState === 'END') {
+        const auraPct = Math.min(99, Math.round((score / (GENZ_DATA.length * 150)) * 100));
+        return (
+          <div className="glass-card rounded-3xl p-6 text-center space-y-6 max-w-md mx-auto border-2 border-fuchsia-500/50">
+            <div>
+              <span className="text-xs font-black bg-fuchsia-600 px-3 py-1 rounded-full uppercase tracking-widest text-white">
+                STORY FRIENDLY CARD
+              </span>
+              <h2 className="text-2xl font-black text-white mt-3">💀 GEN Z ENGLISH SCORE</h2>
+            </div>
+
+            <div className="bg-gradient-to-b from-fuchsia-950 to-purple-900/80 p-6 rounded-2xl border border-fuchsia-500/30 space-y-4">
+              <div className="text-5xl font-black text-amber-300">
+                Aura: {auraPct}% 🧠
+              </div>
+              <p className="text-sm font-extrabold text-fuchsia-200">
+                {auraPct > 70 ? "Certified Gen Z English Speaker 💀" : "Boomer Energy Detected 👴"}
+              </p>
+
+              <div className="text-left text-xs space-y-2 border-t border-white/10 pt-3">
+                <div className="flex justify-between"><span>Slang Knowledge:</span><span>⭐⭐⭐⭐⭐</span></div>
+                <div className="flex justify-between"><span>Gen Z Vibe:</span><span>⭐⭐⭐⭐</span></div>
+                <div className="flex justify-between font-bold text-amber-400"><span>Aura Level:</span><span>+{auraPct * 100} PTS</span></div>
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <button onClick={() => { setCurrentIdx(0); setScore(0); setGameState('PLAYING'); }} className="flex-1 py-3 bg-fuchsia-600 font-bold rounded-xl btn-action">
+                Retake Quiz 🔄
+              </button>
+              <button onClick={onHome} className="py-3 px-4 bg-white/10 font-bold rounded-xl">Menu</button>
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <div className="space-y-6 max-w-md mx-auto w-full">
+          <div className="text-center">
+            <span className="text-xs font-black bg-fuchsia-600/30 text-fuchsia-300 border border-fuchsia-500/30 px-3 py-1 rounded-full">
+              QUESTION {currentIdx + 1} OF {GENZ_DATA.length}
+            </span>
+          </div>
+
+          <div className="glass-card rounded-3xl p-8 text-center space-y-6">
+            <div>
+              <h2 className="text-2xl font-black text-amber-300">"{currentQ.phrase}"</h2>
+              <p className="text-sm text-blue-200/80 mt-1">{currentQ.question}</p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-3">
+              {currentQ.options.map((opt, i) => (
+                <button
+                  key={i}
+                  onClick={() => handleAnswer(i)}
+                  className="w-full py-3.5 px-4 bg-white/10 hover:bg-fuchsia-600 text-left font-bold rounded-xl transition border border-white/10 flex items-center justify-between group btn-action"
+                >
+                  <span><strong className="text-fuchsia-400 group-hover:text-white mr-2">{String.fromCharCode(65 + i)}.</strong> {opt}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // --- 4. FIND THE IMPOSTOR GAME ---
+    function FindImpostorGame({ onConfetti, onHome }) {
+      const [currentIdx, setCurrentIdx] = useState(0);
+      const [score, setScore] = useState(0);
+      const [timeLeft, setTimeLeft] = useState(5);
+      const [gameState, setGameState] = useState('PLAYING');
+
+      const currentQ = IMPOSTOR_DATA[currentIdx];
+
+      useEffect(() => {
+        if (gameState !== 'PLAYING') return;
+        const timer = setInterval(() => {
+          setTimeLeft(prev => {
+            if (prev <= 1) {
+              clearInterval(timer);
+              handleAnswer(-1); // timed out
+              return 0;
+            }
+            return prev - 1;
+          });
+        }, 1000);
+        return () => clearInterval(timer);
+      }, [currentIdx, gameState]);
+
+      const handleAnswer = (idx) => {
+        if (idx === currentQ.impostor) {
+          SoundEngine.correct();
+          setScore(prev => prev + 100);
+        } else {
+          SoundEngine.wrong();
+        }
+
+        if (currentIdx + 1 < IMPOSTOR_DATA.length) {
+          setCurrentIdx(prev => prev + 1);
+          setTimeLeft(5);
+        } else {
+          setGameState('END');
+          SoundEngine.fanfare();
+          onConfetti();
+        }
+      };
+
+      if (gameState === 'END') {
+        return (
+          <div className="glass-card rounded-3xl p-8 text-center space-y-6 max-w-md mx-auto">
+            <h2 className="text-3xl font-black text-emerald-400">IMPOSTOR CAUGHT! 🕵️</h2>
+            <div className="text-5xl font-black text-white">{score} PTS</div>
+            <div className="flex gap-3">
+              <button onClick={() => { setCurrentIdx(0); setScore(0); setGameState('PLAYING'); setTimeLeft(5); }} className="flex-1 py-3 bg-emerald-600 font-bold rounded-xl btn-action">
+                Play Again 🔄
+              </button>
+              <button onClick={onHome} className="py-3 px-4 bg-white/10 font-bold rounded-xl">Menu</button>
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <div className="space-y-6 max-w-md mx-auto w-full">
+          <div className="flex justify-between items-center bg-white/5 border border-white/10 p-4 rounded-2xl">
+            <span className="text-xs font-bold text-emerald-400 uppercase">Find The Impostor!</span>
+            <div className="text-xl font-black text-ec-red animate-pulse">{timeLeft}s ⏱️</div>
+            <span className="text-xs font-bold text-white">Score: {score}</span>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            {currentQ.options.map((opt, i) => (
+              <button
+                key={i}
+                onClick={() => handleAnswer(i)}
+                className="h-32 bg-white/10 hover:bg-emerald-500/80 hover:scale-105 border-2 border-white/20 hover:border-emerald-300 rounded-2xl flex items-center justify-center text-xl font-black text-white transition-all btn-action"
+              >
+                {opt}
+              </button>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    // --- 5. GRAMMAR BOMB GAME ---
+    function GrammarBombGame({ onConfetti, onHome }) {
+      const [currentIdx, setCurrentIdx] = useState(0);
+      const [score, setScore] = useState(0);
+      const [timeLeft, setTimeLeft] = useState(8);
+      const [gameState, setGameState] = useState('PLAYING'); // PLAYING, DEFUSED, EXPLODED
+
+      const currentQ = GRAMMAR_DATA[currentIdx];
+
+      useEffect(() => {
+        if (gameState !== 'PLAYING') return;
+        const timer = setInterval(() => {
+          setTimeLeft(prev => {
+            if (prev <= 1) {
+              clearInterval(timer);
+              explodeBomb();
+              return 0;
+            }
+            SoundEngine.bombTick();
+            return prev - 1;
+          });
+        }, 1000);
+        return () => clearInterval(timer);
+      }, [currentIdx, gameState]);
+
+      const explodeBomb = () => {
+        SoundEngine.explode();
+        setGameState('EXPLODED');
+      };
+
+      const handleAnswer = (idx) => {
+        if (idx === currentQ.correct) {
+          SoundEngine.correct();
+          setScore(prev => prev + 100);
+          if (currentIdx + 1 < GRAMMAR_DATA.length) {
+            setCurrentIdx(prev => prev + 1);
+            setTimeLeft(Math.max(3, 8 - (currentIdx * 1))); // gets faster!
+          } else {
+            setGameState('DEFUSED');
+            SoundEngine.fanfare();
+            onConfetti();
+          }
+        } else {
+          explodeBomb();
+        }
+      };
+
+      if (gameState === 'EXPLODED') {
+        return (
+          <div className="glass-card rounded-3xl p-8 text-center space-y-6 max-w-md mx-auto border-2 border-ec-red animate-shake">
+            <div className="text-6xl">💥</div>
+            <h2 className="text-3xl font-black text-ec-red">BOMB EXPLODED!</h2>
+            <p className="text-sm text-blue-200/80">Oops! Grammar kamu belum tepat untuk menjinakkan bom.</p>
+            <div className="text-3xl font-black text-amber-300">{score} PTS</div>
+            <div className="flex gap-3">
+              <button onClick={() => { setCurrentIdx(0); setScore(0); setGameState('PLAYING'); setTimeLeft(8); }} className="flex-1 py-3 bg-ec-red font-bold rounded-xl btn-action">
+                Try Again 💣
+              </button>
+              <button onClick={onHome} className="py-3 px-4 bg-white/10 font-bold rounded-xl">Menu</button>
+            </div>
+          </div>
+        );
+      }
+
+      if (gameState === 'DEFUSED') {
+        return (
+          <div className="glass-card rounded-3xl p-8 text-center space-y-6 max-w-md mx-auto border-2 border-emerald-400">
+            <div className="text-6xl">💣✨</div>
+            <h2 className="text-3xl font-black text-emerald-400">ALL BOMBS DEFUSED!</h2>
+            <div className="text-4xl font-black text-amber-300">{score} PTS</div>
+            <div className="flex gap-3">
+              <button onClick={() => { setCurrentIdx(0); setScore(0); setGameState('PLAYING'); setTimeLeft(8); }} className="flex-1 py-3 bg-emerald-600 font-bold rounded-xl btn-action">
+                Play Again 🔄
+              </button>
+              <button onClick={onHome} className="py-3 px-4 bg-white/10 font-bold rounded-xl">Menu</button>
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <div className="space-y-6 max-w-md mx-auto w-full">
+          <div className="text-center space-y-2">
+            <div className="inline-block px-4 py-1 bg-ec-red/30 border border-ec-red/50 rounded-full text-ec-red font-black text-sm animate-pulse">
+              💣 DEFUSE THE BOMB IN {timeLeft}s
+            </div>
+          </div>
+
+          <div className="glass-card rounded-3xl p-8 text-center space-y-6 border-2 border-ec-red/40">
+            <h3 className="text-lg font-bold text-white">Choose the correct sentence!</h3>
+
+            <div className="space-y-3">
+              {currentQ.options.map((opt, i) => (
+                <button
+                  key={i}
+                  onClick={() => handleAnswer(i)}
+                  className="w-full py-4 px-5 bg-white/10 hover:bg-ec-red text-left font-bold text-base rounded-2xl transition border border-white/20 flex items-center justify-between group btn-action"
+                >
+                  <span>{opt}</span>
+                  <i className="fa-solid fa-scissors text-amber-400 group-hover:text-white"></i>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // Render App
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

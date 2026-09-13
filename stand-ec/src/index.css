@@ -2,5 +2,222 @@
 
 @theme {
   --color-ec-blue: #001452;
-  --color-ec-red: #D81B2B;
+  --color-ec-red: #d81b2b;
+  --color-ec-navy: #000c33;
+  --color-ec-gold: #ffd700;
+
+  --font-outfit: "Outfit", sans-serif;
+  --font-jakarta: "Plus Jakarta Sans", sans-serif;
+
+  --animate-pulse-fast: pulse 0.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-shake: shake 0.4s ease-in-out;
+  --animate-bounce-short: bounce 0.5s ease 2;
+  --animate-fade-in: fadeIn 0.4s ease-out;
+
+  @keyframes shake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    20%,
+    60% {
+      transform: translateX(-10px);
+    }
+    40%,
+    80% {
+      transform: translateX(10px);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+body {
+  font-family: var(--font-jakarta);
+  background-color: var(--color-ec-navy);
+  color: #ffffff;
+  user-select: none;
+}
+
+h1,
+h2,
+h3,
+.font-heading {
+  font-family: var(--font-outfit);
+}
+
+.glass-card {
+  background: rgba(0, 20, 82, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-action {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input {
+  touch-action: manipulation;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-action:active {
+  transform: scale(0.96);
+}
+
+/* === Photobooth — port dari EC-GAMES/styles.css === */
+.glass {
+  background: rgba(0, 20, 82, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 22px;
+  padding: 22px;
+}
+
+.result-icon {
+  font-size: 56px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.actions > * {
+  flex: 1;
+}
+
+.primary-button,
+.secondary-button {
+  border: 0;
+  border-radius: 13px;
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.primary-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.secondary-button {
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.secondary-button:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.primary-button {
+  padding: 13px 18px;
+  background: var(--color-ec-red);
+  box-shadow: 0 10px 25px rgba(216, 27, 43, 0.2);
+}
+
+.primary-button:hover:not(:disabled) {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.primary-button.gold {
+  background: var(--color-ec-gold);
+  color: var(--color-ec-navy);
+}
+
+.photo-button {
+  background: linear-gradient(135deg, #ec4899, #8b5cf6);
+}
+
+.layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 20px 0;
+}
+
+.layout-option {
+  border: 2px solid rgba(255, 255, 255, 0.13);
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  color: white;
+  padding: 22px 15px;
+  cursor: pointer;
+}
+
+.layout-option:hover {
+  border-color: var(--theme, #ffd700);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.layout-option .layout-icon {
+  font-size: 39px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.camera-box {
+  position: relative;
+  overflow: hidden;
+  border-radius: 25px;
+  aspect-ratio: 4 / 3;
+  background: #020718;
+  border: 3px solid var(--theme, #ffd700);
+}
+
+.camera-box video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+}
+
+.countdown {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.53);
+  font-family: var(--font-outfit);
+  font-weight: 900;
+  font-size: 110px;
+  text-shadow: 0 6px 30px #000;
+}
+
+.camera-hint {
+  text-align: center;
+  margin: 12px;
+  color: #cbd8f5;
+}
+
+.flash {
+  animation: ec-flash 0.3s ease;
+}
+
+@keyframes ec-flash {
+  50% {
+    filter: brightness(2);
+  }
 }
