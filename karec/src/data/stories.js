@@ -2,52 +2,34 @@ export const opportunities = [
   {
     id: 1,
     title: 'International Delegate',
-    description: 'Anggota English Club yang mendapatkan kesempatan menjadi delegasi dalam kegiatan internasional.',
+    description: 'Anggota English Club yang mendapatkan kesempatan menjadi delegasi dalam kegiatan internasional mewakili kampus UTB.',
     icon: '🌐',
+    image: '/poto2.png'
   },
   {
     id: 2,
     title: 'International Liaison Officer',
-    description: 'Anggota yang mendapatkan pengalaman menjadi penghubung komunikasi dengan pihak internasional.',
+    description: 'Anggota yang mendapatkan pengalaman menjadi penghubung komunikasi dengan pihak internasional dalam acara seminar di kampus.',
     icon: '🤝',
+    image: '/poto1.png'
   },
   {
     id: 3,
     title: 'Communication Experience',
-    description: 'Pengalaman menggunakan bahasa Inggris dalam situasi nyata.',
+    description: 'pengalaman langsung mencoba speaking di ruang lingkup komunitas yang solid untuk improve belajar tanpa harus takut salah.',
     icon: '💬',
+    image:'/poto3.png'
   },
   {
     id: 4,
-    title: 'Leadership Journey',
-    description: 'Kesempatan berkembang melalui organisasi dan kepanitiaan.',
+    title: 'Panitia TOEFL',
+    description: 'Kesempatan berkembang melalui organisasi dan kepanitiaan serta berkontribusi memberikan manfaat ke banyak orang lewat acara yg ada di English Club.',
     icon: '⭐',
+    image:'/poto4.png'
   },
 ];
 
-export const memberStories = [
-  {
-    id: 1,
-    name: 'Member Name',
-    role: 'International Delegate',
-    quote: 'English Club gave me the confidence to communicate beyond campus.',
-    image: '👤',
-  },
-  {
-    id: 2,
-    name: 'Member Name',
-    role: 'Liaison Officer',
-    quote: 'I found more than just language skills, I found a community.',
-    image: '👤',
-  },
-  {
-    id: 3,
-    name: 'Member Name',
-    role: 'Active Member',
-    quote: 'Every meeting became a stepping stone for my personal growth.',
-    image: '👤',
-  },
-];
+
 
 export const journeyRoadmap = [
   { step: 'Join English Club', icon: '🚪' },
@@ -59,20 +41,4 @@ export const journeyRoadmap = [
   { step: 'Create Your Own Story', icon: '📖' },
 ];
 
-export const testimonials = [
-  {
-    id: 1,
-    text: 'I joined because I wanted to improve my English. I stayed because I found a community.',
-    author: 'Anonymous Member',
-  },
-  {
-    id: 2,
-    text: 'English Club taught me that language is not a barrier, it\'s a bridge.',
-    author: 'Anonymous Member',
-  },
-  {
-    id: 3,
-    text: 'The best decision I made in university was joining English Club.',
-    author: 'Anonymous Member',
-  },
-];
+

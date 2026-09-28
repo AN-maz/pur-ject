@@ -30,12 +30,14 @@ export default function Footer() {
                 Banquet Under Horizon <span className="text-amber-400">2026</span>
               </h3>
               <p className="text-sm sm:text-base text-cyan-300 font-bold mt-1">
-                Cultivating Unity Under The Open Sky
+                Let's echo and proclaim, To new journey and endless learning.
               </p>
             </div>
 
             <p className="text-xs sm:text-sm text-blue-200/80 font-medium max-w-sm leading-relaxed">
-              Selesaikan misi, kumpulkan XP, taklukkan grammar! Bergabunglah dalam petualangan seru bersama English Club UTB.
+              Sebuah langkah awal untuk mengenal English Club lebih dekat, membangun kebersamaan, dan tumbuh bersama melalui pengalaman yang seru dan bermakna.
+
+              Let's echo and proclaim, To new journey and endless learning.
             </p>
           </div>
 
@@ -125,7 +127,7 @@ export default function Footer() {
                     <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/>
                   </svg>
                 </span>
-                <span className="font-bold">14 July 2026</span>
+                <span className="font-bold">3 Oktober 2026</span>
               </li>
             </ul>
           </div>

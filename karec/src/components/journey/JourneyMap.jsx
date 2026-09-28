@@ -26,12 +26,12 @@ export default function JourneyMap() {
               </div>
             </div>
 
-            <SectionTitle subtitle="Mengubah rundown acara menjadi perjalanan quest interaktif">
+            <SectionTitle subtitle="">
               Your Journey Awaits
             </SectionTitle>
 
             <p className="text-xs sm:text-base md:text-lg text-blue-100/90 font-medium leading-relaxed mt-3">
-              Ikuti alur perjalanan dari gerbang awal hingga garis akhir. Setiap checkpoint menyimpan pengalaman seru yang siap kamu jelajahi!
+              Ikuti alur perjalanan dari gerbang awal hingga garis akhir. Pokoknya seru banget deh, setiap poin memiliki arti dan memori meskipun hidup berat sebagai WNI
             </p>
           </div>
 

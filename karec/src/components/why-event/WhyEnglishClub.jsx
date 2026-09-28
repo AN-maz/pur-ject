@@ -23,7 +23,8 @@ export default function WhyEnglishClub() {
             <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-4 rounded-full bg-blue-900/60 border border-blue-600/50 text-amber-300 text-xs sm:text-sm font-extrabold tracking-wide uppercase backdrop-blur-md">
               <span>✨</span> GUILD ADVANTAGES
             </div>
-            <SectionTitle subtitle="English Club bukan hanya tempat belajar grammar atau vocabulary">
+            <SectionTitle subtitle="English Club bukan hanya tentang belajar English. Ini tentang menemukan teman baru, berani mencoba, dan memulai perjalanan untuk berkembang bersama.
+">
               More Than Just<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-ec-gold to-yellow-500">
                 Learning English

@@ -141,7 +141,7 @@ export default function JourneyRoadmap() {
                     QUEST OBJECTIVE NOTE
                   </h4>
                   <p className="text-xs sm:text-sm text-blue-100 font-medium italic leading-relaxed">
-                    Fokus pada kesempatan berkembang dan eksplorasi potensi diri, bukan menjanjikan hasil instan tertentu.
+                    Fokuslah pada proses, karena di EC selalu ada ruang untuk belajar dan berkembang. Saat kemampuan bertemu kesempatan, di situlah peluang untuk melangkah lebih jauh terbuka.
                   </p>
                 </div>
 

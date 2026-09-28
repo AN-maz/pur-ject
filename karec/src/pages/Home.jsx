@@ -7,9 +7,9 @@ import WhyThisEvent from '../components/why-event/WhyThisEvent';
 import JourneyMap from '../components/journey/JourneyMap';
 import MissionPreview from '../components/mission/MissionPreview';
 import BeyondClassroom from '../components/why-event/BeyondClassroom';
-import MemberStories from '../components/why-event/MemberStories';
+// import MemberStories from '../components/why-event/MemberStories';
 import JourneyRoadmap from '../components/why-event/JourneyRoadmap';
-import CommunityStories from '../components/why-event/CommunityStories';
+// import CommunityStories from '../components/why-event/CommunityStories';
 import MemoryCapsule from '../components/memory/MemoryCapsule';
 import EventInformation from '../components/information/EventInformation';
 import FAQ from '../components/faq/FAQ';
@@ -27,9 +27,9 @@ export default function Home() {
         <JourneyMap />
         <MissionPreview />
         <BeyondClassroom />
-        <MemberStories />
+        {/* <MemberStories /> */}
         <JourneyRoadmap />
-        <CommunityStories />
+        {/* <CommunityStories /> */}
         <MemoryCapsule />
         <EventInformation />
         <FAQ />

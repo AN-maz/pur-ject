@@ -78,7 +78,8 @@ export default function FinalCTA() {
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3.5 justify-center items-center">
                 <a
-                  href="#"
+                  href="https://forms.gle/GJPgUPSe7MPTtPWL6"
+                  target="_blank"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-gradient-to-r from-red-600 via-ec-red to-red-600 text-white font-black text-sm sm:text-base rounded-2xl border-2 border-red-300 border-b-[5px] border-b-red-950 shadow-[0_8px_20px_rgba(239,68,68,0.4)] transition-all duration-200 hover:bg-red-500 hover:-translate-y-0.5 active:translate-y-1 active:border-b-0 uppercase tracking-wider group"
                 >
                   <svg className="w-5 h-5 text-amber-300 fill-current" viewBox="0 0 24 24">

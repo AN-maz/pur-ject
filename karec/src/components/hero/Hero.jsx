@@ -53,7 +53,7 @@ export default function Hero() {
               {/* Speech Bubble (Ditarik ke Atas Tangan Kanan Karakter) */}
               <div className="absolute -top-10 sm:-top-12 right-2 sm:right-6 z-20 bg-ec-card/95 border-2 border-ec-gold text-white px-4 py-2 rounded-2xl shadow-xl backdrop-blur-md animate-bounce whitespace-nowrap" style={{ animationDuration: '3s' }}>
                 <p className="text-xs sm:text-sm font-black text-amber-300 flex items-center gap-1.5">
-                  <span>Ready for the quest?</span> 👋
+                  <span>Panggilan Untuk Rookie EC!</span> 👋
                 </p>
                 <div className="absolute -bottom-2 left-6 w-3 h-3 bg-ec-card border-r-2 border-b-2 border-ec-gold rotate-45" />
               </div>
@@ -77,32 +77,45 @@ export default function Hero() {
               <div className="hidden sm:flex absolute top-1/2 -right-12 md:-right-24 lg:-right-28 -translate-y-1/2 z-20 bg-blue-950/90 border border-amber-500/80 text-white px-4 py-2.5 rounded-2xl shadow-2xl backdrop-blur-md items-center gap-2.5 rotate-6">
                 <span className="text-xl">⭐️</span>
                 <div className="text-left">
-                  <span className="block text-xs font-black text-amber-300">Level 1 Explorer</span>
-                  <span className="block text-[10px] text-amber-200/80 font-semibold">25 / 100 XP</span>
+                  <span className="block text-xs font-black text-amber-300">Status Keanggotaan</span>
+                  <span className="block text-[10px] text-amber-200/80 font-semibold">Calon Anggota Aktif</span>
                 </div>
               </div>
 
             </div>
           </div>
 
-          {/* 3. Title Foreground & Deskripsi (Di Bawah Karakter) */}
           <div className="relative z-10 max-w-2xl mt-4 sm:mt-6">
+            {/* MAIN TITLE */}
             <h1 className="text-3xl sm:text-5xl font-black text-white mb-3 tracking-tight drop-shadow-xl">
               BANQUET UNDER <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-ec-gold to-yellow-500">HORIZON 2026</span>
             </h1>
             
-            <p className="text-sm sm:text-base md:text-lg text-blue-100/90 mb-8 font-medium leading-relaxed max-w-xl mx-auto">
-              Cultivating Unity Under The Open Sky. Selesaikan misi interaktif, kumpulkan XP, buka achievement badge, dan tingkatkan level skill Bahasa Inggris kamu bersama English Club UTB!
+            {/* MAIN DESCRIPTION */}
+            <p className="text-sm sm:text-base md:text-lg text-blue-100/90 mb-6 font-medium leading-relaxed max-w-xl mx-auto">
+              Satu hari, banyak cerita, dan sebuah perjalanan baru. Kenali English Club, temukan teman baru, dan tumbuh bersama dalam pengalaman yang seru dan bermakna!
             </p>
 
-            {/* Action Buttons */}
+            {/* REFINED TAGLINE (GOLD QUOTE WITH DIVIDER LINES) */}
+            <div className="mb-8 flex items-center justify-center gap-3 max-w-lg mx-auto">
+              <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-amber-400/50" />
+              <p className="text-xs sm:text-sm font-semibold italic tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-ec-gold to-yellow-500 drop-shadow-sm px-2 text-center">
+                "Let’s echo and proclaim, to new journey and endless learning."
+              </p>
+              <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-amber-400/50" />
+            </div>
+
+            {/* ACTION BUTTONS */}
             <div className="flex flex-wrap items-center justify-center gap-4">
               <a
                 href="#register"
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-ec-red text-white font-black text-lg rounded-2xl border-b-[6px] border-ec-iron transition-all transform hover:bg-[#eb2334] active:border-b-0 active:translate-y-[6px] shadow-lg shadow-ec-red/30"
+                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-ec-red text-white font-black text-lg rounded-2xl border-b-[6px] border-ec-iron transition-all transform hover:bg-[#eb2334] active:border-b-0 active:translate-y-[6px] shadow-lg shadow-ec-red/30 group"
               >
                 <span>Start The Quest</span>
-                <span className="text-xl">🚀</span>
+                {/* Replacement SVG Rocket (No Emoji) */}
+                <svg className="w-5 h-5 fill-current text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" viewBox="0 0 24 24">
+                  <path d="M13.13 2.21c1.88.38 3.5 1.4 4.67 2.89L21.4 1.5c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-3.6 3.6c1.49 1.17 2.51 2.79 2.89 4.67.14.7-.29 1.38-.98 1.52-.1.02-.21.03-.31.03-.59 0-1.12-.38-1.28-.97-.31-1.52-1.13-2.84-2.35-3.8-1.22-.96-2.73-1.44-4.28-1.37-.7.03-1.29-.51-1.32-1.21-.03-.7.51-1.29 1.21-1.32zM2.81 12.36c.14-.7.82-1.13 1.52-.98 1.52.31 2.84 1.13 3.8 2.35.96 1.22 1.44 2.73 1.37 4.28-.03.7-.62 1.23-1.32 1.21-.7-.03-1.23-.62-1.21-1.32.06-.96-.28-1.9-.88-2.66-.6-.76-1.43-1.27-2.38-1.47-.7-.14-1.13-.82-.98-1.52zM12 8c2.21 0 4 1.79 4 4s-1.79 4-4 4-4-1.79-4-4 1.79-4 4-4zm-8.5 7.5l2 2-2 3.5 3.5-2 2 2L3 23l2.5-7.5z"/>
+                </svg>
               </a>
 
               <a

@@ -6,32 +6,32 @@ export default function WhyThisEvent() {
   const revealRef = useReveal();
 
   const pillar1 = {
-    icon: '🤝',
-    title: 'Meet',
-    description: 'Bertemu orang baru dan memperluas koneksi',
-    step: '01',
-  };
+  icon: '🤝',
+  title: 'Perlombaan',
+  description: 'Uji kemampuan, asah skill, dan bangun mentalmu lewat berbagai perlombaan.',
+  step: '01',
+};
 
-  const pillar2 = {
-    icon: '🔗',
-    title: 'Connect',
-    description: 'Mengenal keluarga besar English Club',
-    step: '02',
-  };
+const pillar2 = {
+  icon: '🔗',
+  title: 'Connect dengan Dunia Luar',
+  description: 'Perluas koneksi dan dapatkan kesempatan berinteraksi dengan orang dari luar negeri.',
+  step: '02',
+};
 
-  const pillar3 = {
-    icon: '📚',
-    title: 'Learn',
-    description: 'Mencoba pengalaman baru yang berharga',
-    step: '03',
-  };
+const pillar3 = {
+  icon: '📚',
+  title: 'Delegasi ke Luar Negeri',
+  description: 'Raih kesempatan membawa nama kampus dan mendapatkan pengalaman di luar negeri.',
+  step: '03',
+};
 
-  const pillar4 = {
-    icon: '🌱',
-    title: 'Grow',
-    description: 'Memulai perjalanan perkembangan diri',
-    step: '04',
-  };
+const pillar4 = {
+  icon: '🌱',
+  title: 'Grow Together',
+  description: 'Mulai dari nol, berani mencoba, dan berkembang bersama teman-teman baru.',
+  step: '04',
+};
 
   return (
     <section className="py-20 md:py-32 bg-gradient-to-b from-ec-navy via-ec-blue to-ec-navy relative overflow-hidden border-t-4 border-blue-800/50">
@@ -50,12 +50,12 @@ export default function WhyThisEvent() {
               <span>🎯</span> QUEST PURPOSE
             </div>
             
-            <SectionTitle subtitle="Kenapa kamu harus main di event ini">
+            <SectionTitle subtitle="Kenapa kamu harus ikut di event ini">
               Why This Quest Exists
             </SectionTitle>
 
             <p className="text-sm sm:text-base md:text-lg text-blue-100/90 font-medium leading-relaxed mt-4">
-              Semester break bukan hanya waktu untuk beristirahat. Ini adalah kesempatan emas untuk mengenal orang baru, menemukan lingkungan baru, dan mencoba pengalaman berharga bersama!
+              Mengenal peluang yg ada di English Club agar kamu bisa memanfaatkan kesempatan ini untuk berkembang dan tumbuh bareng-bareng dengan teman yang sama.
             </p>
           </div>
 
@@ -125,7 +125,7 @@ export default function WhyThisEvent() {
               {/* Compact Badge di Bawah Kaki Karakter */}
               <div className="relative z-20 -mt-4 bg-blue-950/90 border border-amber-500/70 text-white px-4 py-1.5 rounded-full shadow-lg backdrop-blur-md flex items-center gap-2">
                 <span className="text-xs">🏆</span>
-                <span className="text-[11px] font-black text-amber-300 uppercase tracking-wider">4 Quest Pillars</span>
+                <span className="text-[11px] font-black text-amber-300 uppercase tracking-wider">4 opportunity Pillars</span>
               </div>
 
             </div>
