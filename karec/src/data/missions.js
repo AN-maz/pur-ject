@@ -1,0 +1,42 @@
+export const missions = [
+  {
+    id: 1,
+    title: 'Impostor Between Us',
+    focus: ['Communication', 'Observation', 'Trust'],
+    description: 'Build your communication skills while finding the impostor among us.',
+    reward: '+200 XP',
+    difficulty: 'Easy',
+  },
+  {
+    id: 2,
+    title: 'English Area',
+    focus: ['Confidence', 'Speaking Practice', 'Expression'],
+    description: 'Practice speaking English in a supportive and fun environment.',
+    reward: '+250 XP',
+    difficulty: 'Easy',
+  },
+  {
+    id: 3,
+    title: 'Leadership Challenge',
+    focus: ['Teamwork', 'Problem Solving', 'Leadership'],
+    description: 'Work together to overcome challenges and develop leadership skills.',
+    reward: '+300 XP',
+    difficulty: 'Medium',
+  },
+  {
+    id: 4,
+    title: 'Scavenger Hunt',
+    focus: ['Collaboration', 'Creativity', 'Strategy'],
+    description: 'Explore and strategize with your team to complete the hunt.',
+    reward: '+350 XP',
+    difficulty: 'Hard',
+  },
+  {
+    id: 5,
+    title: 'Werewolf',
+    focus: ['Analysis', 'Decision Making', 'Communication'],
+    description: 'Use logic and communication to survive the night.',
+    reward: '+400 XP',
+    difficulty: 'Hard',
+  },
+];

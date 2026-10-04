@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+/* -------------------------------------------------------------
+   3 PILIHAN TEMA WARNA APLIKASI PSIKOLOGI
+   ------------------------------------------------------------- */
+
+:root,
+[data-theme="serene"] {
+  /* Tema 1: Serene & Mindful (Teal & Emerald) - Default */
+  --color-primary: #0d9488;        /* teal-600 */
+  --color-primary-hover: #0f766e;  /* teal-700 */
+  --color-primary-light: #ccfbf1;  /* teal-100 */
+  --color-accent: #10b981;         /* emerald-500 */
+  --color-bg: #f8fafc;             /* slate-50 */
+  --color-card: #ffffff;
+  --color-text-main: #0f172a;      /* slate-900 */
+  --color-text-muted: #64748b;     /* slate-500 */
+  --color-border: #e2e8f0;         /* slate-200 */
+}
+
+[data-theme="warm"] {
+  /* Tema 2: Warm & Empathetic (Indigo & Rose) */
+  --color-primary: #4f46e5;        /* indigo-600 */
+  --color-primary-hover: #4338ca;  /* indigo-700 */
+  --color-primary-light: #e0e7ff;  /* indigo-100 */
+  --color-accent: #f43f5e;         /* rose-500 */
+  --color-bg: #fafaf9;             /* stone-50 */
+  --color-card: #ffffff;
+  --color-text-main: #18181b;      /* zinc-900 */
+  --color-text-muted: #71717a;     /* zinc-500 */
+  --color-border: #e4e4e7;         /* zinc-200 */
+}
+
+[data-theme="clinical"] {
+  /* Tema 3: Modern Clinical (Sky Blue & Violet) */
+  --color-primary: #0284c7;        /* sky-600 */
+  --color-primary-hover: #0369a1;  /* sky-700 */
+  --color-primary-light: #e0f2fe;  /* sky-100 */
+  --color-accent: #7c3aed;         /* violet-600 */
+  --color-bg: #f9fafb;             /* gray-50 */
+  --color-card: #ffffff;
+  --color-text-main: #111827;      /* gray-900 */
+  --color-text-muted: #6b7280;     /* gray-500 */
+  --color-border: #e5e7eb;         /* gray-200 */
+}
+
+/* -------------------------------------------------------------
+   CLASS UTILITAS TEMA
+   ------------------------------------------------------------- */
+.bg-app { background-color: var(--color-bg); }
+.bg-card { background-color: var(--color-card); }
+.bg-theme-primary { background-color: var(--color-primary); }
+.bg-theme-primary-hover:hover { background-color: var(--color-primary-hover); }
+.bg-theme-light { background-color: var(--color-primary-light); }
+
+.text-theme-main { color: var(--color-text-main); }
+.text-theme-muted { color: var(--color-text-muted); }
+.text-theme-primary { color: var(--color-primary); }
+
+.border-theme { border-color: var(--color-border); }

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>English Club UTB — Landing Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: "Inter", sans-serif; }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="bg-[#001452] text-white selection:bg-[#D81B2B] selection:text-white overflow-x-hidden">
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="fixed top-0 left-0 w-full bg-[#001452]/90 backdrop-blur-lg border-b-2 border-blue-900 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="bg-white p-1.5 rounded-xl border-b-4 border-slate-300 shadow-sm">
+          <img src="ec-logo.png" alt="Logo English Club" class="h-10 w-auto object-contain" />
+        </div>
+        <div class="pl-2">
+          <h2 class="font-extrabold text-xl tracking-tight text-white drop-shadow-md">ENGLISH CLUB</h2>
+          <p class="text-[10px] md:text-xs text-amber-400 font-bold tracking-wider uppercase">Level Up Your Skills</p>
+        </div>
+      </div>
+
+      <button
+        id="menuBtn"
+        class="md:hidden bg-blue-800 p-2 rounded-xl border-b-4 border-blue-950 text-white active:border-b-0 active:translate-y-1 transition-all"
+        onclick="toggleMenu()"
+      >
+        <svg id="iconOpen" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="iconClose" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div class="hidden md:flex gap-8 items-center bg-blue-900/50 px-6 py-2.5 rounded-full border border-blue-800">
+        <a href="#home" class="text-white font-bold hover:text-amber-400 transition-colors flex items-center gap-2">🏠 Home</a>
+        <a href="#quests" class="text-blue-200 font-bold hover:text-amber-400 transition-colors flex items-center gap-2">🗺️ Quests</a>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="md:hidden absolute top-full left-0 w-full bg-[#001a66] border-b-4 border-blue-900 shadow-2xl transition-all duration-300 ease-in-out overflow-hidden max-h-0 opacity-0">
+      <div class="flex flex-col px-6 py-4 gap-3">
+        <a href="#home" onclick="toggleMenu()" class="bg-blue-800/50 p-4 rounded-2xl text-white font-bold text-center border-2 border-transparent hover:border-amber-400 transition-all">
+          🏠 Home Base
+        </a>
+        <a href="#quests" onclick="toggleMenu()" class="bg-blue-800/50 p-4 rounded-2xl text-white font-bold text-center border-2 border-transparent hover:border-amber-400 transition-all">
+          🗺️ Learning Quests
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= HERO ================= -->
+  <main id="home" class="relative flex-grow flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto px-6 pt-36 pb-16 md:py-40 gap-12">
+    <div class="absolute top-20 right-10 text-6xl opacity-20 animate-bounce" style="animation-delay:100ms">⭐️</div>
+    <div class="absolute bottom-40 left-10 text-6xl opacity-20 animate-bounce" style="animation-delay:300ms">🚀</div>
+
+    <div class="w-full md:w-1/2 flex flex-col items-start text-left relative z-10">
+      <div class="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-2xl bg-amber-400 text-[#001452] text-sm font-black tracking-wide border-b-4 border-amber-600 transform -rotate-2">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        NEW SEASON: 2025-2026
+      </div>
+
+      <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight text-white drop-shadow-xl">
+        Master English, <br />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-yellow-500">
+          Win The World!
+        </span>
+      </h1>
+
+      <p class="text-lg md:text-xl text-blue-200 mb-10 max-w-lg font-medium leading-relaxed">
+        Selesaikan misi (16 Tenses), kumpulkan XP, dan tingkatkan level Speaking kamu bersama English Club UTB. Belajar jadi seru banget!
+      </p>
+
+      <a
+        href="#quests"
+        class="inline-flex items-center justify-center px-10 py-5 bg-[#D81B2B] text-white font-black text-xl rounded-2xl transition-all transform border-b-[6px] border-[#91121d] hover:bg-[#eb2334] active:border-b-0 active:translate-y-[6px]"
+      >
+        Start Playing Now 🎮
+      </a>
+    </div>
+
+    <!-- UI "Player Card" / Dashboard Mockup -->
+    <div class="w-full md:w-1/2 relative flex justify-center mt-10 md:mt-0">
+      <div class="absolute inset-0 bg-blue-500 rounded-[3rem] transform rotate-6 opacity-20 blur-2xl"></div>
+
+      <div class="relative w-full max-w-sm bg-[#001a66] border-4 border-blue-800 rounded-[2.5rem] p-6 flex flex-col shadow-[0_20px_0_rgba(0,13,54,1)] transform hover:-translate-y-2 transition-transform duration-500">
+
+        <!-- Header Card -->
+        <div class="flex justify-between items-center mb-6 border-b-2 border-blue-800 pb-4">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-amber-400 rounded-full border-4 border-white flex items-center justify-center text-xl font-black text-[#001452]">1</div>
+            <div>
+              <h3 class="font-bold text-white leading-none">Guest Player</h3>
+              <span class="text-xs text-blue-300 font-bold">Level 1 Beginner</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-1 text-orange-400 bg-orange-400/10 px-3 py-1 rounded-full font-bold border border-orange-400/20">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l1.9 5.7H20l-4.9 3.6 1.9 5.7-5-3.6-5 3.6 1.9-5.7L4 7.7h6.1z"/></svg>
+            0
+          </div>
+        </div>
+
+        <!-- Mascot & Progress -->
+        <div class="flex flex-col items-center mb-6">
+          <div class="bg-white p-4 rounded-3xl border-b-8 border-slate-300 mb-6 transform rotate-2">
+            <img src="ec-logo.png" alt="EC Mascot" class="w-32 h-auto drop-shadow-md" />
+          </div>
+
+          <div class="w-full bg-blue-950 rounded-full h-4 border-2 border-blue-900 p-0.5 overflow-hidden">
+            <div class="bg-gradient-to-r from-green-400 to-emerald-500 h-full rounded-full w-1/4 relative">
+              <div class="absolute top-0 left-0 w-full h-1/2 bg-white/30 rounded-t-full"></div>
+            </div>
+          </div>
+          <p class="text-xs text-blue-300 mt-2 font-bold">25 XP to Level 2</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="bg-blue-800/50 p-3 rounded-2xl border-2 border-blue-700/50 flex flex-col items-center">
+            <svg class="text-yellow-400 text-2xl mb-1 w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm3 8l2-2-2-2-1 1 1 1-1 1 1 1zm-3-6h4V3H5v2z"/></svg>
+            <span class="text-xs font-bold text-blue-200">0 Quests</span>
+          </div>
+          <div class="bg-blue-800/50 p-3 rounded-2xl border-2 border-blue-700/50 flex flex-col items-center">
+            <svg class="text-amber-400 text-2xl mb-1 w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <span class="text-xs font-bold text-blue-200">0 Stars</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= MENTORS (Guild Leaders) ================= -->
+  <section id="quests" class="py-24 bg-[#000d36] relative border-t-8 border-blue-900">
+    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-900 text-amber-400 font-black px-8 py-3 rounded-full border-4 border-[#000d36] shadow-xl flex items-center gap-2 text-xl">
+      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm3 8l2-2-2-2-1 1 1 1-1 1 1 1zm-3-6h4V3H5v2z"/></svg>
+      THE GUILD LEADERS
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10 pt-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-5xl font-black text-white mb-4 drop-shadow-lg">
+          Meet Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">Guides</span>
+        </h2>
+        <p class="text-blue-300 font-bold max-w-2xl mx-auto text-lg">
+          Pilih mentor andalanmu yang akan membantumu menamatkan seluruh level bahasa Inggris!
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 justify-items-center" id="mentorsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-[#001452] text-white pt-20 pb-10 px-6 md:px-12 border-t-8 border-blue-800">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10 text-center md:text-left">
+
+      <div class="flex flex-col items-center md:items-start">
+        <div class="bg-white p-2 rounded-2xl border-b-4 border-slate-300 inline-block mb-6">
+          <img src="ec-logo.png" alt="EC Logo" class="h-12 w-auto" />
+        </div>
+        <p class="text-base text-blue-200 font-bold leading-relaxed mb-6">
+          Platform belajar bahasa Inggris berbasis gamifikasi dari Universitas Teknologi Bandung. Selesaikan misi, taklukkan grammar!
+        </p>
+        <div class="flex gap-3" id="socialIcons"></div>
+      </div>
+
+      <div class="flex flex-col items-center md:items-start">
+        <h3 class="text-2xl font-black mb-6 text-white border-b-4 border-amber-400 pb-2 inline-block">Fast Travel</h3>
+        <ul class="space-y-4 text-base font-bold text-blue-200">
+          <li><a href="https://utb-univ.ac.id" target="_blank" rel="noreferrer" class="hover:text-amber-400 transition-colors flex items-center gap-2 justify-center md:justify-start">🏰 Campus Base</a></li>
+          <li><a href="#quests" class="hover:text-amber-400 transition-colors flex items-center gap-2 justify-center md:justify-start">📜 Quest Board</a></li>
+        </ul>
+      </div>
+
+      <div class="flex flex-col items-center md:items-start">
+        <h3 class="text-2xl font-black mb-6 text-white border-b-4 border-amber-400 pb-2 inline-block">Guild Support</h3>
+        <ul class="space-y-4 text-base font-bold text-blue-200">
+          <li><a href="mailto:englishclub@utb-univ.ac.id" class="hover:text-amber-400 transition-colors flex items-center gap-2 justify-center md:justify-start">✉️ englishclub@utb</a></li>
+          <li class="flex items-center gap-2 justify-center md:justify-start">📍 Bandung, Indonesia</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto mt-16 pt-8 border-t-4 border-blue-900 flex flex-col md:flex-row justify-between items-center gap-6 font-bold text-blue-400">
+      <p>Mission Log © <span id="year"></span> English Club UTB</p>
+      <button
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        class="px-6 py-3 rounded-2xl bg-blue-900 hover:bg-amber-400 hover:text-[#001452] border-b-4 border-blue-950 hover:border-amber-600 flex items-center justify-center transition-all active:border-b-0 active:translate-y-1 text-white"
+      >
+        ▲ Back to Top
+      </button>
+    </div>
+  </footer>
+
+  <script>
+    // --- Mobile menu toggle ---
+    function toggleMenu() {
+      var menu = document.getElementById('mobileMenu');
+      var open = menu.classList.contains('max-h-0');
+      menu.classList.toggle('max-h-0', !open);
+      menu.classList.toggle('opacity-0', !open);
+      menu.classList.toggle('opacity-100', open);
+      menu.classList.toggle('max-h-64', open);
+      document.getElementById('iconOpen').classList.toggle('hidden', open);
+      document.getElementById('iconClose').classList.toggle('hidden', !open);
+    }
+
+    // --- Data mentor (hardcoded replica of mentors.json) ---
+    var mentors = [
+      {
+        name: 'Andrian M.D.',
+        subtitle: 'PURWA',
+        image: 'purwa.webp',
+        tag: 'DIVISI SOFTWARE',
+        stats: [
+          { label: 'SIGMA', value: 90 },
+          { label: 'Sabaran', value: 90 }
+        ]
+      },
+      {
+        name: 'M. Ghani',
+        subtitle: 'Ghani',
+        image: 'ghani.png',
+        tag: 'DIVISI SOFTWARE',
+        stats: [
+          { label: 'Comms', value: 90 },
+          { label: 'Rel', value: 85 }
+        ]
+      },
+      {
+        name: 'Ibnu Rasyid Assidiq',
+        subtitle: 'Ibnu',
+        image: 'ibnu.webp',
+        tag: 'DIVISI SOFTWARE',
+        stats: [
+          { label: 'Comms', value: 90 },
+          { label: 'Rel', value: 85 }
+        ]
+      }
+    ];
+
+    var barColors = [
+      'from-green-400 to-emerald-600',
+      'from-amber-400 to-orange-500',
+      'from-purple-400 to-pink-500'
+    ];
+
+    var grid = document.getElementById('mentorsGrid');
+
+    mentors.forEach(function (mentor, mIdx) {
+      var card = document.createElement('div');
+      card.className = 'w-full max-w-sm bg-[#001a66] rounded-[2rem] p-3 border-4 border-blue-800 hover:border-amber-400 transition-all duration-300 flex flex-col shadow-[0_10px_0_rgba(0,13,54,1)] hover:-translate-y-2 group';
+
+      var statsHtml = '';
+      mentor.stats.forEach(function (stat, idx) {
+        var color = barColors[idx % barColors.length];
+        statsHtml +=
+          '<div class="flex flex-col gap-1">' +
+            '<div class="flex justify-between text-xs font-black">' +
+              '<span class="text-blue-100 uppercase tracking-wider">' + stat.label + '</span>' +
+              '<span class="text-amber-400">' + stat.value + ' / 100</span>' +
+            '</div>' +
+            '<div class="w-full h-3 bg-blue-950 rounded-full border border-blue-900 p-0.5 overflow-hidden">' +
+              '<div class="bar-fill h-full rounded-full bg-gradient-to-r ' + color + ' relative"' +
+                ' data-width="' + stat.value + '" data-delay="' + (idx * 200) + '">' +
+                '<div class="absolute top-0 left-0 w-full h-1/2 bg-white/30 rounded-t-full"></div>' +
+              '</div>' +
+            '</div>' +
+          '</div>';
+      });
+
+      card.innerHTML =
+        '<div class="relative h-60 overflow-hidden bg-gradient-to-b from-blue-400 to-blue-600 rounded-[1.5rem] border-4 border-blue-900 mb-4">' +
+          '<div class="absolute top-3 right-3 bg-white text-[#001452] px-3 py-1.5 rounded-xl text-xs font-black border-b-4 border-slate-300 z-10 flex items-center gap-1 shadow-sm">' +
+            '<svg class="w-3.5 h-3.5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>' +
+            mentor.tag +
+          '</div>' +
+          '<img src="' + mentor.image + '" alt="' + mentor.name + '" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110" />' +
+        '</div>' +
+        '<div class="px-3 pb-3 text-left flex-grow flex flex-col justify-between">' +
+          '<div class="mb-4 text-center">' +
+            '<h3 class="text-2xl font-black text-white mb-1 group-hover:text-amber-400 transition-colors">' + mentor.name + '</h3>' +
+            '<p class="text-[#D81B2B] text-sm font-bold tracking-widest uppercase bg-red-900/30 inline-block px-3 py-1 rounded-lg border border-red-900/50">' + mentor.subtitle + '</p>' +
+          '</div>' +
+          '<div class="space-y-4 bg-blue-900/50 p-4 rounded-2xl border-2 border-blue-800">' + statsHtml + '</div>' +
+        '</div>';
+
+      grid.appendChild(card);
+    });
+
+    // --- Animasi skill bar setelah render (setara efek "mounted") ---
+    setTimeout(function () {
+      document.querySelectorAll('.bar-fill').forEach(function (bar) {
+        bar.style.width = bar.dataset.width + '%';
+        bar.style.transition = 'width 1.5s ease-out';
+        bar.style.transitionDelay = bar.dataset.delay + 'ms';
+      });
+    }, 150);
+
+    // --- Social icons (inline SVG) ---
+    var socials = [
+      { color: 'hover:bg-red-600', svg: '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2a3.5 3.5 0 00-2.5-2.5C19 3.2 12 3.2 12 3.2s-7 0-9 .5A3.5 3.5 0 00.5 6.2 36 36 0 000 12a36 36 0 00.5 5.8 3.5 3.5 0 002.5 2.5c2 .5 9 .5 9 .5s7 0 9-.5a3.5 3.5 0 002.5-2.5A36 36 0 0024 12a36 36 0 00-.5-5.8zM9.6 15.2V8.8L15.8 12z"/></svg>' },
+      { color: 'hover:bg-gray-800', svg: '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 016 0C17 4.7 18 5 18 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6A12 12 0 0024 12c0-6.6-5.4-12-12-12z"/></svg>' },
+      { color: 'hover:bg-pink-600', svg: '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4a3.8 3.8 0 01-1.4-.9 3.8 3.8 0 01-.9-1.4c-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zM12 0C8.7 0 8.3 0 7 .1 5.8.1 5 .3 4.2.6c-.8.3-1.5.7-2.1 1.4C1.4 2.6 1 3.3.7 4.1.4 4.9.2 5.7.1 6.9 0 8.3 0 8.7 0 12s0 3.7.1 5.1c.1 1.2.3 2 .6 2.8.3.8.7 1.5 1.4 2.1.6.6 1.3 1.1 2.1 1.4.8.3 1.6.5 2.8.6C8.3 24 8.7 24 12 24s3.7 0 5.1-.1c1.2-.1 2-.3 2.8-.6.8-.3 1.5-.7 2.1-1.4.6-.6 1.1-1.3 1.4-2.1.3-.8.5-1.6.6-2.8.1-1.4.1-1.8.1-5.1s0-3.7-.1-5.1c-.1-1.2-.3-2-.6-2.8a5.7 5.7 0 00-1.4-2.1c-.6-.6-1.3-1.1-2.1-1.4-.8-.3-1.6-.5-2.8-.6C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zM12 16a4 4 0 110-8 4 4 0 010 8zm6.4-11.8a1.4 1.4 0 100 2.9 1.4 1.4 0 000-2.9z"/></svg>' },
+      { color: 'hover:bg-blue-600', svg: '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22.2 0H1.8C.8 0 0 .8 0 1.8v20.4C0 23.2.8 24 1.8 24h20.4c1 0 1.8-.8 1.8-1.8V1.8C24 .8 23.2 0 22.2 0zM7.1 20.3H3.6V9h3.5v11.3zM5.3 7.4a2 2 0 110-4.1 2 2 0 010 4.1zM20.3 20.3h-3.5v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.6H9.4V9h3.4v1.5h.1c.5-.9 1.6-1.8 3.3-1.8 3.5 0 4.1 2.3 4.1 5.3v6.3z"/></svg>' }
+    ];
+
+    var socialContainer = document.getElementById('socialIcons');
+    socials.forEach(function (s) {
+      var a = document.createElement('a');
+      a.href = '#';
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.className = 'w-12 h-12 rounded-2xl bg-blue-900 border-b-4 border-blue-950 ' + s.color + ' flex items-center justify-center text-xl transition-all active:border-b-0 active:translate-y-1';
+      a.innerHTML = s.svg;
+      socialContainer.appendChild(a);
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
