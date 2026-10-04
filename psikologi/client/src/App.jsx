@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, NavLink, useParams } from 'react-router-dom';
+import { Brain } from 'lucide-react';
 
 // Import Halaman (akan dibuat di Langkah 4)
 import LandingPage from './pages/LandingPage';
@@ -17,34 +18,50 @@ export default function App() {
   // Pilihan tema: 'serene' | 'warm' | 'clinical'
   const [theme, setTheme] = useState('serene');
 
+  const navLink = ({ isActive }) =>
+    `px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+      isActive ? 'bg-primary-light text-primary' : 'text-muted hover:text-main'
+    }`;
+
   return (
     <Router>
-      <div className="min-h-screen bg-app text-theme-main transition-colors duration-300" data-theme={theme}>
+      <div className="min-h-screen bg-app text-main transition-colors duration-300" data-theme={theme}>
         {/* Header / Navbar */}
-        <header className="border-b border-theme bg-card sticky top-0 z-50">
-          <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-            <Link to="/" className="text-xl font-bold text-theme-primary">
-              PsychometricApp
+        <header className="border-b border-line bg-card sticky top-0 z-50">
+          <div className="max-w-6xl mx-auto px-4 h-14 sm:h-16 flex items-center justify-between gap-3">
+            <Link to="/" className="inline-flex items-center gap-1.5 text-lg sm:text-xl font-bold text-primary">
+              <Brain size={22} />
+              <span className="hidden min-[420px]:inline">PsychometricApp</span>
             </Link>
 
-            {/* Selector Tema Warna */}
-            <div className="flex items-center gap-2 text-sm">
-              <span className="text-theme-muted font-medium hidden sm:inline">Tema:</span>
-              <select
-                value={theme}
-                onChange={(e) => setTheme(e.target.value)}
-                className="bg-app border border-theme text-theme-main rounded-md px-2 py-1 text-xs focus:outline-none"
-              >
-                <option value="serene">Serene Teal</option>
-                <option value="warm">Warm Indigo</option>
-                <option value="clinical">Clinical Blue</option>
-              </select>
-            </div>
+            <nav className="flex items-center gap-1 sm:gap-3">
+              <NavLink to="/" end className={navLink}>
+                Beranda
+              </NavLink>
+              <NavLink to="/menu" className={navLink}>
+                Tes
+              </NavLink>
+
+              {/* Selector Tema Warna */}
+              <div className="flex items-center ml-1">
+                <span className="text-muted font-medium hidden md:inline mr-2 text-sm">Tema:</span>
+                <select
+                  value={theme}
+                  onChange={(e) => setTheme(e.target.value)}
+                  aria-label="Pilih tema warna"
+                  className="bg-app border border-line text-main rounded-md px-2 py-1.5 text-xs focus:outline-none focus:border-primary cursor-pointer"
+                >
+                  <option value="serene">Teal</option>
+                  <option value="warm">Indigo</option>
+                  <option value="clinical">Sky</option>
+                </select>
+              </div>
+            </nav>
           </div>
         </header>
 
         {/* Konten Utama */}
-        <main className="max-w-6xl mx-auto px-4 py-8">
+        <main className="max-w-6xl mx-auto px-4 sm:px-6 py-5 sm:py-8">
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/menu" element={<MenuPage />} />

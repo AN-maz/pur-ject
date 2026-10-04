@@ -1,60 +1,88 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /* -------------------------------------------------------------
-   3 PILIHAN TEMA WARNA APLIKASI PSIKOLOGI
+   Tokens warna via @theme => utility Tailwind nyata (bisa dipakai
+   dengan variant hover:/disabled:/opacity: dst). Tema diaktifkan
+   lewat atribut [data-theme] yang menimpa --color-*.
    ------------------------------------------------------------- */
-
-:root,
-[data-theme="serene"] {
-  /* Tema 1: Serene & Mindful (Teal & Emerald) - Default */
-  --color-primary: #0d9488;        /* teal-600 */
-  --color-primary-hover: #0f766e;  /* teal-700 */
-  --color-primary-light: #ccfbf1;  /* teal-100 */
-  --color-accent: #10b981;         /* emerald-500 */
-  --color-bg: #f8fafc;             /* slate-50 */
-  --color-card: #ffffff;
-  --color-text-main: #0f172a;      /* slate-900 */
-  --color-text-muted: #64748b;     /* slate-500 */
-  --color-border: #e2e8f0;         /* slate-200 */
-}
-
 [data-theme="warm"] {
-  /* Tema 2: Warm & Empathetic (Indigo & Rose) */
-  --color-primary: #4f46e5;        /* indigo-600 */
-  --color-primary-hover: #4338ca;  /* indigo-700 */
-  --color-primary-light: #e0e7ff;  /* indigo-100 */
-  --color-accent: #f43f5e;         /* rose-500 */
-  --color-bg: #fafaf9;             /* stone-50 */
+  --color-app: #fafaf9;
   --color-card: #ffffff;
-  --color-text-main: #18181b;      /* zinc-900 */
-  --color-text-muted: #71717a;     /* zinc-500 */
-  --color-border: #e4e4e7;         /* zinc-200 */
+  --color-main: #18181b;
+  --color-muted: #71717a;
+  --color-line: #e4e4e7;
+  --color-primary: #4f46e5;      /* indigo-600 */
+  --color-primary-hover: #4338ca;/* indigo-700 */
+  --color-primary-light: #e0e7ff;/* indigo-100 */
+  --color-accent: #f43f5e;       /* rose-500 */
 }
 
 [data-theme="clinical"] {
-  /* Tema 3: Modern Clinical (Sky Blue & Violet) */
-  --color-primary: #0284c7;        /* sky-600 */
-  --color-primary-hover: #0369a1;  /* sky-700 */
-  --color-primary-light: #e0f2fe;  /* sky-100 */
-  --color-accent: #7c3aed;         /* violet-600 */
-  --color-bg: #f9fafb;             /* gray-50 */
+  --color-app: #f9fafb;
   --color-card: #ffffff;
-  --color-text-main: #111827;      /* gray-900 */
-  --color-text-muted: #6b7280;     /* gray-500 */
-  --color-border: #e5e7eb;         /* gray-200 */
+  --color-main: #111827;
+  --color-muted: #6b7280;
+  --color-line: #e5e7eb;
+  --color-primary: #0284c7;      /* sky-600 */
+  --color-primary-hover: #0369a1;/* sky-700 */
+  --color-primary-light: #e0f2fe;/* sky-100 */
+  --color-accent: #7c3aed;       /* violet-600 */
 }
 
 /* -------------------------------------------------------------
-   CLASS UTILITAS TEMA
+   Token warna untuk Tailwind (@theme). Utility: bg-primary,
+   text-primary, border-line, bg-app, bg-card, text-main, dll.
    ------------------------------------------------------------- */
-.bg-app { background-color: var(--color-bg); }
-.bg-card { background-color: var(--color-card); }
-.bg-theme-primary { background-color: var(--color-primary); }
-.bg-theme-primary-hover:hover { background-color: var(--color-primary-hover); }
-.bg-theme-light { background-color: var(--color-primary-light); }
+@theme {
+  /* Default (Thema Serene & Mindful) */
+  --color-app: #f8fafc;
+  --color-card: #ffffff;
+  --color-main: #0f172a;
+  --color-muted: #64748b;
+  --color-line: #e2e8f0;
+  --color-primary: #0d9488;      /* teal-600 */
+  --color-primary-hover: #0f766e;/* teal-700 */
+  --color-primary-light: #ccfbf1;/* teal-100 */
+  --color-accent: #10b981;       /* emerald-500 */
+}
 
-.text-theme-main { color: var(--color-text-main); }
-.text-theme-muted { color: var(--color-text-muted); }
-.text-theme-primary { color: var(--color-primary); }
+/* -------------------------------------------------------------
+   Animasi
+   ------------------------------------------------------------- */
+.animate-fade-up {
+  animation: fadeUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-pop {
+  animation: pop 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
 
-.border-theme { border-color: var(--color-border); }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pop {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .animate-pop,
+  .animate-float {
+    animation: none !important;
+  }
+}
+
+/* Scrollbar halus di panel soal */
+.quiz-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary-light) transparent;
+}
