@@ -9,3 +9,30 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 4rem; /* Sesuai tinggi Navbar (h-16 = 4rem) agar konten tidak tertutup */
 }
+:root {
+  --color-software-bright: #39FF5A;
+  --color-software-tosca: #20C997;
+  --color-software-teal: #008080;
+}
+
+/* Animasi meteor meluncur menyusuri lintasan lingkaran 3D */
+@keyframes meteor-dash {
+  0% {
+    stroke-dashoffset: 650;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-meteor-1 {
+  animation: meteor-dash 1.8s linear infinite;
+}
+
+.animate-meteor-2 {
+  animation: meteor-dash 2.4s linear infinite;
+}
+
+.animate-meteor-3 {
+  animation: meteor-dash 2.1s linear infinite;
+}
