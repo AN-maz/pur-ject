@@ -2,11 +2,11 @@ export const eventInfo = {
   name: 'Banquet Under Horizon 2026',
   theme: 'ROOTS & SHOOTS',
   subtitle: 'Cultivating Unity Under The Open Sky',
-  date: '05 October 2026',
+  date: '7 November 2026',
   location: 'Batununggal',
   meetingPoint: 'Universitas Teknologi Bandung',
   price: 'Rp12.000',
-  registrationLink: 'https://forms.gle/GJPgUPSe7MPTtPWL6',
+  registrationLink: 'https://forms.gle/5wUQX3AzcDg8QKW77',
 };
 
 export const whyEnglishClub = [

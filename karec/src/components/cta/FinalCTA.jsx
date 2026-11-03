@@ -44,7 +44,7 @@ export default function FinalCTA() {
               {/* Ukuran Karakter Diperbesar */}
               <div className="relative w-44 h-56 sm:w-56 sm:h-72 lg:w-64 lg:h-80 flex items-center justify-center">
                 <img 
-                  src="/cewe.png" 
+                  src="/cewe4.png" 
                   alt="Character Guide" 
                   className="w-full h-full object-contain filter drop-shadow-[0_15px_25px_rgba(0,0,0,0.6)]"
                 />
@@ -72,20 +72,20 @@ export default function FinalCTA() {
               </p>
               
               <p className="text-xs sm:text-base mb-8 text-blue-200 font-medium leading-relaxed drop-shadow-sm max-w-md mx-auto">
-                Kumpulkan XP, naikkan level, dan berkembang bersama komunitas English Club UTB.
+               AYOKK TUNGGU APA LAGI... langsung hantam registrasi sekarang juga dan jadilah bagian dari petualangan seru ini! Jangan sampai ketinggalan, karena kesempatan ini tidak datang dua kali!
               </p>
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3.5 justify-center items-center">
                 <a
-                  href="https://forms.gle/GJPgUPSe7MPTtPWL6"
+                  href="https://forms.gle/5wUQX3AzcDg8QKW77"
                   target="_blank"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-gradient-to-r from-red-600 via-ec-red to-red-600 text-white font-black text-sm sm:text-base rounded-2xl border-2 border-red-300 border-b-[5px] border-b-red-950 shadow-[0_8px_20px_rgba(239,68,68,0.4)] transition-all duration-200 hover:bg-red-500 hover:-translate-y-0.5 active:translate-y-1 active:border-b-0 uppercase tracking-wider group"
                 >
                   <svg className="w-5 h-5 text-amber-300 fill-current" viewBox="0 0 24 24">
                     <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H9v2H7v-2H5v-2h2V9h2v2h2v2zm4.5 1c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-3c-.83 0-1.5-.67-1.5-1.5S17.67 9 18.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
                   </svg>
-                  <span>JOIN THE QUEST</span>
+                  <span>DAFTARKAN SEKARANG</span>
                 </a>
 
                 <a
@@ -112,7 +112,7 @@ export default function FinalCTA() {
               {/* Ukuran Karakter Diperbesar */}
               <div className="relative w-44 h-56 sm:w-56 sm:h-72 lg:w-64 lg:h-80 flex items-center justify-center">
                 <img 
-                  src="/cewe2.png" 
+                  src="/cewe5.png" 
                   alt="Character Buddy" 
                   className="w-full h-full object-contain filter drop-shadow-[0_15px_25px_rgba(0,0,0,0.6)]"
                 />

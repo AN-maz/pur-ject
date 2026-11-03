@@ -116,7 +116,7 @@ const pillar4 = {
               {/* Character Image Natural */}
               <div className="relative z-10 animate-float my-auto">
                 <img
-                  src="/cewe.png"
+                  src="/cewe6.png"
                   alt="Quest Explorer Character"
                   className="w-48 sm:w-60 md:w-[290px] h-auto object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.65)] hover:scale-105 transition-transform duration-300"
                 />

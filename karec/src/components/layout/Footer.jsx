@@ -1,4 +1,5 @@
 import Container from '../common/Container';
+import { navigate } from '../../routing';
 import navLogo from '../../assets/nav-logo.png';
 
 export default function Footer() {
@@ -91,6 +92,20 @@ export default function Footer() {
                   <span>Guild Support</span>
                 </a>
               </li>
+
+              <li>
+                <button 
+                  onClick={() => navigate('games')}
+                  className="group inline-flex items-center gap-2.5 text-sm font-bold text-blue-200 hover:text-amber-300 transition-colors"
+                >
+                  <span className="p-1.5 rounded-lg bg-blue-900/80 border border-blue-700/60 text-amber-400 group-hover:scale-110 transition-transform">
+                    <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                  </span>
+                  <span>Games Dashboard</span>
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -127,7 +142,7 @@ export default function Footer() {
                     <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/>
                   </svg>
                 </span>
-                <span className="font-bold">3 Oktober 2026</span>
+                <span className="font-bold">7 November 2026</span>
               </li>
             </ul>
           </div>

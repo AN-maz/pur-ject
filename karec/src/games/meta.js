@@ -1,0 +1,42 @@
+export const GAME_META = [
+  {
+    id: 'VOCAB_RUSH',
+    title: 'Vocab Rush',
+    tag: 'Fast-Paced',
+    desc: 'Survival vocab 30 detik! Kejar streak & poin tertinggi.',
+    icon: 'bolt',
+    accent: 'bg-ec-gold',
+  },
+  {
+    id: 'WORD_SCRAMBLE',
+    title: 'Word Scramble',
+    tag: 'Brain Teaser',
+    desc: 'Susun huruf acak jadi kata Bahasa Inggris yang tepat.',
+    icon: 'puzzle',
+    accent: 'bg-blue-500',
+  },
+  {
+    id: 'GEN_Z',
+    title: 'Gen Z English',
+    tag: 'Viral Slang',
+    desc: 'Seberapa Gen Z bahasa Inggris lu? Cek Aura & Slang score!',
+    icon: 'sparkle',
+    accent: 'bg-ec-red',
+  },
+  {
+    id: 'IMPOSTOR',
+    title: 'Find Impostor',
+    tag: 'Focus Test',
+    desc: 'Cari 1 kata asing yang tidak cocok dalam 5 detik!',
+    icon: 'magnifier',
+    accent: 'bg-emerald-500',
+  },
+  {
+    id: 'GRAMMAR_BOMB',
+    title: 'Grammar Bomb',
+    tag: 'High Pressure',
+    desc: 'Jinakkan bom sebelum meledak! Pilih tata bahasa yang benar.',
+    icon: 'bomb',
+    accent: 'bg-ec-red',
+  },
+];

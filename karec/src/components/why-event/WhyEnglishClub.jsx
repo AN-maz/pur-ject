@@ -55,7 +55,7 @@ export default function WhyEnglishClub() {
               {/* Character Image Melayang Natural */}
               <div className="relative z-10 animate-float my-auto">
                 <img
-                  src="/cewe.png"
+                  src="/cewe3.png"
                   alt="Guild Guide Character"
                   className="w-56 sm:w-72 md:w-[320px] h-auto object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.65)] hover:scale-105 transition-transform duration-300"
                 />

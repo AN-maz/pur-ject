@@ -5,7 +5,7 @@ import SectionTitle from '../common/SectionTitle';
 import { faqs } from '../../data/faq';
 
 // Import 1 Karakter utama
-import character from '/cewe.png';
+import character from '/cewe7.png';
 
 export default function FAQ() {
   const revealRef = useReveal();

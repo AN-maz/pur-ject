@@ -1,328 +1,1043 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>English Club UTB — Landing Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EC Stand Games - Vocab Rush & Mini Games</title>
+  
+  <!-- React & ReactDOM -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  
+  <!-- Babel for JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <!-- Tailwind CSS v3/v4 Play CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
-  <style>
-    body { font-family: "Inter", sans-serif; }
-    .scrollbar-hide::-webkit-scrollbar { display: none; }
-    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-  </style>
-</head>
-<body class="bg-[#001452] text-white selection:bg-[#D81B2B] selection:text-white overflow-x-hidden">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-  <!-- ================= NAVBAR ================= -->
-  <nav class="fixed top-0 left-0 w-full bg-[#001452]/90 backdrop-blur-lg border-b-2 border-blue-900 z-50 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="flex items-center gap-3">
-        <div class="bg-white p-1.5 rounded-xl border-b-4 border-slate-300 shadow-sm">
-          <img src="ec-logo.png" alt="Logo English Club" class="h-10 w-auto object-contain" />
-        </div>
-        <div class="pl-2">
-          <h2 class="font-extrabold text-xl tracking-tight text-white drop-shadow-md">ENGLISH CLUB</h2>
-          <p class="text-[10px] md:text-xs text-amber-400 font-bold tracking-wider uppercase">Level Up Your Skills</p>
-        </div>
-      </div>
-
-      <button
-        id="menuBtn"
-        class="md:hidden bg-blue-800 p-2 rounded-xl border-b-4 border-blue-950 text-white active:border-b-0 active:translate-y-1 transition-all"
-        onclick="toggleMenu()"
-      >
-        <svg id="iconOpen" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-        <svg id="iconClose" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-
-      <div class="hidden md:flex gap-8 items-center bg-blue-900/50 px-6 py-2.5 rounded-full border border-blue-800">
-        <a href="#home" class="text-white font-bold hover:text-amber-400 transition-colors flex items-center gap-2">🏠 Home</a>
-        <a href="#quests" class="text-blue-200 font-bold hover:text-amber-400 transition-colors flex items-center gap-2">🗺️ Quests</a>
-      </div>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="md:hidden absolute top-full left-0 w-full bg-[#001a66] border-b-4 border-blue-900 shadow-2xl transition-all duration-300 ease-in-out overflow-hidden max-h-0 opacity-0">
-      <div class="flex flex-col px-6 py-4 gap-3">
-        <a href="#home" onclick="toggleMenu()" class="bg-blue-800/50 p-4 rounded-2xl text-white font-bold text-center border-2 border-transparent hover:border-amber-400 transition-all">
-          🏠 Home Base
-        </a>
-        <a href="#quests" onclick="toggleMenu()" class="bg-blue-800/50 p-4 rounded-2xl text-white font-bold text-center border-2 border-transparent hover:border-amber-400 transition-all">
-          🗺️ Learning Quests
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- ================= HERO ================= -->
-  <main id="home" class="relative flex-grow flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto px-6 pt-36 pb-16 md:py-40 gap-12">
-    <div class="absolute top-20 right-10 text-6xl opacity-20 animate-bounce" style="animation-delay:100ms">⭐️</div>
-    <div class="absolute bottom-40 left-10 text-6xl opacity-20 animate-bounce" style="animation-delay:300ms">🚀</div>
-
-    <div class="w-full md:w-1/2 flex flex-col items-start text-left relative z-10">
-      <div class="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-2xl bg-amber-400 text-[#001452] text-sm font-black tracking-wide border-b-4 border-amber-600 transform -rotate-2">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-        NEW SEASON: 2025-2026
-      </div>
-
-      <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight text-white drop-shadow-xl">
-        Master English, <br />
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-yellow-500">
-          Win The World!
-        </span>
-      </h1>
-
-      <p class="text-lg md:text-xl text-blue-200 mb-10 max-w-lg font-medium leading-relaxed">
-        Selesaikan misi (16 Tenses), kumpulkan XP, dan tingkatkan level Speaking kamu bersama English Club UTB. Belajar jadi seru banget!
-      </p>
-
-      <a
-        href="#quests"
-        class="inline-flex items-center justify-center px-10 py-5 bg-[#D81B2B] text-white font-black text-xl rounded-2xl transition-all transform border-b-[6px] border-[#91121d] hover:bg-[#eb2334] active:border-b-0 active:translate-y-[6px]"
-      >
-        Start Playing Now 🎮
-      </a>
-    </div>
-
-    <!-- UI "Player Card" / Dashboard Mockup -->
-    <div class="w-full md:w-1/2 relative flex justify-center mt-10 md:mt-0">
-      <div class="absolute inset-0 bg-blue-500 rounded-[3rem] transform rotate-6 opacity-20 blur-2xl"></div>
-
-      <div class="relative w-full max-w-sm bg-[#001a66] border-4 border-blue-800 rounded-[2.5rem] p-6 flex flex-col shadow-[0_20px_0_rgba(0,13,54,1)] transform hover:-translate-y-2 transition-transform duration-500">
-
-        <!-- Header Card -->
-        <div class="flex justify-between items-center mb-6 border-b-2 border-blue-800 pb-4">
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 bg-amber-400 rounded-full border-4 border-white flex items-center justify-center text-xl font-black text-[#001452]">1</div>
-            <div>
-              <h3 class="font-bold text-white leading-none">Guest Player</h3>
-              <span class="text-xs text-blue-300 font-bold">Level 1 Beginner</span>
-            </div>
-          </div>
-          <div class="flex items-center gap-1 text-orange-400 bg-orange-400/10 px-3 py-1 rounded-full font-bold border border-orange-400/20">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l1.9 5.7H20l-4.9 3.6 1.9 5.7-5-3.6-5 3.6 1.9-5.7L4 7.7h6.1z"/></svg>
-            0
-          </div>
-        </div>
-
-        <!-- Mascot & Progress -->
-        <div class="flex flex-col items-center mb-6">
-          <div class="bg-white p-4 rounded-3xl border-b-8 border-slate-300 mb-6 transform rotate-2">
-            <img src="ec-logo.png" alt="EC Mascot" class="w-32 h-auto drop-shadow-md" />
-          </div>
-
-          <div class="w-full bg-blue-950 rounded-full h-4 border-2 border-blue-900 p-0.5 overflow-hidden">
-            <div class="bg-gradient-to-r from-green-400 to-emerald-500 h-full rounded-full w-1/4 relative">
-              <div class="absolute top-0 left-0 w-full h-1/2 bg-white/30 rounded-t-full"></div>
-            </div>
-          </div>
-          <p class="text-xs text-blue-300 mt-2 font-bold">25 XP to Level 2</p>
-        </div>
-
-        <div class="grid grid-cols-2 gap-3">
-          <div class="bg-blue-800/50 p-3 rounded-2xl border-2 border-blue-700/50 flex flex-col items-center">
-            <svg class="text-yellow-400 text-2xl mb-1 w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm3 8l2-2-2-2-1 1 1 1-1 1 1 1zm-3-6h4V3H5v2z"/></svg>
-            <span class="text-xs font-bold text-blue-200">0 Quests</span>
-          </div>
-          <div class="bg-blue-800/50 p-3 rounded-2xl border-2 border-blue-700/50 flex flex-col items-center">
-            <svg class="text-amber-400 text-2xl mb-1 w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <span class="text-xs font-bold text-blue-200">0 Stars</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <!-- ================= MENTORS (Guild Leaders) ================= -->
-  <section id="quests" class="py-24 bg-[#000d36] relative border-t-8 border-blue-900">
-    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-900 text-amber-400 font-black px-8 py-3 rounded-full border-4 border-[#000d36] shadow-xl flex items-center gap-2 text-xl">
-      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm3 8l2-2-2-2-1 1 1 1-1 1 1 1zm-3-6h4V3H5v2z"/></svg>
-      THE GUILD LEADERS
-    </div>
-
-    <div class="max-w-7xl mx-auto px-6 relative z-10 pt-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-5xl font-black text-white mb-4 drop-shadow-lg">
-          Meet Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">Guides</span>
-        </h2>
-        <p class="text-blue-300 font-bold max-w-2xl mx-auto text-lg">
-          Pilih mentor andalanmu yang akan membantumu menamatkan seluruh level bahasa Inggris!
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 justify-items-center" id="mentorsGrid"></div>
-    </div>
-  </section>
-
-  <!-- ================= FOOTER ================= -->
-  <footer class="bg-[#001452] text-white pt-20 pb-10 px-6 md:px-12 border-t-8 border-blue-800">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10 text-center md:text-left">
-
-      <div class="flex flex-col items-center md:items-start">
-        <div class="bg-white p-2 rounded-2xl border-b-4 border-slate-300 inline-block mb-6">
-          <img src="ec-logo.png" alt="EC Logo" class="h-12 w-auto" />
-        </div>
-        <p class="text-base text-blue-200 font-bold leading-relaxed mb-6">
-          Platform belajar bahasa Inggris berbasis gamifikasi dari Universitas Teknologi Bandung. Selesaikan misi, taklukkan grammar!
-        </p>
-        <div class="flex gap-3" id="socialIcons"></div>
-      </div>
-
-      <div class="flex flex-col items-center md:items-start">
-        <h3 class="text-2xl font-black mb-6 text-white border-b-4 border-amber-400 pb-2 inline-block">Fast Travel</h3>
-        <ul class="space-y-4 text-base font-bold text-blue-200">
-          <li><a href="https://utb-univ.ac.id" target="_blank" rel="noreferrer" class="hover:text-amber-400 transition-colors flex items-center gap-2 justify-center md:justify-start">🏰 Campus Base</a></li>
-          <li><a href="#quests" class="hover:text-amber-400 transition-colors flex items-center gap-2 justify-center md:justify-start">📜 Quest Board</a></li>
-        </ul>
-      </div>
-
-      <div class="flex flex-col items-center md:items-start">
-        <h3 class="text-2xl font-black mb-6 text-white border-b-4 border-amber-400 pb-2 inline-block">Guild Support</h3>
-        <ul class="space-y-4 text-base font-bold text-blue-200">
-          <li><a href="mailto:englishclub@utb-univ.ac.id" class="hover:text-amber-400 transition-colors flex items-center gap-2 justify-center md:justify-start">✉️ englishclub@utb</a></li>
-          <li class="flex items-center gap-2 justify-center md:justify-start">📍 Bandung, Indonesia</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="max-w-7xl mx-auto mt-16 pt-8 border-t-4 border-blue-900 flex flex-col md:flex-row justify-between items-center gap-6 font-bold text-blue-400">
-      <p>Mission Log © <span id="year"></span> English Club UTB</p>
-      <button
-        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
-        class="px-6 py-3 rounded-2xl bg-blue-900 hover:bg-amber-400 hover:text-[#001452] border-b-4 border-blue-950 hover:border-amber-600 flex items-center justify-center transition-all active:border-b-0 active:translate-y-1 text-white"
-      >
-        ▲ Back to Top
-      </button>
-    </div>
-  </footer>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
 
   <script>
-    // --- Mobile menu toggle ---
-    function toggleMenu() {
-      var menu = document.getElementById('mobileMenu');
-      var open = menu.classList.contains('max-h-0');
-      menu.classList.toggle('max-h-0', !open);
-      menu.classList.toggle('opacity-0', !open);
-      menu.classList.toggle('opacity-100', open);
-      menu.classList.toggle('max-h-64', open);
-      document.getElementById('iconOpen').classList.toggle('hidden', open);
-      document.getElementById('iconClose').classList.toggle('hidden', !open);
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'ec-blue': '#001452',
+            'ec-red': '#D81B2B',
+            'ec-navy': '#000c33',
+            'ec-gold': '#FFD700',
+          },
+          fontFamily: {
+            outfit: ['Outfit', 'sans-serif'],
+            jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          animation: {
+            'pulse-fast': 'pulse 0.8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'shake': 'shake 0.4s ease-in-out',
+            'bounce-short': 'bounce 0.5s ease 2',
+            'fade-in': 'fadeIn 0.4s ease-out',
+          },
+          keyframes: {
+            fadeIn: {
+              from: { opacity: '0', transform: 'translateY(8px)' },
+              to: { opacity: '1', transform: 'translateY(0)' },
+            },
+            shake: {
+              '0%, 100%': { transform: 'translateX(0)' },
+              '20%, 60%': { transform: 'translateX(-10px)' },
+              '40%, 80%': { transform: 'translateX(10px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #000c33;
+      color: #ffffff;
+      user-select: none;
+    }
+    h1, h2, h3, .font-heading {
+      font-family: 'Outfit', sans-serif;
+    }
+    .glass-card {
+      background: rgba(0, 20, 82, 0.7);
+      backdrop-filter: blur(12px);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+    .btn-action {
+      transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn-action:active {
+      transform: scale(0.96);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between bg-gradient-to-b from-ec-navy via-ec-blue to-black text-white overflow-x-hidden">
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+
+    // --- SOUND SYNTHESIZER ENGINE (Web Audio API) ---
+    const SoundEngine = {
+      ctx: null,
+      init() {
+        if (!this.ctx) {
+          this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+      },
+      playTone(freq, type, duration, gainVal = 0.1) {
+        try {
+          this.init();
+          if (this.ctx.state === 'suspended') this.ctx.resume();
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = type;
+          osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+          gain.gain.setValueAtTime(gainVal, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + duration);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + duration);
+        } catch (e) {}
+      },
+      correct() {
+        this.playTone(523.25, 'triangle', 0.1, 0.15); // C5
+        setTimeout(() => this.playTone(659.25, 'triangle', 0.1, 0.15), 80); // E5
+        setTimeout(() => this.playTone(783.99, 'triangle', 0.2, 0.2), 160); // G5
+      },
+      wrong() {
+        this.playTone(200, 'sawtooth', 0.15, 0.2);
+        setTimeout(() => this.playTone(150, 'sawtooth', 0.25, 0.25), 100);
+      },
+      tick() {
+        this.playTone(800, 'sine', 0.03, 0.05);
+      },
+      bombTick() {
+        this.playTone(1200, 'square', 0.04, 0.08);
+      },
+      explode() {
+        this.playTone(100, 'sawtooth', 0.5, 0.3);
+        setTimeout(() => this.playTone(60, 'square', 0.6, 0.4), 50);
+      },
+      fanfare() {
+        const notes = [523.25, 659.25, 783.99, 1046.50];
+        notes.forEach((n, idx) => {
+          setTimeout(() => this.playTone(n, 'triangle', 0.25, 0.2), idx * 100);
+        });
+      }
+    };
+
+    // --- UTILITY HELPERS (mirror React: useMemo + shuffleArray + shuffleOptions) ---
+    const useMemo = (fn, deps) => {
+      const ref = useRef(null);
+      const prev = useRef(null);
+      const changed = !prev.current || prev.current.length !== deps.length || prev.current.some((d, i) => !Object.is(d, deps[i]));
+      if (changed) {
+        ref.current = fn();
+        prev.current = [...deps];
+      }
+      return ref.current;
+    };
+
+    const shuffleArray = (array) => {
+      const arr = [...array];
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    };
+
+    const shuffleOptions = (options, correctIndex) => {
+      const indexed = options.map((opt, i) => ({ opt, originalIndex: i }));
+      const shuffled = shuffleArray(indexed);
+      let newCorrect = 0;
+      for (let i = 0; i < shuffled.length; i++) {
+        if (shuffled[i].originalIndex === correctIndex) { newCorrect = i; break; }
+      }
+      return { shuffledOptions: shuffled.map((item) => item.opt), correctIdx: newCorrect };
+    };
+
+    // --- DATA BANKS FOR MINI GAMES ---
+    const VOCAB_DATA = [
+      { word: "GORGEOUS", options: ["Sangat cantik", "Sangat marah", "Sangat lapar", "Sangat mahal"], correct: 0 },
+      { word: "EXHAUSTED", options: ["Sangat lelah", "Sangat senang", "Sangat bingung", "Sangat cepat"], correct: 0 },
+      { word: "ANXIOUS", options: ["Cemas/Gelisah", "Marah sekali", "Lucu", "Ramah"], correct: 0 },
+      { word: "IMPOSING", options: ["Megah/Mengesankan", "Biasa saja", "Kecil", "Ringan"], correct: 0 },
+      { word: "PECKISH", options: ["Agak lapar", "Sangat haus", "Tidur nyenyak", "Bosan"], correct: 0 },
+      { word: "DELIGHTED", options: ["Sangat gembira", "Kecewa berat", "Takut", "Malu"], correct: 0 },
+      { word: "STUBBORN", options: ["Keras kepala", "Penurut", "Pintar", "Penyabar"], correct: 0 },
+      { word: "AMBITIOUS", options: ["Berambisi besar", "Malas", "Pendiam", "Sombong"], correct: 0 },
+      { word: "BRILLIANT", options: ["Sangat cerdas", "Biasa saja", "Gelap", "Kasar"], correct: 0 },
+      { word: "GENEROUS", options: ["Dermawan/Pemurah", "Pelit", "Jahat", "Lembet"], correct: 0 },
+      { word: "METICULOUS", options: ["Sangat teliti", "Ceroboh", "Santai", "Cepat"], correct: 0 },
+      { word: "ECSTATIC", options: ["Sangat gembira", "Sedih", "Bosan", "Lapar"], correct: 0 }
+    ];
+
+    const SCRAMBLE_DATA = [
+      { word: "ENGLISH", hint: "Bahasa Internasional", difficulty: "Easy" },
+      { word: "APPLE", hint: "Buah apel", difficulty: "Easy" },
+      { word: "FRIEND", hint: "Teman / Sahabat", difficulty: "Medium" },
+      { word: "FUTURE", hint: "Masa depan", difficulty: "Medium" },
+      { word: "KNOWLEDGE", hint: "Pengetahuan", difficulty: "Hard" },
+      { word: "CHALLENGE", hint: "Tantangan", difficulty: "Hard" },
+      { word: "CAMPUS", hint: "Tempat kuliah", difficulty: "Easy" },
+      { word: "SPEAKER", hint: "Pembicara", difficulty: "Medium" },
+      { word: "VOCABULARY", hint: "Kosakata", difficulty: "Hard" }
+    ];
+
+    const GENZ_DATA = [
+      { phrase: "Bro is cooked 💀", question: "artinya apa?", options: ["Dia sedang memasak", "Dia dalam masalah besar", "Dia lapar berat", "Dia marah sekali"], correct: 1 },
+      { phrase: "That's lowkey fire 🔥", question: "maksudnya...", options: ["Kebakaran kecil", "Biasa saja", "Diam-diam keren banget", "Terlalu panas"], correct: 2 },
+      { phrase: "Bro has negative aura 📉", question: "menggambarkan orang yang...", options: ["Sangat karismatik", "Canggung / Bikin ilfeel", "Lagi mati lampu", "Pintar fisika"], correct: 1 },
+      { phrase: "I'm locked in 🔒", question: "berarti...", options: ["Terkunci di kamar", "Sangat fokus / serius", "Lupa password", "Lagi malas-malasan"], correct: 1 },
+      { phrase: "Let him cook 👨‍🍳", question: "digunakan saat...", options: ["Menyuruh masak mie", "Biarkan dia tunjukkan aksinya", "Melarang orang bicara", "Mengajak makan siang"], correct: 1 },
+      { phrase: "Main character energy ✨", question: "artinya...", options: ["Pemain sinetron", "Percaya diri & pusat perhatian", "Suka nonton film", "Orang yang pemalu"], correct: 1 }
+    ];
+
+    const IMPOSTOR_DATA = [
+      { options: ["APPLE", "BANANA", "ORANGE", "CARROT"], impostor: 3, reason: "CARROT adalah Sayuran, bukan Buah!" },
+      { options: ["HAPPY", "JOYFUL", "CHEERFUL", "MISERABLE"], impostor: 3, reason: "MISERABLE bermakna sedih, yang lain gembira!" },
+      { options: ["RUN", "WALK", "JUMP", "BEAUTIFUL"], impostor: 3, reason: "BEAUTIFUL adalah kata sifat, sisanya kata kerja!" },
+      { options: ["DOG", "CAT", "LION", "AIRPLANE"], impostor: 3, reason: "AIRPLANE bukan Hewan!" },
+      { options: ["SWIMMING", "SKIING", "SURFING", "READING"], impostor: 3, reason: "READING bukan Olahraga Air!" },
+      { options: ["COLD", "FREEZING", "CHILLY", "BOILING"], impostor: 3, reason: "BOILING bermakna panas mendidih!" }
+    ];
+
+    const GRAMMAR_DATA = [
+      { options: ["She don't like coffee.", "She doesn't like coffee."], correct: 1 },
+      { options: ["They is going to school.", "They are going to school."], correct: 1 },
+      { options: ["I have lived here since 2020.", "I have lived here for 2020."], correct: 0 },
+      { options: ["He go to campus yesterday.", "He went to campus yesterday."], correct: 1 },
+      { options: ["Which one is correct?", "Who one is correct?"], correct: 0 },
+      { options: ["There are many peoples.", "There are many people."], correct: 1 }
+    ];
+
+    // --- MAIN APP COMPONENT ---
+    function App() {
+      const [activeGame, setActiveGame] = useState('HOME');
+
+      const triggerConfetti = () => {
+        try {
+          confetti({
+            particleCount: 80,
+            spread: 70,
+            origin: { y: 0.6 }
+          });
+        } catch(e){}
+      };
+
+      return (
+        <div className="min-h-screen flex flex-col justify-between max-w-4xl mx-auto px-4 py-6">
+          {/* HEADER */}
+          <header className="flex justify-between items-center pb-4 border-b border-white/10 mb-6">
+            <div 
+              onClick={() => setActiveGame('HOME')} 
+              className="cursor-pointer flex items-center gap-3 group"
+            >
+              <div className="w-11 h-11 bg-ec-red rounded-xl flex items-center justify-center font-black text-xl shadow-lg shadow-ec-red/40 group-hover:scale-105 transition">
+                EC
+              </div>
+              <div>
+                <h1 className="text-xl font-black tracking-wider text-white flex items-center gap-2">
+                  ENGLISH CLUB <span className="text-xs bg-ec-red px-2 py-0.5 rounded-full font-semibold">STAND</span>
+                </h1>
+                <p className="text-xs text-blue-200/70">Interactive Campus English Games</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              {activeGame !== 'HOME' && (
+                <button 
+                  onClick={() => setActiveGame('HOME')}
+                  className="px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition"
+                >
+                  <i className="fa-solid fa-house"></i> Menu
+                </button>
+              )}
+            </div>
+          </header>
+
+          {/* GAME ROUTER */}
+          <main className="flex-1 flex flex-col justify-center">
+            {activeGame === 'HOME' && <HomeScreen onSelectGame={(game) => setActiveGame(game)} />}
+            {activeGame === 'VOCAB_RUSH' && <VocabRushGame onConfetti={triggerConfetti} onHome={() => setActiveGame('HOME')} />}
+            {activeGame === 'WORD_SCRAMBLE' && <WordScrambleGame onConfetti={triggerConfetti} onHome={() => setActiveGame('HOME')} />}
+            {activeGame === 'GEN_Z' && <GenZEnglishGame onConfetti={triggerConfetti} onHome={() => setActiveGame('HOME')} />}
+            {activeGame === 'IMPOSTOR' && <FindImpostorGame onConfetti={triggerConfetti} onHome={() => setActiveGame('HOME')} />}
+            {activeGame === 'GRAMMAR_BOMB' && <GrammarBombGame onConfetti={triggerConfetti} onHome={() => setActiveGame('HOME')} />}
+          </main>
+
+          {/* FOOTER */}
+          <footer className="mt-8 text-center text-xs text-blue-300/40 border-t border-white/5 pt-4">
+            English Club Stand Challenge &bull; Built with React & Tailwind CSS
+          </footer>
+        </div>
+      );
     }
 
-    // --- Data mentor (hardcoded replica of mentors.json) ---
-    var mentors = [
-      {
-        name: 'Andrian M.D.',
-        subtitle: 'PURWA',
-        image: 'purwa.webp',
-        tag: 'DIVISI SOFTWARE',
-        stats: [
-          { label: 'SIGMA', value: 90 },
-          { label: 'Sabaran', value: 90 }
-        ]
-      },
-      {
-        name: 'M. Ghani',
-        subtitle: 'Ghani',
-        image: 'ghani.png',
-        tag: 'DIVISI SOFTWARE',
-        stats: [
-          { label: 'Comms', value: 90 },
-          { label: 'Rel', value: 85 }
-        ]
-      },
-      {
-        name: 'Ibnu Rasyid Assidiq',
-        subtitle: 'Ibnu',
-        image: 'ibnu.webp',
-        tag: 'DIVISI SOFTWARE',
-        stats: [
-          { label: 'Comms', value: 90 },
-          { label: 'Rel', value: 85 }
-        ]
+    // --- 0. HOME SCREEN (5 SELECTION) ---
+    function HomeScreen({ onSelectGame }) {
+      const games = [
+        { id: 'VOCAB_RUSH', title: 'Vocab Rush ⚡', tag: 'Fast-Paced', desc: 'Survival vocab 30 detik! Kejar streak & poin tertinggi.', color: 'from-amber-500 to-red-600', icon: 'fa-bolt' },
+        { id: 'WORD_SCRAMBLE', title: 'Word Scramble 🧩', tag: 'Brain Teaser', desc: 'Susun huruf acak jadi kata Bahasa Inggris yang tepat.', color: 'from-blue-500 to-indigo-600', icon: 'fa-puzzle-piece' },
+        { id: 'GEN_Z', title: 'Gen Z English 💀', tag: 'Viral Slang', desc: 'Seberapa Gen Z bahasa Inggris lu? Cek Aura & Slang score!', color: 'from-fuchsia-600 to-purple-800', icon: 'fa-skull' },
+        { id: 'IMPOSTOR', title: 'Find Impostor 🕵️', tag: 'Focus Test', desc: 'Cari 1 kata asing yang tidak cocok dalam 5 detik!', color: 'from-emerald-500 to-teal-700', icon: 'fa-user-ninja' },
+        { id: 'GRAMMAR_BOMB', title: 'Grammar Bomb 💣', tag: 'High Pressure', desc: 'Jinakkan bom sebelum meledak! Pilih tata bahasa yang benar.', color: 'from-ec-red to-rose-800', icon: 'fa-bomb' }
+      ];
+
+      return (
+        <div className="space-y-6 animate-fade-in">
+          <div className="text-center space-y-2">
+            <span className="bg-ec-red/20 text-red-400 border border-ec-red/30 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest inline-block">
+              🔥 Stand Challenge Active
+            </span>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight">CHOOSE YOUR CHALLENGE</h2>
+            <p className="text-blue-200/80 max-w-md mx-auto text-sm md:text-base">
+              Mainkan game favoritmu, kumpulkan skor, dan buktikan kemampuan Bahasa Inggris kamu!
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+            {games.map((g, idx) => (
+              <div 
+                key={g.id}
+                onClick={() => { SoundEngine.tick(); onSelectGame(g.id); }}
+                className={`group relative overflow-hidden rounded-2xl glass-card p-5 cursor-pointer hover:border-white/40 transition-all transform hover:-translate-y-1 hover:shadow-2xl flex flex-col justify-between border-l-4 ${idx === 0 ? 'md:col-span-2 bg-gradient-to-r from-ec-blue via-ec-blue to-ec-red/30' : ''}`}
+              >
+                <div>
+                  <div className="flex justify-between items-start mb-3">
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-white/10 text-white/90">
+                      {g.tag}
+                    </span>
+                    <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${g.color} flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition`}>
+                      <i className={`fa-solid ${g.icon} text-lg`}></i>
+                    </div>
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-bold mb-1 text-white group-hover:text-amber-300 transition">{g.title}</h3>
+                  <p className="text-xs md:text-sm text-blue-200/70">{g.desc}</p>
+                </div>
+
+                <div className="mt-4 flex items-center text-xs font-bold text-amber-400 group-hover:translate-x-1 transition">
+                  PLAY NOW <i className="fa-solid fa-arrow-right ml-2"></i>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    // --- GAME COUNTDOWN (mirror React GameCountdown.jsx) ---
+    function GameCountdown({ onComplete }) {
+      const [count, setCount] = useState(5);
+
+      useEffect(() => {
+        const timer = setInterval(() => {
+          setCount((current) => {
+            if (current <= 1) {
+              clearInterval(timer);
+              onComplete();
+              return 0;
+            }
+            return current - 1;
+          });
+        }, 1000);
+        return () => clearInterval(timer);
+      }, [onComplete]);
+
+      return (
+        <div className="flex min-h-[280px] flex-col items-center justify-center text-center animate-fade-in">
+          <p className="text-sm font-black uppercase tracking-[0.35em] text-blue-200/70">Get Ready!</p>
+          <div className="mt-4 text-8xl font-black text-amber-300 animate-pulse">{count}</div>
+          <p className="mt-3 text-sm font-bold text-white/70">Game starts in...</p>
+        </div>
+      );
+    }
+
+    // --- 1. VOCAB RUSH GAME ---
+    function VocabRushGame({ onConfetti, onHome }) {
+      const [timeLeft, setTimeLeft] = useState(30);
+      const [score, setScore] = useState(0);
+      const [streak, setStreak] = useState(0);
+      const [bestStreak, setBestStreak] = useState(0);
+      const [correctCount, setCorrectCount] = useState(0);
+      const [wrongCount, setWrongCount] = useState(0);
+      const [currentIndex, setCurrentIndex] = useState(0);
+      const [gameState, setGameState] = useState('COUNTDOWN'); // COUNTDOWN, PLAYING, END
+      const [feedback, setFeedback] = useState(null); // 'CORRECT', 'WRONG'
+      const [session, setSession] = useState(0);
+      const timerRef = useRef(null);
+      const mountedRef = useRef(true);
+
+      // Urutan soal diacak tiap sesi main (mirror React: session = pemicu acak ulang)
+      const order = useMemo(() => shuffleArray(VOCAB_DATA.map((_, i) => i)), [session]);
+      const question = useMemo(() => {
+        const q = VOCAB_DATA[order[currentIndex % order.length]];
+        const s = shuffleOptions(q.options, q.correct);
+        return { currentQ: q, shuffledOptions: s.shuffledOptions, correctIdx: s.correctIdx };
+      }, [currentIndex, order]);
+
+      useEffect(() => {
+        if (gameState !== 'PLAYING') return;
+        timerRef.current = setInterval(() => {
+          setTimeLeft((prev) => (prev <= 0 ? 0 : prev - 1));
+        }, 1000);
+        return () => clearInterval(timerRef.current);
+      }, [gameState]);
+
+      useEffect(() => {
+        if (gameState !== 'PLAYING' || timeLeft !== 0) return;
+        const t = setTimeout(() => { setGameState('END'); SoundEngine.fanfare(); onConfetti(); }, 80);
+        return () => clearTimeout(t);
+      }, [gameState, timeLeft]);
+
+      useEffect(() => {
+        mountedRef.current = true;
+        return () => { mountedRef.current = false; if (timerRef.current) clearInterval(timerRef.current); };
+      }, []);
+
+      const handleAnswer = (optionIdx) => {
+        if (!mountedRef.current) return;
+        if (optionIdx === question.correctIdx) {
+          SoundEngine.correct();
+          const ns = streak + 1;
+          setStreak(ns);
+          if (ns > bestStreak) setBestStreak(ns);
+          setScore(prev => prev + 100 + (ns * 10));
+          setCorrectCount(prev => prev + 1);
+          setFeedback('CORRECT');
+        } else {
+          SoundEngine.wrong();
+          setStreak(0);
+          setTimeLeft(prev => Math.max(0, prev - 2)); // -2s penalty
+          setWrongCount(prev => prev + 1);
+          setFeedback('WRONG');
+        }
+
+        setTimeout(() => { if (mountedRef.current) setFeedback(null); }, 200);
+        setTimeout(() => { if (mountedRef.current) setCurrentIndex((p) => p + 1); }, 200);
+      };
+
+      const reset = () => {
+        setGameState('COUNTDOWN'); setTimeLeft(30); setScore(0); setStreak(0); setCorrectCount(0);
+        setWrongCount(0); setCurrentIndex(0); setFeedback(null); setSession((s) => s + 1);
+      };
+
+      const getRank = (sc) => {
+        if (sc < 400) return { title: "Beginner", icon: "🌱", color: "text-gray-300" };
+        if (sc < 800) return { title: "Learner", icon: "📚", color: "text-blue-400" };
+        if (sc < 1300) return { title: "Explorer", icon: "🧭", color: "text-emerald-400" };
+        if (sc < 1800) return { title: "Fluent", icon: "⚡", color: "text-amber-400" };
+        if (sc < 2500) return { title: "Vocab Master", icon: "🏆", color: "text-purple-400" };
+        return { title: "English God", icon: "👑", color: "text-yellow-300 animate-pulse" };
+      };
+
+      const rank = getRank(score);
+
+      if (gameState === 'COUNTDOWN') {
+        return <GameCountdown onComplete={() => setGameState('PLAYING')} />;
       }
-    ];
 
-    var barColors = [
-      'from-green-400 to-emerald-600',
-      'from-amber-400 to-orange-500',
-      'from-purple-400 to-pink-500'
-    ];
+      if (gameState === 'END') {
+        return (
+          <div className="glass-card rounded-3xl p-6 md:p-8 text-center space-y-6 max-w-md mx-auto animate-fade-in border-2 border-amber-400/40">
+            <div>
+              <span className="text-4xl">{rank.icon}</span>
+              <h2 className="text-xs uppercase font-extrabold tracking-widest text-amber-400 mt-2">Result Screen</h2>
+              <h1 className={`text-3xl font-black ${rank.color}`}>{rank.title}</h1>
+              <p className="text-xs text-blue-200/80 italic mt-1">"Your English is cooking 🔥"</p>
+            </div>
 
-    var grid = document.getElementById('mentorsGrid');
+            <div className="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-3">
+              <div className="text-4xl font-black text-amber-300">{score.toLocaleString()} PTS</div>
+              <div className="grid grid-cols-3 gap-2 text-center text-xs border-t border-white/10 pt-3">
+                <div>
+                  <div className="text-emerald-400 font-bold text-lg">{correctCount}</div>
+                  <div className="text-white/60">Correct</div>
+                </div>
+                <div>
+                  <div className="text-ec-red font-bold text-lg">{wrongCount}</div>
+                  <div className="text-white/60">Wrong</div>
+                </div>
+                <div>
+                  <div className="text-amber-400 font-bold text-lg">🔥 {bestStreak}</div>
+                  <div className="text-white/60">Best Streak</div>
+                </div>
+              </div>
+            </div>
 
-    mentors.forEach(function (mentor, mIdx) {
-      var card = document.createElement('div');
-      card.className = 'w-full max-w-sm bg-[#001a66] rounded-[2rem] p-3 border-4 border-blue-800 hover:border-amber-400 transition-all duration-300 flex flex-col shadow-[0_10px_0_rgba(0,13,54,1)] hover:-translate-y-2 group';
+            <div className="flex gap-3 flex-wrap justify-center">
+              <button onClick={reset} className="flex-1 py-3 bg-ec-red hover:bg-red-700 font-bold rounded-xl transition btn-action">
+                Play Again 🔄
+              </button>
+              <button onClick={onHome} className="py-3 px-4 bg-white/10 hover:bg-white/20 font-bold rounded-xl transition">
+                Menu
+              </button>
+            </div>
+          </div>
+        );
+      }
 
-      var statsHtml = '';
-      mentor.stats.forEach(function (stat, idx) {
-        var color = barColors[idx % barColors.length];
-        statsHtml +=
-          '<div class="flex flex-col gap-1">' +
-            '<div class="flex justify-between text-xs font-black">' +
-              '<span class="text-blue-100 uppercase tracking-wider">' + stat.label + '</span>' +
-              '<span class="text-amber-400">' + stat.value + ' / 100</span>' +
-            '</div>' +
-            '<div class="w-full h-3 bg-blue-950 rounded-full border border-blue-900 p-0.5 overflow-hidden">' +
-              '<div class="bar-fill h-full rounded-full bg-gradient-to-r ' + color + ' relative"' +
-                ' data-width="' + stat.value + '" data-delay="' + (idx * 200) + '">' +
-                '<div class="absolute top-0 left-0 w-full h-1/2 bg-white/30 rounded-t-full"></div>' +
-              '</div>' +
-            '</div>' +
-          '</div>';
-      });
+      return (
+        <div className="space-y-6 max-w-md mx-auto w-full">
+          {/* STATS BAR */}
+          <div className="flex justify-between items-center bg-white/5 border border-white/10 p-4 rounded-2xl">
+            <div className="text-center">
+              <div className="text-xs text-blue-200/60 font-semibold">TIME</div>
+              <div className={`text-2xl font-black ${timeLeft <= 5 ? 'text-ec-red animate-ping' : 'text-amber-400'}`}>
+                {timeLeft}s
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-xs text-blue-200/60 font-semibold">SCORE</div>
+              <div className="text-2xl font-black text-white">{score}</div>
+            </div>
+            <div className="text-center">
+              <div className="text-xs text-blue-200/60 font-semibold">STREAK</div>
+              <div className="text-2xl font-black text-amber-400 flex items-center justify-center gap-1">
+                🔥 {streak}
+              </div>
+            </div>
+          </div>
 
-      card.innerHTML =
-        '<div class="relative h-60 overflow-hidden bg-gradient-to-b from-blue-400 to-blue-600 rounded-[1.5rem] border-4 border-blue-900 mb-4">' +
-          '<div class="absolute top-3 right-3 bg-white text-[#001452] px-3 py-1.5 rounded-xl text-xs font-black border-b-4 border-slate-300 z-10 flex items-center gap-1 shadow-sm">' +
-            '<svg class="w-3.5 h-3.5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>' +
-            mentor.tag +
-          '</div>' +
-          '<img src="' + mentor.image + '" alt="' + mentor.name + '" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110" />' +
-        '</div>' +
-        '<div class="px-3 pb-3 text-left flex-grow flex flex-col justify-between">' +
-          '<div class="mb-4 text-center">' +
-            '<h3 class="text-2xl font-black text-white mb-1 group-hover:text-amber-400 transition-colors">' + mentor.name + '</h3>' +
-            '<p class="text-[#D81B2B] text-sm font-bold tracking-widest uppercase bg-red-900/30 inline-block px-3 py-1 rounded-lg border border-red-900/50">' + mentor.subtitle + '</p>' +
-          '</div>' +
-          '<div class="space-y-4 bg-blue-900/50 p-4 rounded-2xl border-2 border-blue-800">' + statsHtml + '</div>' +
-        '</div>';
+          {/* QUESTION CARD */}
+          <div className={`glass-card rounded-3xl p-5 sm:p-8 text-center space-y-6 relative overflow-hidden transition ${feedback === 'WRONG' ? 'animate-shake border-ec-red' : ''}`}>
+            {feedback === 'CORRECT' && (
+              <div className="absolute top-2 right-4 text-emerald-400 font-bold text-xs animate-bounce">+100 🔥</div>
+            )}
+            {feedback === 'WRONG' && (
+              <div className="absolute top-2 right-4 text-ec-red font-bold text-xs">-2s 💀</div>
+            )}
 
-      grid.appendChild(card);
-    });
+            <div>
+              <span className="text-xs font-bold text-blue-300 uppercase tracking-widest">Select Synonym / Meaning</span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-amber-300 tracking-wider mt-1">{question.currentQ.word}</h2>
+            </div>
 
-    // --- Animasi skill bar setelah render (setara efek "mounted") ---
-    setTimeout(function () {
-      document.querySelectorAll('.bar-fill').forEach(function (bar) {
-        bar.style.width = bar.dataset.width + '%';
-        bar.style.transition = 'width 1.5s ease-out';
-        bar.style.transitionDelay = bar.dataset.delay + 'ms';
-      });
-    }, 150);
+            <div className="grid grid-cols-1 gap-3">
+              {question.shuffledOptions.map((opt, i) => (
+                <button
+                  key={i}
+                  onClick={() => handleAnswer(i)}
+                  className="w-full min-h-[48px] py-3.5 px-4 bg-white/10 hover:bg-amber-400 active:bg-amber-400 hover:text-ec-navy active:text-ec-navy text-left font-bold rounded-xl transition-all border border-white/10 flex items-center justify-between group btn-action"
+                >
+                  <span><strong className="text-amber-400 group-hover:text-ec-navy mr-2">{String.fromCharCode(65 + i)}.</strong> {opt}</span>
+                  <i className="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition"></i>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    }
 
-    // --- Social icons (inline SVG) ---
-    var socials = [
-      { color: 'hover:bg-red-600', svg: '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2a3.5 3.5 0 00-2.5-2.5C19 3.2 12 3.2 12 3.2s-7 0-9 .5A3.5 3.5 0 00.5 6.2 36 36 0 000 12a36 36 0 00.5 5.8 3.5 3.5 0 002.5 2.5c2 .5 9 .5 9 .5s7 0 9-.5a3.5 3.5 0 002.5-2.5A36 36 0 0024 12a36 36 0 00-.5-5.8zM9.6 15.2V8.8L15.8 12z"/></svg>' },
-      { color: 'hover:bg-gray-800', svg: '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 016 0C17 4.7 18 5 18 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6A12 12 0 0024 12c0-6.6-5.4-12-12-12z"/></svg>' },
-      { color: 'hover:bg-pink-600', svg: '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4a3.8 3.8 0 01-1.4-.9 3.8 3.8 0 01-.9-1.4c-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zM12 0C8.7 0 8.3 0 7 .1 5.8.1 5 .3 4.2.6c-.8.3-1.5.7-2.1 1.4C1.4 2.6 1 3.3.7 4.1.4 4.9.2 5.7.1 6.9 0 8.3 0 8.7 0 12s0 3.7.1 5.1c.1 1.2.3 2 .6 2.8.3.8.7 1.5 1.4 2.1.6.6 1.3 1.1 2.1 1.4.8.3 1.6.5 2.8.6C8.3 24 8.7 24 12 24s3.7 0 5.1-.1c1.2-.1 2-.3 2.8-.6.8-.3 1.5-.7 2.1-1.4.6-.6 1.1-1.3 1.4-2.1.3-.8.5-1.6.6-2.8.1-1.4.1-1.8.1-5.1s0-3.7-.1-5.1c-.1-1.2-.3-2-.6-2.8a5.7 5.7 0 00-1.4-2.1c-.6-.6-1.3-1.1-2.1-1.4-.8-.3-1.6-.5-2.8-.6C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zM12 16a4 4 0 110-8 4 4 0 010 8zm6.4-11.8a1.4 1.4 0 100 2.9 1.4 1.4 0 000-2.9z"/></svg>' },
-      { color: 'hover:bg-blue-600', svg: '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22.2 0H1.8C.8 0 0 .8 0 1.8v20.4C0 23.2.8 24 1.8 24h20.4c1 0 1.8-.8 1.8-1.8V1.8C24 .8 23.2 0 22.2 0zM7.1 20.3H3.6V9h3.5v11.3zM5.3 7.4a2 2 0 110-4.1 2 2 0 010 4.1zM20.3 20.3h-3.5v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.6H9.4V9h3.4v1.5h.1c.5-.9 1.6-1.8 3.3-1.8 3.5 0 4.1 2.3 4.1 5.3v6.3z"/></svg>' }
-    ];
+    // --- 2. WORD SCRAMBLE GAME ---
+    function scrambleWord(w) {
+      const arr = w.split('');
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      if (arr.join('') === w) return scrambleWord(w);
+      return arr.join(' ');
+    }
 
-    var socialContainer = document.getElementById('socialIcons');
-    socials.forEach(function (s) {
-      var a = document.createElement('a');
-      a.href = '#';
-      a.target = '_blank';
-      a.rel = 'noopener noreferrer';
-      a.className = 'w-12 h-12 rounded-2xl bg-blue-900 border-b-4 border-blue-950 ' + s.color + ' flex items-center justify-center text-xl transition-all active:border-b-0 active:translate-y-1';
-      a.innerHTML = s.svg;
-      socialContainer.appendChild(a);
-    });
+    function WordScrambleGame({ onConfetti, onHome }) {
+      const [currentIdx, setCurrentIdx] = useState(0);
+      const [inputVal, setInputVal] = useState('');
+      const [score, setScore] = useState(0);
+      const [streak, setStreak] = useState(0);
+      const [timeLeft, setTimeLeft] = useState(12);
+      const [gameState, setGameState] = useState('COUNTDOWN'); // COUNTDOWN, PLAYING, END
+      const [shake, setShake] = useState(false);
+      const [session, setSession] = useState(0);
+      const timerRef = useRef(null);
+      const mountedRef = useRef(true);
+      const shakeTimeoutRef = useRef(null);
 
-    document.getElementById('year').textContent = new Date().getFullYear();
+      // Urutan soal diacak tiap sesi main (mirror React)
+      const order = useMemo(() => shuffleArray(SCRAMBLE_DATA.map((_, i) => i)), [session]);
+      const currentQ = useMemo(() => SCRAMBLE_DATA[order[currentIdx]] || SCRAMBLE_DATA[order[0]], [order, currentIdx]);
+      const scrambled = useMemo(() => scrambleWord(currentQ.word), [currentQ.word]);
+
+      const goToQuestion = (idx) => { setCurrentIdx(idx); setInputVal(''); setTimeLeft(12); };
+
+      const finishGame = () => { setGameState('END'); SoundEngine.fanfare(); onConfetti(); };
+
+      const handleCheck = (e) => {
+        e.preventDefault();
+        if (inputVal.trim().toUpperCase() === currentQ.word) {
+          SoundEngine.correct();
+          setScore(prev => prev + 200);
+          setStreak(prev => prev + 1);
+          if (currentIdx + 1 < SCRAMBLE_DATA.length) goToQuestion(currentIdx + 1);
+          else finishGame();
+        } else {
+          SoundEngine.wrong();
+          setStreak(0);
+          // Efek getar tiap jawaban salah (mirror React)
+          setShake(true);
+          if (shakeTimeoutRef.current) clearTimeout(shakeTimeoutRef.current);
+          shakeTimeoutRef.current = setTimeout(() => { if (mountedRef.current) setShake(false); }, 450);
+        }
+      };
+
+      const reset = () => {
+        setScore(0); setStreak(0); setShake(false); setGameState('COUNTDOWN'); setSession((s) => s + 1); goToQuestion(0);
+      };
+
+      useEffect(() => {
+        if (gameState !== 'PLAYING') return;
+        timerRef.current = setInterval(() => {
+          setTimeLeft((prev) => (prev <= 0 ? 0 : prev - 1));
+        }, 1000);
+        return () => clearInterval(timerRef.current);
+      }, [currentIdx, gameState]);
+
+      useEffect(() => {
+        if (gameState !== 'PLAYING' || timeLeft !== 0) return;
+        const t = setTimeout(() => {
+          if (currentIdx + 1 < SCRAMBLE_DATA.length) goToQuestion(currentIdx + 1);
+          else finishGame();
+        }, 80);
+        return () => clearTimeout(t);
+      }, [gameState, timeLeft, currentIdx]);
+
+      useEffect(() => {
+        mountedRef.current = true;
+        return () => { mountedRef.current = false; if (timerRef.current) clearInterval(timerRef.current); if (shakeTimeoutRef.current) clearTimeout(shakeTimeoutRef.current); };
+      }, []);
+
+      if (gameState === 'COUNTDOWN') {
+        return <GameCountdown onComplete={() => setGameState('PLAYING')} />;
+      }
+
+      if (gameState === 'END') {
+        return (
+          <div className="glass-card rounded-3xl p-6 sm:p-8 text-center space-y-6 max-w-md mx-auto animate-fade-in">
+            <h2 className="text-2xl sm:text-3xl font-black text-amber-300">PUZZLE MASTER! 🧩</h2>
+            <div className="text-5xl font-black text-white">{score} PTS</div>
+            <p className="text-sm text-blue-200/80">Kamu berhasil menyelesaikan kuis unscramble! Streak: 🔥 {streak}</p>
+            <div className="flex gap-3 flex-wrap justify-center">
+              <button onClick={reset} className="flex-1 py-3 bg-ec-red font-bold rounded-xl btn-action">
+                Try Again 🔄
+              </button>
+              <button onClick={onHome} className="py-3 px-4 bg-white/10 font-bold rounded-xl">Menu</button>
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <div className="space-y-6 max-w-md mx-auto w-full">
+          <div className="flex justify-between items-center bg-white/5 border border-white/10 p-4 rounded-2xl">
+            <div>
+              <span className="text-xs text-blue-300 font-bold uppercase">Difficulty</span>
+              <div className="text-sm font-black text-amber-400">{currentQ.difficulty}</div>
+            </div>
+            <div className="text-center">
+              <span className="text-xs text-blue-300 font-bold uppercase">Timer</span>
+              <div className="text-2xl font-black text-ec-red">{timeLeft}s</div>
+            </div>
+            <div className="text-right">
+              <span className="text-xs text-blue-300 font-bold uppercase">Score</span>
+              <div className="text-xl font-black text-emerald-400">{score}</div>
+            </div>
+          </div>
+
+          <div className="glass-card rounded-3xl p-5 sm:p-8 text-center space-y-6">
+            <div>
+              <span className="text-xs text-blue-300 uppercase font-bold tracking-widest">Unscramble this word!</span>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-black tracking-widest text-amber-300 my-4 bg-black/30 py-3 rounded-xl border border-white/10 break-words px-2">
+                {scrambled}
+              </div>
+              <p className="text-xs text-blue-200/60 italic">💡 Hint: {currentQ.hint}</p>
+            </div>
+
+            <form onSubmit={handleCheck} className="space-y-3">
+              <input
+                type="text"
+                value={inputVal}
+                onChange={(e) => setInputVal(e.target.value)}
+                placeholder="TYPE HERE..."
+                className={`w-full text-center text-xl font-black tracking-wider py-3.5 bg-white/10 border-2 rounded-xl focus:outline-none text-white placeholder-white/30 uppercase transition ${shake ? 'animate-shake border-ec-red' : 'border-amber-400/50 focus:border-amber-400'}`}
+                autoFocus
+                autoCapitalize="characters"
+                autoCorrect="off"
+              />
+              <button type="submit" className="w-full min-h-[52px] py-3.5 bg-amber-400 hover:bg-amber-300 active:bg-amber-300 active:scale-[0.98] text-ec-navy font-black rounded-xl transition btn-action">
+                SUBMIT ANSWER 🚀
+              </button>
+            </form>
+          </div>
+        </div>
+      );
+    }
+
+    // --- 3. GEN Z ENGLISH GAME ---
+    function GenZEnglishGame({ onConfetti, onHome }) {
+      const [currentIdx, setCurrentIdx] = useState(0);
+      const [score, setScore] = useState(0);
+      const [correctCount, setCorrectCount] = useState(0);
+      const [gameState, setGameState] = useState('COUNTDOWN'); // COUNTDOWN, PLAYING, END
+      const [session, setSession] = useState(0);
+      const mountedRef = useRef(true);
+
+      // Urutan soal diacak tiap sesi main (mirror React)
+      const order = useMemo(() => shuffleArray(GENZ_DATA.map((_, i) => i)), [session]);
+      const currentQ = useMemo(() => GENZ_DATA[order[currentIdx]], [order, currentIdx]);
+      const question = useMemo(() => shuffleOptions(currentQ.options, currentQ.correct), [currentQ.options, currentQ.correct]);
+
+      const handleAnswer = (optionIdx) => {
+        if (optionIdx === question.correctIdx) {
+          SoundEngine.correct();
+          setScore(prev => prev + 150);
+          setCorrectCount(prev => prev + 1);
+        } else {
+          SoundEngine.wrong();
+        }
+
+        if (currentIdx + 1 < GENZ_DATA.length) {
+          setCurrentIdx(prev => prev + 1);
+        } else {
+          setGameState('END');
+          SoundEngine.fanfare();
+          onConfetti();
+        }
+      };
+
+      const reset = () => {
+        setCurrentIdx(0); setScore(0); setCorrectCount(0); setGameState('COUNTDOWN'); setSession((s) => s + 1);
+      };
+
+      useEffect(() => { mountedRef.current = true; return () => { mountedRef.current = false; }; }, []);
+
+      if (gameState === 'COUNTDOWN') {
+        return <GameCountdown onComplete={() => setGameState('PLAYING')} />;
+      }
+
+      if (gameState === 'END') {
+        const auraPct = Math.min(99, Math.round((score / (GENZ_DATA.length * 150)) * 100));
+        return (
+          <div className="glass-card rounded-3xl p-6 text-center space-y-6 max-w-md mx-auto border-2 border-fuchsia-500/50">
+            <div>
+              <span className="text-xs font-black bg-fuchsia-600 px-3 py-1 rounded-full uppercase tracking-widest text-white">
+                Story Friendly Card
+              </span>
+              <h2 className="text-2xl font-black text-white mt-3">💀 GEN Z ENGLISH SCORE</h2>
+            </div>
+
+            <div className="bg-gradient-to-b from-fuchsia-950 to-purple-900/80 p-6 rounded-2xl border border-fuchsia-500/30 space-y-4">
+              <div className="text-5xl font-black text-amber-300">
+                Aura: {auraPct}% 🧠
+              </div>
+              <p className="text-sm font-extrabold text-fuchsia-200">
+                {auraPct > 70 ? "Certified Gen Z English Speaker 💀" : "Boomer Energy Detected 👴"}
+              </p>
+
+              <div className="text-left text-xs space-y-2 border-t border-white/10 pt-3">
+                <div className="flex justify-between"><span>Slang Knowledge:</span><span>⭐⭐⭐⭐⭐</span></div>
+                <div className="flex justify-between"><span>Gen Z Vibe:</span><span>⭐⭐⭐⭐</span></div>
+                <div className="flex justify-between font-bold text-amber-400"><span>Aura Level:</span><span>+{auraPct * 100} PTS</span></div>
+              </div>
+            </div>
+
+            <div className="flex gap-3 flex-wrap justify-center">
+              <button onClick={reset} className="flex-1 py-3 bg-fuchsia-600 font-bold rounded-xl btn-action">
+                Retake Quiz 🔄
+              </button>
+              <button onClick={onHome} className="py-3 px-4 bg-white/10 font-bold rounded-xl">Menu</button>
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <div className="space-y-6 max-w-md mx-auto w-full">
+          <div className="text-center">
+            <span className="text-xs font-black bg-fuchsia-600/30 text-fuchsia-300 border border-fuchsia-500/30 px-3 py-1 rounded-full">
+              QUESTION {currentIdx + 1} OF {GENZ_DATA.length}
+            </span>
+          </div>
+
+          <div className="glass-card rounded-3xl p-5 sm:p-8 text-center space-y-6">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-black text-amber-300">"{currentQ.phrase}"</h2>
+              <p className="text-sm text-blue-200/80 mt-1">{currentQ.question}</p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-3">
+              {question.shuffledOptions.map((opt, i) => (
+                <button
+                  key={i}
+                  onClick={() => handleAnswer(i)}
+                  className="w-full min-h-[48px] py-3.5 px-4 bg-white/10 hover:bg-fuchsia-600 active:bg-fuchsia-600 text-left font-bold rounded-xl transition border border-white/10 flex items-center justify-between group btn-action"
+                >
+                  <span><strong className="text-fuchsia-400 group-hover:text-white mr-2">{String.fromCharCode(65 + i)}.</strong> {opt}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // --- 4. FIND THE IMPOSTOR GAME ---
+    function FindImpostorGame({ onConfetti, onHome }) {
+      const [currentIdx, setCurrentIdx] = useState(0);
+      const [score, setScore] = useState(0);
+      const [correctCount, setCorrectCount] = useState(0);
+      const [timeLeft, setTimeLeft] = useState(5);
+      const [gameState, setGameState] = useState('COUNTDOWN'); // COUNTDOWN, PLAYING, END
+      const [session, setSession] = useState(0);
+      const timerRef = useRef(null);
+      const mountedRef = useRef(true);
+      // Cermin sinkron agar advance() idempoten & kebal closure basi / panggilan ganda (mirror React)
+      const idxRef = useRef(0);
+      const endedRef = useRef(false);
+
+      // Urutan soal diacak tiap sesi main (mirror React)
+      const order = useMemo(() => shuffleArray(IMPOSTOR_DATA.map((_, i) => i)), [session]);
+      const currentQ = useMemo(() => IMPOSTOR_DATA[order[currentIdx]] || IMPOSTOR_DATA[order[0]], [order, currentIdx]);
+      const question = useMemo(() => shuffleOptions(currentQ.options, currentQ.impostor), [currentQ.options, currentQ.impostor]);
+
+      const advance = (wasCorrect) => {
+        if (endedRef.current) return;
+        const idx = idxRef.current;
+        if (wasCorrect) {
+          SoundEngine.correct();
+          setScore(prev => prev + 100);
+          setCorrectCount(prev => prev + 1);
+        } else {
+          SoundEngine.wrong();
+        }
+        if (idx + 1 < IMPOSTOR_DATA.length) {
+          idxRef.current = idx + 1;
+          setCurrentIdx(idx + 1);
+          setTimeLeft(5);
+        } else {
+          endedRef.current = true;
+          setGameState('END');
+          SoundEngine.fanfare();
+          onConfetti();
+        }
+      };
+
+      const handleAnswer = (idx) => advance(idx === question.correctIdx);
+
+      useEffect(() => {
+        if (gameState !== 'PLAYING') return;
+        timerRef.current = setInterval(() => {
+          setTimeLeft((prev) => (prev <= 0 ? 0 : prev - 1));
+        }, 1000);
+        return () => clearInterval(timerRef.current);
+      }, [currentIdx, gameState]);
+
+      useEffect(() => {
+        if (gameState !== 'PLAYING' || timeLeft !== 0) return;
+        const t = setTimeout(() => advance(false), 80);
+        return () => clearTimeout(t);
+      }, [gameState, timeLeft, currentIdx]);
+
+      const reset = () => {
+        idxRef.current = 0; endedRef.current = false;
+        setCurrentIdx(0); setScore(0); setCorrectCount(0); setGameState('COUNTDOWN'); setTimeLeft(5); setSession((s) => s + 1);
+      };
+
+      useEffect(() => {
+        mountedRef.current = true;
+        return () => { mountedRef.current = false; if (timerRef.current) clearInterval(timerRef.current); };
+      }, []);
+
+      if (gameState === 'COUNTDOWN') {
+        return <GameCountdown onComplete={() => setGameState('PLAYING')} />;
+      }
+
+      if (gameState === 'END') {
+        return (
+          <div className="glass-card rounded-3xl p-6 sm:p-8 text-center space-y-6 max-w-md mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-black text-emerald-400">IMPOSTOR CAUGHT! 🕵️</h2>
+            <div className="text-5xl font-black text-white">{score} PTS</div>
+            <div className="flex gap-3 flex-wrap justify-center">
+              <button onClick={reset} className="flex-1 py-3 bg-emerald-600 font-bold rounded-xl btn-action">
+                Play Again 🔄
+              </button>
+              <button onClick={onHome} className="py-3 px-4 bg-white/10 font-bold rounded-xl">Menu</button>
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <div className="space-y-6 max-w-md mx-auto w-full">
+          <div className="flex justify-between items-center bg-white/5 border border-white/10 p-4 rounded-2xl">
+            <span className="text-xs font-bold text-emerald-400 uppercase">Find The Impostor!</span>
+            <div className="text-xl font-black text-ec-red animate-pulse">{timeLeft}s ⏱️</div>
+            <span className="text-xs font-bold text-white">Score: {score}</span>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
+            {question.shuffledOptions.map((opt, i) => (
+              <button
+                key={i}
+                onClick={() => handleAnswer(i)}
+                className="min-h-[7rem] sm:h-32 py-3 bg-white/10 hover:bg-emerald-500/80 active:bg-emerald-500/80 active:scale-95 hover:scale-105 border-2 border-white/20 hover:border-emerald-300 rounded-2xl flex items-center justify-center text-lg sm:text-xl font-black text-white transition-all btn-action p-2 text-center"
+              >
+                {opt}
+              </button>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    // --- 5. GRAMMAR BOMB GAME ---
+    function GrammarBombGame({ onConfetti, onHome }) {
+      const [currentIdx, setCurrentIdx] = useState(0);
+      const [score, setScore] = useState(0);
+      const [timeLeft, setTimeLeft] = useState(8);
+      const [gameState, setGameState] = useState('COUNTDOWN'); // COUNTDOWN, PLAYING, DEFUSED, EXPLODED
+      const [session, setSession] = useState(0);
+      const timerRef = useRef(null);
+      const mountedRef = useRef(true);
+
+      // Urutan soal diacak tiap sesi main (mirror React)
+      const order = useMemo(() => shuffleArray(GRAMMAR_DATA.map((_, i) => i)), [session]);
+      const currentQ = useMemo(() => GRAMMAR_DATA[order[currentIdx]], [order, currentIdx]);
+      const question = useMemo(() => shuffleOptions(currentQ.options, currentQ.correct), [currentQ.options, currentQ.correct]);
+
+      const explodeBomb = () => {
+        SoundEngine.explode();
+        setGameState('EXPLODED');
+      };
+
+      const handleAnswer = (idx) => {
+        if (idx === question.correctIdx) {
+          SoundEngine.correct();
+          setScore(prev => prev + 100);
+          if (currentIdx + 1 < GRAMMAR_DATA.length) {
+            setCurrentIdx(prev => prev + 1);
+            setTimeLeft(Math.max(3, 8 - (currentIdx * 1))); // gets faster!
+          } else {
+            setGameState('DEFUSED');
+            SoundEngine.fanfare();
+            onConfetti();
+          }
+        } else {
+          explodeBomb();
+        }
+      };
+
+      // Ticker MURNI — bombTick hanya jika waktu masih > 1 (mirror React)
+      const timeRef = useRef(timeLeft);
+      useEffect(() => { timeRef.current = timeLeft; });
+      useEffect(() => {
+        if (gameState !== 'PLAYING') return;
+        timerRef.current = setInterval(() => {
+          if (timeRef.current > 1) SoundEngine.bombTick();
+          setTimeLeft((prev) => (prev <= 0 ? 0 : prev - 1));
+        }, 1000);
+        return () => clearInterval(timerRef.current);
+      }, [currentIdx, gameState]);
+
+      useEffect(() => {
+        if (gameState !== 'PLAYING' || timeLeft !== 0) return;
+        const t = setTimeout(() => explodeBomb(), 80);
+        return () => clearTimeout(t);
+      }, [gameState, timeLeft, currentIdx]);
+
+      const reset = () => {
+        setCurrentIdx(0); setScore(0); setGameState('COUNTDOWN'); setTimeLeft(8); setSession((s) => s + 1);
+      };
+
+      useEffect(() => {
+        mountedRef.current = true;
+        return () => { mountedRef.current = false; if (timerRef.current) clearInterval(timerRef.current); };
+      }, []);
+
+      if (gameState === 'COUNTDOWN') {
+        return <GameCountdown onComplete={() => setGameState('PLAYING')} />;
+      }
+
+      if (gameState === 'EXPLODED') {
+        return (
+          <div className="glass-card rounded-3xl p-8 text-center space-y-6 max-w-md mx-auto border-2 border-ec-red animate-shake">
+            <div className="text-6xl">💥</div>
+            <h2 className="text-3xl font-black text-ec-red">BOMB EXPLODED!</h2>
+            <p className="text-sm text-blue-200/80">Oops! Grammar kamu belum tepat untuk menjinakkan bom.</p>
+            <div className="text-3xl font-black text-amber-300">{score} PTS</div>
+            <div className="flex gap-3 flex-wrap justify-center">
+              <button onClick={reset} className="flex-1 py-3 bg-ec-red font-bold rounded-xl btn-action">
+                Try Again 💣
+              </button>
+              <button onClick={onHome} className="py-3 px-4 bg-white/10 font-bold rounded-xl">Menu</button>
+            </div>
+          </div>
+        );
+      }
+
+      if (gameState === 'DEFUSED') {
+        return (
+          <div className="glass-card rounded-3xl p-8 text-center space-y-6 max-w-md mx-auto border-2 border-emerald-400">
+            <div className="text-6xl">💣✨</div>
+            <h2 className="text-3xl font-black text-emerald-400">ALL BOMBS DEFUSED!</h2>
+            <div className="text-4xl font-black text-amber-300">{score} PTS</div>
+            <div className="flex gap-3 flex-wrap justify-center">
+              <button onClick={reset} className="flex-1 py-3 bg-emerald-600 font-bold rounded-xl btn-action">
+                Play Again 🔄
+              </button>
+              <button onClick={onHome} className="py-3 px-4 bg-white/10 font-bold rounded-xl">Menu</button>
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <div className="space-y-6 max-w-md mx-auto w-full">
+          <div className="text-center space-y-2">
+            <div className="inline-block px-4 py-1 bg-ec-red/30 border border-ec-red/50 rounded-full text-red-400 font-black text-sm animate-pulse">
+              💣 DEFUSE THE BOMB IN {timeLeft}s
+            </div>
+          </div>
+
+          <div className="glass-card rounded-3xl p-5 sm:p-8 text-center space-y-6 border-2 border-ec-red/40">
+            <h3 className="text-base sm:text-lg font-bold text-white">Choose the correct sentence!</h3>
+
+            <div className="space-y-3">
+              {question.shuffledOptions.map((opt, i) => (
+                <button
+                  key={i}
+                  onClick={() => handleAnswer(i)}
+                  className="w-full min-h-[52px] py-4 px-4 sm:px-5 bg-white/10 hover:bg-ec-red active:bg-ec-red active:scale-[0.98] text-left font-bold text-sm sm:text-base rounded-2xl transition border border-white/20 flex items-center justify-between group btn-action"
+                >
+                  <span>{opt}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // Render App
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   </script>
 </body>
 </html>

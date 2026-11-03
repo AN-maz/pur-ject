@@ -5,7 +5,7 @@ export function useParallax(speed = 0.5) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setOffset(window.scrollY * speed);
+      setOffset(document.documentElement.scrollTop * speed);
     };
 
     window.addEventListener('scroll', handleScroll);

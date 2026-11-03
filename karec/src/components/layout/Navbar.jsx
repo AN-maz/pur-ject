@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import Container from '../common/Container';
 import { useScrollProgress } from '../../hooks/useScrollProgress';
+import { navigate } from '../../routing';
+import { GIcon } from '../../games/icons';
 import navLogo from '../../assets/nav-logo.png';
 
 export default function Navbar() {
@@ -39,7 +41,20 @@ export default function Navbar() {
     } else {
       document.body.style.overflow = 'unset';
     }
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [isMobileMenuOpen]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const navLinks = [
     { href: '#hero', label: 'Home' },
@@ -82,9 +97,18 @@ export default function Navbar() {
                   {link.label}
                 </a>
               ))}
+
+              <button
+                onClick={() => navigate('games')}
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full font-black text-ec-gold bg-ec-gold/15 border border-ec-gold/60 hover:bg-ec-gold hover:text-ec-navy transition-all duration-300"
+              >
+                <GIcon name="puzzle" className="w-4 h-4" />
+                Games
+              </button>
               
               <a
-                href="#register"
+                href="https://forms.gle/5wUQX3AzcDg8QKW77"
+                target="_blank"
                 className="ml-3 px-6 py-2.5 font-black text-white bg-ec-red rounded-2xl border-b-[5px] border-ec-iron transition-all duration-300 hover:bg-[#eb2334] active:border-b-0 active:translate-y-[5px]"
               >
                 Register Now
@@ -130,6 +154,20 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+
+          <button
+            onClick={() => {
+              closeMobileMenu();
+              navigate('games');
+            }}
+            className={`inline-flex items-center gap-3 text-3xl font-black text-ec-gold transition-all duration-300 hover:scale-110 ${
+              isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+            }`}
+            style={{ transitionDelay: `${(navLinks.length + 1) * 100}ms` }}
+          >
+            <GIcon name="puzzle" className="w-7 h-7" />
+            Games
+          </button>
           
           <a
             href="#register"
